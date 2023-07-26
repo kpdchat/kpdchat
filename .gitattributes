@@ -1,0 +1,21 @@
+# Set default behavior, in case users don't have core.autocrlf set.
+* text=auto
+
+*.js   text eol=lf
+*.json text eol=lf
+*.css  text eol=lf
+*.md   text eol=lf
+
+# Images
+*.jpg  binary
+*.jpeg binary
+*.png  binary
+*.gif  binary
+
+# Fonts
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+
+# Other
+LICENSE.txt text eol=lf
