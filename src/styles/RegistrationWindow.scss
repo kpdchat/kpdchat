@@ -1,0 +1,138 @@
+.registration_window {
+  display: flex;
+  flex-direction: row;
+  max-width: 1920px;
+  height: 100vh;
+}
+
+.info {
+  background-color: #38328A;
+  width: 33%;
+  height: 100dvh;
+  h1 {
+    font-family: 'Lexend', sans-serif;
+    font-size: 44px;
+    margin: 0;
+    text-shadow: black 2px 2px;
+  }
+  p {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+.info_block {
+  margin: 0 auto;
+  padding: 100px;
+  color: #FFFFFF;
+}
+
+.info_img {
+  margin: 34px 0;
+  img {
+    width: 25%;
+  }
+}
+
+.info_feature {
+  margin: 10px auto 0;
+  border-left: 3px white solid;
+  h2 {
+    margin: 40px 10px 10px;
+  }
+  p {
+    margin: 10px 10px 0;
+    font-size: 18px;
+  }
+}
+
+.registration {
+  width: 67%;
+}
+
+.registration_block {
+  margin: 120px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_chat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.registration_block_description {
+  width: 45%;
+  text-align: center;
+  margin: 30px auto 20px;
+  p {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 2px;
+  }
+}
+
+.registration_block_input {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  background-color: #EBEAEF;
+  border-radius: 16px;
+  margin: 0 auto 30px;
+  input {
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    background-color: #EBEAEF;
+    outline: 0;
+  }
+  .img_radius {
+    margin: 16px 16px ;
+    text-align: center;
+    border: 1px black solid;
+    border-radius: 50%;
+    padding: 18px;
+    img {
+      width: 20px;
+    }
+  }
+}
+
+.registration_block_authorization {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  gap: 10px;
+  span {
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 6px;
+      width: 1000%; // Здесь вы можете настроить длину линии
+      border-bottom: 2px solid black; // Здесь вы можете настроить стиль и цвет линии
+    }
+
+    &::before {
+      left: 10px;
+    }
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  .registration_logIn {
+    border: 1px blue solid;
+    button {
+      width: 20rem;
+      margin: 16px auto;
+    }
+  }
+}
