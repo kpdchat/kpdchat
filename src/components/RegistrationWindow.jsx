@@ -1,0 +1,116 @@
+import React from 'react';
+import img_1 from '../images/img_1.png'
+import img_2 from '../images/img_2.png'
+import img_3 from '../images/img_3.png'
+import img_4 from '../images/img_4.png'
+import img_5 from '../images/img_5.png'
+import img_6 from '../images/img_6.png'
+import img_7 from '../images/img_7.png'
+import img_8 from '../images/img_8.png'
+import logo_kpd from '../images/img_9.png'
+import img_10 from '../images/img_10.png'
+import {useNavigate} from "react-router-dom";
+
+export function RegistrationWindow() {
+  const navigate = useNavigate();
+
+  return (
+      <>
+
+        <div className='registration_window'>
+
+          <div className='info'>
+
+            <div className='info_block'>
+              <h1>
+                K P D C H A T
+              </h1>
+              <p>
+                Ласкаво просимо у світ швидкого та зручного спілкування!
+              </p>
+              <p>
+                Приєднуйся до нас та розпочни неймовірні розмови просто зараз.
+              </p>
+
+              <div className='info_img'>
+
+                <img src ={img_1} alt = ""/>
+                <img src ={img_2} alt = ""/>
+                <img src ={img_3} alt = ""/>
+                <img src ={img_4} alt = ""/>
+                <img src ={img_5} alt = ""/>
+                <img src ={img_6} alt = ""/>
+                <img src ={img_7} alt = ""/>
+                <img src ={img_8} alt = ""/>
+
+              </div>
+
+              <div className='info_feature'>
+                <h2>Швидкий</h2>
+                <p>Повідомлення надходять дуже швидко.</p>
+              </div>
+
+              <div className='info_feature'>
+                <h2>Зручний</h2>
+                <p>Простий та інтуїтивний інтерфейс.</p>
+              </div>
+
+              <div className='info_feature'>
+                <h2>Соціальний</h2>
+                <p>Безліч групових чатів.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div className='registration'>
+
+            <div className='registration_block'>
+              <div className='logo_chat'>
+                <span><strong>K P D</strong> C H A T</span>
+                <img src ={logo_kpd} alt = ""/>
+              </div>
+
+              <div className='registration_block_description'>
+                <p>
+                  Обери <strong>імʼя користувача</strong> та <strong>фото профілю</strong>, щоб продовжити
+                </p>
+              </div>
+
+
+              <div className='registration_block_input'>
+
+                <div className='img_radius'>
+                  <form action = "">
+                    <img src ={img_10} alt = ""/>
+                  </form>
+                </div>
+                <input type = "text" placeholder='Імʼя користувача'/>
+
+              </div>
+
+              <div className='registration_block_authorization'>
+                <div className='registration_logIn'>
+                  <button onClick={() => navigate('/chat')}>Увійти</button>
+                </div>
+                <span>або</span>
+                <div className='registration_singIn'>
+                  <button>Зареєструватись</button>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </>
+
+
+
+  );
+}
