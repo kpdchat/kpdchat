@@ -63,7 +63,17 @@
 .logo_chat {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  gap: 4px;
+  h2 {
+    font-size: 19px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.95px;
+    span {
+      font-weight: 800;
+    }
+  }
 }
 
 .registration_block_description {
@@ -71,9 +81,13 @@
   text-align: center;
   margin: 30px auto 20px;
   p {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 25px;
     letter-spacing: 2px;
+    font-weight: 400;
+    span {
+      font-weight: 700;
+    }
   }
 }
 
@@ -91,6 +105,7 @@
     border: none;
     background-color: #EBEAEF;
     outline: 0;
+    font-size: 20px;
   }
   .img_radius {
     margin: 16px 16px ;
