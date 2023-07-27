@@ -6,12 +6,12 @@ import {WindowChat} from "./components/WindowChat";
 
 function App() {
   return (
-     <>
+     <div className='app_wrapper'>
        <Routes>
          <Route path='/' element={ <RegistrationWindow />}/>
          <Route path='/chat' element={ <WindowChat />}/>
        </Routes>
-     </>
+     </div>
 
   );
 }

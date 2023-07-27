@@ -1,8 +1,6 @@
 .registration_window {
   display: flex;
   flex-direction: row;
-  max-width: 1920px;
-  height: 100vh;
 }
 
 .info {
@@ -14,6 +12,11 @@
     font-size: 44px;
     margin: 0;
     text-shadow: black 2px 2px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    span {
+      font-weight: 800;
+    }
   }
   p {
     font-size: 18px;

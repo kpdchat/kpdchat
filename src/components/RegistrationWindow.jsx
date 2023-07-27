@@ -23,7 +23,7 @@ export function RegistrationWindow() {
 
             <div className='info_block'>
               <h1>
-                K P D C H A T
+                <span>KPD</span>CHAT
               </h1>
               <p>
                 Ласкаво просимо у світ швидкого та зручного спілкування!
