@@ -124,33 +124,62 @@
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
-  gap: 10px;
+  gap: 18px;
   span {
     position: relative;
+    display: inline-block;
+    color: #7C7C85;
 
     &::before,
     &::after {
       content: "";
       position: absolute;
-      bottom: 6px;
-      width: 1000%; // Здесь вы можете настроить длину линии
-      border-bottom: 2px solid black; // Здесь вы можете настроить стиль и цвет линии
+      top: 50%;
+      height: 1px;
+      background: #5750A8;
     }
 
     &::before {
-      left: 10px;
+      right: 300%;
+      left: -950%;
     }
 
     &::after {
-      right: 0;
+      left: 300%;
+      right: -950%;
     }
   }
 
   .registration_logIn {
     border: 1px blue solid;
+    background-color: #38328A;
+    padding: 16px 120px;
+    border-radius: 16px;
     button {
+      color: #FFF;
       width: 20rem;
-      margin: 16px auto;
+      margin: 0 auto;
+      background-color: #38328A;
+      border: none;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 140%;
+    }
+  }
+
+  .registration_singIn {
+    border: 2px #5750A8 solid;
+    background-color: #fff;
+    padding: 16px 120px;
+    border-radius: 16px;
+    button {
+      color: #5750A8;
+      width: 20rem;
+      background-color: #fff;
+      border: none;
+      font-size: 20px;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 140%;
     }
   }
 }

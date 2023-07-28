@@ -1,6 +1,6 @@
 import React from "react";
 import './styles/index.scss'
-import {RegistrationWindow} from "./components/RegistrationWindow";
+import {RegistrationWindow} from "./components/registrationWindow/RegistrationWindow";
 import {WindowChat} from "./components/WindowChat";
 
 function App() {
