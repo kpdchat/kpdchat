@@ -5,9 +5,13 @@ on:
     branches: [ "main", "CHALLENGE-35" ]
 
 jobs:
-  build:
+  publish:
 
     runs-on: ubuntu-latest
+    
+    permissions:
+      pages: write
+      deployments: write
 
     steps:
     - uses: actions/checkout@v3
