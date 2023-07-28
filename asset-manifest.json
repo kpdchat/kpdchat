@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/kpdchat-frontend/static/css/main.073c9b0a.css",
-    "main.js": "/kpdchat-frontend/static/js/main.9275ed5a.js",
+    "main.js": "/kpdchat-frontend/static/js/main.6c0e0c6b.js",
     "static/js/787.0df72033.chunk.js": "/kpdchat-frontend/static/js/787.0df72033.chunk.js",
     "static/media/logo.svg": "/kpdchat-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/kpdchat-frontend/index.html",
     "main.073c9b0a.css.map": "/kpdchat-frontend/static/css/main.073c9b0a.css.map",
-    "main.9275ed5a.js.map": "/kpdchat-frontend/static/js/main.9275ed5a.js.map",
+    "main.6c0e0c6b.js.map": "/kpdchat-frontend/static/js/main.6c0e0c6b.js.map",
     "787.0df72033.chunk.js.map": "/kpdchat-frontend/static/js/787.0df72033.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.9275ed5a.js"
+    "static/js/main.6c0e0c6b.js"
   ]
 }
