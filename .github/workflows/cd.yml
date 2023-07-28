@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "CHALLENGE-35" ]
 
 jobs:
   build:
@@ -16,4 +16,5 @@ jobs:
       with:
         node-version: 18.2.0
         cache: 'npm'
+    - run: npm ci
     - run: npm run deploy
