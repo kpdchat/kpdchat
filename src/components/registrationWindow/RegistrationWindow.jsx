@@ -1,14 +1,14 @@
 import React from 'react';
-import img_1 from '../images/RegistrationWindow/img_1.png'
-import img_2 from '../images/RegistrationWindow/img_2.png'
-import img_3 from '../images/RegistrationWindow/img_3.png'
-import img_4 from '../images/RegistrationWindow/img_4.png'
-import img_5 from '../images/RegistrationWindow/img_5.png'
-import img_6 from '../images/RegistrationWindow/img_6.png'
-import img_7 from '../images/RegistrationWindow/img_7.png'
-import img_8 from '../images/RegistrationWindow/img_8.png'
-import logo_kpd from '../images/RegistrationWindow/img_9.png'
-import img_10 from '../images/RegistrationWindow/img_10.png'
+import img_1 from '../../images/RegistrationWindow/img_1.png'
+import img_2 from '../../images/RegistrationWindow/img_2.png'
+import img_3 from '../../images/RegistrationWindow/img_3.png'
+import img_4 from '../../images/RegistrationWindow/img_4.png'
+import img_5 from '../../images/RegistrationWindow/img_5.png'
+import img_6 from '../../images/RegistrationWindow/img_6.png'
+import img_7 from '../../images/RegistrationWindow/img_7.png'
+import img_8 from '../../images/RegistrationWindow/img_8.png'
+import logo_kpd from '../../images/RegistrationWindow/img_9.png'
+import img_10 from '../../images/RegistrationWindow/img_10.png'
 
 export function RegistrationWindow() {
 
@@ -78,7 +78,7 @@ export function RegistrationWindow() {
               <div className='registration_block_input'>
 
                 <div className='img_radius'>
-                  <form action = "">
+                  <form action = "kpdchat-frontend/src/components">
                     <img src ={img_10} alt = ""/>
                   </form>
                 </div>
@@ -91,7 +91,10 @@ export function RegistrationWindow() {
                 <div className='registration_logIn'>
                   <button>Увійти</button>
                 </div>
-                <span>або</span>
+
+                <div>
+                  <span>або</span>
+                </div>
 
                 <div className='registration_singIn'>
                   <button>Зареєструватись</button>
