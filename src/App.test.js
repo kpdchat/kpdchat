@@ -1,8 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders App component', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  // Проверяем, что компоненты RegistrationWindow и WindowChat отрисованы
+  const registrationWindow = screen.getByTestId('registration-window');
+  const windowChat = screen.getByTestId('window-chat');
+  expect(registrationWindow).toBeInTheDocument();
+  expect(windowChat).toBeInTheDocument();
 });
