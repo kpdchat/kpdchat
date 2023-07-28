@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: [ "main", "CHALLENGE-35" ]
+    branches: [ "main" ]
 
 jobs:
   publish:
