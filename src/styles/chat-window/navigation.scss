@@ -1,0 +1,40 @@
+.navigation {
+    font-family: "Lexend", sans-serif;
+    color: $color-light-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &__folders {
+        min-width: 120px;
+
+    }
+
+    &__settings {
+        max-width: 120px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+.folders {
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 29px;
+    }
+    &__container {
+    }
+    &__folder {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+}

@@ -6,7 +6,7 @@ import {WindowChat} from "./components/WindowChat";
 function App() {
   return (
      <div className='app_wrapper'>
-         <RegistrationWindow />
+         {/* <RegistrationWindow /> */}
          <WindowChat />
      </div>
 
