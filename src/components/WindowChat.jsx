@@ -118,7 +118,7 @@ export function WindowChat() {
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
                     <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
+                    <p> Шукаю хлопця з мого міста Миколаів...</p>
                   </div>
                 </div>
                 <span>12:28</span>
