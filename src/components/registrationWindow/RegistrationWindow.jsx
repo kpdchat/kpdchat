@@ -13,7 +13,7 @@ import img_10 from '../../images/RegistrationWindow/img_10.png'
 export function RegistrationWindow() {
 
   return (
-      <div data-testid='registration-window'>
+      <div>
 
         <div className='registration_window'>
 
