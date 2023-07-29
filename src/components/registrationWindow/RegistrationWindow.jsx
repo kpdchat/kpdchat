@@ -13,8 +13,6 @@ import img_10 from '../../images/RegistrationWindow/img_10.png'
 export function RegistrationWindow() {
 
   return (
-      <div>
-
         <div className='registration_window'>
 
           <div className='info'>
@@ -107,6 +105,5 @@ export function RegistrationWindow() {
           </div>
 
         </div>
-      </div>
   );
 }
