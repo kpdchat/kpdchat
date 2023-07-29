@@ -1,17 +1,9 @@
 import React from 'react';
-import img_1 from '../../images/RegistrationWindow/img_1.png'
-import img_2 from '../../images/RegistrationWindow/img_2.png'
-import img_3 from '../../images/RegistrationWindow/img_3.png'
-import img_4 from '../../images/RegistrationWindow/img_4.png'
-import img_5 from '../../images/RegistrationWindow/img_5.png'
-import img_6 from '../../images/RegistrationWindow/img_6.png'
-import img_7 from '../../images/RegistrationWindow/img_7.png'
-import img_8 from '../../images/RegistrationWindow/img_8.png'
-import logo_kpd from '../../images/RegistrationWindow/img_9.png'
-import img_10 from '../../images/RegistrationWindow/img_10.png'
+import img from '../../images/RegistrationWindow/puzzles_img.png'
+import logo_kpd from '../../images/RegistrationWindow/logo_kpd.png'
+import img_add_photo from '../../images/RegistrationWindow/add_photo_img.png'
 
 export function RegistrationWindow() {
-
   return (
         <div className='registration_window'>
 
@@ -29,14 +21,7 @@ export function RegistrationWindow() {
               </p>
 
               <div className='info_img'>
-                <img src ={img_1} alt = ""/>
-                <img src ={img_2} alt = ""/>
-                <img src ={img_3} alt = ""/>
-                <img src ={img_4} alt = ""/>
-                <img src ={img_5} alt = ""/>
-                <img src ={img_6} alt = ""/>
-                <img src ={img_7} alt = ""/>
-                <img src ={img_8} alt = ""/>
+                <img src ={img} alt = ""/>
               </div>
 
               <div className='info_feature'>
@@ -77,7 +62,7 @@ export function RegistrationWindow() {
 
                 <div className='img_radius'>
                   <form action = "kpdchat-frontend/src/components">
-                    <img src ={img_10} alt = ""/>
+                    <img src ={img_add_photo} alt = ""/>
                   </form>
                 </div>
                 <input type = "text" placeholder='Імʼя користувача'/>
@@ -99,9 +84,7 @@ export function RegistrationWindow() {
                 </div>
 
               </div>
-
             </div>
-
           </div>
 
         </div>
