@@ -2,8 +2,9 @@ import React from 'react';
 
 export function WindowChat() {
   return (
-     <div data-testid ='window-chat'>
+     <div >
        <h1>Hello Chat</h1>
      </div>
   );
 }
+
