@@ -1,0 +1,76 @@
+.dialogs {
+    padding: 0 10px 0 10px;
+    &__logo {
+        display: flex;
+        align-items: center;
+        padding: 25px 0px 18px 40px;
+        h1 {
+            font-family: "Lexend", sans-serif;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 33.6px;
+            letter-spacing: 5%;
+            text-transform: uppercase;
+            margin-left: 22px;
+            span {
+                font-weight: 800;
+            }
+        }
+    }
+    &__search {
+        form {
+            input {
+                width: 100%;
+                height: 45px;
+                background-color: $color-grey;
+                background: $color-grey url(../../images/chat-window/search.svg) 15px no-repeat;
+                border: none;
+                border-radius: 10px;
+                padding-left: 52px;
+            }
+        }
+    }
+}
+
+.list {
+    &__container {
+        font-family: "Roboto", sans-serif;
+        padding-top: 24px;
+    }
+    &__dialog {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 11px;
+
+        
+
+        span {
+            align-self: start;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 14px;
+        }
+    }
+    &__info {
+        display: flex;
+        img {
+            max-width: 40px;
+            max-height: 40px;
+        }
+    }
+    &__text {
+        padding: 0 10px;
+        h3 {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+}
