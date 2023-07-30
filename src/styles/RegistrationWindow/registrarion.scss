@@ -4,11 +4,48 @@
   width: 67%;
 }
 
-.registration_block {
+.registration-block {
   margin: 120px auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  &__description {
+    width: 60%;
+    text-align: center;
+    margin: 30px 0 20px;
+    font-family: $fontF2;
+    p {
+      font-size: 24px;
+      line-height: 40px;
+      letter-spacing: 2px;
+      font-weight: $fontW4;
+      word-spacing: 40px;
+      span {
+        font-weight: $fontW7;
+        word-spacing: 0;
+      }
+    }
+  }
+  &__input {
+    width: 60%;
+    display: flex;
+    background-color: #EBEAEF;
+    border-radius: 16px;
+    margin: 0 0 30px;
+    input {
+      font-family: $fontF3;
+      border: none;
+      background-color: #EBEAEF;
+      outline: 0;
+      font-size: 20px;
+    }
+    .add-images {
+      margin: 16px 16px 16px 24px ;
+      img {
+        width: 80px;
+      }
+    }
+  }
 }
 
 .logo_chat {
@@ -27,46 +64,7 @@
   }
 }
 
-.registration_block_description {
-  width: 60%;
-  text-align: center;
-  margin: 30px 0 20px;
-  font-family: $fontF2;
-  p {
-    font-size: 24px;
-    line-height: 40px;
-    letter-spacing: 2px;
-    font-weight: $fontW4;
-    word-spacing: 40px;
-    span {
-      font-weight: $fontW7;
-      word-spacing: 0;
-    }
-  }
-}
-
-.registration_block_input {
-  width: 60%;
-  display: flex;
-  background-color: #EBEAEF;
-  border-radius: 16px;
-  margin: 0 0 30px;
-  input {
-    font-family: $fontF3;
-    border: none;
-    background-color: #EBEAEF;
-    outline: 0;
-    font-size: 20px;
-  }
-  .img_radius {
-    margin: 16px 16px 16px 24px ;
-    img {
-      width: 80px;
-    }
-  }
-}
-
-.registration_block_authorization {
+.registration__authorization {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -94,7 +92,7 @@
     }
   }
 
-  .registration_logIn {
+  .registration__log-in {
     width: 100%;
     text-align: center;
     background-color: #38328A;
@@ -109,7 +107,7 @@
     }
   }
 
-  .registration_singIn {
+  .registration__sing-in {
     width: 100%;
     text-align: center;
     border: 2px #5750A8 solid;
