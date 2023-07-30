@@ -1,5 +1,4 @@
 .navigation {
-    font-family: "Lexend", sans-serif;
     color: $color-light-white;
     display: flex;
     flex-direction: column;
@@ -7,34 +6,38 @@
     align-items: center;
     &__folders {
         min-width: 120px;
-
     }
 
     &__settings {
         max-width: 120px;
         display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        gap: 12px;
+        flex-direction: column;
+        gap: 16px;
     }
 }
 
 .folders {
     &__title {
+        font-family: "Lexend", sans-serif;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 29px;
+        justify-content: center;
+        margin-bottom: 35px;
     }
     &__container {
     }
     &__folder {
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 20px;
+        h4 {
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 8px;
+        margin-bottom: 25px;
     }
 }

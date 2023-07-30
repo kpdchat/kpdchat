@@ -1,6 +1,4 @@
 import React from 'react';
-import { ReactComponent as AddCircle } from '../images/chat-window/add_circle.svg'
-import { ReactComponent as AccountBox } from '../images/chat-window/account_box.svg'
 import { ReactComponent as DarkMode } from '../images/chat-window/dark_mode.svg'
 import { ReactComponent as Info } from '../images/chat-window/info.svg'
 import { ReactComponent as Settings } from '../images/chat-window/settings.svg'
@@ -14,11 +12,10 @@ export function WindowChat() {
     <div className='chat'>
       <div className='container-grid'>
         {/* start left side navigation */}
-        <div className='chat__navigation navigation'>
+        <section className='chat__navigation navigation'>
           <div className='navigation__folders folders'>
             <div className='folders__title'>
               <h2 className='title'>папки</h2>
-              <AddCircle />
             </div>
             <div className='folders__container'>
               <div className='folders__folder '>
@@ -49,18 +46,17 @@ export function WindowChat() {
           </div>
 
           <div className='navigation__settings'>
-            <AccountBox />
             <Settings />
             <Info />
             <DarkMode />
           </div>
-        </div>
+        </section>
         {/* end left side navigation */}
         {/* start center chat column */}
-        <div className='chat__dialogs dialogs'>
+        <section className='chat__dialogs dialogs'>
           <div className='dialogs__logo'>
             <Logo />
-            <h1> <span>kpd</span>chat</h1>
+            <h1> <span>kpd</span>Chat</h1>
           </div>
           <div className='dialogs__search'>
             <form>
@@ -77,7 +73,11 @@ export function WindowChat() {
                     <p> ПРИВІТ всім! Хто буде сьогодні на ...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
+                
               </div>
               
               <div className="list__dialog">
@@ -88,7 +88,10 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -99,7 +102,10 @@ export function WindowChat() {
                     <p> Rail Time частина ll, вийшла на цьому</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -110,7 +116,10 @@ export function WindowChat() {
                     <p> Зелена галерея запрошує усіх бажа...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -121,7 +130,9 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста Миколаів...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -132,7 +143,9 @@ export function WindowChat() {
                     <p> Погода  буде спектна вже завтра ...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -143,7 +156,10 @@ export function WindowChat() {
                     <p> Концерт в Докер-пабі на підтримку ...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>Пн</span>
+                  <span className='list__new-count'>9</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -154,7 +170,10 @@ export function WindowChat() {
                     <p> Огляд смартфона New GAlAXY 23 A ...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -165,7 +184,10 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -176,7 +198,10 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -187,7 +212,10 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
 
               <div className="list__dialog">
@@ -198,17 +226,25 @@ export function WindowChat() {
                     <p> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
-                <span>12:28</span>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
               </div>
             </div>
 
           </div>
-        </div>
+        </section>
         {/* end center chat column */}
 
-        <div className='chat__messages'>
+        <section className='chat__messages messages'>
+          <div className="messages__title">
+            <div className="messages__text">
 
-        </div>
+            </div>
+          </div>
+
+        </section>
       </div>
     </div>
   );

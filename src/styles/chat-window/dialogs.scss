@@ -3,16 +3,17 @@
     &__logo {
         display: flex;
         align-items: center;
-        padding: 25px 0px 18px 40px;
+        justify-content: center;
+        padding: 25px 0px 18px 0px;
         h1 {
             font-family: "Lexend", sans-serif;
             font-weight: 300;
             font-size: 24px;
             line-height: 33.6px;
             letter-spacing: 5%;
-            text-transform: uppercase;
             margin-left: 22px;
             span {
+                text-transform: uppercase;
                 font-weight: 800;
             }
         }
@@ -27,29 +28,29 @@
                 border: none;
                 border-radius: 10px;
                 padding-left: 52px;
+                &:focus-visible {
+                    // outline:none;
+                }
             }
         }
     }
 }
 
 .list {
+    overflow-x: scroll;
+    overflow-x: hidden;
     &__container {
-        font-family: "Roboto", sans-serif;
+        font-family: "Inter", sans-serif;
         padding-top: 24px;
     }
     &__dialog {
         display: flex;
-        align-items: center;
         justify-content: space-between;
         padding: 10px 10px 10px 11px;
+        border: 2px solid transparent;
 
-        
-
-        span {
-            align-self: start;
-            font-weight: 400;
-            font-size: 12px;
-            line-height: 14px;
+        &:hover {
+            border: 2px solid black;
         }
     }
     &__info {
@@ -62,15 +63,46 @@
     &__text {
         padding: 0 10px;
         h3 {
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 21px;
+            font-weight: 600;
+            font-size: 16px;
         }
 
         p {
             font-weight: 400;
             font-size: 14px;
-            line-height: 16px;
+        }
+    }
+    &__data {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px 0px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    &__time {
+        align-self: end;
+        text-align: center;
+        min-width: 30px;
+    }
+
+    &__new-count {
+        align-self: center;
+        position: relative;
+        color: $color-light-white;
+        &::before {
+            content: "";
+            position: absolute;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #5750a8;
+            border-radius: 50%;
+            top: -2.5px;
+            left: -6.5px;
+            z-index: -1;
         }
     }
 }
