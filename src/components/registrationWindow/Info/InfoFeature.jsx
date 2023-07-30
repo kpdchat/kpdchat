@@ -2,7 +2,7 @@ import React from 'react';
 
 export function InfoFeature() {
   return (
-      <div>
+      <div className='feature'>
         <div className='info_feature'>
           <h2>Швидкий</h2>
           <p>Повідомлення надходять дуже швидко.</p>
