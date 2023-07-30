@@ -59,7 +59,7 @@ export function WindowChat() {
             <h1> <span>kpd</span>Chat</h1>
           </div>
           <div className='dialogs__search'>
-            <form>
+            <form className='search-form'>
               <input placeholder='Пошук...'></input>
             </form>
           </div>
@@ -69,37 +69,23 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Настолки у Харкові</h3>
-                    <p> ПРИВІТ всім! Хто буде сьогодні на ...</p>
+                    <h3 className='title-h3'>Настолки у Харкові</h3>
+                    <p className='text-14'> ПРИВІТ всім! Хто буде сьогодні на ...</p>
                   </div>
                 </div>
                 <div className="list__data">
                   <span className='list__time'>12:28</span>
                   <span className='list__new-count'>1</span>
                 </div>
-                
-              </div>
-              
-              <div className="list__dialog">
-                <div className="list__info">
-                  <img src={chat_logo} alt="" />
-                  <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
-                  </div>
-                </div>
-                <div className="list__data">
-                  <span className='list__time'>12:28</span>
-                  <span className='list__new-count'>1</span>
-                </div>
+
               </div>
 
               <div className="list__dialog">
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>new games</h3>
-                    <p> Rail Time частина ll, вийшла на цьому</p>
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -112,8 +98,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Мистецтво_modern | Ukraine</h3>
-                    <p> Зелена галерея запрошує усіх бажа...</p>
+                    <h3 className='title-h3'>new games</h3>
+                    <p className='text-14'> Rail Time частина ll, вийшла на цьому</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -126,8 +112,22 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста Миколаів...</p>
+                    <h3 className='title-h3'>Мистецтво_modern Ukraine</h3>
+                    <p className='text-14'>Зелена галерея запрошує усіх ба...</p>
+                  </div>
+                </div>
+                <div className="list__data">
+                  <span className='list__time'>12:28</span>
+                  <span className='list__new-count'>1</span>
+                </div>
+              </div>
+
+              <div className="list__dialog">
+                <div className="list__info">
+                  <img src={chat_logo} alt="" />
+                  <div className="list__text">
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста Миколаів...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -139,8 +139,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Новини Луцьк</h3>
-                    <p> Погода  буде спектна вже завтра ...</p>
+                    <h3 className='title-h3'>Новини Луцьк</h3>
+                    <p className='text-14'> Погода  буде спектна вже завтра ... </p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -152,8 +152,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>OLD School | Rock</h3>
-                    <p> Концерт в Докер-пабі на підтримку ...</p>
+                    <h3 className='title-h3'>OLD School | Rock</h3>
+                    <p className='text-14'> Концерт в Докер-пабі на підтримку ...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -166,8 +166,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Fresh огляд Toni</h3>
-                    <p> Огляд смартфона New GAlAXY 23 A ...</p>
+                    <h3 className='title-h3'>Fresh огляд Toni</h3>
+                    <p className='text-14'> Огляд смартфона New GAlAXY 23 A ...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -180,8 +180,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -194,8 +194,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -208,8 +208,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -222,8 +222,8 @@ export function WindowChat() {
                 <div className="list__info">
                   <img src={chat_logo} alt="" />
                   <div className="list__text">
-                    <h3>Знайомства 20 +</h3>
-                    <p> Шукаю хлопця з мого міста...</p>
+                    <h3 className='title-h3'>Знайомства 20 +</h3>
+                    <p className='text-14'> Шукаю хлопця з мого міста...</p>
                   </div>
                 </div>
                 <div className="list__data">
@@ -239,13 +239,40 @@ export function WindowChat() {
 
         <section className='chat__messages messages'>
           <div className="messages__title">
-            <div className="messages__text">
+            <div className="messages__dialog-name">
+              <img src={chat_logo} alt="" />
+              <div className="messages__dialog-info">
+                <h3 className='title-h3'>Настолки у Харкові</h3>
+                <p className='text-14'> 245 учасників</p>
+              </div>
 
             </div>
+            <div className="messages__search">
+              <form className='search-form'>
+                <input placeholder='Пошук...'></input>
+              </form>
+              <div className="messages__info menu-kebab"></div>
+            </div>
           </div>
-
+          <div className="messages__texting">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, doloribus. Natus, consequatur quos. Placeat, numquam.
+          </div>
+          <div className="messages__input">
+            <form action="">
+              <input className='text-16'  type="text" placeholder='Написати...' />
+              <label>
+                <input type="file" />
+              </label>
+              <button type='submit'></button>
+            </form>
+          </div>
         </section>
       </div>
-    </div>
+
+
+
+
+
+    </div >
   );
 }
