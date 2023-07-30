@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../../images/RegistrationWindow/puzzles_img.png";
+import img from "../../../images/RegistrationWindow/puzzles_img.png";
 
 export function InfoImage() {
   return (
