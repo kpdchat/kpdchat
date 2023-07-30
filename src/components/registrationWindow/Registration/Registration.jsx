@@ -7,7 +7,7 @@ import {RegistrationAuthorization} from "./RegistrationAuthorization";
 export function Registration() {
   return (
       <div className='registration'>
-        <div className='registration_block'>
+        <div className='registration-block'>
 
             <LogoChat/>
             <RegistrationInfoDescription/>

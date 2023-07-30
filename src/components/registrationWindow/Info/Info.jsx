@@ -6,7 +6,7 @@ import {InfoFeature} from "./InfoFeature";
 export function Info() {
   return (
       <div className='info'>
-        <div className='info_block'>
+        <div className='info__block'>
             <InfoTitle/>
             <InfoImage/>
             <InfoFeature/>
