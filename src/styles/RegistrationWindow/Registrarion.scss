@@ -1,0 +1,126 @@
+@import "template";
+
+.registration {
+  width: 67%;
+}
+
+.registration_block {
+  margin: 120px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: $fontF1;
+  font-size: 20px;
+  h2 {
+    font-weight: $fontW3;
+    letter-spacing: 1px;
+    span {
+      font-weight: $fontW8;
+    }
+  }
+}
+
+.registration_block_description {
+  width: 60%;
+  text-align: center;
+  margin: 30px 0 20px;
+  font-family: $fontF2;
+  p {
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 2px;
+    font-weight: $fontW4;
+    word-spacing: 40px;
+    span {
+      font-weight: $fontW7;
+      word-spacing: 0;
+    }
+  }
+}
+
+.registration_block_input {
+  width: 60%;
+  display: flex;
+  background-color: #EBEAEF;
+  border-radius: 16px;
+  margin: 0 0 30px;
+  input {
+    font-family: $fontF3;
+    border: none;
+    background-color: #EBEAEF;
+    outline: 0;
+    font-size: 20px;
+  }
+  .img_radius {
+    margin: 16px 16px 16px 24px ;
+    img {
+      width: 80px;
+    }
+  }
+}
+
+.registration_block_authorization {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  span {
+    position: relative;
+    color: #7C7C85;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      background: #5750A8;
+    }
+    &::before {
+      right: 300%;
+      left: -1310%;
+    }
+    &::after {
+      left: 300%;
+      right: -1310%;
+    }
+  }
+
+  .registration_logIn {
+    width: 100%;
+    text-align: center;
+    background-color: #38328A;
+    padding: 16px 120px;
+    border-radius: 16px;
+    button {
+      color: #FFF;
+      background-color: #38328A;
+      border: none;
+      font-size: 20px;
+      font-family: $fontF3;
+    }
+  }
+
+  .registration_singIn {
+    width: 100%;
+    text-align: center;
+    border: 2px #5750A8 solid;
+    padding: 16px 120px;
+    border-radius: 16px;
+    button {
+      color: #5750A8;
+      background-color: #fff;
+      border: none;
+      font-size: 20px;
+      font-family: $fontF3;
+    }
+  }
+}
