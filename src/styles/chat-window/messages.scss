@@ -1,0 +1,80 @@
+.messages {
+    &__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px 28px;
+        border-bottom: 1px solid #aba8d4;
+    }
+    &__dialog-name {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        img {
+            object-fit: contain;
+        }
+    }
+    &__dialog-info {
+        white-space: nowrap;
+        margin-left: 12px;
+        p {
+            margin-top: 8px;
+        }
+    }
+    &__search {
+        display: flex;
+        align-items: center;
+        padding-right: 30px;
+        input {
+            min-width: 364px;
+        }
+    }
+    &__info {
+        margin-left: 12px;
+    }
+
+    &__texting {
+        flex: 1 1 auto;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 20px 24px;
+        border-top: 1px solid #aba8d4;
+
+        form {
+            display: flex;
+            align-items: center;
+            background: #ebeaef;
+            border-radius: 8px;
+            padding: 10px 15px;
+
+            input[type="file"] {
+                display: none;
+            }
+            input[type="text"] {
+                width: 100%;
+                height: 20px;
+                background: inherit;
+                border: none;
+                &:focus-visible {
+                    outline:none;
+                }
+            }
+            label {
+                width: 24px;
+                height: 24px;
+                background: url(../../images/chat-window/send-img.png) center no-repeat;
+                cursor: pointer;
+            }
+            button {
+                border: none;
+                margin-left: 16px;
+                border-radius: 8px;
+                width: 30px;
+                height: 30px;
+                background: #5750a8 url("../../images/chat-window/send.png") center no-repeat;
+            }
+        }
+    }
+}
