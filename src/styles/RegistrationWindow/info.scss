@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.info_block {
+.info__block {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -34,18 +34,18 @@
   }
 }
 
-.info_img {
+.info__img {
   img {
     width: 100%;
   }
 }
 
 
-.feature {
+.info-feature {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  .info_feature {
+  &__title {
     border-left: 3px white solid;
     font-size: 20px;
     h2 {
