@@ -9,10 +9,10 @@ export function Registration() {
       <div className='registration'>
         <div className='registration-block'>
 
-            <LogoChat/>
-            <RegistrationInfoDescription/>
-            <RegistrationInput/>
-            <RegistrationAuthorization/>
+            <LogoChat />
+            <RegistrationInfoDescription />
+            <RegistrationInput />
+            <RegistrationAuthorization />
 
         </div>
       </div>
