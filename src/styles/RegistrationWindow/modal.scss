@@ -1,0 +1,15 @@
+.modal {
+  width: 39.2%;
+  height: 450px;
+  opacity: 0.2;
+  position: absolute;
+  background-color: black;
+  top: 448px;
+  left: 910px;
+  &__content {
+    height: 450px;
+    border-radius: 16px;
+    background-color: #7C7C85;
+    padding: 24px;
+  }
+}
