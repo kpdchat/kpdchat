@@ -1,15 +1,22 @@
 .modal {
-  width: 39.2%;
-  height: 450px;
-  opacity: 0.2;
-  position: absolute;
-  background-color: black;
-  top: 448px;
-  left: 910px;
+  width: 66%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 654px;
+  bottom: 0;
   &__content {
+    width: 39.2%;
+    position: absolute;
+    top: 448px;
+    left: 916px;
     height: 450px;
     border-radius: 16px;
     background-color: #7C7C85;
     padding: 24px;
   }
+}
+
+.content__close {
+  text-align: right;
 }
