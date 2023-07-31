@@ -1,96 +1,81 @@
 .registration {
   width: 67%;
-}
+  &-block {
+    // .registration-block
+    margin: 120px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-.registration-block {
-  margin: 120px auto 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  &__description {
-    width: 60%;
-    text-align: center;
-    margin: 30px 0 20px;
-    font-family: $fontF2;
-    p {
-      font-size: 24px;
-      line-height: 40px;
-      letter-spacing: 2px;
-      font-weight: $fontW4;
-      word-spacing: 40px;
-      span {
-        font-weight: $fontW7;
-        word-spacing: 0;
+    .logo_chat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-family: $fontF1;
+      font-size: 20px;
+      h2 {
+        font-weight: $fontW3;
+        letter-spacing: 1px;
+        span {
+          font-weight: $fontW8;
+        }
+      }
+    }
+
+    &__description {
+      // registration-block__description
+      width: 60%;
+      text-align: center;
+      margin: 30px 0 20px;
+      font-family: $fontF2;
+      p {
+        font-size: 24px;
+        line-height: 40px;
+        letter-spacing: 2px;
+        font-weight: $fontW4;
+        word-spacing: 40px;
+        span {
+          font-weight: $fontW7;
+          word-spacing: 0;
+        }
+      }
+    }
+    &__input {
+      // .registration-block__input
+      width: 60%;
+      display: flex;
+      background-color: #EBEAEF;
+      border-radius: 16px;
+      margin: 0 0 30px;
+      position: relative;
+      z-index: 2;
+      input {
+        font-family: $fontF3;
+        border: none;
+        background-color: #EBEAEF;
+        outline: 0;
+        font-size: 20px;
+      }
+      .add-images {
+        margin: 16px 16px 16px 24px ;
+        img {
+          width: 80px;
+        }
       }
     }
   }
-  &__input {
+  &__authorization {
+    // .registration__authorization
     width: 60%;
     display: flex;
-    background-color: #EBEAEF;
-    border-radius: 16px;
-    margin: 0 0 30px;
-    input {
-      font-family: $fontF3;
-      border: none;
-      background-color: #EBEAEF;
-      outline: 0;
-      font-size: 20px;
-    }
-    .add-images {
-      margin: 16px 16px 16px 24px ;
-      img {
-        width: 80px;
-      }
-    }
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    z-index: 1;
   }
-}
-
-.logo_chat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-family: $fontF1;
-  font-size: 20px;
-  h2 {
-    font-weight: $fontW3;
-    letter-spacing: 1px;
-    span {
-      font-weight: $fontW8;
-    }
-  }
-}
-
-.registration__authorization {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  span {
-    position: relative;
-    color: #7C7C85;
-
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      height: 1px;
-      background: #5750A8;
-    }
-    &::before {
-      right: 300%;
-      left: -1310%;
-    }
-    &::after {
-      left: 300%;
-      right: -1310%;
-    }
-  }
-
-  .registration__log-in {
+  &__log-in {
+    // .registration__log-in
     width: 100%;
     text-align: center;
     background-color: #38328A;
@@ -104,8 +89,28 @@
       font-family: $fontF3;
     }
   }
+  &-divider {
+    // .registration-divider
+    display: flex;
+    align-items: center;
+    color: #7C7C85;
+    width: 100%;
 
-  .registration__sing-in {
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      display: block;
+      height: 1px;
+      background: #5750A8;
+    }
+    span {
+      flex-basis: 100px;
+      text-align: center;
+    }
+  }
+  &__sing-in {
+    // .registration__sing-in
     width: 100%;
     text-align: center;
     border: 2px #5750A8 solid;

@@ -7,7 +7,7 @@ export function RegistrationAuthorization() {
          <button>Увійти</button>
        </div>
 
-       <div>
+       <div className='registration-divider'>
          <span>або</span>
        </div>
 

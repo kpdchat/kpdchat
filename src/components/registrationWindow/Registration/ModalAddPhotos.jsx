@@ -7,28 +7,28 @@ export function ModalAddPhotos({onClose}) {
 
   return (
      <>
-       <div className='modal' onClick={onClose}></div>
+       <div className='modal-background' onClick={onClose}></div>
        <div className='modal__content'>
 
-         <div className="content__close">
+         <div className="modal__content-close">
            <img src ={close} alt = "close modal" onClick={onClose}/>
          </div>
 
-         <div className="content__column">
-           <div className="content__title">Photo</div>
-           <div className="content__add-image">
-             <img src = {add_photo_link} alt = ""/>
+         <div className="modal__content-column">
+           <div className="title">Photo</div>
+           <div className="add-image" onClick={onClose}>
+             <img src = {add_photo_link} alt = "link for photos"/>
            </div>
          </div>
 
-         <div className="content__column-line"></div>
+         <div className="modal__content-columnLine"></div>
 
-         <div className="content__column">
-           <div className="content__title">Image</div>
-           <div className="content__img">
+         <div className="modal__content-column">
+           <div className="title">Image</div>
+           <div className="img">
              <img src = {random_photo} alt = ""/>
            </div>
-           <div className="content__button">
+           <div className="button" onClick={onClose}>
              <button>Встановити</button>
            </div>
          </div>
