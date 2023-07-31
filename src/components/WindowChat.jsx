@@ -4,6 +4,8 @@ import { ReactComponent as Info } from '../images/chat-window/info.svg'
 import { ReactComponent as Settings } from '../images/chat-window/settings.svg'
 import { ReactComponent as Logo } from '../images/chat-window/logo.svg'
 import chat_logo from '../images/chat-window/chat_logo.png'
+import user_photo from '../images/chat-window/user-photo.png'
+import message_photo from '../images/chat-window/message-photo.png'
 
 
 
@@ -220,7 +222,7 @@ export function WindowChat() {
 
               <div className="list__dialog">
                 <div className="list__info">
-                  <img src={chat_logo} alt="" />
+                  <img onClick={() => console.log('on img click')} src={chat_logo} alt="" />
                   <div className="list__text">
                     <h3 className='title-h3'>Знайомства 20 +</h3>
                     <p className='text-14'> Шукаю хлопця з мого міста...</p>
@@ -254,12 +256,81 @@ export function WindowChat() {
               <div className="messages__info menu-kebab"></div>
             </div>
           </div>
-          <div className="messages__texting">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, doloribus. Natus, consequatur quos. Placeat, numquam.
+          <div className="messages__window-mes window-mes">
+            <div className="window-mes__data"> 5 Липня, Середа</div>
+
+            <div className="window-mes__self self">
+              <div className="self__title">
+                <h3 className='title-h3'>Evgenia@_87</h3>
+                <img className='chat-img' src={user_photo} alt="" />
+              </div>
+              <div className="self__message"><div className="menu-kebab"></div>
+                <div className="self__text">
+                  <p className='text-14 '>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
+                  <span className='time-mes'>12:28</span>
+
+                </div>
+              </div>
+            </div>
+
+            <div className="window-mes__another">
+              <div className="another__title">
+                <img className='chat-img' src={user_photo} alt="" />
+                <h3 className='title-h3'>Evgenia@_87</h3>
+              </div>
+              <div className="another__message">
+                <div className="another__text">
+                  <p className='text-14'>Hello</p>
+                  <span className='time-mes'>12:28</span>
+                </div><div className="menu-kebab"></div>
+              </div>
+            </div>
+
+            <div className="window-mes__another">
+              <div className="another__title">
+                <img className='chat-img' src={user_photo} alt="" />
+                <h3 className='title-h3'>Evgenia@_87</h3>
+              </div>
+              <div className="another__message">
+                <div className="another__text">
+                  <p className='text-14'>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
+                  <span className='time-mes'>12:28</span>
+                </div>
+                <div className="menu-kebab"></div>
+              </div>
+              
+              
+            </div>
+            <div className="window-mes__another">
+              <div className="another__title">
+                <img className='chat-img' src={user_photo} alt="" />
+                <h3 className='title-h3'>Evgenia@_87</h3>
+              </div>
+              <div className="another__message">
+                <div className="another__text">
+                  <img src= {message_photo} alt="" />
+                  <span className='time-mes'>12:28</span>
+                </div>
+                <div className="menu-kebab"></div>
+              </div>
+            </div>
+            <div className="window-mes__self self">
+              <div className="self__title">
+                <h3 className='title-h3'>Evgenia@_87</h3>
+                <img className='chat-img' src={user_photo} alt="" />
+              </div>
+              <div className="self__message"><div className="menu-kebab"></div>
+                <div className="self__text">
+                  <p className='text-14 '>Ооо, супер ..Пам’ятаю минулу гру, було дуже гаряче.Я буду з вами  напишить  де  збираємоєсь?</p>
+                  <span className='time-mes'>12:28</span>
+
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="messages__input">
+          <div className="messages__input-mes input-mes">
             <form action="">
-              <input className='text-16'  type="text" placeholder='Написати...' />
+              <input className='text-16' type="text" placeholder='Написати...' />
               <label>
                 <input type="file" />
               </label>

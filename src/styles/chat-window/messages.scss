@@ -3,7 +3,9 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 11px 28px;
+        // padding: 11px 2%;
+        padding: 11px 4% 11px 2%;
+
         border-bottom: 1px solid #aba8d4;
     }
     &__dialog-name {
@@ -24,7 +26,6 @@
     &__search {
         display: flex;
         align-items: center;
-        padding-right: 30px;
         input {
             min-width: 364px;
         }
@@ -33,48 +34,148 @@
         margin-left: 12px;
     }
 
-    &__texting {
+    &__window-mes {
         flex: 1 1 auto;
+        background: #ebeaef;
+        overflow-x: scroll;
+        overflow-x: hidden;
     }
 
-    &__input {
+    &__input-mes {
         width: 100%;
         padding: 20px 24px;
         border-top: 1px solid #aba8d4;
+    }
+}
 
-        form {
-            display: flex;
-            align-items: center;
-            background: #ebeaef;
+.input-mes {
+    form {
+        display: flex;
+        align-items: center;
+        background: #ebeaef;
+        border-radius: 8px;
+        padding: 10px 15px;
+
+        input[type="file"] {
+            display: none;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 20px;
+            background: inherit;
+            border: none;
+            &:focus-visible {
+                outline: none;
+            }
+        }
+        label {
+            width: 24px;
+            height: 24px;
+            background: url(../../images/chat-window/send-img.png) center no-repeat;
+            cursor: pointer;
+        }
+        button {
+            border: none;
+            margin-left: 16px;
             border-radius: 8px;
-            padding: 10px 15px;
+            width: 30px;
+            height: 30px;
+            background: #5750a8 url("../../images/chat-window/send.png") center no-repeat;
+        }
+    }
+}
 
-            input[type="file"] {
-                display: none;
-            }
-            input[type="text"] {
-                width: 100%;
-                height: 20px;
-                background: inherit;
-                border: none;
-                &:focus-visible {
-                    outline:none;
-                }
-            }
-            label {
-                width: 24px;
-                height: 24px;
-                background: url(../../images/chat-window/send-img.png) center no-repeat;
-                cursor: pointer;
-            }
-            button {
-                border: none;
-                margin-left: 16px;
-                border-radius: 8px;
-                width: 30px;
-                height: 30px;
-                background: #5750a8 url("../../images/chat-window/send.png") center no-repeat;
-            }
+.window-mes {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 24px;
+    gap: 4px;
+    &__data {
+        color: #7c7c85;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 16px;
+    }
+    &__self {
+        align-self: end;
+        max-width: 630px;
+    }
+    &__another {
+        align-self: start;
+        max-width: 630px;
+    }
+}
+
+.another {
+    &__title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+        h3 {
+            margin-left: 18px;
+        }
+    }
+    &__message {
+        display: flex;
+        .menu-kebab {
+            margin: auto 3px;
+        }
+    }
+    &__text {
+        border-radius: 0px 8px 8px 8px;
+        background: #fff;
+        padding: 10px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        img {
+            object-fit: contain;
+            max-width: 275px;
+        }
+        .text-14 {
+            color: $color-black;
+        }
+        span {
+            text-align: right;
+        }
+    }
+}
+
+.self {
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 4px;
+        img {
+            margin-left: 18px;
+        }
+    }
+    &__message {
+        display: flex;
+        .menu-kebab {
+            margin: auto 4px;
+        }
+    }
+    &__text {
+        border-radius: 8px 0px 8px 8px;
+        background: #38328a;
+        padding: 10px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
+        img {
+            object-fit: contain;
+            max-width: 275px;
+        }
+
+        .text-14 {
+            color: $color-light-white;
+        }
+        span {
+            text-align: right;
+            color: $color-light-white;
         }
     }
 }
