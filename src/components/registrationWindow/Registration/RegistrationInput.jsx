@@ -13,9 +13,11 @@ export function RegistrationInput() {
            <img src ={img_add_photo} alt = "add photos" onClick={() => setModal(true)}/>
          </div>
          <input type = "text" placeholder='Імʼя користувача' />
+
+         {modal && <ModalAddPhotos onClose={() => setModal(false)}/>}
+
        </div>
 
-       {modal && <ModalAddPhotos onClose={() => setModal(false)}/>}
 
      </>
 
