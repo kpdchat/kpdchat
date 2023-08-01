@@ -4,10 +4,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    //.navigation__folders
     &__folders {
         min-width: 120px;
     }
-
+    //.navigation__settings
     &__settings {
         max-width: 120px;
         display: flex;
@@ -17,6 +18,7 @@
 }
 
 .folders {
+    //.folders__title
     &__title {
         font-family: "Lexend", sans-serif;
         display: flex;
@@ -24,20 +26,17 @@
         justify-content: center;
         margin-bottom: 35px;
     }
+    //.folders__container
     &__container {
     }
+    //.folders__folder
     &__folder {
-        h4 {
-            font-family: Inter;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-        }
-
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 25px;
+        h3 {
+            color: $color-light-white;
+        } 
     }
 }
