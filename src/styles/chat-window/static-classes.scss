@@ -1,4 +1,4 @@
-.title {
+.title-h2 {
     text-transform: uppercase;
     font-weight: 800;
     line-height: 33.6px;
@@ -58,4 +58,19 @@
     font-family: "Roboto", sans-serif;
     font-size: 12px;
     font-weight: 400;
+}
+
+.scroll-bar {
+    &::-webkit-scrollbar {
+        width: 4px;
+        
+    }
+    &::-webkit-scrollbar-track {
+        background: #cbcbce;
+        border-radius: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        background: #38328a;
+    }
 }

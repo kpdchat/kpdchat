@@ -1,7 +1,7 @@
 import React from "react";
 import './styles/index.scss'
 import {RegistrationWindow} from "./components/RegistrationWindow";
-import {WindowChat} from "./components/WindowChat";
+import {WindowChat} from "./components/chatWindow/WindowChat";
 
 function App() {
   return (
