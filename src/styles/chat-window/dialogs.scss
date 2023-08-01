@@ -1,5 +1,6 @@
 .dialogs {
     padding: 0 10px 0 10px;
+    //.dialogs__logo
     &__logo {
         display: flex;
         align-items: center;
@@ -24,10 +25,11 @@
     margin-top: 24px;
     overflow-x: scroll;
     overflow-x: hidden;
+    //.list__container
     &__container {
         font-family: "Inter", sans-serif;
-        
     }
+    //.list__dialog
     &__dialog {
         display: flex;
         justify-content: space-between;
@@ -38,6 +40,7 @@
             border: 2px solid black;
         }
     }
+    //.list__info
     &__info {
         display: flex;
         img {
@@ -45,6 +48,7 @@
             max-height: 40px;
         }
     }
+    //.list__text
     &__text {
         max-width: 230px;
         padding: 0 10px;
@@ -54,6 +58,7 @@
             margin-top: 8px;
         }
     }
+    //.list__data
     &__data {
         display: flex;
         flex-wrap: wrap;
@@ -62,14 +67,14 @@
         font-weight: 400;
         font-size: 12px;
     }
-
+    //.list__time
     &__time {
         align-self: end;
         text-align: center;
         min-width: 30px;
         color: $color-text-grey;
     }
-
+    //.list__new-count
     &__new-count {
         align-self: center;
         position: relative;
