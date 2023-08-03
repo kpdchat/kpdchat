@@ -1,13 +1,12 @@
 .dialogs {
-    padding: 0 10px 0 10px;
-    //.dialogs__logo
+    padding: 0 0px 0 10px;
     &__logo {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 25px 0px 18px 0px;
         h1 {
-            font-family: "Lexend", sans-serif;
+            font-family: $font-lexend;
             font-weight: 300;
             font-size: 24px;
             line-height: 33.6px;
@@ -19,26 +18,32 @@
             }
         }
     }
+    &__search {
+        padding-right: 10px;
+    }
 }
 
 .list {
-    margin-top: 24px;
+    margin-top: 20px;
+    padding-top: 4px;
     overflow-x: scroll;
     overflow-x: hidden;
+    flex: 1 1 auto;
+
     //.list__container
     &__container {
-        font-family: "Inter", sans-serif;
+        font-family: $font-inter;
     }
     //.list__dialog
     &__dialog {
         display: flex;
         justify-content: space-between;
-        padding: 12px 12px 12px 12px;
-        border: 2px solid transparent;
+        padding: 12px 20px 12px 12px;
+        // border: 2px solid transparent;
 
-        &:hover {
-            border: 2px solid black;
-        }
+        // &:hover {
+        //     border: 2px solid black;
+        // }
     }
     //.list__info
     &__info {
@@ -50,11 +55,12 @@
     }
     //.list__text
     &__text {
-        max-width: 230px;
+        max-width: 260px;
         padding: 0 10px;
-        overflow: hidden;
-        white-space: nowrap;
         p {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
             margin-top: 8px;
         }
     }
@@ -85,7 +91,7 @@
             display: inline-block;
             width: 20px;
             height: 20px;
-            background-color: #5750a8;
+            background-color: $color-light-violet;
             border-radius: 50%;
             top: -4px;
             left: -6.5px;

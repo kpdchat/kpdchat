@@ -15,6 +15,7 @@ export default function ChatDialogs() {
             </div>
 
           </div>
+          <span></span>
         </section>
     )
 }

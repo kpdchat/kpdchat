@@ -1,10 +1,13 @@
 import React from 'react';
 
-export function RegistrationAuthorization() {
+export function RegistrationAuthorization({onDisplay}) {
+  function onBtnClick() {
+        onDisplay()
+      }
   return (
      <div className='registration__authorization'>
        <div className='registration__log-in'>
-         <button>Увійти</button>
+         <button onClick = {onBtnClick}>Увійти</button>
        </div>
 
        <div className='registration-divider'>

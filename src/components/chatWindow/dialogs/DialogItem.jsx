@@ -9,7 +9,7 @@ export default function DialogItem() {
                     <img src={chat_logo} alt="" />
                     <div className="list__text">
                         <h3 className='title-h3'>Настолки у Харкові</h3>
-                        <p className='text-14'> ПРИВІТ всім! Хто буде сьогодні на ...</p>
+                        <p className='text-14'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt accusamus maxime, temporibus nisi repellat facere omnis et. Accusamus ad dignissimos exercitationem repellat adipisci illum sequi nemo ex distinctio, magnam excepturi quibusdam est officia soluta, sint impedit cupiditate architecto nobis sit unde eius quos, quia harum! Beatae possimus obcaecati pariatur dolore nulla deleniti est repellendus, architecto, recusandae libero quo assumenda voluptatibus veniam sapiente cupiditate corrupti laborum officia? Nobis, pariatur quam nam rem quibusdam sint aut reiciendis et voluptates assumenda corporis alias obcaecati ab ipsa vel temporibus numquam ullam veniam esse asperiores! Ipsa nulla perferendis dolor impedit laboriosam ullam magnam, iusto recusandae?</p>
                     </div>
                 </div>
                 <div className="list__data">

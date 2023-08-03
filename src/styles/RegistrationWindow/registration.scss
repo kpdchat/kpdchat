@@ -12,31 +12,31 @@
       flex-direction: column;
       align-items: center;
       gap: 4px;
-      font-family: $fontF1;
+      font-family: $font-lexend;
       font-size: 20px;
       h2 {
-        font-weight: $fontW3;
+        font-weight: $f-weight-300;
         letter-spacing: 1px;
         span {
-          font-weight: $fontW8;
+          font-weight: $f-weight-800;
         }
       }
     }
 
     &__description {
-      // registration-block__description
+      // .registration-block__description
       width: 60%;
       text-align: center;
       margin: 30px 0 20px;
-      font-family: $fontF2;
+      font-family: $font-inter;
       p {
         font-size: 24px;
         line-height: 40px;
         letter-spacing: 2px;
-        font-weight: $fontW4;
+        font-weight: $f-weight-400;
         word-spacing: 40px;
         span {
-          font-weight: $fontW7;
+          font-weight: $f-weight-700;
           word-spacing: 0;
         }
       }
@@ -45,15 +45,15 @@
       // .registration-block__input
       width: 60%;
       display: flex;
-      background-color: #EBEAEF;
+      background-color: $color-grey;
       border-radius: 16px;
       margin: 0 0 30px;
       position: relative;
       z-index: 2;
       input {
-        font-family: $fontF3;
+        font-family: $font-montserrat;
         border: none;
-        background-color: #EBEAEF;
+        background-color: $color-grey;
         outline: 0;
         font-size: 20px;
       }
@@ -78,22 +78,22 @@
     // .registration__log-in
     width: 100%;
     text-align: center;
-    background-color: #38328A;
+    background-color: $color-violet;
     padding: 16px 120px;
     border-radius: 16px;
     button {
-      color: #FFF;
-      background-color: #38328A;
+      color: $color-white;
+      background-color: $color-violet;
       border: none;
       font-size: 20px;
-      font-family: $fontF3;
+      font-family: $font-montserrat;
     }
   }
   &-divider {
     // .registration-divider
     display: flex;
     align-items: center;
-    color: #7C7C85;
+    color: $color-light-grey;
     width: 100%;
 
     &::before,
@@ -102,7 +102,7 @@
       flex: 1;
       display: block;
       height: 1px;
-      background: #5750A8;
+      background: $color-light-violet;
     }
     span {
       flex-basis: 100px;
@@ -113,15 +113,15 @@
     // .registration__sing-in
     width: 100%;
     text-align: center;
-    border: 2px #5750A8 solid;
+    border: 2px $color-light-violet solid;
     padding: 16px 120px;
     border-radius: 16px;
     button {
-      color: #5750A8;
-      background-color: #fff;
+      color: $color-light-violet;
+      background-color: $color-white;
       border: none;
       font-size: 20px;
-      font-family: $fontF3;
+      font-family: $font-montserrat;
     }
   }
 }

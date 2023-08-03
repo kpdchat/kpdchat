@@ -2,14 +2,14 @@ import React from 'react';
 import {Info} from "./Info/Info";
 import {Registration} from "./Registration/Registration";
 
-export function RegistrationWindow() {
+export function RegistrationWindow({onDisplay, isActive}) {
 
 
   return (
-        <div className='registration_window'>
+        <div className= {isActive ? 'display-none' : 'registration_window'}>
 
           <Info />
-          <Registration />
+          <Registration onDisplay={onDisplay} />
 
         </div>
   );
