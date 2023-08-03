@@ -5,7 +5,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 11px 4% 11px 2%;
-        border-bottom: 1px solid #aba8d4;
+        border-bottom: 1px solid $color-border-light-gray;
     }
     //.messages__dialog-name
     &__dialog-name {
@@ -39,40 +39,28 @@
     //.messages__window-mes
     &__window-mes {
         flex: 1 1 auto;
-        background: #ebeaef;
+        background: $color-grey;
         overflow-x: scroll;
         overflow-x: hidden;
     }
-    .scroll-bar {
-        &::-webkit-scrollbar {
-            width: 48px;
-        }
-        &::-webkit-scrollbar-track {
-            background-clip: content-box;
-            border: 22px solid transparent;
-        }
-        &::-webkit-scrollbar-thumb {
-            background-clip: content-box;
-            border: 22px solid transparent;
-        }
-    }
+   
     //.messages__input-mes
     &__input-mes {
         width: 100%;
         padding: 20px 24px;
-        border-top: 1px solid #aba8d4;
+        border-top: 1px solid $color-border-light-gray;
     }
 }
 
 .window-mes {
     display: flex;
     flex-direction: column;
-    padding: 12px 0px 12px 25px;
+    padding: 12px 25px 12px 25px;
     gap: 4px;
     //.window-mes__data
     &__data {
-        color: #7c7c85;
-        font-family: "Roboto", sans-serif;
+        color: $color-light-grey;
+        font-family: $font-roboto;
         font-size: 16px;
         font-weight: 400;
         margin: 16px 0;
@@ -118,7 +106,7 @@
             object-fit: contain;
             max-width: 275px;
         }
-        .text-14 {
+        .text-16 {
             color: $color-black;
         }
         span {
@@ -128,6 +116,7 @@
 }
 
 .self {
+
     //.self__title
     &__title {
         display: flex;
@@ -148,7 +137,7 @@
     //.self__text
     &__text {
         border-radius: 8px 0px 8px 8px;
-        background: #38328a;
+        background:$color-violet;
         padding: 10px;
         min-width: 300px;
         display: flex;
@@ -158,7 +147,7 @@
             max-width: 275px;
         }
 
-        .text-14 {
+        .text-16 {
             color: $color-light-white;
         }
         span {
@@ -172,7 +161,7 @@
     form {
         display: flex;
         align-items: center;
-        background: #ebeaef;
+        background: $color-grey;
         border-radius: 8px;
         padding: 10px 15px;
 
@@ -200,7 +189,7 @@
             border-radius: 8px;
             width: 30px;
             height: 30px;
-            background: #5750a8 url("../../images/chat-window/send.png") center no-repeat;
+            background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
         }
     }
 }
