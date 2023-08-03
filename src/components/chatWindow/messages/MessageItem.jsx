@@ -14,7 +14,7 @@ export default function MessageItem() {
                 </div>
                 <div className="self__message"><div className="menu-kebab"></div>
                     <div className="self__text">
-                        <p className='text-14 '>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
+                        <p className='text-16 '>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
                         <span className='time-mes'>12:28</span>
 
                     </div>
@@ -28,7 +28,7 @@ export default function MessageItem() {
                 </div>
                 <div className="another__message">
                     <div className="another__text">
-                        <p className='text-14'>Hello</p>
+                        <p className='text-16'>Hello</p>
                         <span className='time-mes'>12:28</span>
                     </div><div className="menu-kebab"></div>
                 </div>
@@ -41,7 +41,7 @@ export default function MessageItem() {
                 </div>
                 <div className="another__message">
                     <div className="another__text">
-                        <p className='text-14'>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
+                        <p className='text-16'>Привіт всім! Хто буде сьогодні на змаганнях?Я буду с Кет і Сергієм, Нам потрібно ще 2х людей в команду. Welcome</p>
                         <span className='time-mes'>12:28</span>
                     </div>
                     <div className="menu-kebab"></div>
@@ -71,7 +71,7 @@ export default function MessageItem() {
                 </div>
                 <div className="self__message"><div className="menu-kebab"></div>
                     <div className="self__text">
-                        <p className='text-14 '>Ооо, супер ..Пам’ятаю минулу гру, було дуже гаряче.Я буду з вами  напишить  де  збираємоєсь?</p>
+                        <p className='text-16 '>Ооо, супер ..Пам’ятаю минулу гру, було дуже гаряче.Я буду з вами  напишить  де  збираємоєсь?</p>
                         <span className='time-mes'>12:28</span>
 
                     </div>

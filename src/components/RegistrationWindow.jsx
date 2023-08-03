@@ -11,11 +11,11 @@ import logo_kpd from '../images/RegistrationWindow/img_9.png'
 import img_10 from '../images/RegistrationWindow/img_10.png'
 
 export function RegistrationWindow() {
-
+  
   return (
       <>
 
-        <div className='registration_window'>
+        <div className='registration_window '>
 
           <div className='info'>
 
