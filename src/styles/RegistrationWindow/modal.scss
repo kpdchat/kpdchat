@@ -13,7 +13,7 @@
     left: 0;
     height: 450px;
     border-radius: 16px;
-    background-color: #7C7C85;
+    background-color: $color-light-grey;
     padding: 24px;
     &-close {
       // .modal__content-close
@@ -25,10 +25,10 @@
     &-column {
       // .modal__content-column
       .title {
-        color: #EBEAEF;
-        font-family: $fontF2;
+        color: $color-grey;
+        font-family: $font-inter;
         font-size: 20px;
-        font-weight: $fontW4;
+        font-weight: $f-weight-400;
         margin: 0 0 16px 0;
       }
       .add-image {
@@ -49,10 +49,10 @@
         text-align: center;
         button {
           width: 100%;
-          color: #EBEAEF;
-          font-family: $fontF2;
+          color: $color-grey;
+          font-family: $font-inter;
           font-size: 20px;
-          font-weight: $fontW5;
+          font-weight: $f-weight-500;
           padding: 8px 0;
           border: none;
           background-color: rgba(235, 234, 239, 0.20);
