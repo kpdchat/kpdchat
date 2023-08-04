@@ -11,9 +11,9 @@ export default function ChatNavigation() {
                     <h2 className='title-h2'> не папки</h2>
                 </div>
                 <div className='folders__container'>
-                    <NavFolderItem/>
+                    <NavFolderItem />
                 </div>
-                
+
             </div>
             <div className='navigation__settings'>
                 <Settings />

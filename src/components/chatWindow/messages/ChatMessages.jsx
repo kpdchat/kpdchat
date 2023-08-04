@@ -12,10 +12,10 @@ export default function ChatMessages() {
                 <MessageSearch />
             </div>
             <div className="messages__window-mes window-mes scroll-bar">
-                <MessageItem/>
+                <MessageItem />
             </div>
             <div className="messages__input-mes input-mes">
-                <MessageSendForm/>
+                <MessageSendForm />
             </div>
         </section>
     )
