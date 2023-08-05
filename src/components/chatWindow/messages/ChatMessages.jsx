@@ -1,4 +1,3 @@
-
 import MessageTitle from './MessageTitle'
 import MessageSearch from './MessageSearch'
 import MessageItem from './MessageItem'

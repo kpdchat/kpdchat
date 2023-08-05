@@ -2,9 +2,8 @@
   background-color: $color-violet;
   width: 35.42%;
   height: 100%;
-  padding: 120px 80px;
+  padding: 0 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
 
   &__block {
@@ -36,7 +35,6 @@
   }
 
   &__img {
-
     // .info__img
     img {
       width: 100%;

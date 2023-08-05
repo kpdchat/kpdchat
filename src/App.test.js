@@ -1,5 +1,5 @@
 test('renders App component', () => {
-  const test = 'test';
+    const test = 'test';
 
-  expect(test).toBe(test);
+    expect(test).toBe(test);
 });
