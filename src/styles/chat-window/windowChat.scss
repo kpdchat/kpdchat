@@ -1,41 +1,39 @@
 @import "static-classes.scss";
-
-
 @import "./navigation.scss";
 @import "./dialogs.scss";
 @import "messages.scss";
 
 .chat {
-    margin: 0 auto;
+  margin: 0 auto;
 
-    .container-grid {
-        display: grid;
-        grid-template-columns: 192px 384px 1fr;
-        // grid-template-columns: 1fr 2fr 7fr;
-    }
+  .container-grid {
+    display: grid;
+    grid-template-columns: 192px 384px 1fr;
+    // grid-template-columns: 1fr 2fr 7fr;
+  }
 
-    //.chat__navigation
-    &__navigation {
-        height: 100vh;
-        padding: 10vh 0 10vh 0;
-        background: $color-violet;
-        grid-column: 1 / 2;
-    }
+  &__navigation {
+    // .chat__navigation
+    height: 100vh;
+    padding: 10vh 0 10vh 0;
+    background: $color-violet;
+    grid-column: 1 / 2;
+  }
 
-    //.chat__dialogs
-    &__dialogs {
-        height: 100vh;
-        grid-column: 2 / 3;
-        display: flex;
-        flex-direction: column;
-        border-right: 1px solid $color-border-light-gray;
-    }
+  &__dialogs {
+    // .chat__dialogs
+    height: 100vh;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid $color-border-light-gray;
+  }
 
-    //.chat__messages
-    &__messages {
-        height: 100vh;
-        grid-column: 3 / 4;
-        display: flex;
-        flex-direction: column;
-    }
+  &__messages {
+    // .chat__messages
+    height: 100vh;
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+  }
 }
