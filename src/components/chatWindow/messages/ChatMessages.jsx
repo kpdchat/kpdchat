@@ -1,3 +1,4 @@
+import React from "react";
 import MessageTitle from './MessageTitle'
 import MessageSearch from './MessageSearch'
 import MessageItem from './MessageItem'

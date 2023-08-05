@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function DialogSearch() {
     return (
         <div className='dialogs__search'>

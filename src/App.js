@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import './styles/index.scss'
-import {RegistrationWindow} from "./components/registrationWindow/RegistrationWindow";
-import {WindowChat} from "./components/chatWindow/WindowChat";
+import RegistrationWindow from "./components/registrationWindow/RegistrationWindow";
+import WindowChat from "./components/chatWindow/WindowChat";
 
-function App() {
+export default function App() {
     const [isActive, setIsActive] = useState(false)
 
     function onDisplay() {
@@ -18,8 +18,6 @@ function App() {
         </div>
     );
 }
-
-export default App;
 
 //it`s logic for change pages onClick
 

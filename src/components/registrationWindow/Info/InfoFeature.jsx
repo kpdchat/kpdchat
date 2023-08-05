@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function InfoFeature() {
+export default function InfoFeature() {
     return (
         <div className='info-feature'>
             <div className='info-feature__title'>
