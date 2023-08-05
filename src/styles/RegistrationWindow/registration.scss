@@ -1,144 +1,144 @@
 .registration {
-  width: 67%;
+    width: 67%;
 
-  &-block {
-    // .registration-block
-    margin: 120px auto 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    &-block {
+        // .registration-block
+        margin: 120px auto 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-    .logo_chat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      font-family: $font-lexend;
-      font-size: 20px;
+        .logo_chat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-family: $font-lexend;
+            font-size: 20px;
 
-      h2 {
-        font-weight: $f-weight-300;
-        letter-spacing: 1px;
+            h2 {
+                font-weight: $f-weight-300;
+                letter-spacing: 1px;
 
-        span {
-          font-weight: $f-weight-800;
+                span {
+                    font-weight: $f-weight-800;
+                }
+            }
         }
-      }
+
+        &__description {
+            // .registration-block__description
+            width: 60%;
+            text-align: center;
+            margin: 30px 0 20px;
+            font-family: $font-inter;
+
+            p {
+                font-size: 24px;
+                line-height: 40px;
+                letter-spacing: 2px;
+                font-weight: $f-weight-400;
+                word-spacing: 40px;
+
+                span {
+                    font-weight: $f-weight-700;
+                    word-spacing: 0;
+                }
+            }
+        }
+
+        &__input {
+            // .registration-block__input
+            width: 60%;
+            display: flex;
+            background-color: $color-grey;
+            border-radius: 16px;
+            margin: 0 0 30px;
+            position: relative;
+            z-index: 2;
+
+            input {
+                font-family: $font-montserrat;
+                border: none;
+                background-color: $color-grey;
+                outline: 0;
+                font-size: 20px;
+                width: 100%;
+            }
+
+            .add-images {
+                margin: 16px 16px 16px 24px;
+
+                img {
+                    width: 80px;
+                }
+            }
+        }
     }
 
-    &__description {
-      // .registration-block__description
-      width: 60%;
-      text-align: center;
-      margin: 30px 0 20px;
-      font-family: $font-inter;
-
-      p {
-        font-size: 24px;
-        line-height: 40px;
-        letter-spacing: 2px;
-        font-weight: $f-weight-400;
-        word-spacing: 40px;
-
-        span {
-          font-weight: $f-weight-700;
-          word-spacing: 0;
-        }
-      }
+    &__authorization {
+        // .registration__authorization
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        z-index: 1;
     }
 
-    &__input {
-      // .registration-block__input
-      width: 60%;
-      display: flex;
-      background-color: $color-grey;
-      border-radius: 16px;
-      margin: 0 0 30px;
-      position: relative;
-      z-index: 2;
-
-      input {
-        font-family: $font-montserrat;
-        border: none;
-        background-color: $color-grey;
-        outline: 0;
-        font-size: 20px;
+    &__log-in {
+        // .registration__log-in
         width: 100%;
-      }
+        text-align: center;
+        background-color: $color-violet;
+        padding: 16px 120px;
+        border-radius: 16px;
 
-      .add-images {
-        margin: 16px 16px 16px 24px;
-
-        img {
-          width: 80px;
+        button {
+            color: $color-white;
+            background-color: $color-violet;
+            border: none;
+            font-size: 20px;
+            font-family: $font-montserrat;
         }
-      }
-    }
-  }
-
-  &__authorization {
-    // .registration__authorization
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-    z-index: 1;
-  }
-
-  &__log-in {
-    // .registration__log-in
-    width: 100%;
-    text-align: center;
-    background-color: $color-violet;
-    padding: 16px 120px;
-    border-radius: 16px;
-
-    button {
-      color: $color-white;
-      background-color: $color-violet;
-      border: none;
-      font-size: 20px;
-      font-family: $font-montserrat;
-    }
-  }
-
-  &-divider {
-    // .registration-divider
-    display: flex;
-    align-items: center;
-    color: $color-light-grey;
-    width: 100%;
-
-    &::before,
-    &::after {
-      content: "";
-      flex: 1;
-      display: block;
-      height: 1px;
-      background: $color-light-violet;
     }
 
-    span {
-      flex-basis: 100px;
-      text-align: center;
-    }
-  }
+    &-divider {
+        // .registration-divider
+        display: flex;
+        align-items: center;
+        color: $color-light-grey;
+        width: 100%;
 
-  &__sing-in {
-    // .registration__sing-in
-    width: 100%;
-    text-align: center;
-    border: 2px $color-light-violet solid;
-    padding: 16px 120px;
-    border-radius: 16px;
+        &::before,
+        &::after {
+            content: "";
+            flex: 1;
+            display: block;
+            height: 1px;
+            background: $color-light-violet;
+        }
 
-    button {
-      color: $color-light-violet;
-      background-color: $color-white;
-      border: none;
-      font-size: 20px;
-      font-family: $font-montserrat;
+        span {
+            flex-basis: 100px;
+            text-align: center;
+        }
     }
-  }
+
+    &__sing-in {
+        // .registration__sing-in
+        width: 100%;
+        text-align: center;
+        border: 2px $color-light-violet solid;
+        padding: 16px 120px;
+        border-radius: 16px;
+
+        button {
+            color: $color-light-violet;
+            background-color: $color-white;
+            border: none;
+            font-size: 20px;
+            font-family: $font-montserrat;
+        }
+    }
 }
