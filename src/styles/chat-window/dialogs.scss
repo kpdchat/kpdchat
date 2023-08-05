@@ -1,10 +1,12 @@
 .dialogs {
     padding: 0 0px 0 10px;
+
     &__logo {
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 25px 0px 18px 0px;
+
         h1 {
             font-family: $font-lexend;
             font-weight: 300;
@@ -12,12 +14,14 @@
             line-height: 33.6px;
             letter-spacing: 5%;
             margin-left: 22px;
+
             span {
                 text-transform: uppercase;
                 font-weight: 800;
             }
         }
     }
+
     &__search {
         padding-right: 10px;
     }
@@ -34,6 +38,7 @@
     &__container {
         font-family: $font-inter;
     }
+
     //.list__dialog
     &__dialog {
         display: flex;
@@ -45,18 +50,22 @@
         //     border: 2px solid black;
         // }
     }
+
     //.list__info
     &__info {
         display: flex;
+
         img {
             max-width: 40px;
             max-height: 40px;
         }
     }
+
     //.list__text
     &__text {
         max-width: 260px;
         padding: 0 10px;
+
         p {
             text-overflow: ellipsis;
             overflow: hidden;
@@ -64,6 +73,7 @@
             margin-top: 8px;
         }
     }
+
     //.list__data
     &__data {
         display: flex;
@@ -73,6 +83,7 @@
         font-weight: 400;
         font-size: 12px;
     }
+
     //.list__time
     &__time {
         align-self: end;
@@ -80,11 +91,13 @@
         min-width: 30px;
         color: $color-text-grey;
     }
+
     //.list__new-count
     &__new-count {
         align-self: center;
         position: relative;
         color: $color-light-white;
+
         &::before {
             content: "";
             position: absolute;
