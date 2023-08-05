@@ -1,3 +1,4 @@
+import React from "react";
 import {ReactComponent as DarkMode} from '../../../images/chat-window/dark_mode.svg'
 import {ReactComponent as Info} from '../../../images/chat-window/info.svg'
 import {ReactComponent as Settings} from '../../../images/chat-window/settings.svg'

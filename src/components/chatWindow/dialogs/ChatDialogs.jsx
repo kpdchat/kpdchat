@@ -1,3 +1,4 @@
+import React from "react";
 import {ReactComponent as Logo} from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
 import DialogSearch from './DialogSearch'

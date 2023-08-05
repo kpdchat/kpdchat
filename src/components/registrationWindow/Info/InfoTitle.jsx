@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function InfoTitle() {
+export default function InfoTitle() {
     return (
         <div>
             <h1>

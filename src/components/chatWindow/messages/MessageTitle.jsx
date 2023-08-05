@@ -1,5 +1,5 @@
+import React from "react";
 import chat_logo from '../../../images/chat-window/chat_logo.png'
-
 
 export default function MessageTitle() {
     return (

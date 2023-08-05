@@ -3,7 +3,7 @@ import close from '../../../images/RegistrationWindow/close.png'
 import add_photo_link from '../../../images/RegistrationWindow/add_photo_link.png'
 import random_photo from '../../../images/RegistrationWindow/random_photo.png'
 
-export function ModalAddPhotos({onClose}) {
+export default function ModalAddPhotos({onClose}) {
 
     return (
         <>

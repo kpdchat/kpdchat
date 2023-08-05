@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function RegistrationInfoDescription() {
+export default function RegistrationInfoDescription() {
     return (
         <div className='registration-block__description'>
             <p>

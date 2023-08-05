@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function MessageSearch() {
     return (
         <div className="messages__search">

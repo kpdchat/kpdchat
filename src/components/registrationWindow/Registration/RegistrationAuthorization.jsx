@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function RegistrationAuthorization({onDisplay}) {
+export default function RegistrationAuthorization({onDisplay}) {
     function onBtnClick() {
         onDisplay()
     }

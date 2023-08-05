@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import img_add_photo from "../../../images/RegistrationWindow/add_photo_img.png";
-import {ModalAddPhotos} from "./ModalAddPhotos";
+import ModalAddPhotos from "./ModalAddPhotos";
 
-export function RegistrationInput() {
+export default function RegistrationInput() {
     const [modal, setModal] = useState(false)
 
     return (

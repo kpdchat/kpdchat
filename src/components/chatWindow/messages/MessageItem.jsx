@@ -1,3 +1,4 @@
+import React from "react";
 import user_photo from '../../../images/chat-window/user-photo.png'
 import message_photo from '../../../images/chat-window/message-photo.png'
 
