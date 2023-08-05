@@ -8,7 +8,6 @@ export default function App() {
 
     function onDisplay() {
         setIsActive(true)
-        console.log(isActive);
     }
 
     return (
@@ -18,51 +17,3 @@ export default function App() {
         </div>
     );
 }
-
-//it`s logic for change pages onClick
-
-
-// function App() {
-//   const [isActive, setIsActive] = useState(false)
-
-//   function onDisplay() {
-//     setIsActive(!isActive)
-//     console.log(isActive);
-//   }
-
-//   return (
-//     <div className='app_wrapper'>
-//       <RegistrationWindow onDisplay={onDisplay} isActive = {isActive}/>
-//       <WindowChat  isActive = {isActive}/>
-//     </div>
-
-//   );
-// }
-
-
-// for RegistrationWindow 
-//it`s logic for change pages onClick
-// export function RegistrationWindow({onDisplay, isActive}) {
-//   function onBtnClick() {
-//     onDisplay()
-//   }
-// in .jsx  <div className={isActive ? 'display-none' : null}> for container
-// in .jsx  <button onClick = {onBtnClick}>Увійти</button> for button
-
-
-//for ChatWindow 
-
-// export function WindowChat({ isActive }) {
-//   return (
-//     <div className={isActive ? "display-block" : "display-none"}>
-//       <div className='chat'>
-//         <div className='container-grid'>
-//           <ChatNavigation />
-//           <ChatDialogs />
-//           <ChatMessages />
-//         </div>
-//       </div >
-//     </div>
-
-//   );
-// }
