@@ -7,11 +7,11 @@ export function WindowChat({ isActive }) {
   return (
     <div className={isActive ? 'chat' : "display-none"}>
       {/* <div className='chat'> */}
-        <div className='container-grid'>
-          <ChatNavigation />
-          <ChatDialogs />
-          <ChatMessages />
-        </div>
+      <div className='container-grid'>
+        <ChatNavigation />
+        <ChatDialogs />
+        <ChatMessages />
+      </div>
       {/* </div > */}
     </div>
 
