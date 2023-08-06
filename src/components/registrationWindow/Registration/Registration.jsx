@@ -4,14 +4,14 @@ import RegistrationInfoDescription from "./RegistrationInfoDescription";
 import RegistrationInput from "./RegistrationInput";
 import RegistrationAuthorization from "./RegistrationAuthorization";
 
-export default function Registration({onDisplay}) {
+export default function Registration() {
     return (
         <div className='registration'>
             <div className='registration-block'>
                 <LogoChat />
                 <RegistrationInfoDescription />
                 <RegistrationInput />
-                <RegistrationAuthorization onDisplay={ onDisplay } />
+                <RegistrationAuthorization />
             </div>
         </div>
     );
