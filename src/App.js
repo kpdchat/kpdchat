@@ -4,7 +4,9 @@ import RegistrationWindow from "./components/registrationWindow/RegistrationWind
 import WindowChat from "./components/chatWindow/WindowChat";
 
 export default function App() {
-    const [isActive, setIsActive] = useState(false)
+    // const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState(true)
+
 
     function onDisplay() {
         setIsActive(true)
@@ -12,7 +14,7 @@ export default function App() {
 
     return (
         <div className='app_wrapper'>
-            <RegistrationWindow onDisplay={ onDisplay } isActive={ isActive } />
+            {/* <RegistrationWindow onDisplay={ onDisplay } isActive={ isActive } /> */}
             <WindowChat isActive={ isActive } />
         </div>
     );
