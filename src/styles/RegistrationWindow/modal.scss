@@ -8,14 +8,12 @@
 }
 
 .modal__content {
-    width: 100%;
+    width: 40%;
     position: absolute;
-    top: 100%;
-    left: 0;
-    height: 450px;
     border-radius: 16px;
     background-color: $color-light-grey;
     padding: 24px;
+    margin-top: -30px;
 
     &-close {
         // .modal__content-close
@@ -32,19 +30,37 @@
         .title {
             color: $color-grey;
             font-family: $font-inter;
+            font-size: 26px;
+            font-weight: $f-weight-400;
+            margin: 0 0 16px 0;
+            text-align: center;
+        }
+
+        .sub-title {
+            color: $color-grey;
+            font-family: $font-inter;
             font-size: 20px;
             font-weight: $f-weight-400;
             margin: 0 0 16px 0;
+            text-align: center;
         }
 
-        .add-image {
+        .add-link {
             width: 100%;
             text-align: center;
-            border-radius: 8px;
-            background: rgba(235, 234, 239, 0.20);
 
-            img {
-                margin: 8px auto;
+            input {
+                width: 100%;
+                color: $color-grey;
+                font-family: $font-inter;
+                font-size: 20px;
+                font-weight: $f-weight-500;
+                padding: 8px 12px;
+                border: none;
+                background-color: rgba(235, 234, 239, 0.20);
+                border-radius: 8px;
+                outline: 0;
+                text-align: center;
             }
         }
 

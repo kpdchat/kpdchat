@@ -28,7 +28,7 @@
 
         &__description {
             // .registration-block__description
-            width: 60%;
+            width: 50%;
             text-align: center;
             margin: 30px 0 20px;
             font-family: $font-inter;
@@ -38,7 +38,6 @@
                 line-height: 40px;
                 letter-spacing: 2px;
                 font-weight: $f-weight-400;
-                word-spacing: 40px;
 
                 span {
                     font-weight: $f-weight-700;
@@ -53,7 +52,6 @@
             display: flex;
             background-color: $color-grey;
             border-radius: 16px;
-            margin: 0 0 30px;
             position: relative;
             z-index: 2;
 
@@ -64,14 +62,8 @@
                 outline: 0;
                 font-size: 20px;
                 width: 100%;
-            }
-
-            .add-images {
-                margin: 16px 16px 16px 24px;
-
-                img {
-                    width: 80px;
-                }
+                border-radius: 16px;
+                padding: 24px 16px;
             }
         }
     }
@@ -79,10 +71,11 @@
     &__authorization {
         // .registration__authorization
         width: 60%;
+        margin-top: 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 18px;
+        gap: 32px;
         z-index: 1;
     }
 
@@ -91,15 +84,24 @@
         width: 100%;
         text-align: center;
         background-color: $color-violet;
-        padding: 16px 120px;
         border-radius: 16px;
 
         button {
+            width: 100%;
+            height: 60px;
             color: $color-white;
             background-color: $color-violet;
             border: none;
             font-size: 20px;
-            font-family: $font-montserrat;
+            font-weight: $f-weight-500;
+            font-family: $font-inter;
+            border-radius: 16px;
+
+            &:hover {
+                text-transform: uppercase;
+                font-weight: $f-weight-700;
+                background: linear-gradient(0deg, rgba(87, 80, 168, 0.20) 0%, rgba(87, 80, 168, 0.20) 100%), $color-violet;
+            }
         }
     }
 
@@ -130,15 +132,24 @@
         width: 100%;
         text-align: center;
         border: 2px $color-light-violet solid;
-        padding: 16px 120px;
         border-radius: 16px;
 
         button {
+            width: 100%;
+            height: 60px;
             color: $color-light-violet;
             background-color: $color-white;
             border: none;
             font-size: 20px;
-            font-family: $font-montserrat;
+            font-weight: $f-weight-500;
+            font-family: $font-inter;
+            border-radius: 16px;
+
+            &:hover {
+                text-transform: uppercase;
+                font-weight: $f-weight-700;
+                background: rgba(87, 80, 168, 0.05);
+            }
         }
     }
 }
