@@ -6,7 +6,7 @@ export default function NavSettings() {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
-            <Settings onClick={() => setIsOpen(!isOpen)} />
+            <Settings className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
             {isOpen && <SettingsModal isOpen ={isOpen} setOpen = {setIsOpen}/>}
         </>
 

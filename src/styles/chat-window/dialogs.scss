@@ -1,5 +1,12 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
+
 .dialogs {
-    padding: 0 0 0 10px;
+    padding: 0 0 0 10px; //!!!!!!!!
 
     &__logo {
         // .dialog__logo
@@ -34,22 +41,26 @@
     padding-top: 4px;
     overflow-x: hidden;
     flex: 1 1 auto;
+    padding-right: 10px;
+
 
     &__container {
         // .list__container
         font-family: $font-inter;
+
     }
 
     &__dialog {
         // .list__dialog
         display: flex;
         justify-content: space-between;
-        padding: 12px 20px 12px 12px;
+        padding: 12px 10px 12px 12px;
         // border: 2px solid transparent;
 
-        // &:hover {
-        //     border: 2px solid black;
-        // }
+        &:hover {
+            border-radius: 8px;
+            background: $color-grey;
+        }
     }
 
     &__info {
@@ -66,6 +77,15 @@
         // .list__text
         max-width: 260px;
         padding: 0 10px;
+        @include max-screen(1250px) {
+            max-width: 165px;
+        }
+
+        h3 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
 
         p {
             text-overflow: ellipsis;
@@ -95,21 +115,14 @@
 
     &__new-count {
         // .list__new-count
-        align-self: center;
-        position: relative;
         color: $color-light-white;
+        width: 31px;
+        height: 21px;
+        border-radius: 100px;
+        background: $color-light-violet;
+        text-align: center;
+        padding: 4px 0px;
 
-        &::before {
-            content: "";
-            position: absolute;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: $color-light-violet;
-            border-radius: 50%;
-            top: -4px;
-            left: -6.5px;
-            z-index: -1;
-        }
     }
 }
+

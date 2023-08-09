@@ -7,7 +7,7 @@ export default function NavInfo () {
 
     return (
         <>
-            <Info onClick={() => setIsOpen(!isOpen)} />
+            <Info className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
             {isOpen && <NavInfoModal isOpen ={isOpen} setOpen = {setIsOpen}/>}
         </>
     )

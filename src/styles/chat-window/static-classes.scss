@@ -33,6 +33,13 @@
     color: $color-light-grey;
 }
 
+.text-18 {
+    color: $color-black;
+    font-family: $font-inter;
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .search-form {
     input {
         width: 100%;
@@ -109,4 +116,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.kebab-menu {
+    position: absolute;
+    background-color: $color-white;
+    box-shadow: 1px 1px 4px 0px $color-shadow-grey;
+    border-radius: 9px;
+    padding: 8px;
 }

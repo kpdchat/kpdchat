@@ -2,14 +2,23 @@
 @import "./navigation.scss";
 @import "./dialogs.scss";
 @import "messages.scss";
+@import "mes-kebab.scss";
+@import "mes-modal.scss";
+
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
 
 .chat {
-    margin: 0 auto;
-
     .container-grid {
         display: grid;
         grid-template-columns: 192px 384px 1fr;
         // grid-template-columns: 1fr 2fr 7fr;
+        @include max-screen(1250px) {
+            grid-template-columns: 192px 284px 1fr;
+        }
     }
 
     &__navigation {

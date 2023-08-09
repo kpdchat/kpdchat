@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import close_icon from "../../../../images/chat-window/close.png"
 import info_icon from "../../../../images/chat-window/info.png"
 
@@ -6,12 +6,20 @@ import info_icon from "../../../../images/chat-window/info.png"
 
 export default function NavInfoModal({ isOpen, setOpen }) {
 
+    function onCloseClick() {
+        setOpen(!isOpen)
+    }
+
+    function onContentClick(e) {
+        e.stopPropagation()
+    }
+
     return (
-        <div className="settings__info-about modal-container info-about" >
-            <div className="info-about__content">
+        <div className="settings__info-about modal-container info-about" onClick={onCloseClick} >
+            <div className="info-about__content" onClick={onContentClick}>
                 <div className="modal-title">
                     <h2>Про KPD Chat</h2>
-                    <img src={close_icon} alt="" onClick={() => setOpen(!isOpen)}/>
+                    <img className="cursor-pointer" src={close_icon} alt="" onClick={onCloseClick}/>
                 </div>
                 <div className="info-about__text">
                     <div className="info-about__about">
