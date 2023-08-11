@@ -44,3 +44,21 @@
         color: $color-red;
     }
 }
+
+.copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        //.copy__content
+        background-color: $color-white;
+        border-radius: 8px;
+        box-shadow: 1px 2px 6px 0px $color-shadow-grey;
+        padding: 36px;
+        width: 365px;
+        p {
+            text-align: center;
+        }
+    }
+}

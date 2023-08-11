@@ -86,6 +86,7 @@
         font-size: 16px;
         font-weight: 400;
         margin: 16px 0;
+        align-self: center;
     }
 
     &__self {
@@ -133,7 +134,7 @@
     &__text {
         // .another__text
         border-radius: 0 8px 8px 8px;
-        background: #fff;
+        background: $color-white;
         padding: 10px;
         min-width: 300px;
         display: flex;
@@ -181,6 +182,7 @@
     }
 
     &__kebab {
+        //.self__kebab
         position: relative;
         align-self: center;
     }

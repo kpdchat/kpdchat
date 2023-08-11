@@ -1,23 +1,30 @@
-import React, { useRef } from "react";
-import KebabWrapper from "../../../../extra/KebabWrapper";
+import React, { useRef, useState } from "react"
+import KebabWrapper from "../../../../extra/KebabWrapper"
 import to_send from "../../../../images/chat-window/to-send.png"
-import copy from "../../../../images/chat-window/copy.png"
+import copyIcon from "../../../../images/chat-window/copy.png"
+import CopyModal from "../mes-modal/CopyModal"
 
-export default function MesSelfKebab({ setOpen }) {
+export default function MesSelfKebab({ message }) {
+    const [copy, setCopy] = useState(false)
     const menuRef = useRef()
 
-    return (
-        <KebabWrapper elRef={menuRef} toggleFunc={setOpen}>
+    function onCopyClick() {
+        setCopy(true)
+        navigator.clipboard.writeText(message.text)
+    }
 
+    return (
+        <KebabWrapper elRef={menuRef}>
             <div ref={menuRef} className="kebab-menu self-kebab">
                 <div className="self-kebab__row cursor-pointer" >
                     <img src={to_send} alt="" />
                     <p className="title-h4">Відповісти</p>
                 </div>
-                <div className="self-kebab__row cursor-pointer">
-                    <img src={copy} alt="" />
-                    <p className=" title-h4">Копіювати</p>
+                <div onClick={onCopyClick} className="self-kebab__row cursor-pointer">
+                    <img src={copyIcon} alt="" />
+                    <p  className=" title-h4">Копіювати</p>
                 </div>
+                {copy && <CopyModal setCopy={setCopy} />}
             </div>
         </KebabWrapper>
     )
