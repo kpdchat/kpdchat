@@ -15,10 +15,9 @@ export default function CopyModal({ setCopy }) {
 
     return (
         <div className="modal-container copy" onClick={onCloseClick}>
-            <div className="copy__content " onClick={onContentClick}>
+            <div className="copy__content" onClick={onContentClick}>
                 <p className="text-18" >Файл скопійовано</p>
             </div>
         </div>
     )
 }
-

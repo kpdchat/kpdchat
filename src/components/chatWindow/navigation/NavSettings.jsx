@@ -9,6 +9,5 @@ export default function NavSettings() {
             <Settings className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
             {isOpen && <SettingsModal isOpen ={isOpen} setOpen = {setIsOpen}/>}
         </>
-
     )
 }

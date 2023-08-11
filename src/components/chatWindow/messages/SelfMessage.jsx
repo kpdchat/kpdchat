@@ -1,7 +1,7 @@
 import React from "react"
 import user_photo from '../../../images/chat-window/user-photo.png'
 import menu_kebab from "../../../images/chat-window/menu-kebab.png"
-import MesSelfKebab from "./mes-kebab/MesSelfKebab"
+import MessageSelfKebab from "./mes-kebab/MessageSelfKebab"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 
 export default function SelfMessage({ message }) {
@@ -15,7 +15,7 @@ export default function SelfMessage({ message }) {
             </div>
             <div className="self__message" >
                 <div className="self__kebab">
-                    {isOpen && id === message.id && <MesSelfKebab message={message}/>}
+                    {isOpen && id === message.id && <MessageSelfKebab message={message}/>}
                     <img className="cursor-pointer " src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 </div>
 

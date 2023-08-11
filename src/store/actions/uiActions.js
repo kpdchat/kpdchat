@@ -8,4 +8,3 @@ export function setKebabClose() {
 export function setKebabOpen(id) {
     return{ type: ACTION_OPEN_KEBAB, payload: id}
 }
-

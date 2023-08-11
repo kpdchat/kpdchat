@@ -56,8 +56,6 @@ export default function SettingsModal({ isOpen, setOpen }) {
                     <button className="settings__submit cursor-pointer" type="submit" onClick={onCloseClick}>Зберегти</button>
                 </div>
             </div>
-
-
         </div>
     )
 }

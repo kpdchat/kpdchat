@@ -7,7 +7,6 @@ export default function KebabWrapper({ elRef, children }) {
     useEffect(() => {
         let handler = (e) => {
             if (!elRef.current?.contains(e.target)) {
-                console.log('close');
                 dispatch(setKebabClose())
             }
         }

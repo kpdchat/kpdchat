@@ -2,8 +2,6 @@ import React from "react";
 import close_icon from "../../../../images/chat-window/close.png"
 import info_icon from "../../../../images/chat-window/info.png"
 
-
-
 export default function NavInfoModal({ isOpen, setOpen }) {
 
     function onCloseClick() {

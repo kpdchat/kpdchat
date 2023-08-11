@@ -15,8 +15,8 @@ export default function ChatOutModal({ setOut }) {
 
     return (
         <div className="modal-container chat-out" onClick={onCloseClick}>
-            <div className="chat-out__content " onClick={onContentClick}>
-                <div className="chat-out__message ">
+            <div className="chat-out__content" onClick={onContentClick}>
+                <div className="chat-out__message">
                     <p className="text-18 text-18_mb">Ви остаточно хочете вийти  з даного чату?</p>
                 </div>
                 <div className="chat-out__buttons">

@@ -1,5 +1,5 @@
 import React from "react";
-import MesTitleKebab from "./mes-kebab/MesTitleKebab";
+import MessageTitleKebab from "./mes-kebab/MessageTitleKebab";
 import menu_kebab from "../../../images/chat-window/menu-kebab.png"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 
@@ -14,7 +14,7 @@ export default function MessageSearch() {
             </form>
             <div className="messages__info" >
                 <img className="cursor-pointer" src={menu_kebab} alt="" onMouseDown={onKebabClick} />
-                {isOpen && id === titleId && <MesTitleKebab  />}
+                {isOpen && id === titleId && <MessageTitleKebab/>}
             </div>
         </div>
     )

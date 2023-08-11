@@ -1,7 +1,7 @@
 import React from "react"
 import user_photo from '../../../images/chat-window/user-photo.png'
 import menu_kebab from "../../../images/chat-window/menu-kebab.png"
-import MesAnotherKebab from "./mes-kebab/MesAnotherKebab"
+import MessageAnotherKebab from "./mes-kebab/MessageAnotherKebab"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 
 export default function AnotherMessage({ message }) {
@@ -19,7 +19,7 @@ export default function AnotherMessage({ message }) {
                     <span className='time-mes'>12:28</span>
                 </div>
                 <div className="another__kebab">
-                    {isOpen && id === message.id && <MesAnotherKebab message={message}/>}
+                    {isOpen && id === message.id && <MessageAnotherKebab message={message}/>}
                     <img className="cursor-pointer " src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 </div>
             </div>
