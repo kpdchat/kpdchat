@@ -4,6 +4,7 @@ import DialogItem from './DialogItem'
 import DialogSearch from './DialogSearch'
 
 export default function ChatDialogs() {
+    
     return (
         <section className='chat__dialogs dialogs'>
             <div className='dialogs__logo'>

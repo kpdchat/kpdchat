@@ -22,7 +22,7 @@ export default function DialogItem() {
                 </div>
                 <div className="list__data">
                     <span className='list__time'>12:28</span>
-                    <span className='list__new-count'>1</span>
+                    <span className='list__new-count'>12</span>
                 </div>
 
             </div>

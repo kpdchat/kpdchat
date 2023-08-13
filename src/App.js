@@ -6,6 +6,7 @@ import WindowChat from "./components/chatWindow/WindowChat";
 export default function App() {
     const [isActive, setIsActive] = useState(false)
 
+
     function onDisplay() {
         setIsActive(true)
     }
