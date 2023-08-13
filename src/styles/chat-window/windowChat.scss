@@ -14,7 +14,7 @@
 .chat {
     .container-grid {
         display: grid;
-        grid-template-columns: 192px 384px 1fr;
+        grid-template-columns: 190px 386px 1fr;
         // grid-template-columns: 1fr 2fr 7fr;
         @include max-screen(1250px) {
             grid-template-columns: 192px 284px 1fr;

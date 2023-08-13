@@ -103,7 +103,6 @@
 }
 
 .another {
-
     &__title {
         // .another__title
         display: flex;
@@ -154,8 +153,6 @@
         }
     }
 }
-
-
 
 .self {
     &__title {
@@ -212,8 +209,6 @@
     }
 }
 
-
-
 .input-mes {
     form {
         display: flex;
@@ -222,27 +217,33 @@
         border-radius: 8px;
         padding: 10px 15px;
 
+        &:focus-within {
+            outline: 1px solid $color-light-violet;
+            background-color: $color-white;
+        }
+
         input[type="file"] {
             display: none;
         }
 
-        input[type="text"] {
+        textarea {
             width: 100%;
-            height: 20px;
+            max-height: 80px;
             background: inherit;
             border: none;
+            resize: none;
 
-            &:focus-visible {
+            &:focus {
                 outline: none;
             }
         }
 
-        label {
-            width: 24px;
-            height: 24px;
-            background: url(../../images/chat-window/send-img.png) center no-repeat;
-            cursor: pointer;
-        }
+        // label {
+        //     width: 24px;
+        //     height: 24px;
+        //     background: url(../../images/chat-window/send-img.png) center no-repeat;
+        //     cursor: pointer;
+        // }
 
         button {
             border: none;
