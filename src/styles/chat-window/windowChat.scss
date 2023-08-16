@@ -17,14 +17,14 @@
         grid-template-columns: 190px 386px 1fr;
         // grid-template-columns: 1fr 2fr 7fr;
         @include max-screen(1250px) {
-            grid-template-columns: 192px 284px 1fr;
+            grid-template-columns: 190px 284px 1fr;
         }
     }
 
     &__navigation {
         // .chat__navigation
         height: 100vh;
-        padding: 10vh 0 10vh 0;
+        padding: 10vh 16px 7vh 16px;
         background: $color-violet;
         grid-column: 1 / 2;
     }

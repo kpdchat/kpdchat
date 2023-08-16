@@ -10,7 +10,7 @@ export default function MessageSearch() {
     return (
         <div className="messages__search">
             <form className='search-form'>
-                <input placeholder='Пошук...'></input>
+                <input className="text-inter-16-400" placeholder='Пошук...'></input>
             </form>
             <div className="messages__info" >
                 <img className="cursor-pointer" src={menu_kebab} alt="" onMouseDown={onKebabClick} />

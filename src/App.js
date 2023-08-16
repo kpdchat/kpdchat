@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './styles/index.scss'
+// import './styles/index.scss'
 import RegistrationWindow from "./components/registrationWindow/RegistrationWindow";
 import WindowChat from "./components/chatWindow/WindowChat";
 

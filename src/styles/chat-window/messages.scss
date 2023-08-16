@@ -31,7 +31,7 @@
         margin-left: 12px;
 
         p {
-            margin-top: 8px;
+            margin-top: 4px;
         }
     }
 
@@ -77,15 +77,12 @@
     display: flex;
     flex-direction: column;
     padding: 12px 25px 12px 25px;
-    gap: 8px;
+    gap: 12px;
 
     &__data {
         // .window-mes__data
         color: $color-light-grey;
-        font-family: $font-roboto;
-        font-size: 16px;
-        font-weight: 400;
-        margin: 16px 0;
+        margin: 4px 0;
         align-self: center;
     }
 
@@ -107,10 +104,11 @@
         // .another__title
         display: flex;
         align-items: center;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
 
         h3 {
             margin-left: 18px;
+            color: $color-black;
         }
     }
 
@@ -144,12 +142,14 @@
             max-width: 275px;
         }
 
-        .text-16 {
+        .p {
             color: $color-black;
         }
 
         span {
             text-align: right;
+            color: $color-text-grey;
+            margin-top: 3px;
         }
     }
 }
@@ -160,7 +160,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
 
         img {
             margin-left: 18px;
@@ -193,65 +193,115 @@
         display: flex;
         flex-direction: column;
 
-        img {
-            object-fit: contain;
-            max-width: 275px;
-        }
-
-        .text-16 {
+        .text-inter-16-400 {
             color: $color-light-white;
         }
 
-        span {
+        .text-inter-12-400 {
             text-align: right;
             color: $color-light-white;
+            margin-top: 3px;
         }
     }
 }
 
-.input-mes {
-    form {
-        display: flex;
-        align-items: center;
-        background: $color-grey;
+// .input-mes {
+//     form {
+//         display: flex;
+//         align-items: center;
+//         background: $color-grey;
+//         border-radius: 8px;
+//         padding: 10px 15px;
+
+//         &:focus-within {
+//             outline: 1px solid $color-light-violet;
+//             background-color: $color-white;
+//         }
+
+//         input[type="file"] {
+//             display: none;
+//         }
+
+//         textarea {
+//             width: 100%;
+//             max-height: 80px;
+//             background: inherit;
+//             border: none;
+//             resize: none;
+
+//             &:focus {
+//                 outline: none;
+//             }
+//         }
+
+//         // label {
+//         //     width: 24px;
+//         //     height: 24px;
+//         //     background: url(../../images/chat-window/send-img.png) center no-repeat;
+//         //     cursor: pointer;
+//         // }
+
+//         button {
+//             border: none;
+//             margin-left: 16px;
+//             border-radius: 8px;
+//             width: 30px;
+//             height: 30px;
+//             background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
+//         }
+//     }
+// }
+
+//style emoji
+
+.react-input-emoji--container {
+    background: $color-grey !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    border: none !important;
+    padding: 0 !important;
+    &:focus-within {
+        outline: 1px solid $color-light-violet;
+        background-color: $color-white !important;
+    }
+}
+.react-input-emoji--input {
+    // width: 95% !important;
+    &::-webkit-scrollbar {
+        width: 12px !important;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #cbcbce !important;
+        background-clip: content-box !important;
+        border: 4px solid transparent !important;
+        border-radius: 24px !important;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-violet !important;
+        background-clip: content-box !important;
+        border: 4px solid transparent !important;
+        border-radius: 24px !important;
+    }
+}
+
+.react-input-emoji--button {
+    align-self: end !important;
+    margin-bottom: 5px !important;
+
+}
+
+.emoji-form {
+    display: flex;
+    align-items: end;
+    .emoji-submit {
+        border: none;
+        margin-bottom: 5px;
+        // margin-left: 5px;
         border-radius: 8px;
-        padding: 10px 15px;
-
-        &:focus-within {
-            outline: 1px solid $color-light-violet;
-            background-color: $color-white;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        textarea {
-            width: 100%;
-            max-height: 80px;
-            background: inherit;
-            border: none;
-            resize: none;
-
-            &:focus {
-                outline: none;
-            }
-        }
-
-        // label {
-        //     width: 24px;
-        //     height: 24px;
-        //     background: url(../../images/chat-window/send-img.png) center no-repeat;
-        //     cursor: pointer;
-        // }
-
-        button {
-            border: none;
-            margin-left: 16px;
-            border-radius: 8px;
-            width: 30px;
-            height: 30px;
-            background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
-        }
+        width: 30px;
+        height: 30px;
+        background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
     }
 }

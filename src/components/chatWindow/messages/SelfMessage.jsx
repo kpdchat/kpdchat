@@ -10,7 +10,7 @@ export default function SelfMessage({ message }) {
     return (
         <div className="window-mes__self self">
             <div className="self__title">
-                <h3 className='title-h3'>{message.userName}</h3>
+                <h3 className='text-inter-18-600'>{message.userName}</h3>
                 <img className='chat-img' src={user_photo} alt="" />
             </div>
             <div className="self__message" >
@@ -20,8 +20,8 @@ export default function SelfMessage({ message }) {
                 </div>
 
                 <div className="self__text">
-                    <p className='text-16 '>{message.text}</p>
-                    <span className='time-mes'>12:28</span>
+                    <p className='text-inter-16-400'>{message.text}</p>
+                    <span className='text-inter-12-400'>12:28</span>
 
                 </div>
             </div>
