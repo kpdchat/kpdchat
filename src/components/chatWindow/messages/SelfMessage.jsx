@@ -20,7 +20,7 @@ export default function SelfMessage({ message }) {
                 </div>
 
                 <div className="self__text">
-                    <p className='text-inter-16-400'>{message.text}</p>
+                    <p className='text-emoji-16-400'>{message.text}</p>
                     <span className='text-inter-12-400'>12:28</span>
 
                 </div>

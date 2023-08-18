@@ -3,15 +3,36 @@ import InputEmoji from 'react-input-emoji'
 import { MdOutlineAddReaction } from "react-icons/md"
 
 
-export default function MessageSendForm() {
+export default function MessageSendForm({ onMessageSend }) {
     const [text, setText] = useState('')
 
-    function handleOnEnter() {
+    function onInputEnter() {
+        if(!text) {
+            return
+        }
         console.log('enter', text)
+        const message = {
+            id: Math.random(),
+            userId: 1,
+            userName: 'lola',
+            text,
+        }
+        onMessageSend(message)
+        setText('')
     }
     function onFormSubmit(e) {
         e.preventDefault()
         console.log('submit', text)
+        if(!text) {
+            return
+        }
+        const message = {
+            id: Math.random(),
+            userId: 1,
+            userName: 'lola',
+            text,
+        }
+        onMessageSend(message)
         setText('')
     }
 
@@ -23,26 +44,12 @@ export default function MessageSendForm() {
                 onChange={setText}
                 cleanOnEnter
                 shouldReturn
-                onEnter={handleOnEnter}
-
-                placeholder="Написати.."
+                onEnter={onInputEnter}
+                placeholder="Написати повідомлення..."
             />
             <button className='emoji-submit' type='submit'></button>
         </form>
-
     )
 }
-// function onTextareaInput(e) {
-//     e.target.style.height = 'auto'
-//     e.target.style.height = e.target.scrollHeight + 2 + "px"
-// }
-// return (
-//     <form action="">
-//         <textarea rows="1" onInput={onTextareaInput} className='text-16 scroll-bar' type="text" placeholder='Написати...'/>
-//         {/* <label>
-//             <input type="file" />
-//         </label> */}
-//         <button type='submit'></button>
-//     </form>
-// )
+
 

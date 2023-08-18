@@ -67,7 +67,7 @@
     &__item {
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         padding: 8px;
         &:hover {
             color: $color-yellow;

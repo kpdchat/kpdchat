@@ -53,12 +53,20 @@
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24.3px; 
+    line-height: 24.3px;
     letter-spacing: 0.9px;
 }
 
 .text-inter-16-400 {
     font-family: $font-inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.text-emoji-16-400 {
+    font-family: $font-emoji;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
