@@ -2,10 +2,10 @@ import React, {useContext} from 'react';
 import ChatNavigation from './navigation/ChatNavigation';
 import ChatDialogs from './dialogs/ChatDialogs';
 import ChatMessages from './messages/ChatMessages';
-import {ContextOpenChat} from "../../Context/ContextOpenChat";
+import {Context} from "../../context/Context";
 
 export default function WindowChat() {
-    const {isActive} = useContext(ContextOpenChat);
+    const {isActive} = useContext(Context);
 
     return (
         <div className={ isActive ? 'chat' : "display-none" }>

@@ -92,11 +92,6 @@
                 line-height: 40px;
                 letter-spacing: 2px;
                 font-weight: $f-weight-400;
-
-                span {
-                    font-weight: $f-weight-700;
-                    word-spacing: 0;
-                }
             }
         }
 
@@ -138,8 +133,121 @@
             padding-top: 5px;
         }
 
-        .error-border {
-            border: 2px solid red;
+        &__enter {
+            // .registration-block__enter
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 480px;
+
+            &-title {
+                // .registration-block__enter-title
+                color: $color-text-grey;
+                font-family: $font-lexend;
+                font-size: 18px;
+                font-weight: $f-weight-700;
+                line-height: 140%;
+                margin: 32px 0;
+            }
+
+            &-description {
+                // .registration-block__enter-description
+                color: $color-blue;
+                font-family: $font-inter;
+                font-size: 18px;
+                font-weight: $f-weight-500;
+                line-height: 140%;
+                letter-spacing: 0.36px;
+                margin-bottom: 16px;
+            }
+
+            &-copyKey {
+                // .registration-block__enter-copyKey
+                text-align: center;
+                width: 100%;
+
+                .copyKeyForm {
+                    width: 100%;
+                    display: flex;
+                    gap: 32px;
+                    flex-direction: column;
+
+                    &__input {
+                        // .copyKeyForm__input
+                        width: 100%;
+
+                        textarea {
+                            border: 4px solid $color-blue;
+                            border-radius: 16px;
+                            width: 100%;
+                            height: 86px;
+                            color: $color-text-grey;
+                            font-family: $font-inter;
+                            font-size: 18px;
+                            font-weight: 500;
+                            line-height: 140%;
+                            padding: 10px 24px;
+                            resize: none;
+                        }
+                    }
+
+                    &__buttons {
+                        // .copyKeyForm__buttons
+                        display: flex;
+                        gap: 32px;
+                        flex-direction: column;
+
+                        &-copy {
+                            // .copyKeyForm__buttons-copy
+
+                            button {
+                                width: 100%;
+                                color: $color-blue;
+                                font-family: $font-inter;
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 140%;
+                                padding: 16px 0;
+                                border-radius: 16px;
+                                background-color: $color-yellow;
+                                border: none;
+                            }
+                        }
+
+                        &-enter {
+                            // .copyKeyForm__buttons-enter
+
+                            .active-button {
+                                width: 100%;
+                                color: $color-white;
+                                text-align: center;
+                                font-family: $font-inter;
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 140%;
+                                padding: 16px 0;
+                                border-radius: 16px;
+                                background-color: $color-violet;
+                                border: none;
+                            }
+
+                            .inactive-button {
+                                width: 100%;
+                                color: $color-white;
+                                text-align: center;
+                                font-family: $font-inter;
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 140%;
+                                padding: 16px 0;
+                                border-radius: 16px;
+                                background-color: $color-background-light-grey;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

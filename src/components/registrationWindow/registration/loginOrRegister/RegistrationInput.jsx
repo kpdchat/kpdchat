@@ -22,10 +22,9 @@ export default function RegistrationInput() {
         }
     }
 
-
     return (
         <>
-            <div className={ `registration-block__input ${ uniKeyActive && uniKeyError ? 'error-border' : '' }` }>
+            <div className='registration-block__input'>
                 <input
                     value={ uniKey }
                     onChange={ e => uniKeyHandler(e) }

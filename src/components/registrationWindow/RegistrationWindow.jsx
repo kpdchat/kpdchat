@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
-import Info from "./Info/Info";
-import Registration from "./Registration/Registration";
-import {ContextOpenChat} from "../../Context/ContextOpenChat";
+import Info from "./info/Info";
+import Registration from "./registration/Registration";
+import {Context} from "../../context/Context";
 
 export default function RegistrationWindow() {
-    const {isActive} = useContext(ContextOpenChat);
+    const {isActive} = useContext(Context);
 
     return (
         <div className={ isActive ? 'display-none' : 'registration_window' }>

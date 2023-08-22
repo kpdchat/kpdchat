@@ -1,10 +1,10 @@
 import React, {useContext, useState} from 'react';
-import ModalAddPhotos from "./ModalAddPhotos";
-import {ContextOpenChat} from "../../../Context/ContextOpenChat";
+import ModalRegistration from "./ModalRegistration";
+import {Context} from "../../../../../context/Context";
 
-export default function RegistrationAuthorization() {
+export default function RegistrationAuthorization({setUniKey}) {
     const [modal, setModal] = useState(false)
-    const {setIsActive} = useContext(ContextOpenChat);
+    const {setIsActive} = useContext(Context);
 
     function onDisplay() {
         setIsActive(true);
@@ -24,7 +24,7 @@ export default function RegistrationAuthorization() {
                 <button onClick={ () => setModal(true) }>Зареєструватись</button>
             </div>
 
-            { modal && <ModalAddPhotos onClose={ () => setModal(false) } /> }
+            { modal && <ModalRegistration setUniKey={setUniKey} onClose={ () => setModal(false) } /> }
         </div>
     );
 }
