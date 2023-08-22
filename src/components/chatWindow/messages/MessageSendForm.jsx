@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import InputEmoji from 'react-input-emoji'
 import { MdOutlineAddReaction } from "react-icons/md"
+import { useTranslation } from 'react-i18next';
 
 
 export default function MessageSendForm({ onMessageSend }) {
     const [text, setText] = useState('')
+    const { t } = useTranslation()
 
     function onInputEnter() {
         if(!text) {
@@ -45,7 +47,7 @@ export default function MessageSendForm({ onMessageSend }) {
                 cleanOnEnter
                 shouldReturn
                 onEnter={onInputEnter}
-                placeholder="Написати повідомлення..."
+                placeholder={t('global.text-message')}
             />
             <button className='emoji-submit' type='submit'></button>
         </form>

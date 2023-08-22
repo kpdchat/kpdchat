@@ -1,0 +1,18 @@
+{
+    "navigation": {
+        "folder": "Folder",
+        "chat": "Chat",
+        "mine": "Mine",
+        "public": "Public chats"
+    },
+    "global" : {
+        "search": "Search..",
+        "copy": "Copy",
+        "leave-chat": "Leave the chat",
+        "exit-text": "Are you sure you want to exit this chat?",
+        "confirm" : "Confirm",
+        "answer" : "Answer",
+        "copied-message": "The message has been copied",
+        "text-message" : "Write a message.."
+    }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import { MdOutlineTextsms, MdOutlineDarkMode } from "react-icons/md";
+import { useTranslation } from 'react-i18next';
 import NavFolderItem from './NavFolderItem'
 import NavSettings from "./NavSettings";
 import NavInfo from "./NavInfo";
@@ -7,6 +8,7 @@ import AddChat from "./add-chat/AddChat";
 import AddFolder from "./add-folder/AddFolder";
 
 export default function ChatNavigation() {
+    const { t } = useTranslation()
 
     return (
         <section className='chat__navigation navigation'>
@@ -21,7 +23,7 @@ export default function ChatNavigation() {
                 <div className="folders__public">
                     <div className="folders__title cursor-pointer">
                         <MdOutlineTextsms size={17} />
-                        <h3 className='text-inter-16-400'>Публічні чати</h3>
+                        <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                     </div>
                 </div>
             </div>
