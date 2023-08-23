@@ -1,11 +1,9 @@
 import React, { useState, Suspense } from "react";
-// import './styles/index.scss'
 import RegistrationWindow from "./components/registrationWindow/RegistrationWindow";
 import WindowChat from "./components/chatWindow/WindowChat";
 
 export default function App() {
-    // const [isActive, setIsActive] = useState(false)
-    const [isActive, setIsActive] = useState(true)
+    const [isActive, setIsActive] = useState(false)
 
     function onDisplay() {
         setIsActive(true)
@@ -14,7 +12,7 @@ export default function App() {
     return (
         <Suspense fallback="...loading">
             <div className='app_wrapper'>
-                {/* <RegistrationWindow onDisplay={ onDisplay } isActive={ isActive } /> */}
+                <RegistrationWindow onDisplay={ onDisplay } isActive={ isActive } />
                 <WindowChat isActive={isActive} />
             </div>
         </Suspense>

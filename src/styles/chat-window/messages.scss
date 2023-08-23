@@ -142,7 +142,7 @@
             max-width: 275px;
         }
 
-        .text-emoji-16-400 {
+        .text-inter-16-400 {
             color: $color-black;
         }
 
@@ -193,7 +193,7 @@
         display: flex;
         flex-direction: column;
 
-        .text-emoji-16-400 {
+        .text-inter-16-400 {
             color: $color-light-white;
         }
 
@@ -204,70 +204,32 @@
         }
     }
 }
-
-.emoji-form {
-    display: flex;
-    align-items: flex-end;
-    .emoji-submit {
-        border: none;
-        margin-bottom: 5px;
-        border-radius: 8px;
-        width: 30px;
-        height: 30px;
-        background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
+.input-mes {
+    form {
+        display: flex;
+        .text-inter-16-400 {
+            width: 100%;
+            max-height: 80px;
+            border: none;
+            resize: none;
+            border-radius: 8px;
+            background: $color-grey;
+            padding: 10px 15px;
+            line-height: 21.6px;
+            &:focus {
+                outline: 1px solid $color-light-violet;
+                background-color: $color-white;
+            }
+        }
+        button {
+            border: none;
+            margin-left: 16px;
+            margin-bottom: 7px;
+            border-radius: 8px;
+            width: 29px;
+            height: 29px;
+            align-self: flex-end;
+            background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
+        }
     }
-}
-
-//style emoji
-
-.react-input-emoji--container {
-    background: $color-grey !important;
-    border-radius: 8px !important;
-    margin: 0 !important;
-    border: none !important;
-    padding: 0 !important;
-    &:focus-within {
-        outline: 1px solid $color-light-violet;
-        background-color: $color-white !important;
-    }
-}
-
-.react-input-emoji--placeholder {
-    color: $color-light-grey !important;
-    font-family: $font-inter !important;
-    font-size: 16px !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    line-height: normal !important;
-}
-
-.react-input-emoji--input {
-    font-family: $font-inter !important;
-    font-size: 16px !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-    line-height: normal !important;
-    color: $color-black !important;
-    &::-webkit-scrollbar {
-        width: 12px !important;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #cbcbce !important;
-        background-clip: content-box !important;
-        border: 4px solid transparent !important;
-        border-radius: 24px !important;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: $color-violet !important;
-        background-clip: content-box !important;
-        border: 4px solid transparent !important;
-        border-radius: 24px !important;
-    }
-}
-
-.react-input-emoji--button {
-    align-self: flex-end !important;
-    margin-bottom: 5px !important;
 }

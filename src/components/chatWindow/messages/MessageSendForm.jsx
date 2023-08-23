@@ -1,31 +1,22 @@
-import React, { useState } from 'react'
-import InputEmoji from 'react-input-emoji'
-import { MdOutlineAddReaction } from "react-icons/md"
+import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 
 
 export default function MessageSendForm({ onMessageSend }) {
     const [text, setText] = useState('')
     const { t } = useTranslation()
+    const textareaRef = useRef()
 
-    function onInputEnter() {
-        if(!text) {
-            return
-        }
-        console.log('enter', text)
-        const message = {
-            id: Math.random(),
-            userId: 1,
-            userName: 'lola',
-            text,
-        }
-        onMessageSend(message)
-        setText('')
+    function onTextareaInput(e) {
+        textareaRef.current.style.height = 'auto'
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px"
+        setText(e.target.value)
     }
+
     function onFormSubmit(e) {
         e.preventDefault()
         console.log('submit', text)
-        if(!text) {
+        if (!text) {
             return
         }
         const message = {
@@ -36,20 +27,13 @@ export default function MessageSendForm({ onMessageSend }) {
         }
         onMessageSend(message)
         setText('')
+        textareaRef.current.style.height = 'auto'
     }
 
     return (
-        <form className='emoji-form' onSubmit={onFormSubmit}>
-            <InputEmoji
-                buttonElement={<MdOutlineAddReaction />}
-                value={text}
-                onChange={setText}
-                cleanOnEnter
-                shouldReturn
-                onEnter={onInputEnter}
-                placeholder={t('global.text-message')}
-            />
-            <button className='emoji-submit' type='submit'></button>
+        <form onSubmit={onFormSubmit}>
+            <textarea ref={textareaRef} rows="1" onInput={onTextareaInput} value={text} className='text-inter-16-400 scroll-bar' type="text" placeholder={t('global.text-message')} />
+            <button type='submit'></button>
         </form>
     )
 }

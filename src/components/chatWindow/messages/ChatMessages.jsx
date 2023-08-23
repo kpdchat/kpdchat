@@ -10,19 +10,19 @@ const messages = [
         id: 1,
         userId: 1,
         userName: 'lola',
-        text: ' 🫥 Lorem ipsum dolor 😚 sit amet consectetur adipisicing elit. Debitis eum a possimus, voluptate magni, eaque odio culpa harum neque, eos commodi laudantium dignissimos labore quas! Cum dolor ut saepe nisi dicta pariatur officia error est vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, 🇨🇮 laudantium ipsa.',
+        text: '  Lorem ipsum dolor  sit amet consectetur adipisicing elit. Debitis eum a possimus, voluptate magni, eaque odio culpa harum neque, eos commodi laudantium dignissimos labore quas! Cum dolor ut saepe nisi dicta pariatur officia error est vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
     },
     {
         id: 2,
         userId: 2,
         userName: 'oleh',
-        text: '🇨🇮 Lorem ipsum dolo vitae nulla. Iste nostrum 🫠 expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
+        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
     },
     {
         id: 3,
         userId: 4,
         userName: 'sou-chan',
-        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, 😋😋😋 laudantium ipsa.',
+        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
     },
     {
         id: 4,

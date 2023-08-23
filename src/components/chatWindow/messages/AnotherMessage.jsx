@@ -15,7 +15,7 @@ export default function AnotherMessage({ message }) {
             </div>
             <div className="another__message">
                 <div className="another__text">
-                    <p className='text-emoji-16-400'>{message.text}</p>
+                    <p className='text-inter-16-400'>{message.text}</p>
                     <span className='time-mes text-inter-12-400'>12:28</span>
                 </div>
                 <div className="another__kebab">
