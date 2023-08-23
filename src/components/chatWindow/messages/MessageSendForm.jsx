@@ -15,7 +15,6 @@ export default function MessageSendForm({ onMessageSend }) {
 
     function onFormSubmit(e) {
         e.preventDefault()
-        console.log('submit', text)
         if (!text) {
             return
         }

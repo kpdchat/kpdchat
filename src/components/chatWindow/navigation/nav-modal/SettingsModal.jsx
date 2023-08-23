@@ -41,13 +41,13 @@ export default function SettingsModal({ isOpen, setOpen }) {
                         {isInput ? <form action="">
         
                             <input onClick={(e) => {e.stopPropagation()}} type="text" value="Artemiu@s_78" />
-                        </form> : <h3 className="title-h3">Artemiu@s_78</h3>}
+                        </form> : <h3 className="text-inter-16-400">Artemiu@s_78</h3>}
                         <img className="settings__edit-name cursor-pointer" src={edit_icon} alt="" onClick={onEditClick} />
                     </div>
                     <div className="settings__language">
                         <div className="settings__label">
                             <img src={language_icon} alt="" />
-                            <p className="text-14" htmlFor="">Мова </p>
+                            <p className="text-inter-14-400" htmlFor="">Мова </p>
                         </div>
                         <div className="settings__buttons ">
         

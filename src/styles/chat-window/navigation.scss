@@ -6,12 +6,10 @@
 
     &__folders {
         // .navigation__folders
-        // min-width: 120px;
     }
 
     &__settings {
         // .navigation__settings
-        // max-width: 120px;
         align-self: center;
         display: flex;
         flex-direction: column;
@@ -115,8 +113,9 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
-        h3 {
+        .text-inter-16-400 {
             width: 152px;
+            color: $color-text-grey;
         }
     }
 
@@ -238,6 +237,10 @@
         h4 {
             margin-left: 16px;
         }
+    }
+
+    .text-inter-16-400 {
+        color: $color-light-grey;
     }
 
     ul {
