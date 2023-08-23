@@ -1,7 +1,7 @@
 import React from "react";
 import MessageTitleKebab from "./mes-kebab/MessageTitleKebab";
 import ChatOutModal from "./mes-modal/ChatOutModal";
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { selectModal } from "../../../store/selectors";
 import menu_kebab from "../../../images/chat-window/menu-kebab.png"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"

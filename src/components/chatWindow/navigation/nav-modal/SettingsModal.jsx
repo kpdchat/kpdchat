@@ -13,7 +13,7 @@ const locales = {
 export default function SettingsModal({ isOpen, setOpen }) {
     const [isInput, setIsInput] = useState(false)
 
-    const { t, i18n } = useTranslation()
+    const { i18n } = useTranslation()
 
 
     function onEditClick(e) {
