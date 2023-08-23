@@ -27,12 +27,10 @@
         padding: 10vh 16px 7vh 16px;
         background: $color-violet;
         grid-column: 1 / 2;
-        @media screen and (max-height:730px) {
-            // padding: 10px 16px 20px 16px;
-            height: 730px;
+        @media screen and (max-height: 750px) {
+            height: 750px;
         }
     }
-
     &__dialogs {
         // .chat__dialogs
         height: 100vh;
@@ -40,8 +38,8 @@
         display: flex;
         flex-direction: column;
         border-right: 1px solid $color-border-light-gray;
-        @media screen and (max-height:730px) {
-            height: 730px;
+        @media screen and (max-height: 750px) {
+            height: 750px;
         }
     }
 
@@ -51,8 +49,8 @@
         grid-column: 3 / 4;
         display: flex;
         flex-direction: column;
-        @media screen and (max-height:730px) {
-            height: 730px;
+        @media screen and (max-height: 750px) {
+            height: 750px;
         }
     }
 }
