@@ -12,15 +12,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 25px 0 18px 0;
+        padding: 20px 0 16px 0;
 
         h1 {
             font-family: $font-lexend;
             font-weight: 300;
             font-size: 24px;
             line-height: 33.6px;
-            letter-spacing: 5%;
-            margin-left: 22px;
+            letter-spacing: 1.2px;
+            margin-left: 12px;
 
             span {
                 text-transform: uppercase;
@@ -45,8 +45,6 @@
 
     &__container {
         // .list__container
-        font-family: $font-inter;
-
     }
 
     &__dialog {
@@ -84,6 +82,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            color: $color-black;
         }
 
         p {
@@ -91,6 +90,7 @@
             overflow: hidden;
             white-space: nowrap;
             margin-top: 8px;
+            color: $color-text-grey;
         }
     }
 
@@ -100,8 +100,7 @@
         flex-wrap: wrap;
         flex-direction: column;
         gap: 10px 0;
-        font-weight: 400;
-        font-size: 12px;
+        
     }
 
     &__time {

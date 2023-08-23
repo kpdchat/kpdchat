@@ -31,7 +31,7 @@
         margin-left: 12px;
 
         p {
-            margin-top: 8px;
+            margin-top: 4px;
         }
     }
 
@@ -61,7 +61,7 @@
     &__window-mes {
         // .messages__window-mes
         flex: 1 1 auto;
-        background: $color-grey;
+        background: url(../../images/chat-window/background-chat.png) 50% / cover no-repeat;
         overflow-x: hidden;
     }
 
@@ -77,15 +77,12 @@
     display: flex;
     flex-direction: column;
     padding: 12px 25px 12px 25px;
-    gap: 8px;
+    gap: 12px;
 
     &__data {
         // .window-mes__data
         color: $color-light-grey;
-        font-family: $font-roboto;
-        font-size: 16px;
-        font-weight: 400;
-        margin: 16px 0;
+        margin: 4px 0;
         align-self: center;
     }
 
@@ -97,21 +94,21 @@
 
     &__another {
         // .window-mes__another
-        align-self: start;
+        align-self: flex-start;
         max-width: 630px;
     }
 }
 
 .another {
-
     &__title {
         // .another__title
         display: flex;
         align-items: center;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
 
         h3 {
             margin-left: 18px;
+            color: $color-black;
         }
     }
 
@@ -145,17 +142,17 @@
             max-width: 275px;
         }
 
-        .text-16 {
+        .text-inter-16-400 {
             color: $color-black;
         }
 
         span {
             text-align: right;
+            color: $color-text-grey;
+            margin-top: 3px;
         }
     }
 }
-
-
 
 .self {
     &__title {
@@ -163,7 +160,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        margin-bottom: 4px;
+        margin-bottom: 8px;
 
         img {
             margin-left: 18px;
@@ -196,60 +193,42 @@
         display: flex;
         flex-direction: column;
 
-        img {
-            object-fit: contain;
-            max-width: 275px;
-        }
-
-        .text-16 {
+        .text-inter-16-400 {
             color: $color-light-white;
         }
 
-        span {
+        .text-inter-12-400 {
             text-align: right;
             color: $color-light-white;
+            margin-top: 3px;
         }
     }
 }
-
-
-
 .input-mes {
     form {
         display: flex;
-        align-items: center;
-        background: $color-grey;
-        border-radius: 8px;
-        padding: 10px 15px;
-
-        input[type="file"] {
-            display: none;
-        }
-
-        input[type="text"] {
+        .text-inter-16-400 {
             width: 100%;
-            height: 20px;
-            background: inherit;
+            max-height: 80px;
             border: none;
-
-            &:focus-visible {
-                outline: none;
+            resize: none;
+            border-radius: 8px;
+            background: $color-grey;
+            padding: 10px 15px;
+            line-height: 21.6px;
+            &:focus {
+                outline: 1px solid $color-light-violet;
+                background-color: $color-white;
             }
         }
-
-        label {
-            width: 24px;
-            height: 24px;
-            background: url(../../images/chat-window/send-img.png) center no-repeat;
-            cursor: pointer;
-        }
-
         button {
             border: none;
             margin-left: 16px;
+            margin-bottom: 7px;
             border-radius: 8px;
-            width: 30px;
-            height: 30px;
+            width: 29px;
+            height: 29px;
+            align-self: flex-end;
             background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
         }
     }

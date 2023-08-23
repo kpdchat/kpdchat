@@ -3,16 +3,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 
     &__folders {
         // .navigation__folders
-        min-width: 120px;
     }
 
     &__settings {
         // .navigation__settings
-        max-width: 120px;
+        align-self: center;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -20,17 +18,19 @@
 }
 
 .folders {
-    &__title {
-        // .folders__title
-        font-family: $font-lexend;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 35px;
+    &__add {
+        // .folders__add
+        border-bottom: 1px solid $color-light-white;
     }
 
     &__container {
         // .folders__container
+        margin: 20px 0;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        color: $color-white;
     }
 
     &__folder {
@@ -38,13 +38,44 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 25px;
+        &:hover {
+            color: $color-yellow;
+        }
+    }
 
-        h3 {
-            color: $color-light-white;
+    &__title {
+        //.folders__title"
+        display: flex;
+        gap: 8px;
+    }
+
+    &__public {
+        //.folders__public
+        border-top: 1px solid $color-light-white;
+        padding: 8px;
+        color: $color-light-white;
+        &:hover {
+            color: $color-yellow;
         }
     }
 }
+
+.add {
+    //add__item
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 8px;
+        &:hover {
+            color: $color-yellow;
+        }
+        h2 {
+            margin-left: 8px;
+        }
+    }
+}
+
 .settings {
     position: relative;
 
@@ -82,8 +113,9 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 30px;
-        h3 {
+        .text-inter-16-400 {
             width: 152px;
+            color: $color-text-grey;
         }
     }
 
@@ -177,7 +209,7 @@
     justify-content: center;
     &__content {
         width: 377px;
-        box-shadow: 4px 4px 4px 4px #706C9F
+        box-shadow: 4px 4px 4px 4px #706c9f;
     }
     .modal-title {
         //.info-about__content
@@ -205,6 +237,10 @@
         h4 {
             margin-left: 16px;
         }
+    }
+
+    .text-inter-16-400 {
+        color: $color-light-grey;
     }
 
     ul {

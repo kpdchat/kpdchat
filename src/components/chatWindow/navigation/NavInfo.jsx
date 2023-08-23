@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {ReactComponent as Info} from '../../../images/chat-window/info.svg'
+import { MdInfoOutline } from "react-icons/md";
 import NavInfoModal from "./nav-modal/NavInfoModal";
 
 export default function NavInfo () {
@@ -7,7 +7,7 @@ export default function NavInfo () {
 
     return (
         <>
-            <Info className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
+            <MdInfoOutline size={36} className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
             {isOpen && <NavInfoModal isOpen ={isOpen} setOpen = {setIsOpen}/>}
         </>
     )

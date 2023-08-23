@@ -10,17 +10,32 @@
     left: 18px;
     @include max-screen(1390px) {
         left: -163px;
-        // right: 145px;
-
     }
     //.another-kebab__row
     &__row {
         display: flex;
         align-items: center;
         padding: 8px;
-        .title-h4 {
-            color: $color-text-grey;
-            margin-left: 7px;
+        gap: 7px;
+        color: $color-text-grey;
+        border-radius: 8px;
+        &:hover {
+            background: $background-active-lilac;
+        }
+    }
+    &__copy {
+        background: $background-active-lilac;
+        box-shadow: 1px 1px 4px 0px $color-shadow-grey;
+        width: 150px;
+        padding: 5px;
+        color: $color-text-grey;
+        border-radius: 8px;
+        position: absolute;
+        top: 100px;
+        left: 18px;
+        z-index: 3;
+        @include max-screen(1390px) {
+            left: -163px;
         }
     }
 }
@@ -30,7 +45,6 @@
     top: 10px;
     right: 18px;
     @include max-screen(1390px) {
-        top: 10px;
         left: 18px;
     }
     //.self-kebab__row
@@ -38,9 +52,26 @@
         display: flex;
         align-items: center;
         padding: 8px;
-        .title-h4 {
-            color: $color-text-grey;
-            margin-left: 7px;
+        gap: 7px;
+        color: $color-text-grey;
+        border-radius: 8px;
+        &:hover {
+            background: $background-active-lilac;
+        }
+    }
+    &__copy {
+        background: $background-active-lilac;
+        box-shadow: 1px 1px 4px 0px $color-shadow-grey;
+        width: 150px;
+        padding: 5px;
+        color: $color-text-grey;
+        border-radius: 8px;
+        position: absolute;
+        top: 100px;
+        right: 18px;
+        z-index: 3;
+        @include max-screen(1390px) {
+            left: 18px;
         }
     }
 }
@@ -49,33 +80,18 @@
     width: 243px;
     top: 8px;
     right: 20px;
-    .title-h4 {
-        color: $color-text-grey;
-    }
-    &__sound, &__out {
-        padding: 10px 6px 10px 36px;
-        position: relative;
-    }
-    &__sound {
-        &::before {
-            content: "";
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            left: 5px;
-            top: 7px;
-            background: url("../../images/chat-window/sound-on.png") center no-repeat;
-        }
-    }
+
     &__out {
-        &::before {
-            content: "";
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            left: 5px;
-            top: 7px;
-            background: url("../../images/chat-window/exit-chat.png") center no-repeat;
+        //.title-kebab__out
+        border-radius: 8px;
+        padding: 8px 6px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: $color-text-grey;
+
+        &:hover {
+            background: $background-active-lilac;
         }
     }
 }

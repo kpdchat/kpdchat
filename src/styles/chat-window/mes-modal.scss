@@ -5,44 +5,31 @@
     &__content {
         background-color: $color-white;
         border-radius: 8px;
-        box-shadow: 1px 2px 6px 0px $color-shadow-grey;
-        padding: 36px;
-        width: 365px;
-    }
-    &__message {
-        margin-bottom: 24px;
-        .text-18 {
-            line-height: 24.3px;
-            letter-spacing: 0.9px;
-            &_mb {
-                margin-bottom: 12px;
-            }
-        }
-    }
-
-    &__buttons {
+        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        padding: 24px;
+        width: 384px;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+
+        p {
+            color: $color-black;
+            margin-bottom: 24px;
+        }
         button {
-            width: 136px;
-            height: 39px;
+            width: 336px;
+            padding: 10px;
             border-radius: 8px;
+            background-color: $color-violet;
+            color: $color-white;
             border: none;
-            background-color: $color-white;
-            font-family: $font-inter;
-            font-size: 18px;
-            font-weight: 600;
         }
     }
 
-    &__stay {
-        color: $color-violet;
+    &__close {
+        //.chat-out__close
+        align-self: flex-end;
     }
-
-    &__exit {
-        color: $color-red;
-    }
+    
 }
 
 .copy {

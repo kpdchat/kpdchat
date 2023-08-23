@@ -1,21 +1,27 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import KebabWrapper from "../../../../extra/KebabWrapper";
-import ChatOutModal from "../mes-modal/ChatOutModal";
+import { PiDoorOpen } from "react-icons/pi";
+import { useTranslation } from 'react-i18next';
+import { setModalOpen } from "../../../../store/actions/uiActions"
+import { useDispatch } from 'react-redux'
+
 
 export default function MessageTitleKebab() {
-    const [out, setOut] = useState(false)
     const menuRef = useRef()
+    const dispatch = useDispatch()
+    const { t } = useTranslation()
 
     function onOutClick() {
-        setOut(true)
+        dispatch(setModalOpen())
     }
 
     return (
         <KebabWrapper elRef={menuRef}>
             <div ref={menuRef} className="title-kebab kebab-menu">
-                <p className="title-kebab__sound title-h4 cursor-pointer">Додати у папку</p>
-                <p onClick={onOutClick} className="title-kebab__out title-h4 cursor-pointer">Вийти з чату</p>
-                {out && <ChatOutModal setOut={setOut} />}
+                <div onClick={onOutClick} className="title-kebab__out cursor-pointer">
+                    <PiDoorOpen size={24} />
+                    <p className="text-inter-16-400">{t('global.leave-chat')}</p>
+                </div>
             </div>
         </KebabWrapper>
     )
