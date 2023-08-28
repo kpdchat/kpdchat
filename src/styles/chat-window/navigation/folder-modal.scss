@@ -1,0 +1,98 @@
+.folder-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__content {
+        //.folder-modal__content
+        width: 500px;
+        padding: 8px;
+        background-color: $color-white;
+        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        border-radius: 8px;
+    }
+    &__header {
+        //.folder-modal__header
+        color: $color-black;
+        display: flex;
+        justify-content: space-between;
+        padding: 16px;
+
+        .text-inter-18-600 {
+            color: $color-black;
+        }
+    }
+}
+
+.form {
+    &__name-container {
+        //.form__name-container
+        display: flex;
+        padding: 8px 16px;
+        position: relative;
+    }
+
+    &__icon-chose {
+        //.form__icon-chose
+        display: flex;
+        width: 56px;
+        height: 56px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        background: $color-violet;
+    }
+    &__folder-name {
+        //.form__folder-name
+        margin-left: 8px;
+        width: 388px;
+        padding: 0 16px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        background: $color-grey;
+        &:focus-visible {
+            outline: none;
+            border: 1px solid $color-border-light-gray;
+        }
+    }
+    &__icon {
+        //.form__icon
+        padding: 8px 0;
+        width: 468px;
+        border-radius: 8px;
+        background: $color-grey;
+        display: flex;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 0;
+        left: 8px;
+    }
+    &__search-chat {
+        margin: 0 16px;
+        width: 452px;
+        background: url(../../../images/chat-window/search.svg) 15px no-repeat;
+        border: none;
+        padding-left: 52px;
+        height: 56px;
+        border-bottom: 1px solid #8a8a98;
+        color: $color-black;
+        &:focus-visible {
+            outline: none;
+            border-bottom: 1px solid $color-black;
+        }
+    }
+}
+
+.icon {
+    display: block;
+    color: $color-violet;
+    display: flex;
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: $color-white;
+    &:hover {
+        outline: 2px solid $color-violet;
+    }
+}

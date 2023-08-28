@@ -1,5 +1,5 @@
 @import "static-classes.scss";
-@import "./navigation.scss";
+@import "./navigation/navigation.scss";
 @import "./dialogs.scss";
 @import "messages.scss";
 @import "mes-kebab.scss";
@@ -27,9 +27,9 @@
         padding: 10vh 16px 7vh 16px;
         background: $color-violet;
         grid-column: 1 / 2;
-        @media screen and (max-height: 750px) {
-            height: 750px;
-        }
+        // @media screen and (max-height: 750px) {
+        //     height: 750px;
+        // }
     }
     &__dialogs {
         // .chat__dialogs
@@ -38,9 +38,9 @@
         display: flex;
         flex-direction: column;
         border-right: 1px solid $color-border-light-gray;
-        @media screen and (max-height: 750px) {
-            height: 750px;
-        }
+        // @media screen and (max-height: 750px) {
+        //     height: 750px;
+        // }
     }
 
     &__messages {
@@ -49,8 +49,8 @@
         grid-column: 3 / 4;
         display: flex;
         flex-direction: column;
-        @media screen and (max-height: 750px) {
-            height: 750px;
-        }
+        // @media screen and (max-height: 750px) {
+        //     height: 750px;
+        // }
     }
 }

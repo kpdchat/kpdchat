@@ -39,7 +39,7 @@ export default function NavFolderItem() {
                     <h3 className='text-inter-16-400'>Новини</h3>
                 </div>
             </div>
-            <div className='folders__folder'>
+            {/* <div className='folders__folder'>
                 <div className="folders__title cursor-pointer">
                     <MdOutlineLocalMall size={17}/>
                     <h3 className='text-inter-16-400'>Послуги</h3>
@@ -50,7 +50,7 @@ export default function NavFolderItem() {
                     <MdFlipToFront size={17}/>
                     <h3 className='text-inter-16-400'>Інше</h3>
                 </div>
-            </div>
+            </div> */}
            
         </>
     )
