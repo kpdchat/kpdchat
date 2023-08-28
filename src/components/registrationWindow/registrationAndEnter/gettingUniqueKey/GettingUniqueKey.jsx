@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
+import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
 
-export default function GettingUniqueKey({uniKey}) {
-    const [copyActive, setCopyActive] = useState(false)
+export default function GettingUniqueKey({uniKey, setUniKey}) {
+    const state = useGettingUniqueKeyLogic({uniKey});
 
     return (
         <>
@@ -22,21 +23,26 @@ export default function GettingUniqueKey({uniKey}) {
                             <textarea
                                 className='scroll-bar'
                                 value={ uniKey }
+                                onChange={ (event) => setUniKey(event.target.value) }
                             />
                         </div>
 
                         <div className='copyKeyForm__buttons'>
                             <div className='copyKeyForm__buttons-copy'>
-                                <button>
+                                <button
+                                    onClick={ state.handleCopyChange }
+                                    className={ !state.copyActive ? 'active-copy' : 'inactive-copy' }
+                                >
                                     Скопіювати
                                 </button>
                             </div>
 
                             <div className='copyKeyForm__buttons-enter'>
                                 <button
-                                    className={ copyActive
-                                        ? 'active-button'
-                                        : 'inactive-button'
+                                    onClick={ state.handleEnterChange }
+                                    className={ state.copyActive
+                                        ? 'active-enter'
+                                        : 'inactive-enter'
                                     }>
                                     Увійти
                                 </button>

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import logo_kpd from '../../../images/registrationWindow/logo_kpd.png';
 import LanguageButton from './languageButton/LanguageButton';
-import LoginOrRegister from './loginOrRegister/LoginOrRegister';
+import LoginAndRegistration from './loginOrRegister/LoginAndRegistration';
 import GettingUniqueKey from './gettingUniqueKey/GettingUniqueKey';
 
-export default function Registration() {
+export default function RegistrationAndEnter() {
     const [uniKey, setUniKey] = useState('')
 
     return (
@@ -21,8 +21,8 @@ export default function Registration() {
                 </div>
 
                 { uniKey
-                    ? <GettingUniqueKey uniKey={ uniKey } />
-                    : <LoginOrRegister setUniKey={ setUniKey } />
+                    ? <GettingUniqueKey uniKey={ uniKey } setUniKey={ setUniKey } />
+                    : <LoginAndRegistration setUniKey={ setUniKey } />
                 }
             </div>
         </div>

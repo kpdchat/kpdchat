@@ -131,6 +131,7 @@
         .error {
             color: red;
             padding-top: 5px;
+            text-shadow: 1px 1px 0.5px red;
         }
 
         &__enter {
@@ -200,16 +201,29 @@
                         &-copy {
                             // .copyKeyForm__buttons-copy
 
-                            button {
+                            .active-copy {
                                 width: 100%;
-                                color: $color-blue;
+                                color: $color-white;
                                 font-family: $font-inter;
                                 font-size: 18px;
                                 font-weight: 500;
                                 line-height: 140%;
                                 padding: 16px 0;
                                 border-radius: 16px;
-                                background-color: $color-yellow;
+                                background-color: $color-violet;
+                                border: none;
+                            }
+
+                            .inactive-copy {
+                                width: 100%;
+                                color: $color-white;
+                                font-family: $font-inter;
+                                font-size: 18px;
+                                font-weight: 500;
+                                line-height: 140%;
+                                padding: 16px 0;
+                                border-radius: 16px;
+                                background-color: $color-background-light-grey;
                                 border: none;
                             }
                         }
@@ -217,7 +231,7 @@
                         &-enter {
                             // .copyKeyForm__buttons-enter
 
-                            .active-button {
+                            .active-enter {
                                 width: 100%;
                                 color: $color-white;
                                 text-align: center;
@@ -231,7 +245,7 @@
                                 border: none;
                             }
 
-                            .inactive-button {
+                            .inactive-enter {
                                 width: 100%;
                                 color: $color-white;
                                 text-align: center;

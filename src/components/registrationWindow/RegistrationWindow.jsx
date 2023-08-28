@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
-import Info from "./info/Info";
-import Registration from "./registration/Registration";
-import {Context} from "../../context/Context";
+import Info from './info/Info';
+import RegistrationAndEnter from './registrationAndEnter/RegistrationAndEnter';
+import {Context} from '../../context/Context';
 
 export default function RegistrationWindow() {
     const {isActive} = useContext(Context);
@@ -9,7 +9,7 @@ export default function RegistrationWindow() {
     return (
         <div className={ isActive ? 'display-none' : 'registration_window' }>
             <Info />
-            <Registration />
+            <RegistrationAndEnter />
         </div>
     );
 }

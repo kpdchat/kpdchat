@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../../../images/registrationWindow/puzzles_img.png";
+import img from '../../../images/registrationWindow/puzzles_img.png';
 
 export default function Info() {
     return (
@@ -12,7 +12,7 @@ export default function Info() {
                 </div>
 
                 <div className='info__img'>
-                    <img src={ img } alt="" />
+                    <img src={ img } alt='' />
                 </div>
 
                 <div className='info-feature'>
