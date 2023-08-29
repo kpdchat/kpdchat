@@ -9,13 +9,11 @@ export default function WindowChat() {
 
     return (
         <div className={ isActive ? 'chat' : "display-none" }>
-            {/* <div className='chat'> */ }
             <div className='container-grid'>
                 <ChatNavigation />
                 <ChatDialogs />
                 <ChatMessages />
             </div>
-            {/* </div > */ }
         </div>
 
     );

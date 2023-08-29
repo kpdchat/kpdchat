@@ -7,6 +7,9 @@ import {Context} from './context/Context'
 export default function App() {
     const [isActive, setIsActive] = useState(false);
 
+    // function onDisplay() {
+    //     setIsActive(true)
+    // }
 
     return (
         <Context.Provider value={ {isActive, setIsActive} }>
