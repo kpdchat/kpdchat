@@ -1,8 +1,8 @@
 .info {
     background-color: $color-violet;
     width: 35.42%;
-    height: 100%;
-    padding: 0 80px;
+    min-height: 100%;
+    padding: 20px 80px;
     display: flex;
     align-items: center;
 
@@ -15,22 +15,25 @@
         font-family: $font-lexend;
 
         h1 {
-            font-size: $f-size-48;
+            font-size: 24px;
             margin: 0 0 30px;
-            text-shadow: black 2px 2px;
             font-weight: $f-weight-300;
-            letter-spacing: 6px;
+            letter-spacing: 3.6px;
+            color: $color-white;
 
             span {
                 font-weight: $f-weight-800;
+                margin-right: 8px;
             }
         }
 
         p {
-            margin: 0 0 10px;
-            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: 0.9px;
+            margin-bottom: 10px;
+            font-size: 18px;
             font-family: $font-inter;
-            font-weight: $f-weight-400;
+            font-weight: $f-weight-500;
         }
     }
 
@@ -53,14 +56,22 @@
             font-size: 20px;
 
             h2 {
+                color: $color-yellow;
+                font-size: 18px;
+                font-style: normal;
+                line-height: 140%;
                 font-family: $font-lexend;
                 font-weight: $f-weight-800;
-                margin: 0 0 0 14px;
+                margin: 0 0 8px 14px;
             }
 
-            p {
-                font-size: 20px;
-                margin: 8px 0 0 14px;
+            span {
+                font-family: $font-inter;
+                //font-style: normal;
+                font-weight: $f-weight-500;
+                line-height: 140%;
+                font-size: 18px;
+                margin-left: 14px;
             }
         }
     }

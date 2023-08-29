@@ -1,21 +1,22 @@
-import React, { useState, Suspense } from "react";
-import RegistrationWindow from "./components/registrationWindow/RegistrationWindow";
-import WindowChat from "./components/chatWindow/WindowChat";
+import React, {useState} from 'react';
+import './styles/index.scss'
+import RegistrationWindow from './components/registrationWindow/RegistrationWindow';
+import WindowChat from './components/chatWindow/WindowChat';
+import {Context} from './context/Context'
 
 export default function App() {
-    const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState(false);
 
-    function onDisplay() {
-        setIsActive(true)
-    }
+    // function onDisplay() {
+    //     setIsActive(true)
+    // }
 
     return (
-        <Suspense fallback="...loading">
+        <Context.Provider value={ {isActive, setIsActive} }>
             <div className='app_wrapper'>
-                <RegistrationWindow onDisplay={ onDisplay } isActive={ isActive } />
-                <WindowChat isActive={isActive} />
+                <RegistrationWindow />
+                <WindowChat />
             </div>
-        </Suspense>
-
+        </Context.Provider>
     );
 }
