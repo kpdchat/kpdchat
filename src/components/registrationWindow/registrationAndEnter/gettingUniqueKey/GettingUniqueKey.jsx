@@ -23,6 +23,7 @@ export default function GettingUniqueKey({uniKey, setUniKey}) {
                             <textarea
                                 className='scroll-bar'
                                 value={ uniKey }
+                                readOnly
                                 onChange={ (event) => setUniKey(event.target.value) }
                             />
                         </div>

@@ -42,6 +42,8 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
                             rows='1'
                             placeholder='Посилання на фото'
+                            ref={state.textareaRef}
+                            onInput={state.onTextareaInput}
                             value={ state.profilePictureLink }
                             onChange={ state.onChangeImage }
                             onBlur={ state.onChangeImage }
@@ -58,6 +60,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }
+                            index={ el.alt}
                             key={ `avatar-${ el.alt }` } />)
                         }
                     </div>

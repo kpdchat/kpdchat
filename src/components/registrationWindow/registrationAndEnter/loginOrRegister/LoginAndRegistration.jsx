@@ -24,7 +24,7 @@ export default function LoginAndRegistration({setUniKey}) {
                     placeholder='Унікальний ідентифікатор'
                 />
             </div>
-            { state.uniKeyError && <p className='error'>{ state.uniKeyError }</p> }
+            { state.uniKeyError && <p className='uniKey-error'>{ state.uniKeyError }</p> }
 
             <div className='registration__authorization'>
                 <div className='registration__log-in'>

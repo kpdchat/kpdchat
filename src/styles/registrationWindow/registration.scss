@@ -127,10 +127,9 @@
             }
         }
 
-        .error {
+        .uniKey-error {
             color: red;
             padding-top: 5px;
-            text-shadow: 1px 1px 0.5px red;
         }
 
         &__enter {
@@ -180,7 +179,6 @@
                             border: 4px solid $color-blue;
                             border-radius: 16px;
                             width: 100%;
-                            height: 86px;
                             color: $color-text-grey;
                             font-family: $font-inter;
                             font-size: 18px;
@@ -188,6 +186,7 @@
                             line-height: 140%;
                             padding: 10px 24px;
                             resize: none;
+                            outline: none;
                         }
                     }
 
