@@ -8,9 +8,7 @@ export default function LoginAndRegistration({setUniKey}) {
     return (
         <>
             <div className='registration-block__description'>
-                <p>
-                    Для входу в чат потрібно ввести унікальний ключ
-                </p>
+                <p>Для входу в чат потрібно ввести унікальний ключ</p>
             </div>
 
             <div className='registration-block__input'>

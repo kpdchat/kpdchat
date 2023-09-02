@@ -9,7 +9,6 @@ export default function ModalRegistration({onClose, setUniKey}) {
 
     return (
         <>
-            <div className='modal-background' onClick={ onClose }></div>
             <div className='modal__content'>
 
                 <div className='modal__content-close'>
