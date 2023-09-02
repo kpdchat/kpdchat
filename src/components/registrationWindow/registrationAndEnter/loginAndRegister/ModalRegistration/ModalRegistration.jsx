@@ -9,7 +9,6 @@ export default function ModalRegistration({onClose, setUniKey}) {
 
     return (
         <>
-            <div className='modal-background' onClick={ onClose }></div>
             <div className='modal__content'>
 
                 <div className='modal__content-close'>
@@ -40,8 +39,10 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             tabIndex='2'
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
-                            rows='1'
+                            rows={ state.textareaRows ? 1 : 3 }
                             placeholder='Посилання на фото'
+                            ref={state.textareaRef}
+                            onInput={state.onTextareaInput}
                             value={ state.profilePictureLink }
                             onChange={ state.onChangeImage }
                             onBlur={ state.onChangeImage }
@@ -58,6 +59,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }
+                            index={ el.alt}
                             key={ `avatar-${ el.alt }` } />)
                         }
                     </div>

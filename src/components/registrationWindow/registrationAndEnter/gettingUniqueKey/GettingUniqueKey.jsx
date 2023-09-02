@@ -8,13 +8,11 @@ export default function GettingUniqueKey({uniKey, setUniKey}) {
         <>
             <div className='registration-block__enter'>
                 <div className='registration-block__enter-title'>
-                    <span>Вітаємо, реєстрація пройшла успішно!</span>
+                    <p>Вітаємо, реєстрація пройшла успішно!</p>
                 </div>
 
                 <div className='registration-block__enter-description'>
-                    <p>
-                        Скопіюй та збережи цей унікальний ідентифікатор, він є обовʼязковим для входу в обліковий запис.
-                    </p>
+                    <p>Скопіюй та збережи цей унікальний ключ, він є обовʼязковим для входу в обліковий запис.</p>
                 </div>
 
                 <div className='registration-block__enter-copyKey'>
@@ -23,6 +21,7 @@ export default function GettingUniqueKey({uniKey, setUniKey}) {
                             <textarea
                                 className='scroll-bar'
                                 value={ uniKey }
+                                readOnly
                                 onChange={ (event) => setUniKey(event.target.value) }
                             />
                         </div>

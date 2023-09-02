@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useRef, useState} from 'react';
 import axios from 'axios';
 
 export default function useModalRegistrationLogic({setUniKey}) {
@@ -16,23 +16,33 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [nicknameError, setNicknameError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
+    const textareaRef = useRef();
+    const [activeDogImg, setActiveDogImg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [textareaRows, setTextareaRows] = useState(true)
 
     // Nickname validation
     const validateNickname = (value) => {
         if (!value) {
             setNicknameError('Це поле обов\'язкове для заповнення');
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('Не меньше 4 і не більше 12 символів, без пробілів');
+            setNicknameError('Від 4 до 12 символів, без пробілів, тільки англійські літери і спецсимволи');
         } else {
             setNicknameError('');
         }
     }
 
     const onChangeNickname = (e) => {
-        const checkingForSpaces = e.target.value.replace(/\s/g, '');
+        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/]/g, '');
         setNickname(checkingForSpaces);
         validateNickname(e.target.value);
+    }
+
+    // Link Textarea
+    const onTextareaInput = (e) => {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 10 + 'px';
+        setProfilePictureLink(e.target.value);
     }
 
     // Link Validation
@@ -40,7 +50,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLinkError('');
 
         if (!value) {
-            setProfilePictureLinkError('Це поле обов\'язкове для заповнення');
+            setProfilePictureLinkError('Це поле обов\'язкове для заповнення, формат посилання .jpg/.jpeg');
         }
     }
 
@@ -51,12 +61,12 @@ export default function useModalRegistrationLogic({setUniKey}) {
             });
 
             if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('Url не коректний');
+                setProfilePictureLinkError('Посилання некоректне');
                 return false;
             }
             return true;
         } catch (error) {
-            setProfilePictureLinkError('Url не коректний');
+            setProfilePictureLinkError('Посилання некоректне');
             return false;
         }
     }
@@ -67,9 +77,12 @@ export default function useModalRegistrationLogic({setUniKey}) {
     }
 
     // Insert Dog Links
-    const onePickAvatar = (url) => {
+    const onePickAvatar = (url, index) => {
         setProfilePictureLink(url);
+        setActiveDogImg(index);
         setProfilePictureLinkError('');
+        setTextareaRows(false);
+        // onTextareaInput({target: {value: url}});
     }
 
     // Submitting form data
@@ -103,8 +116,12 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLink,
         profilePictureLinkError,
         setProfilePictureLinkError,
+        activeDogImg,
         isLoading,
         mops,
+        textareaRef,
+        textareaRows,
+        onTextareaInput,
         onChangeNickname,
         onChangeImage,
         onePickAvatar,
