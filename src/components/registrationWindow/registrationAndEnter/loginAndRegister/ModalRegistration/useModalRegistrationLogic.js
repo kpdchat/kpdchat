@@ -16,9 +16,10 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [nicknameError, setNicknameError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
-    const textareaRef = useRef()
-    const [activeDogImg,setActiveDogImg] = useState(null);
+    const textareaRef = useRef();
+    const [activeDogImg, setActiveDogImg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [textareaRows, setTextareaRows] = useState(true)
 
     // Nickname validation
     const validateNickname = (value) => {
@@ -37,6 +38,13 @@ export default function useModalRegistrationLogic({setUniKey}) {
         validateNickname(e.target.value);
     }
 
+    // Link Textarea
+    const onTextareaInput = (e) => {
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 10 + 'px';
+        setProfilePictureLink(e.target.value);
+    }
+
     // Link Validation
     const validateImageValue = (value) => {
         setProfilePictureLinkError('');
@@ -46,12 +54,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
-    const onTextareaInput = (e) => {
-        textareaRef.current.style.height = 'auto'
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 10 + "px"
-        setProfilePictureLink(e.target.value)
-    }
-
     const validateImageOnServer = async (url) => {
         try {
             const response = await axios.head(url, {
@@ -59,12 +61,12 @@ export default function useModalRegistrationLogic({setUniKey}) {
             });
 
             if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('Url не коректний');
+                setProfilePictureLinkError('Посилання некоректне');
                 return false;
             }
             return true;
         } catch (error) {
-            setProfilePictureLinkError('Url не коректний');
+            setProfilePictureLinkError('Посилання некоректне');
             return false;
         }
     }
@@ -75,10 +77,12 @@ export default function useModalRegistrationLogic({setUniKey}) {
     }
 
     // Insert Dog Links
-    const onePickAvatar = (url, index, e) => {
+    const onePickAvatar = (url, index) => {
         setProfilePictureLink(url);
         setActiveDogImg(index);
         setProfilePictureLinkError('');
+        setTextareaRows(false);
+        // onTextareaInput({target: {value: url}});
     }
 
     // Submitting form data
@@ -116,6 +120,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         isLoading,
         mops,
         textareaRef,
+        textareaRows,
         onTextareaInput,
         onChangeNickname,
         onChangeImage,

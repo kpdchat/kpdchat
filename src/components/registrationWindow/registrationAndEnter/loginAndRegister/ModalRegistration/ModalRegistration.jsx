@@ -40,7 +40,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             tabIndex='2'
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
-                            rows='1'
+                            rows={ state.textareaRows ? 1 : 3 }
                             placeholder='Посилання на фото'
                             ref={state.textareaRef}
                             onInput={state.onTextareaInput}

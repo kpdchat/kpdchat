@@ -21,6 +21,7 @@
 
         .close {
             font-size: 24px;
+            cursor: pointer;
         }
     }
 
@@ -73,7 +74,7 @@
             textarea {
                 resize: none;
                 padding: 16px 28px;
-                max-height: 100px
+                max-height: 106px
             }
         }
 

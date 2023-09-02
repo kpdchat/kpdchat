@@ -18,17 +18,17 @@ export default function Info() {
                 <div className='info-feature'>
                     <div className='info-feature__title'>
                         <h2>Швидкий</h2>
-                        <span>Повідомлення надходять дуже швидко.</span>
+                        <p>Повідомлення надходять дуже швидко.</p>
                     </div>
 
                     <div className='info-feature__title'>
                         <h2>Зручний</h2>
-                        <span>Простий та інтуїтивний інтерфейс.</span>
+                        <p>Простий та інтуїтивний інтерфейс.</p>
                     </div>
 
                     <div className='info-feature__title'>
                         <h2>Соціальний</h2>
-                        <span>Безліч групових чатів.</span>
+                        <p>Безліч групових чатів.</p>
                     </div>
                 </div>
             </div>
