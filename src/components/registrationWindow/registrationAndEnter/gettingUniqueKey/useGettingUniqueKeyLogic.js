@@ -3,8 +3,8 @@ import {useState} from 'react';
 export default function useGettingUniqueKeyLogic({uniKey}) {
     const [copyActive, setCopyActive] = useState(false)
 
-    const handleCopyChange = (event) => {
-        event.preventDefault();
+    const handleCopyChange = (e) => {
+        e.preventDefault();
         setCopyActive(true)
 
         // Copy to clipboard
@@ -17,8 +17,8 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
             });
     }
 
-    const handleEnterChange = (event) => {
-        event.preventDefault();
+    const handleEnterChange = (e) => {
+        e.preventDefault();
     }
 
     return {

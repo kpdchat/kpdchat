@@ -1,6 +1,7 @@
 import React from 'react';
 import useLoginAndRegistrationLogic from './useLoginAndRegistrationLogic';
-import ModalRegistration from './ModalRegistration/ModalRegistration';
+import ModalRegistration from './modalRegistration/ModalRegistration';
+import LoadingOnSubmitKey from './LoadingOnSubmitKey';
 
 export default function LoginAndRegistration({setUniKey}) {
     const state = useLoginAndRegistrationLogic();
@@ -21,12 +22,17 @@ export default function LoginAndRegistration({setUniKey}) {
                     type='text'
                     placeholder='Унікальний ключ'
                 />
+                { state.isLoading && <LoadingOnSubmitKey /> }
             </div>
             { state.uniKeyError && <p className='uniKey-error'>{ state.uniKeyError }</p> }
 
             <div className='registration__authorization'>
                 <div className='registration__log-in'>
-                    <button onClick={ state.onDisplay }>Увійти</button>
+                    <button
+                        onClick={ state.onUniqueKeySubmit }
+                    >
+                        Увійти
+                    </button>
                 </div>
 
                 <div className='registration-divider'>
@@ -34,9 +40,12 @@ export default function LoginAndRegistration({setUniKey}) {
                 </div>
 
                 <div className='registration__sing-in'>
-                    <button onClick={ () => state.setModal(true) }>Зареєструватись</button>
+                    <button
+                        onClick={ () => state.setModal(true) }
+                    >
+                        Зареєструватись
+                    </button>
                 </div>
-
                 { state.modal && <ModalRegistration setUniKey={ setUniKey } onClose={ () => state.setModal(false) } /> }
             </div>
         </>
