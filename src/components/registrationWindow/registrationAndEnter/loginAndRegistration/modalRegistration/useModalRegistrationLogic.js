@@ -33,7 +33,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
     }
 
     const onChangeNickname = (e) => {
-        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/]/g, '');
+        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
         setNickname(checkingForSpaces);
         validateNickname(e.target.value);
     }

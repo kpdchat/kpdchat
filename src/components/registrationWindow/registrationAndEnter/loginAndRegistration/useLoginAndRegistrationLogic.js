@@ -43,21 +43,24 @@ export default function useLoginAndRegistrationLogic() {
     const onUniqueKeySubmit = async (e) => {
         e.preventDefault();
         if (uniKeyError) return;
-
-        try {
-            setIsLoading(true);
-            const validateKey = await validateUnikeyOnServer(uniKey);
-            if (validateKey) {
-                const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
-                    uniqueKey: uniKey,
-                })
-                console.log(data)
-                setIsActive(true);
+        if (uniKey.trim() === '') {
+            setUniKeyError('Це поле обов\'язкове для заповнення');
+        } else {
+            try {
+                setIsLoading(true);
+                const validateKey = await validateUnikeyOnServer(uniKey);
+                if (validateKey) {
+                    const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+                        uniqueKey: uniKey,
+                    })
+                    console.log(data)
+                    setIsActive(true);
+                }
+            } catch (e) {
+                console.log(e)
+            } finally {
+                setIsLoading(false)
             }
-        } catch (e) {
-            console.log(e)
-        } finally {
-            setIsLoading(false)
         }
     }
 

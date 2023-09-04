@@ -2,7 +2,7 @@ import React from 'react';
 import {GrClose} from 'react-icons/gr'
 import useModalRegistrationLogic from './useModalRegistrationLogic';
 import MopsAvatars from './MopsAvatars';
-import LoadingOnSubmit from './LoadingOnSubmit';
+import LoadingOnSubmitForm from './LoadingOnSubmitForm';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
@@ -72,7 +72,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         </button>
                     </div>
                 </form>
-                { state.isLoading && <LoadingOnSubmit /> }
+                { state.isLoading && <LoadingOnSubmitForm /> }
             </div>
         </>
     );
