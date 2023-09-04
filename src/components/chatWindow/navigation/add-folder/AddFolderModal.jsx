@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { useEffect } from "react";
+import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 
 
 const icons = {
@@ -28,7 +29,7 @@ export default function AddFolderModal() {
         handleSubmit,
         formState: { errors },
         reset,
-    } = useForm({ defaultValues: editFolder })
+    } = useForm({ defaultValues: editFolder.id ? editFolder : { "IconTag": "default" } })
     function onFormSubmit(data) {
         console.log(data);
         reset()
@@ -50,8 +51,8 @@ export default function AddFolderModal() {
                 <div className="folder-modal__form form">
                     <form onSubmit={handleSubmit(onFormSubmit)}>
                         <div className="form__name-container">
-                            <div className="form__icon-chose" 
-                            onClick={() => setIconChose(true)}>
+                            <div className="form__icon-chose"
+                                onClick={() => setIconChose(true)}>
                                 {iconName}
                             </div>
                             <input
@@ -60,24 +61,102 @@ export default function AddFolderModal() {
                                 className="form__folder-name text-inter-16-400"
                             />
                             <div className={iconChose ? "form__icon" : "display-none"}>
-                                {Object.keys(icons).map(el => <label className="icon" 
-                                key={el} 
-                                onClick={() => {
-                                    setIconChose(false)
-                                    setIconName(icons[el])
-                                    console.log(el);
-                                }}>
+                                {Object.keys(icons).map(el => <label className="icon"
+                                    key={el}
+                                    onClick={() => {
+                                        setIconChose(false)
+                                        setIconName(icons[el])
+                                        console.log(el);
+                                    }}>
                                     {icons[el]}
-                                    <input {...register("IconTag")} type="radio" 
-                                    value={el} 
-                                    className="display-none" />
+                                    <input {...register("IconTag")} type="radio"
+                                        value={el}
+                                        className="display-none" />
                                 </label>)}
                             </div>
                         </div>
-                        <div className="form__chat-container">
-                            <input className="form__search-chat text-inter-16-400" placeholder="Назва чату або нікнейм"/>
-                        </div>
-                        <input type="submit" />
+                        <input className="form__search-chat text-inter-16-400" placeholder="Назва чату або нікнейм" />
+                        <ul className="form__chat-container scroll-bar">
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()}
+                                     type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                            <li className="form__chat">
+                                <label>
+                                    <div className="flex-container">
+                                        <img src={chat_logo} alt="" />
+                                        <h3 className="text-inter-18-600">Настолки в Харкові</h3>
+                                    </div>
+
+                                    <input {...register("publicChatIds")}
+                                    value={Math.random()} type="checkbox" />
+                                </label>
+                            </li>
+                        </ul>
+                        <input type="submit" className="text-inter-16-600" value="Створити" />
                     </form>
                 </div>
             </div>
