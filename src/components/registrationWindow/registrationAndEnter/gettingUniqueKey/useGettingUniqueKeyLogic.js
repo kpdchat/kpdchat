@@ -1,28 +1,54 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
+import axios from 'axios';
+import {Context} from '../../../../context/Context';
 
 export default function useGettingUniqueKeyLogic({uniKey}) {
-    const [copyActive, setCopyActive] = useState(false)
+    const [copyActive, setCopyActive] = useState(false);
+    const [copyActiveMessage, setCopyActiveMessage] = useState('')
+    const [isLoading, setIsLoading] = useState(false);
+    const {setIsActive} = useContext(Context);
 
-    const handleCopyChange = (event) => {
-        event.preventDefault();
-        setCopyActive(true)
+
+    // Copy Unique Key
+    const handleCopyChange = (e) => {
+        e.preventDefault();
+        setCopyActive(true);
 
         // Copy to clipboard
         navigator.clipboard.writeText(uniKey)
             .then(() => {
-                console.log('Текст скопирован:', uniKey); // Добавить попап что ключ скопирован в буфер обмена
+                setCopyActiveMessage('Унікальний ключ скопійовано');
+                // setTimeout( () => {
+                //     setCopyActiveMessage('');
+                // }, 2000);
             })
             .catch((error) => {
-                console.error('Ошибка при копировании:', error); // Возникла ошибка при копировании
+                console.error('Помилка при копіюванні ключа:', error);
             });
     }
 
-    const handleEnterChange = (event) => {
-        event.preventDefault();
+    // Enter to Chat
+    const handleEnterChange = async (e) => {
+        e.preventDefault();
+        if (copyActiveMessage === '') return;
+        try {
+            setIsLoading(true);
+                const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+                    uniqueKey: uniKey,
+                });
+                console.log(data);
+                setIsActive(true);
+        } catch (e) {
+            console.log(e);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return {
         copyActive,
+        copyActiveMessage,
+        isLoading,
         handleCopyChange,
         handleEnterChange,
     }

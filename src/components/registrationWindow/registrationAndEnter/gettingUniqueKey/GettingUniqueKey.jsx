@@ -1,7 +1,8 @@
 import React from 'react';
 import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
+import LoadingOnEnterChat from './LoadingOnEnterChat';
 
-export default function GettingUniqueKey({uniKey, setUniKey}) {
+export default function GettingUniqueKey({uniKey}) {
     const state = useGettingUniqueKeyLogic({uniKey});
 
     return (
@@ -19,12 +20,12 @@ export default function GettingUniqueKey({uniKey, setUniKey}) {
                     <form className='copyKeyForm'>
                         <div className='copyKeyForm__input'>
                             <textarea
-                                className='scroll-bar'
                                 value={ uniKey }
                                 readOnly
-                                onChange={ (event) => setUniKey(event.target.value) }
                             />
+                            { state.isLoading && <LoadingOnEnterChat /> }
                         </div>
+                        { state.copyActiveMessage && <p className='copy-message'>{ state.copyActiveMessage }</p> }
 
                         <div className='copyKeyForm__buttons'>
                             <div className='copyKeyForm__buttons-copy'>

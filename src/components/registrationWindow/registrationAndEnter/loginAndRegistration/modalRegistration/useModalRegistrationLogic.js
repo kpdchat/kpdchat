@@ -26,14 +26,14 @@ export default function useModalRegistrationLogic({setUniKey}) {
         if (!value) {
             setNicknameError('Це поле обов\'язкове для заповнення');
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('Від 4 до 12 символів, без пробілів, тільки англійські літери і спецсимволи');
+            setNicknameError('Від 4 до 12 символів, без пробілів, тільки латиниця і спецсимволи');
         } else {
             setNicknameError('');
         }
     }
 
     const onChangeNickname = (e) => {
-        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/]/g, '');
+        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
         setNickname(checkingForSpaces);
         validateNickname(e.target.value);
     }
@@ -82,7 +82,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setActiveDogImg(index);
         setProfilePictureLinkError('');
         setTextareaRows(false);
-        // onTextareaInput({target: {value: url}});
     }
 
     // Submitting form data

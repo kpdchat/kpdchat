@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import logo_kpd from '../../../images/registrationWindow/logo_kpd.png';
 import LanguageButton from './languageButton/LanguageButton';
-import LoginAndRegistration from './loginAndRegister/LoginAndRegistration';
+import LoginAndRegistration from './loginAndRegistration/LoginAndRegistration';
 import GettingUniqueKey from './gettingUniqueKey/GettingUniqueKey';
 
 export default function RegistrationAndEnter() {

@@ -13,7 +13,7 @@
     border-radius: 16px;
     background-color: $color-violet-blue;
     padding: 16px;
-    margin-top: -334px;
+    margin-top: -264px;
 
     &-close {
         // .modal__content-close
@@ -31,7 +31,7 @@
         .title {
             color: $color-light-black;
             font-family: $font-inter;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: $f-weight-400;
             margin-bottom: 32px;
             text-align: center;
@@ -40,6 +40,7 @@
         .add-link {
             width: 100%;
             margin-bottom: 32px;
+            border-radius: 16px;
 
             input, textarea {
                 width: 100%;
@@ -150,7 +151,7 @@
         margin-bottom: 16px;
     }
 
-    .loading-container {
+    .loading-form-container {
         position: absolute;
         top: 0;
         left: 0;
@@ -161,7 +162,7 @@
         background-color: rgba(255, 255, 255, 0.5);
     }
 
-    .loading {
+    .loading-form {
         display: flex;
         align-items: center;
     }

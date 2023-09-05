@@ -15,7 +15,6 @@
             align-items: center;
             gap: 4px;
             margin: 40px 80px 0;
-            //cursor: pointer;
 
             .active {
                 width: 40px;
@@ -100,7 +99,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            background-color: $color-grey;
+            border: 1px solid $color-blue;
             border-radius: 16px;
             position: relative;
 
@@ -110,12 +109,11 @@
                 &:invalid {
                     font-family: $font-inter;
                     border: 2px solid transparent;
-                    background-color: $color-grey;
-                    outline: 0;
-                    font-size: 20px;
+                    outline: none;
+                    font-size: 18px;
                     width: 100%;
                     border-radius: 16px;
-                    padding: 24px 16px;
+                    padding: 16px 28px;
                     cursor: pointer;
                 }
 
@@ -124,6 +122,26 @@
                     outline: none;
                     box-shadow: none;
                 }
+
+                &::placeholder {
+                    color: $color-light-black;
+                }
+            }
+
+            .loading-key-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+
+            .loading-key {
+                display: flex;
+                align-items: center;
             }
         }
 
@@ -173,15 +191,22 @@
                     gap: 32px;
                     flex-direction: column;
 
+                    .copy-message {
+                        margin: -26px 0 -26px;
+                        color: $color-blue;
+                    }
+
+
                     &__input {
                         // .copyKeyForm__input
                         width: 100%;
+                        position: relative;
 
                         textarea {
                             border: 4px solid $color-blue;
                             border-radius: 16px;
                             width: 100%;
-                            color: $color-text-grey;
+                            color: $color-light-black;
                             font-family: $font-inter;
                             font-size: 18px;
                             font-weight: 500;
@@ -189,6 +214,22 @@
                             padding: 10px 24px;
                             resize: none;
                             outline: none;
+                        }
+
+                        .loading-enterchat-container {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            justify-content: center;
+                            background-color: rgba(255, 255, 255, 0.5);
+                        }
+
+                        .loading-enterchat {
+                            display: flex;
+                            align-items: center;
                         }
                     }
 
@@ -270,7 +311,7 @@
     &__authorization {
         // .registration__authorization
         width: 100%;
-        margin-top: 30px;
+        margin-top: 28px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -282,6 +323,7 @@
         // .registration__log-in
         width: 100%;
         text-align: center;
+        border: 2px $color-violet solid;
         background-color: $color-violet;
         border-radius: 16px;
 
@@ -337,7 +379,7 @@
         button {
             width: 100%;
             height: 60px;
-            color: $color-light-violet;
+            color: $color-light-black;
             background-color: $color-white;
             border: none;
             font-size: 20px;
