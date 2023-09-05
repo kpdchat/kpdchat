@@ -30,7 +30,7 @@
         //.form__name-container
         display: flex;
         position: relative;
-        margin-bottom: 16px;
+        // margin-bottom: 16px;
         padding: 8px 0;
 
     }
@@ -57,7 +57,7 @@
 
         &:focus-visible {
             outline: none;
-            border: 1px solid $color-border-light-gray;
+            border: 1px solid $color-black;
         }
     }
 
@@ -74,8 +74,13 @@
         left: 0px;
     }
 
+    &__error {
+        color: $color-red;
+        margin-left: 72px;
+    }
+
     &__search-chat {
-        margin-bottom: 16px;
+        margin: 16px 0;
         width: 100%;
         background: url(../../../images/chat-window/search.svg) 15px no-repeat;
         border: none;
@@ -98,13 +103,19 @@
         color: $color-white;
         border-radius: 8px;
     }
+
     &__chat-container {
+        margin-bottom: 16px;
+        height: 349px;
+        // overflow-y: hidden;
+        overflow-x: hidden;
+
+    }
+
+    ul {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        margin-bottom: 16px;
-        max-height: 344px;
-        overflow-y: scroll;
     }
 
     &__chat {
@@ -137,6 +148,7 @@
             appearance: none;
             -moz-appearance: none;
             -webkit-appearance: none;
+
             &:checked {
                 &::before {
                     content: '';
@@ -147,10 +159,15 @@
                     top: 0;
                     right: 0;
                     background: url(../../../images/chat-window/add-folder-icon.png) center no-repeat;
-    
+
                 }
             }
         }
+    }
+
+    &__chat-count {
+        color: $color-violet;
+        margin-bottom: 16px;
     }
 }
 
