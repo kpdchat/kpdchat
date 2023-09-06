@@ -1,5 +1,5 @@
 import React from "react";
-import { MdBorderAll, MdOutlineLockOpen, MdOutlinePerson3, MdWorkOutline, MdOutlineNewspaper, MdOutlineLocalMall, MdFlipToFront } from "react-icons/md";
+import { MdBorderAll, MdOutlineLockOpen, MdOutlinePerson3, MdWorkOutline, MdOutlineNewspaper } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 
 
@@ -17,25 +17,25 @@ export default function NavFolderItem() {
             </div>
             <div className='folders__folder'>
                 <div className="folders__title cursor-pointer">
-                    <MdOutlineLockOpen size={17}/>
+                    <MdOutlineLockOpen size={17} />
                     <h3 className='text-inter-16-400'>Приватні</h3>
                 </div>
             </div>
             <div className='folders__folder'>
                 <div className="folders__title cursor-pointer">
-                    <MdOutlinePerson3 size={17}/>
+                    <MdOutlinePerson3 size={17} />
                     <h3 className='text-inter-16-400'>Друзі</h3>
                 </div>
             </div>
             <div className='folders__folder'>
                 <div className="folders__title cursor-pointer">
-                    <MdWorkOutline size={17}/>
+                    <MdWorkOutline size={17} />
                     <h3 className='text-inter-16-400'>Робота</h3>
                 </div>
             </div>
             <div className='folders__folder'>
                 <div className="folders__title cursor-pointer">
-                    <MdOutlineNewspaper size={17}/>
+                    <MdOutlineNewspaper size={17} />
                     <h3 className='text-inter-16-400'>Новини</h3>
                 </div>
             </div>
@@ -51,7 +51,7 @@ export default function NavFolderItem() {
                     <h3 className='text-inter-16-400'>Інше</h3>
                 </div>
             </div> */}
-           
+
         </>
     )
 }

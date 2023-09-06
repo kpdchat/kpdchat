@@ -3,7 +3,6 @@ import AddFolderModal from "./AddFolderModal";
 import { AiOutlineFolderAdd } from "react-icons/ai";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
-import { MdTrendingUp } from "react-icons/md";
 
 
 export default function AddFolder() {

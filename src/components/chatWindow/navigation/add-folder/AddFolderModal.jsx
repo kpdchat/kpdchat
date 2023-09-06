@@ -1,6 +1,6 @@
 import React from "react";
 import { MdOutlineClose } from "react-icons/md";
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useState, useEffect, useMemo } from "react";
 import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
@@ -51,7 +51,7 @@ const chats = [
 ]
 
 
-export default function AddFolderModal({setIsModal}) {
+export default function AddFolderModal({ setIsModal }) {
     const [iconName, setIconName] = useState(icons.default)
     const [iconChose, setIconChose] = useState(false)
     const [chatCount, setChatCount] = useState(0)
@@ -66,12 +66,12 @@ export default function AddFolderModal({setIsModal}) {
         reset,
         getValues,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "all" })
-    
+
     const filteredChats = useMemo(() => {
         return chats.filter(chat => {
             return chat.title.toLowerCase().includes(query.toLowerCase())
         })
-    }, [chats, query])
+    }, [query])
 
     function onFormSubmit(data) {
         console.log(data);
@@ -100,7 +100,7 @@ export default function AddFolderModal({setIsModal}) {
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
                     <h3 className="text-inter-18-600">Створити папку</h3>
-                    <MdOutlineClose className="cursor-pointer" size={24} onClick={() =>setIsModal(prev => !prev)}/>
+                    <MdOutlineClose className="cursor-pointer" size={24} onClick={() => setIsModal(prev => !prev)} />
                 </div>
                 <div className="folder-modal__form form">
                     <form onSubmit={handleSubmit(onFormSubmit)}>
