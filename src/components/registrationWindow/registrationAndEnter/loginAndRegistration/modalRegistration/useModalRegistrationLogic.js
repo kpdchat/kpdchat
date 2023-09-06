@@ -50,7 +50,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLinkError('');
 
         if (!value) {
-            setProfilePictureLinkError('Це поле обов\'язкове для заповнення, формат посилання .jpg/.jpeg');
+            setProfilePictureLinkError('Це поле обов\'язкове для заповнення');
         }
     }
 
