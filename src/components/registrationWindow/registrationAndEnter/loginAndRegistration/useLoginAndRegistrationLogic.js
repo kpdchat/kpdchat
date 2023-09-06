@@ -1,19 +1,35 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {Context} from '../../../../context/Context';
 import axios from 'axios';
+import {useTranslation} from 'react-i18next';
 
 export default function useLoginAndRegistrationLogic() {
     const [uniKey, setUniKey] = useState('');
     const [uniKeyError, setUniKeyError] = useState('');
+    const [notFoundUserError, setNotFoundUserError] = useState('');
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const {setIsActive} = useContext(Context);
+    const { t, i18n } = useTranslation();
+
+    // Update text Error
+    const updateUniKeyError = () => {
+        setUniKeyError('');
+        setNotFoundUserError('');
+        if (uniKey && !uniKey.trim()) {
+            setUniKeyError(t('registration.error-message'));
+        }
+    }
+
+    useEffect( () => {
+        updateUniKeyError();
+    }, [i18n.language]);
 
     // Validation Uniquekey
     const uniKeyValidate = (value) => {
         setUniKeyError('');
         if (!value) {
-            setUniKeyError('Це поле обов\'язкове для заповнення');
+            setUniKeyError(t('registration.error-message'));
         }
     }
 
@@ -29,12 +45,12 @@ export default function useLoginAndRegistrationLogic() {
                 uniquekey: key,
             });
             if (response.status !== 200) {
-                setUniKeyError('Користувача не знайдено');
+                setNotFoundUserError(t('registration.input-unikey-error'));
                 return false;
             }
             return true;
         } catch (error) {
-            setUniKeyError('Користувача не знайдено');
+            setNotFoundUserError(t('registration.input-unikey-error'));
             return false;
         }
     }
@@ -44,7 +60,7 @@ export default function useLoginAndRegistrationLogic() {
         e.preventDefault();
         if (uniKeyError) return;
         if (uniKey.trim() === '') {
-            setUniKeyError('Це поле обов\'язкове для заповнення');
+            setUniKeyError(t('registration.error-message'));
         } else {
             try {
                 setIsLoading(true);
@@ -68,6 +84,7 @@ export default function useLoginAndRegistrationLogic() {
     return {
         uniKey,
         uniKeyError,
+        notFoundUser: notFoundUserError,
         modal,
         setModal,
         isLoading,

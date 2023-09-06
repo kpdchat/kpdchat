@@ -5,7 +5,7 @@ import LoginAndRegistration from './loginAndRegistration/LoginAndRegistration';
 import GettingUniqueKey from './gettingUniqueKey/GettingUniqueKey';
 
 export default function RegistrationAndEnter() {
-    const [uniKey, setUniKey] = useState('')
+    const [uniKey, setUniKey] = useState('');
 
     return (
         <div className='registration'>

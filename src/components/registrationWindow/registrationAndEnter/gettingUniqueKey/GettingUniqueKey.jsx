@@ -1,9 +1,11 @@
 import React from 'react';
 import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
 import LoadingOnEnterChat from './LoadingOnEnterChat';
+import {useTranslation} from 'react-i18next';
 
 export default function GettingUniqueKey({uniKey}) {
     const state = useGettingUniqueKeyLogic({uniKey});
+    const { t } = useTranslation();
 
     return (
         <>

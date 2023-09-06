@@ -1,5 +1,6 @@
 import {useRef, useState} from 'react';
 import axios from 'axios';
+import {useTranslation} from 'react-i18next';
 
 export default function useModalRegistrationLogic({setUniKey}) {
     // Array avatars Mops
@@ -14,21 +15,27 @@ export default function useModalRegistrationLogic({setUniKey}) {
     // States
     const [nickname, setNickname] = useState('');
     const [nicknameError, setNicknameError] = useState('');
+    const [nicknameLengthError, setNicknameLengthError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
     const textareaRef = useRef();
     const [activeDogImg, setActiveDogImg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [textareaRows, setTextareaRows] = useState(true)
+    const [textareaRows, setTextareaRows] = useState(true);
+    const { t, i18n } = useTranslation();
+
+    // Update Nickname and Profile Link Error
+
 
     // Nickname validation
     const validateNickname = (value) => {
         if (!value) {
-            setNicknameError('Це поле обов\'язкове для заповнення');
+            setNicknameError(t ('registration.error-message'));
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('Від 4 до 12 символів, без пробілів, тільки латиниця і спецсимволи');
+            setNicknameLengthError(t('registration.input-nickname-error'));
         } else {
             setNicknameError('');
+            setNicknameLengthError('');
         }
     }
 
@@ -110,6 +117,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         nickname,
         setNickname,
         nicknameError,
+        nicknameLengthError,
         setNicknameError,
         profilePictureLink,
         setProfilePictureLink,
