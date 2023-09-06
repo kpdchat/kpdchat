@@ -53,7 +53,8 @@ export default function useLoginAndRegistrationLogic() {
                     const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
                         uniqueKey: uniKey,
                     })
-                    console.log(data)
+                    console.log(data);
+                    localStorage.setItem('user', JSON.stringify(data));
                     setIsActive(true);
                 }
             } catch (e) {

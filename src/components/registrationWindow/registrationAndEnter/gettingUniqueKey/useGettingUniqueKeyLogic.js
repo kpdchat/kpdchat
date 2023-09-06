@@ -18,9 +18,6 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         navigator.clipboard.writeText(uniKey)
             .then(() => {
                 setCopyActiveMessage('Унікальний ключ скопійовано');
-                // setTimeout( () => {
-                //     setCopyActiveMessage('');
-                // }, 2000);
             })
             .catch((error) => {
                 console.error('Помилка при копіюванні ключа:', error);
@@ -37,6 +34,7 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
                     uniqueKey: uniKey,
                 });
                 console.log(data);
+                localStorage.setItem('user', JSON.stringify(data));
                 setIsActive(true);
         } catch (e) {
             console.log(e);
