@@ -13,8 +13,10 @@ export default function WindowChat() {
     const user = JSON.parse(localStorage.getItem('user'))
     const serverUser = useSelector(selectUser)
     useEffect(() => {
-        dispatch(fetchUser(user.id))
-    }, [user.id, dispatch])
+        if(user?.id) {
+            dispatch(fetchUser(user.id))
+        }
+    }, [user?.id, dispatch])
     function onContextClick(e) {
         e.preventDefault()
     }
