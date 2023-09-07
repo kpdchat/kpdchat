@@ -1,14 +1,17 @@
 import React from "react";
-import { MdOutlineTextsms, MdOutlineDarkMode } from "react-icons/md";
+import { MdOutlineTextsms, MdOutlineDarkMode, MdOutlineFolderShared } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import NavFolderItem from './NavFolderItem'
 import NavSettings from "./NavSettings";
 import NavInfo from "./NavInfo";
 import AddChat from "./add-chat/AddChat";
 import AddFolder from "./add-folder/AddFolder";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../store/selectors";
 
 export default function ChatNavigation() {
     const { t } = useTranslation()
+    const user = useSelector(selectUser)
 
     return (
         <section className='chat__navigation navigation'>
@@ -18,11 +21,19 @@ export default function ChatNavigation() {
                     <AddFolder />
                 </div>
                 <div className='folders__container'>
-                    <NavFolderItem />
+                    <div className='folders__folder'>
+                        <div className="folders__title cursor-pointer">
+                            <MdOutlineFolderShared size={24} />
+                            <h3 className='text-inter-16-400'>{t('navigation.mine')}</h3>
+                        </div>
+                        <h3 className='text-inter-16-400'>31</h3>
+                    </div>
+                    {user?.folders?.map(folder => <NavFolderItem key={folder.id} folder={folder} />)}
+
                 </div>
                 <div className="folders__public">
                     <div className="folders__title cursor-pointer">
-                        <MdOutlineTextsms size={17} />
+                        <MdOutlineTextsms size={24} />
                         <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                     </div>
                 </div>
@@ -30,7 +41,7 @@ export default function ChatNavigation() {
             <div className='navigation__settings settings'>
                 <NavSettings />
                 <NavInfo />
-                <MdOutlineDarkMode size={35}/>
+                <MdOutlineDarkMode size={35} />
             </div>
         </section>
     )

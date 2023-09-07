@@ -12,7 +12,7 @@ export default function MessageTitleKebab() {
     const { t } = useTranslation()
 
     function onOutClick() {
-        dispatch(setModalOpen())
+        dispatch(setModalOpen(-1))
     }
 
     return (

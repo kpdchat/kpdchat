@@ -1,6 +1,6 @@
 import React from "react";
 import AddFolderModal from "./AddFolderModal";
-import { AiOutlineFolderAdd } from "react-icons/ai";
+import { MdOutlineFolderSpecial } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ export default function AddFolder() {
     return (
         <>
             <div className="add__item cursor-pointer" onClick={onAddFolderClick}>
-                <AiOutlineFolderAdd size={24} />
+                <MdOutlineFolderSpecial size={24} />
                 <h2 className="text-inter-18-600">{t('navigation.folder')}</h2>
             </div>
             {isModal && <AddFolderModal setIsModal={setIsModal}/>}

@@ -146,12 +146,21 @@
 }
 
 .active-folder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
     color: $color-yellow;
 }
 
 .active-kebab {
     background: $background-active-lilac;
 }
+
 .flex-container {
     display: flex;
+}
+
+.mt-8px {
+    margin-top: 8px;
 }

@@ -1,6 +1,9 @@
 @import "./folder-modal.scss";
 @import "./settings-modal.scss";
 @import "./info-modal.scss";
+@import "./folder-kebab.scss";
+@import "./folder-delete-modal.scss";
+
 
 
 .navigation {
@@ -43,6 +46,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         &:hover {
             color: $color-yellow;
         }
@@ -52,6 +56,7 @@
         //.folders__title"
         display: flex;
         gap: 8px;
+        align-items: center;
     }
 
     &__public {

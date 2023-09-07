@@ -1,11 +1,12 @@
 import React from "react";
 import { MdOutlineClose } from "react-icons/md";
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useState, useEffect, useMemo } from "react";
 import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 import { icons } from "../../../../extra/config/folder-icons";
-import { addFolder } from "../../../../store/actions/foldersActions";
+import { fetchCreateFolder } from "../../../../store/actions/userActions";
+import { selectUser } from "../../../../store/selectors";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEditFolder } from "../../../../store/selectors";
 
@@ -51,6 +52,7 @@ const chats = [
 ]
 
 
+
 export default function AddFolderModal({ setIsModal }) {
     const [iconName, setIconName] = useState(icons.default)
     const [iconChose, setIconChose] = useState(false)
@@ -58,6 +60,9 @@ export default function AddFolderModal({ setIsModal }) {
     const [query, setQuery] = useState("")
     const dispatch = useDispatch()
     const editFolder = useSelector(selectEditFolder)
+    const user = useSelector(selectUser)
+
+    const { t } = useTranslation()
 
     const {
         register,
@@ -65,7 +70,7 @@ export default function AddFolderModal({ setIsModal }) {
         formState: { errors },
         reset,
         getValues,
-    } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "all" })
+    } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
     const filteredChats = useMemo(() => {
         return chats.filter(chat => {
@@ -74,8 +79,15 @@ export default function AddFolderModal({ setIsModal }) {
     }, [query])
 
     function onFormSubmit(data) {
-        console.log(data);
-        dispatch(addFolder(data))
+        if(!data.publicChatIds) {
+            data.publicChatIds = []
+        }
+        const folder = {
+            ...editFolder,
+            userId :user.id,
+            ...data
+        }
+        dispatch(fetchCreateFolder(folder))
         setIsModal(prev => !prev)
         reset()
     }
@@ -112,10 +124,18 @@ export default function AddFolderModal({ setIsModal }) {
                             </div>
                             <input
                                 {...register("title", {
-                                    required: "Поле обов'язкове для заповнення",
+                                    required:  t('addFolder.error'),
                                     pattern: {
-                                        value: /^[а-яА-Яa-zA-Z0-9]{4,12}$/,
-                                        message: "Назва папки має містити мінімум 4 символи"
+                                        value: /^[^\s][а-яА-Яa-zA-Z0-9]*[\s]{0,1}[а-яА-Яa-zA-Z0-9]*$/,
+                                        message: "Можна використовувати латиницю, кирилицю, цифри та 1 пробіл"
+                                    },
+                                    maxLength: {
+                                        value: 12,
+                                        message: t('addFolder.maxLength')
+                                    },
+                                    minLength: {
+                                        value: 4,
+                                        message: "Мінімум 4 символи"
                                     }
                                 })}
                                 placeholder="Назва папки"
@@ -165,7 +185,7 @@ export default function AddFolderModal({ setIsModal }) {
                                         </label>
                                     </li>)}
                             </ul>
-
+                            
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">

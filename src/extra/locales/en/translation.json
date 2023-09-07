@@ -14,5 +14,9 @@
         "answer" : "Answer",
         "copied-message": "The message has been copied",
         "text-message" : "Write a message.."
+    },
+    "addFolder" : {
+        "error" : "Required",
+        "maxLength" : "max 12 symbols"
     }
 }

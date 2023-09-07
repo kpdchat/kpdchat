@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Suspense } from 'react';
 import './styles/index.scss'
 import RegistrationWindow from './components/registrationWindow/RegistrationWindow';
 import WindowChat from './components/chatWindow/WindowChat';
