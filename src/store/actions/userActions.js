@@ -6,6 +6,8 @@ export const ACTION_CREATE_FOLDER = 'ACTION_CREATE_FOLDER'
 export const ACTION_DELETE_FOLDER = 'ACTION_DELETE_FOLDER'
 export const ACTION_UPDATE_FOLDER = 'ACTION_UPDATE_FOLDER'
 export const ACTION_SET_EDIT_FOLDER = 'ACTION_SET_EDIT_FOLDER'
+export const ACTION_CLEAR_EDIT_FOLDER = 'ACTION_CLEAR_EDIT_FOLDER'
+
 
 
 export function fetchUser(id) {
@@ -71,4 +73,8 @@ export function updateFolder(folder) {
 
 export function setEditFolder(folder) {
     return { type: ACTION_SET_EDIT_FOLDER, payload: folder }
+}
+
+export function clearEditFolder() {
+    return { type: ACTION_CLEAR_EDIT_FOLDER }
 }

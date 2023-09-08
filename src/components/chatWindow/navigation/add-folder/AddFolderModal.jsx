@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { useState, useEffect } from "react"; //useMemo
 // import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 import { icons } from "../../../../extra/config/folder-icons";
-import { fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
+import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
 import { selectUser } from "../../../../store/selectors";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEditFolder } from "../../../../store/selectors";
@@ -91,7 +91,7 @@ export default function AddFolderModal() {
             userId: user.id,
             ...data
         }
-        if(folder.id) {
+        if (folder.id) {
             const updateFolder = {
                 ...editFolder,
                 ...data
@@ -100,7 +100,7 @@ export default function AddFolderModal() {
         } else {
             dispatch(fetchCreateFolder(folder))
         }
-        
+        dispatch(clearEditFolder())
         dispatch(setModalClose())
         reset()
     }
@@ -127,7 +127,10 @@ export default function AddFolderModal() {
                     <h3 className="text-inter-18-600">{t('addFolder.createFolder')}</h3>
                     <MdOutlineClose className="cursor-pointer"
                         size={24}
-                        onClick={() => dispatch(setModalClose())}
+                        onClick={() => {
+                            dispatch(setModalClose())
+                            dispatch(clearEditFolder())
+                        }}
                     />
                 </div>
                 <div className="folder-modal__form form">

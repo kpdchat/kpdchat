@@ -4,6 +4,7 @@ import {
     ACTION_DELETE_FOLDER,
     ACTION_UPDATE_FOLDER,
     ACTION_SET_EDIT_FOLDER,
+    ACTION_CLEAR_EDIT_FOLDER,
 } from '../actions/userActions'
 
 const initialState = {
@@ -55,6 +56,13 @@ export default function userReducer(state = initialState, { type, payload }) {
                     ...state.user,
                     folders: newList
                 },
+                editFolder: {},
+            }
+        }
+        case ACTION_CLEAR_EDIT_FOLDER: {
+            return {
+                ...state,
+                editFolder: {},
             }
         }
         default: return state
