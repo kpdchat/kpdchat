@@ -2,15 +2,19 @@ import React from "react";
 import AddFolderModal from "./AddFolderModal";
 import { MdOutlineFolderSpecial } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
-import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUi } from "../../../../store/selectors";
+import { setModalOpen } from "../../../../store/actions/uiActions";
+
 
 
 export default function AddFolder() {
     const { t } = useTranslation()
-    const [isModal, setIsModal] = useState(false)
+    const dispatch = useDispatch()
+    const { isModal, modalId } = useSelector(selectUi)
 
     function onAddFolderClick() {
-        setIsModal(true)
+        dispatch(setModalOpen('create-folder'))
     }
     return (
         <>
@@ -18,7 +22,7 @@ export default function AddFolder() {
                 <MdOutlineFolderSpecial size={24} />
                 <h2 className="text-inter-18-600">{t('navigation.folder')}</h2>
             </div>
-            {isModal && <AddFolderModal setIsModal={setIsModal}/>}
+            {isModal && modalId === 'create-folder' && <AddFolderModal />}
         </>
 
     )

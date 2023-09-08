@@ -2,58 +2,60 @@ import React from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
-import { useState, useEffect, useMemo } from "react";
-import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
+import { useState, useEffect } from "react"; //useMemo
+// import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 import { icons } from "../../../../extra/config/folder-icons";
-import { fetchCreateFolder } from "../../../../store/actions/userActions";
+import { fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
 import { selectUser } from "../../../../store/selectors";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectEditFolder } from "../../../../store/selectors";
+import { setModalClose } from "../../../../store/actions/uiActions";
+
+//for render chats
+
+// const chats = [
+//     {
+//         id: 1,
+//         title: "Настолки у Харкові"
+//     },
+//     {
+//         id: 2,
+//         title: "Знайомства 20+"
+//     },
+//     {
+//         id: 3,
+//         title: "New game"
+//     },
+//     {
+//         id: 4,
+//         title: "Мистецтво_modern Ukraine"
+//     },
+//     {
+//         id: 5,
+//         title: "Новини Луцьк"
+//     },
+//     {
+//         id: 6,
+//         title: "Маркетинг_сьогодні"
+//     },
+//     {
+//         id: 7,
+//         title: "Good Job"
+//     },
+//     {
+//         id: 8,
+//         title: "Fresh огляд Tony"
+//     },
+//     {
+//         id: 9,
+//         title: "OLD School | Rock"
+//     },
+
+// ]
 
 
-const chats = [
-    {
-        id: 1,
-        title: "Настолки у Харкові"
-    },
-    {
-        id: 2,
-        title: "Знайомства 20+"
-    },
-    {
-        id: 3,
-        title: "New game"
-    },
-    {
-        id: 4,
-        title: "Мистецтво_modern Ukraine"
-    },
-    {
-        id: 5,
-        title: "Новини Луцьк"
-    },
-    {
-        id: 6,
-        title: "Маркетинг_сьогодні"
-    },
-    {
-        id: 7,
-        title: "Good Job"
-    },
-    {
-        id: 8,
-        title: "Fresh огляд Tony"
-    },
-    {
-        id: 9,
-        title: "OLD School | Rock"
-    },
 
-]
-
-
-
-export default function AddFolderModal({ setIsModal }) {
+export default function AddFolderModal() {
     const [iconName, setIconName] = useState(icons.default)
     const [iconChose, setIconChose] = useState(false)
     const [chatCount, setChatCount] = useState(0)
@@ -72,23 +74,34 @@ export default function AddFolderModal({ setIsModal }) {
         getValues,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
-    const filteredChats = useMemo(() => {
-        return chats.filter(chat => {
-            return chat.title.toLowerCase().includes(query.toLowerCase())
-        })
-    }, [query])
+    //search-logic
+
+    // const filteredChats = useMemo(() => {
+    //     return chats.filter(chat => {
+    //         return chat.title.toLowerCase().includes(query.toLowerCase())
+    //     })
+    // }, [query])
 
     function onFormSubmit(data) {
-        if(!data.publicChatIds) {
+        if (!data.publicChatIds) {
             data.publicChatIds = []
         }
         const folder = {
             ...editFolder,
-            userId :user.id,
+            userId: user.id,
             ...data
         }
-        dispatch(fetchCreateFolder(folder))
-        setIsModal(prev => !prev)
+        if(folder.id) {
+            const updateFolder = {
+                ...editFolder,
+                ...data
+            }
+            dispatch(fetchUpdateFolder(updateFolder))
+        } else {
+            dispatch(fetchCreateFolder(folder))
+        }
+        
+        dispatch(setModalClose())
         reset()
     }
 
@@ -111,8 +124,11 @@ export default function AddFolderModal({ setIsModal }) {
         <div className="modal-container folder-modal">
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
-                    <h3 className="text-inter-18-600">Створити папку</h3>
-                    <MdOutlineClose className="cursor-pointer" size={24} onClick={() => setIsModal(prev => !prev)} />
+                    <h3 className="text-inter-18-600">{t('addFolder.createFolder')}</h3>
+                    <MdOutlineClose className="cursor-pointer"
+                        size={24}
+                        onClick={() => dispatch(setModalClose())}
+                    />
                 </div>
                 <div className="folder-modal__form form">
                     <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -124,10 +140,10 @@ export default function AddFolderModal({ setIsModal }) {
                             </div>
                             <input
                                 {...register("title", {
-                                    required:  t('addFolder.error'),
+                                    required: t('addFolder.error'),
                                     pattern: {
                                         value: /^[^\s][а-яА-Яa-zA-Z0-9]*[\s]{0,1}[а-яА-Яa-zA-Z0-9]*$/,
-                                        message: "Можна використовувати латиницю, кирилицю, цифри та 1 пробіл"
+                                        message: t('addFolder.pattern')
                                     },
                                     maxLength: {
                                         value: 12,
@@ -135,10 +151,10 @@ export default function AddFolderModal({ setIsModal }) {
                                     },
                                     minLength: {
                                         value: 4,
-                                        message: "Мінімум 4 символи"
+                                        message: t('addFolder.minLength')
                                     }
                                 })}
-                                placeholder="Назва папки"
+                                placeholder={t('addFolder.folderName')}
                                 className="form__folder-name text-inter-16-400"
                             />
 
@@ -148,7 +164,6 @@ export default function AddFolderModal({ setIsModal }) {
                                     onClick={() => {
                                         setIconChose(false)
                                         setIconName(icons[el])
-                                        console.log(el);
                                     }}>
                                     {icons[el]}
                                     <input {...register("iconTag")} type="radio"
@@ -163,13 +178,14 @@ export default function AddFolderModal({ setIsModal }) {
                         </div>
                         <input
                             className="form__search-chat text-inter-16-400"
-                            placeholder="Назва чату або нікнейм"
+                            placeholder={t('addFolder.chatName')}
                             value={query}
                             onChange={e => setQuery(e.target.value)} />
                         <div className="form__chat-container scroll-bar">
 
                             <ul onClick={onUlClick}>
-                                {filteredChats.map(chat =>
+                                {/* logic for render chats */}
+                                {/* {filteredChats.map(chat =>
                                     <li className="form__chat"
                                         key={chat.id} >
                                         <label className="cursor-pointer">
@@ -183,19 +199,19 @@ export default function AddFolderModal({ setIsModal }) {
                                                 value={chat.id}
                                                 type="checkbox" />
                                         </label>
-                                    </li>)}
+                                    </li>)} */}
                             </ul>
-                            
+
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            Вибрано {chatCount}
+                            {t('addFolder.selected')} {chatCount}
                         </div>
 
                         <input
                             type="submit"
                             className="text-inter-16-600 cursor-pointer"
-                            value="Створити" />
+                            value={t('addFolder.create')} />
                     </form>
                 </div>
             </div>

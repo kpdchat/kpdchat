@@ -5,6 +5,7 @@ import FolderKebab from "./add-folder/FolderKebab";
 import { useSelector } from "react-redux";
 import { selectUi } from "../../../store/selectors";
 import FolderDeleteModal from "./nav-modal/FolderDeleteModal";
+import AddFolderModal from "./add-folder/AddFolderModal";
 
 
 
@@ -24,8 +25,9 @@ export default function NavFolderItem({ folder }) {
                     <h3 className='text-inter-16-400'>{folder.title}</h3>
                 </div>
                 {isOpen && id === folder.id && <FolderKebab folder={folder} />}
-                {isModal && modalId === folder.id && <FolderDeleteModal folder={folder} />}
             </div>
+            {isModal && modalId === 'delete-folder' && <FolderDeleteModal folder={folder} />}
+            {isModal && modalId === 'edit-folder' && <AddFolderModal />}
         </>
     )
 }
