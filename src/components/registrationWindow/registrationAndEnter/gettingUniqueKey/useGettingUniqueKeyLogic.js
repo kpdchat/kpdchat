@@ -29,12 +29,12 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         if (copyActiveMessage === '') return;
         try {
             setIsLoading(true);
-                const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
-                    uniqueKey: uniKey,
-                });
-                console.log(data);
-                localStorage.setItem('user', JSON.stringify(data));
-                setIsActive(true);
+            const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+                uniqueKey: uniKey,
+            });
+            console.log(data);
+            localStorage.setItem('user', JSON.stringify(data));
+            setIsActive(true);
         } catch (e) {
             console.log(e);
         } finally {

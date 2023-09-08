@@ -6,12 +6,12 @@ import {useTranslation} from 'react-i18next';
 
 export default function LoginAndRegistration({setUniKey}) {
     const state = useLoginAndRegistrationLogic();
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <>
             <div className='registration-block__description'>
-                <p>{t('registration.description')}</p>
+                <p>{ t('registration.description') }</p>
             </div>
 
             <div className='registration-block__input'>
@@ -23,8 +23,8 @@ export default function LoginAndRegistration({setUniKey}) {
                     name='uniKey'
                     required
                     rows='1'
-                    ref={state.uniKeyRef}
-                    placeholder={t('registration.input-unikey')}
+                    ref={ state.uniKeyRef }
+                    placeholder={ t('registration.input-unikey') }
                 />
                 { state.isLoading && <LoadingOnSubmitKey /> }
             </div>

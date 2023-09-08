@@ -7,14 +7,14 @@ import {useTranslation} from 'react-i18next';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     return (
         <>
             <div className='modal__content'>
 
                 <div className='modal__content-close'>
-                    <GrClose className='close' onClick={ onClose }/>
+                    <GrClose className='close' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>
@@ -41,14 +41,15 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
                             rows='1'
                             placeholder={ t('registration.input-pictureLink') }
-                            ref={state.profilePictureLinkRef}
+                            ref={ state.profilePictureLinkRef }
                             value={ state.profilePictureLink }
                             onChange={ state.onChangeTextareaInput }
                             onBlur={ state.onChangeTextareaInput }
                         />
                         </div>
 
-                        { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                        { state.profilePictureLinkError &&
+                            <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
 
                     </div>
 
@@ -59,7 +60,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }
-                            index={ el.alt}
+                            index={ el.alt }
                             key={ `avatar-${ el.alt }` } />)
                         }
                     </div>

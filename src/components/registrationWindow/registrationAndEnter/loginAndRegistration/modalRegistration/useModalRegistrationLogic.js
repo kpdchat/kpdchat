@@ -96,7 +96,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
-    useEffect( () => {
+    useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
         profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
     }, [profilePictureLink]);
@@ -113,7 +113,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         activeDogImg,
         isLoading,
         mops,
-        profilePictureLinkRef ,
+        profilePictureLinkRef,
         onChangeNickname,
         onChangeTextareaInput,
         onePickAvatar,

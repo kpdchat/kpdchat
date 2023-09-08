@@ -66,7 +66,7 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
-    useEffect( () => {
+    useEffect(() => {
         uniKeyRef.current.style.height = 'auto';
         uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 4 + 'px';
     }, [uniKey]);
