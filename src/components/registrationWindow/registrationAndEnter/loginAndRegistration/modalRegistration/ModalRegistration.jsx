@@ -24,7 +24,6 @@ export default function ModalRegistration({onClose, setUniKey}) {
 
                         <div className='add-link'>
                             <input
-                                tabIndex='1'
                                 maxLength='12'
                                 type='name'
                                 placeholder={ t('registration.input-nickname') }
@@ -34,26 +33,22 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             />
                         </div>
 
-                        { state.nicknameError && <p className='nickname-error'>{ state.nicknameError }</p> }
-                        { state.nicknameError && <p className='nickname-error'>{ state.nicknameLengthError }</p> }
+                        { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
 
                         <div className='add-link'>
                         <textarea
-                            tabIndex='2'
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
-                            rows={ state.textareaRows ? 1 : 3 }
+                            rows='1'
                             placeholder={ t('registration.input-pictureLink') }
-                            ref={state.textareaRef}
-                            onInput={state.onTextareaInput}
+                            ref={state.profilePictureLinkRef}
                             value={ state.profilePictureLink }
-                            onChange={ state.onChangeImage }
-                            onBlur={ state.onChangeImage }
+                            onChange={ state.onChangeTextareaInput }
+                            onBlur={ state.onChangeTextareaInput }
                         />
                         </div>
 
-                        { state.profilePictureLinkError && <p className='link-error'>{ state.profilePictureLinkError }</p> }
-                        {/*{ state.profilePictureLinkError && <p className='link-error'>{ state.profilePictureLinkError }</p> }*/}
+                        { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
 
                     </div>
 

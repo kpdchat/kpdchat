@@ -8,7 +8,6 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
     const [isLoading, setIsLoading] = useState(false);
     const {setIsActive} = useContext(Context);
 
-
     // Copy Unique Key
     const handleCopyChange = (e) => {
         e.preventDefault();
@@ -17,7 +16,7 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         // Copy to clipboard
         navigator.clipboard.writeText(uniKey)
             .then(() => {
-                setCopyActiveMessage('Унікальний ключ скопійовано');
+                setCopyActiveMessage('registration.copy-message');
             })
             .catch((error) => {
                 console.error('Помилка при копіюванні ключа:', error);

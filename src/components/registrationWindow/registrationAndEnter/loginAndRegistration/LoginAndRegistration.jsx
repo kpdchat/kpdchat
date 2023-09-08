@@ -15,19 +15,20 @@ export default function LoginAndRegistration({setUniKey}) {
             </div>
 
             <div className='registration-block__input'>
-                <input
+                <textarea
+                    className='scroll-bar'
                     value={ state.uniKey }
                     onChange={ state.onChangeUniqueKey }
                     onBlur={ state.onChangeUniqueKey }
                     name='uniKey'
                     required
-                    type='text'
+                    rows='1'
+                    ref={state.uniKeyRef}
                     placeholder={t('registration.input-unikey')}
                 />
                 { state.isLoading && <LoadingOnSubmitKey /> }
             </div>
-            { state.uniKeyError && <p className='uniKey-error'>{ state.uniKeyError }</p> }
-            { state.notFoundUser && <p className='uniKey-error'>{ state.notFoundUser }</p> }
+            { state.uniKeyError && <p className='uniKey-error'>{ t(state.uniKeyError) }</p> }
 
             <div className='registration__authorization'>
                 <div className='registration__log-in'>

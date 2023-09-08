@@ -1,35 +1,20 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useRef, useState} from 'react';
 import {Context} from '../../../../context/Context';
 import axios from 'axios';
-import {useTranslation} from 'react-i18next';
 
 export default function useLoginAndRegistrationLogic() {
     const [uniKey, setUniKey] = useState('');
     const [uniKeyError, setUniKeyError] = useState('');
-    const [notFoundUserError, setNotFoundUserError] = useState('');
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const uniKeyRef = useRef();
     const {setIsActive} = useContext(Context);
-    const { t, i18n } = useTranslation();
-
-    // Update text Error
-    const updateUniKeyError = () => {
-        setUniKeyError('');
-        setNotFoundUserError('');
-        if (uniKey && !uniKey.trim()) {
-            setUniKeyError(t('registration.error-message'));
-        }
-    }
-
-    useEffect( () => {
-        updateUniKeyError();
-    }, [i18n.language]);
 
     // Validation Uniquekey
     const uniKeyValidate = (value) => {
         setUniKeyError('');
         if (!value) {
-            setUniKeyError(t('registration.error-message'));
+            setUniKeyError('registration.error-message');
         }
     }
 
@@ -45,12 +30,12 @@ export default function useLoginAndRegistrationLogic() {
                 uniquekey: key,
             });
             if (response.status !== 200) {
-                setNotFoundUserError(t('registration.input-unikey-error'));
+                setUniKeyError('registration.input-unikey-error');
                 return false;
             }
             return true;
         } catch (error) {
-            setNotFoundUserError(t('registration.input-unikey-error'));
+            setUniKeyError('registration.input-unikey-error');
             return false;
         }
     }
@@ -60,7 +45,7 @@ export default function useLoginAndRegistrationLogic() {
         e.preventDefault();
         if (uniKeyError) return;
         if (uniKey.trim() === '') {
-            setUniKeyError(t('registration.error-message'));
+            setUniKeyError('registration.error-message');
         } else {
             try {
                 setIsLoading(true);
@@ -81,10 +66,15 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
+    useEffect( () => {
+        uniKeyRef.current.style.height = 'auto';
+        uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 4 + 'px';
+    }, [uniKey]);
+
     return {
         uniKey,
         uniKeyError,
-        notFoundUser: notFoundUserError,
+        uniKeyRef,
         modal,
         setModal,
         isLoading,

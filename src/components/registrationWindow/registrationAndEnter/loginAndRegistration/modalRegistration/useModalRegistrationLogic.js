@@ -1,6 +1,5 @@
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
-import {useTranslation} from 'react-i18next';
 
 export default function useModalRegistrationLogic({setUniKey}) {
     // Array avatars Mops
@@ -15,27 +14,20 @@ export default function useModalRegistrationLogic({setUniKey}) {
     // States
     const [nickname, setNickname] = useState('');
     const [nicknameError, setNicknameError] = useState('');
-    const [nicknameLengthError, setNicknameLengthError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
-    const textareaRef = useRef();
+    const profilePictureLinkRef = useRef();
     const [activeDogImg, setActiveDogImg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [textareaRows, setTextareaRows] = useState(true);
-    const { t, i18n } = useTranslation();
-
-    // Update Nickname and Profile Link Error
-
 
     // Nickname validation
     const validateNickname = (value) => {
         if (!value) {
-            setNicknameError(t ('registration.error-message'));
+            setNicknameError('registration.error-message');
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameLengthError(t('registration.input-nickname-error'));
+            setNicknameError('registration.input-nickname-error');
         } else {
             setNicknameError('');
-            setNicknameLengthError('');
         }
     }
 
@@ -45,19 +37,11 @@ export default function useModalRegistrationLogic({setUniKey}) {
         validateNickname(e.target.value);
     }
 
-    // Link Textarea
-    const onTextareaInput = (e) => {
-        textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 10 + 'px';
-        setProfilePictureLink(e.target.value);
-    }
-
     // Link Validation
     const validateImageValue = (value) => {
         setProfilePictureLinkError('');
-
         if (!value) {
-            setProfilePictureLinkError('Це поле обов\'язкове для заповнення');
+            setProfilePictureLinkError('registration.error-message');
         }
     }
 
@@ -68,17 +52,17 @@ export default function useModalRegistrationLogic({setUniKey}) {
             });
 
             if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('Посилання некоректне');
+                setProfilePictureLinkError('registration.input-pictureLink-error');
                 return false;
             }
             return true;
         } catch (error) {
-            setProfilePictureLinkError('Посилання некоректне');
+            setProfilePictureLinkError('registration.input-pictureLink-error');
             return false;
         }
     }
 
-    const onChangeImage = (e) => {
+    const onChangeTextareaInput = (e) => {
         setProfilePictureLink(e.target.value);
         validateImageValue(e.target.value);
     }
@@ -88,7 +72,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLink(url);
         setActiveDogImg(index);
         setProfilePictureLinkError('');
-        setTextareaRows(false);
     }
 
     // Submitting form data
@@ -113,11 +96,15 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
+    useEffect( () => {
+        profilePictureLinkRef.current.style.height = 'auto';
+        profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
+    }, [profilePictureLink]);
+
     return {
         nickname,
         setNickname,
         nicknameError,
-        nicknameLengthError,
         setNicknameError,
         profilePictureLink,
         setProfilePictureLink,
@@ -126,11 +113,9 @@ export default function useModalRegistrationLogic({setUniKey}) {
         activeDogImg,
         isLoading,
         mops,
-        textareaRef,
-        textareaRows,
-        onTextareaInput,
+        profilePictureLinkRef ,
         onChangeNickname,
-        onChangeImage,
+        onChangeTextareaInput,
         onePickAvatar,
         onFormSubmit,
     }
