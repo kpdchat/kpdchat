@@ -3,7 +3,7 @@ import { selectUi } from "../../store/selectors"
 import { setKebabClose, setKebabOpen } from "../../store/actions/uiActions"
 
 export function useKebabClick(messageId, type = undefined) {
-    const { isOpen, id, isActive } = useSelector(selectUi)
+    const { isOpen, id } = useSelector(selectUi)
     const dispatch = useDispatch()
 
     function onKebabClick(e) {
