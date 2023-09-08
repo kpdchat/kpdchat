@@ -4,12 +4,14 @@ import {
     ACTION_DELETE_FOLDER,
     ACTION_UPDATE_FOLDER,
     ACTION_SET_EDIT_FOLDER,
-    ACTION_CLEAR_EDIT_FOLDER,
+    ACTION_CLEAR_FOLDER,
+    ACTION_SET_DELETE_FOLDER,
 } from '../actions/userActions'
 
 const initialState = {
     user: {},
-    editFolder: {}
+    editFolder: {},
+    deleteFolder: {},
 }
 
 export default function userReducer(state = initialState, { type, payload }) {
@@ -33,6 +35,8 @@ export default function userReducer(state = initialState, { type, payload }) {
             }
         }
         case ACTION_DELETE_FOLDER: {
+            console.log(payload.id, 'reducer');
+            
             const newList = state.user.folders.filter(el => el.id !== payload.id)
             return {
                 ...state,
@@ -48,6 +52,12 @@ export default function userReducer(state = initialState, { type, payload }) {
                 editFolder: payload,
             }
         }
+        case ACTION_SET_DELETE_FOLDER: {
+            return {
+                ...state,
+                deleteFolder: payload,
+            }
+        }
         case ACTION_UPDATE_FOLDER: {
             const newList = state.user.folders.map(el => el.id === payload.id ? payload : el)
             return {
@@ -59,10 +69,11 @@ export default function userReducer(state = initialState, { type, payload }) {
                 editFolder: {},
             }
         }
-        case ACTION_CLEAR_EDIT_FOLDER: {
+        case ACTION_CLEAR_FOLDER: {
             return {
                 ...state,
                 editFolder: {},
+                deleteFolder: {},
             }
         }
         default: return state

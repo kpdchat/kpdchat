@@ -60,6 +60,7 @@ export default function AddFolderModal() {
     const [iconChose, setIconChose] = useState(false)
     const [chatCount, setChatCount] = useState(0)
     const [query, setQuery] = useState("")
+
     const dispatch = useDispatch()
     const editFolder = useSelector(selectEditFolder)
     const user = useSelector(selectUser)
@@ -86,18 +87,17 @@ export default function AddFolderModal() {
         if (!data.publicChatIds) {
             data.publicChatIds = []
         }
-        const folder = {
-            ...editFolder,
-            userId: user.id,
-            ...data
-        }
-        if (folder.id) {
+        if (editFolder.id) {
             const updateFolder = {
                 ...editFolder,
                 ...data
             }
             dispatch(fetchUpdateFolder(updateFolder))
         } else {
+            const folder = {
+                userId: user.id,
+            ...data
+            }
             dispatch(fetchCreateFolder(folder))
         }
         dispatch(clearEditFolder())
@@ -108,7 +108,6 @@ export default function AddFolderModal() {
     useEffect(() => {
         if (editFolder?.id) {
             setIconName(icons[editFolder.iconTag])
-            console.log('useEffect')
         }
     }, [editFolder?.id, editFolder.iconTag])
 

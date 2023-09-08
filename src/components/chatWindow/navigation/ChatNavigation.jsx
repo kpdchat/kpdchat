@@ -26,7 +26,7 @@ export default function ChatNavigation() {
                             <MdOutlineFolderShared size={24} />
                             <h3 className='text-inter-16-400'>{t('navigation.mine')}</h3>
                         </div>
-                        <h3 className='text-inter-16-400'>31</h3>
+                        <h3 className='text-inter-16-400 ml-5px'>31</h3>
                     </div>
                     {user?.folders?.map(folder => <NavFolderItem key={folder.id} folder={folder} />)}
 
@@ -36,6 +36,7 @@ export default function ChatNavigation() {
                         <MdOutlineTextsms size={24} />
                         <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                     </div>
+                    <h3 className='text-inter-16-400 ml-5px'>1</h3>
                 </div>
             </div>
             <div className='navigation__settings settings'>

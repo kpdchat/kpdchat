@@ -5,6 +5,12 @@
 @import "./folder-delete-modal.scss";
 
 
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 
 .navigation {
     color: $color-light-white;
@@ -33,12 +39,16 @@
 
     &__container {
         // .folders__container
-        margin: 20px 0;
+        margin: 4px 0;
         padding: 8px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 12px;
         color: $color-white;
+
+        @include max-screen(940px) {
+            gap: 16px;
+        }
     }
 
     &__folder {
@@ -47,23 +57,71 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
+
         &:hover {
             color: $color-yellow;
         }
+
+        .ml-5px {
+            @include max-screen(940px) {
+                display: none;
+            }
+        }
     }
+
+
 
     &__title {
         //.folders__title"
         display: flex;
         gap: 8px;
         align-items: center;
+
+        svg {
+            @include max-screen(940px) {
+                transform: scale(1.3);
+            }
+        }
+
+
+        .text-inter-16-400 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+
+            @include max-screen(1250px) {
+                width: 55px;
+            }
+
+            @include max-screen(940px) {
+                display: none;
+            }
+        }
     }
 
     &__public {
         //.folders__public
         border-top: 1px solid $color-light-white;
-        padding: 8px;
+        padding: 8px 4px;
         color: $color-light-white;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        width: 100%;
+
+        @include max-screen(940px) {
+            justify-content: center;
+            padding: 12px 0;
+        }
+
+        .text-inter-16-400 {
+            width: 94px;
+
+            @include max-screen(940px) {
+                display: none;
+            }
+        }
+
         &:hover {
             color: $color-yellow;
         }
@@ -71,6 +129,7 @@
 }
 
 .add {
+
     //add__item
     &__item {
         display: flex;
@@ -78,15 +137,24 @@
         justify-content: flex-start;
         padding: 8px;
         width: 100px;
+        
+
         &:hover {
             color: $color-yellow;
         }
+
         h2 {
             margin-left: 8px;
+
+            @include max-screen(940px) {
+                display: none;
+            }
+        }
+
+        svg {
+            @include max-screen(940px) {
+                transform: scale(1.3);
+            }
         }
     }
 }
-
-
-
-

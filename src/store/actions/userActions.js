@@ -6,7 +6,9 @@ export const ACTION_CREATE_FOLDER = 'ACTION_CREATE_FOLDER'
 export const ACTION_DELETE_FOLDER = 'ACTION_DELETE_FOLDER'
 export const ACTION_UPDATE_FOLDER = 'ACTION_UPDATE_FOLDER'
 export const ACTION_SET_EDIT_FOLDER = 'ACTION_SET_EDIT_FOLDER'
-export const ACTION_CLEAR_EDIT_FOLDER = 'ACTION_CLEAR_EDIT_FOLDER'
+export const ACTION_CLEAR_FOLDER = 'ACTION_CLEAR_FOLDER'
+export const ACTION_SET_DELETE_FOLDER = 'ACTION_SET_DELETE_FOLDER'
+
 
 
 
@@ -39,6 +41,7 @@ export function fetchDeleteFolder(folder) {
                 }
             })
             .then(() => {
+                console.log(folder.id, 'fetchDeleteFolder');
                 dispatch(deleteFolder(folder))
             })
             .catch(e => alert(e))
@@ -55,11 +58,13 @@ export function fetchUpdateFolder(folder) {
     }
 }
 
+
 export function createFolder(folder) {
     return { type: ACTION_CREATE_FOLDER, payload: folder }
 }
 
 export function deleteFolder(folder) {
+    console.log(folder.id, 'deleteFolder');
     return { type: ACTION_DELETE_FOLDER, payload: folder }
 }
 
@@ -75,6 +80,10 @@ export function setEditFolder(folder) {
     return { type: ACTION_SET_EDIT_FOLDER, payload: folder }
 }
 
+export function setDeleteFolder(folder) {
+    return { type: ACTION_SET_DELETE_FOLDER, payload: folder }
+}
+
 export function clearEditFolder() {
-    return { type: ACTION_CLEAR_EDIT_FOLDER }
+    return { type: ACTION_CLEAR_FOLDER }
 }

@@ -3,14 +3,15 @@ import KebabWrapper from "../../../../extra/KebabWrapper"
 import { PiNotePencilFill, PiTrashBold } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { setModalOpen } from "../../../../store/actions/uiActions";
-import { setEditFolder } from "../../../../store/actions/userActions";
+import { setDeleteFolder, setEditFolder } from "../../../../store/actions/userActions";
 
 export default function FolderKebab({ folder }) {
     const dispatch = useDispatch()
     const menuRef = useRef()
     function onDeleteClick() {
+        console.log(folder.id, 'kebab');
+        dispatch(setDeleteFolder(folder))
         dispatch(setModalOpen('delete-folder')) 
-
     }
     function onEditClick() {
         dispatch(setEditFolder(folder))

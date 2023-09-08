@@ -14,23 +14,30 @@
 .chat {
     .container-grid {
         display: grid;
-        grid-template-columns: 190px 386px 1fr;
+        grid-template-columns: 192px 386px 1fr;
+
         @include max-screen(1250px) {
             grid-template-columns: 160px 284px 1fr;
         }
-        
+        @include max-screen(940px) {
+            grid-template-columns: 72px 284px 1fr;
+        }
+
     }
 
     &__navigation {
         // .chat__navigation
         height: 100vh;
-        padding: 10vh 16px 7vh 16px;
+        padding: 14vh 16px 7vh 16px;
         background: $color-violet;
         grid-column: 1 / 2;
-        // @media screen and (max-height: 750px) {
-        //     height: 750px;
-        // }
+
+        @media screen and (max-height: 790px) {
+            padding: 40px 16px 10px 16px;
+
+        }
     }
+
     &__dialogs {
         // .chat__dialogs
         height: 100vh;

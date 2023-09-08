@@ -15,6 +15,7 @@ export default function WindowChat() {
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('user'))
     const serverUser = useSelector(selectUser)
+    console.log(serverUser);
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id))

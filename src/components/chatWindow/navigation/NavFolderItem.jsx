@@ -25,8 +25,9 @@ export default function NavFolderItem({ folder }) {
                     <h3 className='text-inter-16-400'>{folder.title}</h3>
                 </div>
                 {isOpen && id === folder.id && <FolderKebab folder={folder} />}
+                {isModal && modalId === 'delete-folder' && <FolderDeleteModal folder={folder} />}
             </div>
-            {isModal && modalId === 'delete-folder' && <FolderDeleteModal folder={folder} />}
+
             {isModal && modalId === 'edit-folder' && <AddFolderModal />}
         </>
     )

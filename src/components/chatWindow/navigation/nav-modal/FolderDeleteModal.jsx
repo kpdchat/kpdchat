@@ -1,19 +1,21 @@
 import React from "react"
 import { MdClose } from "react-icons/md";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {setModalClose} from "../../../../store/actions/uiActions"
 import { fetchDeleteFolder } from "../../../../store/actions/userActions";
+import { selectDeleteFolder } from "../../../../store/selectors";
 
 
 export default function FolderDeleteModal({folder}) {
     const dispatch = useDispatch()
-
+    const deleteFolder = useSelector(selectDeleteFolder)
     function onCloseClick() {
         dispatch(setModalClose())
     }
 
     function onDeleteClick() {
-        dispatch(fetchDeleteFolder(folder))
+        console.log(folder.id, 'modal');
+        dispatch(fetchDeleteFolder(deleteFolder))
         dispatch(setModalClose())
     }
 
