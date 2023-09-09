@@ -2,7 +2,7 @@
     "navigation": {
         "folder": "Folder",
         "chat": "Chat",
-        "mine": "Mine",
+        "mine": "My chats",
         "public": "Public chats"
     },
     "global" : {
@@ -14,5 +14,16 @@
         "answer" : "Answer",
         "copied-message": "The message has been copied",
         "text-message" : "Write a message.."
+    },
+    "addFolder" : {
+        "error" : "Required",
+        "maxLength" : "Max 12 symbols",
+        "minLength" : "Min 4 symbols",
+        "pattern" : "You can use Latin, Cyrillic, numbers and 1 space",
+        "folderName": "Folder name",
+        "chatName": "Chat name or nickname",
+        "selected" : "Selected",
+        "create" : "Create",
+        "createFolder" : "Create folder"
     }
 }

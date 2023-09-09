@@ -23,6 +23,22 @@
     line-height: normal;
 }
 
+.text-inter-16-500 {
+    font-family: $font-inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.text-inter-16-600 {
+    font-family: $font-inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
 
 .text-inter-14-400 {
     font-family: $font-inter;
@@ -130,9 +146,25 @@
 }
 
 .active-folder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
     color: $color-yellow;
 }
 
 .active-kebab {
     background: $background-active-lilac;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.mt-8px {
+    margin-top: 8px;
+}
+
+.ml-5px {
+    margin-left: 5px;
 }

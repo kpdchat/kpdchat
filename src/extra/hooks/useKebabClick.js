@@ -2,15 +2,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectUi } from "../../store/selectors"
 import { setKebabClose, setKebabOpen } from "../../store/actions/uiActions"
 
-export function useKebabClick(messageId) {
+export function useKebabClick(messageId, type = undefined) {
     const { isOpen, id } = useSelector(selectUi)
     const dispatch = useDispatch()
 
     function onKebabClick(e) {
-        e.stopPropagation()
+        if (!type) {
+            e.stopPropagation()
+        }
+
         if (!isOpen) {
             dispatch(setKebabOpen(messageId))
-        } else if (messageId === id){
+        } else if (messageId === id) {
             dispatch(setKebabClose())
         } else {
             dispatch(setKebabOpen(messageId))
@@ -18,7 +21,7 @@ export function useKebabClick(messageId) {
     }
 
     return {
-        isOpen, 
+        isOpen,
         id,
         onKebabClick
     }

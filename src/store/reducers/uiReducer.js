@@ -7,8 +7,10 @@ import {
 
 const initialState = {
     isOpen: false,
+    isActive: false,
     id: 0,
     isModal: false,
+    modalId : 0,
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -16,6 +18,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
         case ACTION_CLOSE_KEBAB: {
             return {
                 ...state,
+                isActive: false,
                 isOpen: false,
                 id: 0,
             }
@@ -23,6 +26,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
         case ACTION_OPEN_KEBAB: {
             return {
                 ...state,
+                isActive: true,
                 isOpen: true,
                 id: payload,
             }
@@ -32,13 +36,16 @@ export default function uiReducer(state = initialState, { type, payload }) {
                 ...state,
                 isModal: false,
                 id: 0,
+                modalId: 0,
+
             }
         }
         case ACTION_OPEN_MODAL: {
             return {
                 ...state,
                 isModal: true,
-                id:0,
+                id: 0,
+                modalId: payload,
             }
         }
         default: return state
