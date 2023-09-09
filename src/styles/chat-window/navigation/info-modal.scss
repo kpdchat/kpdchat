@@ -1,0 +1,45 @@
+.info-about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__content {
+        width: 377px;
+        box-shadow: 4px 4px 4px 4px #706c9f;
+    }
+    .modal-title {
+        //.info-about__content
+        h2 {
+            font-family: $font-inter;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+
+    &__text {
+        //.info-about__text
+        padding: 36px 45px;
+        background: $color-white;
+        .text-16 {
+            color: $color-violet;
+        }
+    }
+
+    &__about {
+        //.info-about__about
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        h4 {
+            margin-left: 16px;
+        }
+    }
+
+    .text-inter-16-400 {
+        color: $color-light-grey;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-left: 22px;
+    }
+}
