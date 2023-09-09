@@ -9,7 +9,6 @@ import { selectUser } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
 
 
-
 export default function WindowChat() {
     const { isActive } = useContext(Context);
     const dispatch = useDispatch()
@@ -20,13 +19,14 @@ export default function WindowChat() {
             dispatch(fetchUser(user.id))
         }
     }, [user?.id, dispatch])
+    
     function onContextClick(e) {
         e.preventDefault()
     }
 
     if (!serverUser.id) {
         return (
-            <div className='chat-loader'>
+            <div className={isActive ? 'chat-loader' : "display-none"}>
                 <DotSpinner
                     size={100}
                     speed={0.9}
