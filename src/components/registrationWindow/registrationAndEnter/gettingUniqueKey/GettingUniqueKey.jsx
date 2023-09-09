@@ -1,19 +1,21 @@
 import React from 'react';
 import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
 import LoadingOnEnterChat from './LoadingOnEnterChat';
+import {useTranslation} from 'react-i18next';
 
 export default function GettingUniqueKey({uniKey}) {
     const state = useGettingUniqueKeyLogic({uniKey});
+    const {t} = useTranslation();
 
     return (
         <>
             <div className='registration-block__enter'>
                 <div className='registration-block__enter-title'>
-                    <p>Вітаємо, реєстрація пройшла успішно!</p>
+                    <p>{ t('registration.enter-title') }</p>
                 </div>
 
                 <div className='registration-block__enter-description'>
-                    <p>Скопіюй та збережи цей унікальний ключ, він є обовʼязковим для входу в обліковий запис.</p>
+                    <p>{ t('registration.enter-description') }</p>
                 </div>
 
                 <div className='registration-block__enter-copyKey'>
@@ -25,7 +27,7 @@ export default function GettingUniqueKey({uniKey}) {
                             />
                             { state.isLoading && <LoadingOnEnterChat /> }
                         </div>
-                        { state.copyActiveMessage && <p className='copy-message'>{ state.copyActiveMessage }</p> }
+                        { state.copyActiveMessage && <p className='copy-message'>{ t(state.copyActiveMessage) }</p> }
 
                         <div className='copyKeyForm__buttons'>
                             <div className='copyKeyForm__buttons-copy'>
@@ -33,7 +35,7 @@ export default function GettingUniqueKey({uniKey}) {
                                     onClick={ state.handleCopyChange }
                                     className={ !state.copyActive ? 'active-copy' : 'inactive-copy' }
                                 >
-                                    Скопіювати
+                                    { t('registration.button-copy') }
                                 </button>
                             </div>
 
@@ -44,7 +46,7 @@ export default function GettingUniqueKey({uniKey}) {
                                         ? 'active-enter'
                                         : 'inactive-enter'
                                     }>
-                                    Увійти
+                                    { t('registration.button-sign-in') }
                                 </button>
                             </div>
                         </div>

@@ -8,7 +8,6 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
     const [isLoading, setIsLoading] = useState(false);
     const {setIsActive} = useContext(Context);
 
-
     // Copy Unique Key
     const handleCopyChange = (e) => {
         e.preventDefault();
@@ -17,7 +16,7 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         // Copy to clipboard
         navigator.clipboard.writeText(uniKey)
             .then(() => {
-                setCopyActiveMessage('Унікальний ключ скопійовано');
+                setCopyActiveMessage('registration.copy-message');
             })
             .catch((error) => {
                 console.error('Помилка при копіюванні ключа:', error);
@@ -30,12 +29,11 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         if (copyActiveMessage === '') return;
         try {
             setIsLoading(true);
-                const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
-                    uniqueKey: uniKey,
-                });
-                console.log(data);
-                localStorage.setItem('user', JSON.stringify(data));
-                setIsActive(true);
+            const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+                uniqueKey: uniKey,
+            });
+            localStorage.setItem('user', JSON.stringify(data));
+            setIsActive(true);
         } catch (e) {
             console.log(e);
         } finally {

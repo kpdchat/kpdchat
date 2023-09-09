@@ -1,16 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {useTranslation} from 'react-i18next';
+
+const locales = {
+    en: {title: 'EN'},
+    ua: {title: 'UA'},
+};
 
 export default function LanguageButton() {
-    const [active, setActive] = useState('UA')
-
-    function activeButton(language) {
-        setActive(language)
-    }
+    const {i18n} = useTranslation()
 
     return (
         <div className='language-buttons'>
-            <button onClick={ () => activeButton('UA') } className={ active === 'UA' ? 'active' : 'default' }>UA</button>
-            <button onClick={ () => activeButton('EN') } className={ active === 'EN' ? 'active' : 'default' }>EN</button>
+            { Object.keys(locales)
+                .map((locale =>
+                    <button onClick={ () => i18n.changeLanguage(locale) }
+                            className={ i18n.resolvedLanguage === locale ? 'active' : 'default' }
+                            key={ locale }>{ locales[locale].title }</button>)) }
         </div>
     );
 }

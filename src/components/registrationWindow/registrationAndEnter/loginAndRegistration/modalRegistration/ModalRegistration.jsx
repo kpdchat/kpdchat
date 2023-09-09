@@ -3,63 +3,64 @@ import {GrClose} from 'react-icons/gr'
 import useModalRegistrationLogic from './useModalRegistrationLogic';
 import MopsAvatars from './MopsAvatars';
 import LoadingOnSubmitForm from './LoadingOnSubmitForm';
+import {useTranslation} from 'react-i18next';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
+    const {t} = useTranslation();
 
     return (
         <>
             <div className='modal__content'>
 
                 <div className='modal__content-close'>
-                    <GrClose className='close' onClick={ onClose }/>
+                    <GrClose className='close' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>
 
                     <div className='modal__content-column'>
-                        <div className='title'>Створити обліковий запис</div>
+                        <div className='title'>{ t('registration.modal-title') }</div>
 
                         <div className='add-link'>
                             <input
-                                tabIndex='1'
                                 maxLength='12'
                                 type='name'
-                                placeholder='Нікнейм'
+                                placeholder={ t('registration.input-nickname') }
                                 value={ state.nickname }
                                 onChange={ state.onChangeNickname }
                                 onBlur={ state.onChangeNickname }
                             />
                         </div>
 
-                        <p className='nickname-error'>{ state.nicknameError }</p>
+                        { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
 
                         <div className='add-link'>
                         <textarea
-                            tabIndex='2'
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
-                            rows={ state.textareaRows ? 1 : 3 }
-                            placeholder='Посилання на фото'
-                            ref={state.textareaRef}
-                            onInput={state.onTextareaInput}
+                            rows='1'
+                            placeholder={ t('registration.input-pictureLink') }
+                            ref={ state.profilePictureLinkRef }
                             value={ state.profilePictureLink }
-                            onChange={ state.onChangeImage }
-                            onBlur={ state.onChangeImage }
+                            onChange={ state.onChangeTextareaInput }
+                            onBlur={ state.onChangeTextareaInput }
                         />
                         </div>
 
-                        <p className='link-error'>{ state.profilePictureLinkError }</p>
+                        { state.profilePictureLinkError &&
+                            <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+
                     </div>
 
-                    <div className='text-or'>або</div>
+                    <div className='text-or'>{ t('registration.divider-span') }</div>
 
                     <div className='modal__content-img'>
                         { state.mops.map(el => <MopsAvatars
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }
-                            index={ el.alt}
+                            index={ el.alt }
                             key={ `avatar-${ el.alt }` } />)
                         }
                     </div>
@@ -68,7 +69,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             type='submit'
                             disabled={ !!state.nicknameError || !!state.profilePictureLinkError }
                         >
-                            Зареєструватися
+                            { t('registration.button-sing-up') }
                         </button>
                     </div>
                 </form>

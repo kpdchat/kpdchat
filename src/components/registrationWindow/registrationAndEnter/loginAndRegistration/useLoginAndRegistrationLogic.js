@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useRef, useState} from 'react';
 import {Context} from '../../../../context/Context';
 import axios from 'axios';
 
@@ -7,13 +7,14 @@ export default function useLoginAndRegistrationLogic() {
     const [uniKeyError, setUniKeyError] = useState('');
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const uniKeyRef = useRef();
     const {setIsActive} = useContext(Context);
 
     // Validation Uniquekey
     const uniKeyValidate = (value) => {
         setUniKeyError('');
         if (!value) {
-            setUniKeyError('Це поле обов\'язкове для заповнення');
+            setUniKeyError('registration.error-message');
         }
     }
 
@@ -29,12 +30,12 @@ export default function useLoginAndRegistrationLogic() {
                 uniquekey: key,
             });
             if (response.status !== 200) {
-                setUniKeyError('Користувача не знайдено');
+                setUniKeyError('registration.input-unikey-error');
                 return false;
             }
             return true;
         } catch (error) {
-            setUniKeyError('Користувача не знайдено');
+            setUniKeyError('registration.input-unikey-error');
             return false;
         }
     }
@@ -44,7 +45,7 @@ export default function useLoginAndRegistrationLogic() {
         e.preventDefault();
         if (uniKeyError) return;
         if (uniKey.trim() === '') {
-            setUniKeyError('Це поле обов\'язкове для заповнення');
+            setUniKeyError('registration.error-message');
         } else {
             try {
                 setIsLoading(true);
@@ -53,7 +54,6 @@ export default function useLoginAndRegistrationLogic() {
                     const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
                         uniqueKey: uniKey,
                     })
-                    console.log(data);
                     localStorage.setItem('user', JSON.stringify(data));
                     setIsActive(true);
                 }
@@ -65,9 +65,15 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
+    useEffect(() => {
+        uniKeyRef.current.style.height = 'auto';
+        uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 4 + 'px';
+    }, [uniKey]);
+
     return {
         uniKey,
         uniKeyError,
+        uniKeyRef,
         modal,
         setModal,
         isLoading,

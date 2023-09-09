@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
 
 export default function useModalRegistrationLogic({setUniKey}) {
@@ -16,17 +16,16 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [nicknameError, setNicknameError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
-    const textareaRef = useRef();
+    const profilePictureLinkRef = useRef();
     const [activeDogImg, setActiveDogImg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [textareaRows, setTextareaRows] = useState(true)
 
     // Nickname validation
     const validateNickname = (value) => {
         if (!value) {
-            setNicknameError('Це поле обов\'язкове для заповнення');
+            setNicknameError('registration.error-message');
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('Від 4 до 12 символів, без пробілів, тільки латиниця і спецсимволи');
+            setNicknameError('registration.input-nickname-error');
         } else {
             setNicknameError('');
         }
@@ -38,19 +37,11 @@ export default function useModalRegistrationLogic({setUniKey}) {
         validateNickname(e.target.value);
     }
 
-    // Link Textarea
-    const onTextareaInput = (e) => {
-        textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 10 + 'px';
-        setProfilePictureLink(e.target.value);
-    }
-
     // Link Validation
     const validateImageValue = (value) => {
         setProfilePictureLinkError('');
-
         if (!value) {
-            setProfilePictureLinkError('Це поле обов\'язкове для заповнення');
+            setProfilePictureLinkError('registration.error-message');
         }
     }
 
@@ -61,17 +52,17 @@ export default function useModalRegistrationLogic({setUniKey}) {
             });
 
             if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('Посилання некоректне');
+                setProfilePictureLinkError('registration.input-pictureLink-error');
                 return false;
             }
             return true;
         } catch (error) {
-            setProfilePictureLinkError('Посилання некоректне');
+            setProfilePictureLinkError('registration.input-pictureLink-error');
             return false;
         }
     }
 
-    const onChangeImage = (e) => {
+    const onChangeTextareaInput = (e) => {
         setProfilePictureLink(e.target.value);
         validateImageValue(e.target.value);
     }
@@ -81,7 +72,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLink(url);
         setActiveDogImg(index);
         setProfilePictureLinkError('');
-        setTextareaRows(false);
     }
 
     // Submitting form data
@@ -106,6 +96,11 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
+    useEffect(() => {
+        profilePictureLinkRef.current.style.height = 'auto';
+        profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
+    }, [profilePictureLink]);
+
     return {
         nickname,
         setNickname,
@@ -118,11 +113,9 @@ export default function useModalRegistrationLogic({setUniKey}) {
         activeDogImg,
         isLoading,
         mops,
-        textareaRef,
-        textareaRows,
-        onTextareaInput,
+        profilePictureLinkRef,
         onChangeNickname,
-        onChangeImage,
+        onChangeTextareaInput,
         onePickAvatar,
         onFormSubmit,
     }
