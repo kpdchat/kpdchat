@@ -3,8 +3,6 @@ import './styles/index.scss'
 import RegistrationWindow from './components/registrationWindow/RegistrationWindow';
 import WindowChat from './components/chatWindow/WindowChat';
 import {Context} from './context/Context'
-import { useSelector } from 'react-redux';
-import { selectUi } from './store/selectors';
 
 export default function App() {
     const [isActive, setIsActive] = useState(false);
