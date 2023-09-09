@@ -41,7 +41,6 @@ export function fetchDeleteFolder(folder) {
                 }
             })
             .then(() => {
-                console.log(folder.id, 'fetchDeleteFolder');
                 dispatch(deleteFolder(folder))
             })
             .catch(e => alert(e))
@@ -64,7 +63,6 @@ export function createFolder(folder) {
 }
 
 export function deleteFolder(folder) {
-    console.log(folder.id, 'deleteFolder');
     return { type: ACTION_DELETE_FOLDER, payload: folder }
 }
 

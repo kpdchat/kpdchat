@@ -7,7 +7,6 @@ import {Context} from './context/Context'
 export default function App() {
     const [isActive, setIsActive] = useState(false);
 
-
     useEffect(() => {
         const userInLocalStorage = localStorage.getItem('user');
         if (userInLocalStorage) {

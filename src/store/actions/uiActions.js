@@ -7,7 +7,6 @@ export const ACTION_CLOSE_MODAL = 'ACTION_CLOSE_MODAL'
 
 
 
-
 export function setKebabClose() {
     return { type: ACTION_CLOSE_KEBAB }
 }

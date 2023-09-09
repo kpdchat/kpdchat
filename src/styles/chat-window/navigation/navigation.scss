@@ -99,15 +99,18 @@
         }
     }
 
-    &__public {
-        //.folders__public
+    &__public-container {
         border-top: 1px solid $color-light-white;
         padding: 8px 4px;
-        color: $color-light-white;
+
+    }
+
+    &__public {
+        //.folders__public
+        color: $color-white;
         display: flex;
         gap: 8px;
         align-items: center;
-        width: 100%;
 
         @include max-screen(940px) {
             justify-content: center;
@@ -115,7 +118,6 @@
         }
 
         .text-inter-16-400 {
-            width: 94px;
 
             @include max-screen(940px) {
                 display: none;
@@ -137,7 +139,7 @@
         justify-content: flex-start;
         padding: 8px;
         width: 100px;
-        
+
 
         &:hover {
             color: $color-yellow;

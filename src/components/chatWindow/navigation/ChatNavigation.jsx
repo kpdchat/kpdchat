@@ -31,13 +31,16 @@ export default function ChatNavigation() {
                     {user?.folders?.map(folder => <NavFolderItem key={folder.id} folder={folder} />)}
 
                 </div>
-                <div className="folders__public">
-                    <div className="folders__title cursor-pointer">
-                        <MdOutlineTextsms size={24} />
-                        <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
+                <div className='folders__public-container'>
+                    <div className="folders__public">
+                        <div className="folders__title cursor-pointer">
+                            <MdOutlineTextsms size={24} />
+                            <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
+                        </div>
+                        <h3 className='text-inter-16-400 ml-5px'>1</h3>
                     </div>
-                    <h3 className='text-inter-16-400 ml-5px'>1</h3>
                 </div>
+
             </div>
             <div className='navigation__settings settings'>
                 <NavSettings />

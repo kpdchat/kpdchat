@@ -35,8 +35,6 @@ export default function userReducer(state = initialState, { type, payload }) {
             }
         }
         case ACTION_DELETE_FOLDER: {
-            console.log(payload.id, 'reducer');
-            
             const newList = state.user.folders.filter(el => el.id !== payload.id)
             return {
                 ...state,
