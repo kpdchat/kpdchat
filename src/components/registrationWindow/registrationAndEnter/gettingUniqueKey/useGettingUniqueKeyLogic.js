@@ -32,7 +32,6 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
             const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
                 uniqueKey: uniKey,
             });
-            console.log(data);
             localStorage.setItem('user', JSON.stringify(data));
             setIsActive(true);
         } catch (e) {
