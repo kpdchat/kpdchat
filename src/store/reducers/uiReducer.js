@@ -45,7 +45,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
                 ...state,
                 isModal: true,
                 id: 0,
-                modalId: payload, 
+                modalId: payload,
             }
         }
         default: return state

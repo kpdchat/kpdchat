@@ -8,8 +8,6 @@ import { selectUi } from './store/selectors';
 
 export default function App() {
     const [isActive, setIsActive] = useState(false);
-    const state = useSelector(selectUi)
-    console.log(state.isModal, 'state');
 
     useEffect(() => {
         const userInLocalStorage = localStorage.getItem('user');
