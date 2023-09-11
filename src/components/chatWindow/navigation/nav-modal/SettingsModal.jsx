@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {MdOutlineClose, MdOutlineLanguage, MdEditSquare} from 'react-icons/md';
-import { PiDoorOpen } from "react-icons/pi";
-import {useDispatch} from 'react-redux';
+import {MdOutlineClose, MdOutlineLanguage} from 'react-icons/md';
+import { PiDoorOpen, PiNotePencilFill } from "react-icons/pi";
+import {useDispatch, useSelector} from 'react-redux';
 import {setWindowChatClose} from '../../../../store/actions/uiActions';
+import {selectUser} from '../../../../store/selectors';
 
 const locales = {
     en: {title: 'EN'},
@@ -13,8 +14,9 @@ const locales = {
 export default function SettingsModal({isOpen, setOpen}) {
     const [isInput, setIsInput] = useState(false);
     const dispatch = useDispatch();
-    const user = localStorage.getItem('user');
-    const userAvatar = JSON.parse(user);
+    const userAvatar = useSelector(selectUser);
+    const userNickname = useSelector(selectUser);
+    console.log(userAvatar);
 
     const {i18n, t} = useTranslation();
 
@@ -53,8 +55,8 @@ export default function SettingsModal({isOpen, setOpen}) {
                                 <input onClick={ (e) => {
                                     e.stopPropagation()
                                 } } type='text' value='Artemiu@s_78' />
-                            </form> : <h3 className='text-inter-16-400'>Artemiu@s_78</h3> }
-                        <MdEditSquare
+                            </form> : <h3 className='text-inter-16-400'>{ userNickname.nickname }</h3> }
+                        <PiNotePencilFill
                             className='settings__edit-name cursor-pointer'
                             onClick={ onEditClick }
                         />
