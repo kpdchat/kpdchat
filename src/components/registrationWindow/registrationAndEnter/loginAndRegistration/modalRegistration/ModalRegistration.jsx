@@ -1,5 +1,5 @@
 import React from 'react';
-import {GrClose} from 'react-icons/gr'
+import {MdOutlineClose} from 'react-icons/md';
 import useModalRegistrationLogic from './useModalRegistrationLogic';
 import MopsAvatars from './MopsAvatars';
 import LoadingOnSubmitForm from './LoadingOnSubmitForm';
@@ -14,7 +14,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
             <div className='modal__content'>
 
                 <div className='modal__content-close'>
-                    <GrClose className='close' onClick={ onClose } />
+                    <MdOutlineClose className='close' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>

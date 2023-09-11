@@ -1,6 +1,7 @@
-import {useContext, useEffect, useRef, useState} from 'react';
-import {Context} from '../../../../context/Context';
+import { useEffect, useRef, useState} from 'react';
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {setWindowChatOpen} from '../../../../store/actions/uiActions';
 
 export default function useLoginAndRegistrationLogic() {
     const [uniKey, setUniKey] = useState('');
@@ -8,23 +9,23 @@ export default function useLoginAndRegistrationLogic() {
     const [modal, setModal] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const uniKeyRef = useRef();
-    const {setIsActive} = useContext(Context);
+    const dispatch = useDispatch();
 
     // Validation Uniquekey
-    const uniKeyValidate = (value) => {
+    function uniKeyValidate(value) {
         setUniKeyError('');
         if (!value) {
             setUniKeyError('registration.error-message');
         }
     }
 
-    const onChangeUniqueKey = (e) => {
+    function onChangeUniqueKey(e) {
         setUniKey(e.target.value);
         uniKeyValidate(e.target.value);
     }
 
     // Validation UniqueKey On Server
-    const validateUnikeyOnServer = async (key) => {
+    async function validateUnikeyOnServer(key) {
         try {
             const response = await axios.post('https://kpdchat.onrender.com/api/users/login', {
                 uniquekey: key,
@@ -41,7 +42,7 @@ export default function useLoginAndRegistrationLogic() {
     }
 
     // Submit UniqueKey
-    const onUniqueKeySubmit = async (e) => {
+    async function onUniqueKeySubmit(e) {
         e.preventDefault();
         if (uniKeyError) return;
         if (uniKey.trim() === '') {
@@ -55,7 +56,7 @@ export default function useLoginAndRegistrationLogic() {
                         uniqueKey: uniKey,
                     })
                     localStorage.setItem('user', JSON.stringify(data));
-                    setIsActive(true);
+                    dispatch(setWindowChatOpen());
                 }
             } catch (e) {
                 console.log(e)
@@ -67,7 +68,7 @@ export default function useLoginAndRegistrationLogic() {
 
     useEffect(() => {
         uniKeyRef.current.style.height = 'auto';
-        uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 4 + 'px';
+        uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 5 + 'px';
     }, [uniKey]);
 
     return {

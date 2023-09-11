@@ -1,15 +1,16 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
-import {Context} from '../../../../context/Context';
+import {useDispatch} from 'react-redux';
+import {setWindowChatOpen} from '../../../../store/actions/uiActions';
 
 export default function useGettingUniqueKeyLogic({uniKey}) {
     const [copyActive, setCopyActive] = useState(false);
-    const [copyActiveMessage, setCopyActiveMessage] = useState('')
+    const [copyActiveMessage, setCopyActiveMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const {setIsActive} = useContext(Context);
+    const dispatch = useDispatch();
 
     // Copy Unique Key
-    const handleCopyChange = (e) => {
+    function handleCopyChange (e) {
         e.preventDefault();
         setCopyActive(true);
 
@@ -24,16 +25,16 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
     }
 
     // Enter to Chat
-    const handleEnterChange = async (e) => {
+    async function handleEnterChange(e) {
         e.preventDefault();
         if (copyActiveMessage === '') return;
         try {
             setIsLoading(true);
             const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
-                uniqueKey: uniKey,
+                uniqueKey: uniKey
             });
             localStorage.setItem('user', JSON.stringify(data));
-            setIsActive(true);
+            dispatch(setWindowChatOpen());
         } catch (e) {
             console.log(e);
         } finally {
@@ -46,6 +47,6 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
         copyActiveMessage,
         isLoading,
         handleCopyChange,
-        handleEnterChange,
+        handleEnterChange
     }
 }

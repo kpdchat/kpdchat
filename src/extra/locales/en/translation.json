@@ -15,6 +15,11 @@
         "copied-message": "The message has been copied",
         "text-message" : "Write a message.."
     },
+    "settingsUser": {
+        "language": "Language",
+        "exit": "Exit",
+        "save": "Save"
+    },
     "addFolder" : {
         "error" : "Required",
         "maxLength" : "Max 12 symbols",

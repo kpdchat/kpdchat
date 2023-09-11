@@ -9,7 +9,7 @@ export default function Info() {
         <div className='info'>
             <div className='info__block'>
                 <div>
-                    <h1><span>KPD</span>CHAT</h1>
+                    <h1><b>KPD</b>CHAT</h1>
                     <p>{ t('info.welcome-text-p1') }</p>
                     <p>{ t('info.welcome-text-p2') }</p>
                 </div>

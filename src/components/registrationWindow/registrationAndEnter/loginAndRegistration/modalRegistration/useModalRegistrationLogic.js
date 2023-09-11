@@ -21,7 +21,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [isLoading, setIsLoading] = useState(false);
 
     // Nickname validation
-    const validateNickname = (value) => {
+    function validateNickname(value) {
         if (!value) {
             setNicknameError('registration.error-message');
         } else if (value.length < 4 || value.length > 12) {
@@ -31,21 +31,21 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
-    const onChangeNickname = (e) => {
+    function onChangeNickname(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
         setNickname(checkingForSpaces);
         validateNickname(e.target.value);
     }
 
     // Link Validation
-    const validateImageValue = (value) => {
+    function validateImageValue(value) {
         setProfilePictureLinkError('');
         if (!value) {
             setProfilePictureLinkError('registration.error-message');
         }
     }
 
-    const validateImageOnServer = async (url) => {
+    async function validateImageOnServer(url) {
         try {
             const response = await axios.head(url, {
                 timeout: 10000,
@@ -62,13 +62,13 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
-    const onChangeTextareaInput = (e) => {
+    function onChangeTextareaInput(e) {
         setProfilePictureLink(e.target.value);
         validateImageValue(e.target.value);
     }
 
     // Insert Dog Links
-    const onePickAvatar = (url, index) => {
+    function onePickAvatar(url, index) {
         setProfilePictureLink(url);
         setActiveDogImg(index);
         setProfilePictureLinkError('');

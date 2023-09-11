@@ -8,6 +8,7 @@ const locales = {
 
 export default function LanguageButton() {
     const {i18n} = useTranslation()
+    console.log(typeof i18n.language) // delete this anyway
 
     return (
         <div className='language-buttons'>

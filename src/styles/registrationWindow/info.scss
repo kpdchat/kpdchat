@@ -21,7 +21,7 @@
             letter-spacing: 3.6px;
             color: $color-white;
 
-            span {
+            b {
                 font-weight: $f-weight-800;
                 margin-right: 8px;
             }
@@ -53,7 +53,6 @@
         &__title {
             // .info-feature__title
             border-left: 3px white solid;
-            font-size: 20px;
 
             h2 {
                 color: $color-yellow;
