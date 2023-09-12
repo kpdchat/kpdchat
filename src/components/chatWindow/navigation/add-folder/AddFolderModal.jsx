@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react"; //useMemo
 import { MdOutlineClose } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
-import { useState, useEffect } from "react"; //useMemo
+import { useDispatch, useSelector } from 'react-redux';
 // import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 import { icons } from "../../../../extra/config/folder-icons";
 import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
-import { selectUser } from "../../../../store/selectors";
-import { useDispatch, useSelector } from 'react-redux';
-import { selectEditFolder } from "../../../../store/selectors";
+import { selectUser, selectEditFolder } from "../../../../store/selectors";
 import { setModalClose } from "../../../../store/actions/uiActions";
 
 //for render chats
@@ -71,10 +69,24 @@ export default function AddFolderModal() {
         register,
         handleSubmit,
         formState: { errors },
-        reset,
         getValues,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
+    //setting icon
+    useEffect(() => {
+        if (editFolder?.id) {
+            setIconName(icons[editFolder.iconTag])
+        }
+    }, [editFolder?.id, editFolder.iconTag])
+
+    //function for display how many chats were chosen 
+    function onUlClick(e) {
+        e.stopPropagation()
+        setTimeout(() => {
+            const values = getValues("publicChatIds")
+            !values.length ? setChatCount(0) : setChatCount(values.length)
+        }, 50)
+    }
     //search-logic
 
     // const filteredChats = useMemo(() => {
@@ -96,27 +108,12 @@ export default function AddFolderModal() {
         } else {
             const folder = {
                 userId: user.id,
-            ...data
+                ...data
             }
             dispatch(fetchCreateFolder(folder))
         }
         dispatch(clearEditFolder())
         dispatch(setModalClose())
-        reset()
-    }
-
-    useEffect(() => {
-        if (editFolder?.id) {
-            setIconName(icons[editFolder.iconTag])
-        }
-    }, [editFolder?.id, editFolder.iconTag])
-
-    function onUlClick(e) {
-        e.stopPropagation()
-        setTimeout(() => {
-            const values = getValues("publicChatIds")
-            !values.length ? setChatCount(0) : setChatCount(values.length)
-        }, 50)
     }
 
     return (

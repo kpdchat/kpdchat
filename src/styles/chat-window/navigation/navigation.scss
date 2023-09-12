@@ -101,6 +101,7 @@
                 display: none;
             }
         }
+
         &-public {
             .text-inter-16-400 {
                 max-width: 94px;
@@ -109,6 +110,7 @@
     }
 
     &__public-container {
+        //.folders__public-container
         border-top: 1px solid $color-light-white;
         padding: 8px 4px;
 
@@ -126,8 +128,6 @@
             justify-content: center;
             padding: 12px 0;
         }
-
-
 
         .text-inter-16-400 {
 
@@ -152,7 +152,6 @@
         justify-content: flex-start;
         padding: 8px;
         width: 100px;
-
 
         &:hover {
             color: $color-yellow;
