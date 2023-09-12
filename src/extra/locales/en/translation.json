@@ -13,7 +13,8 @@
         "confirm" : "Confirm",
         "answer" : "Answer",
         "copied-message": "The message has been copied",
-        "text-message" : "Write a message.."
+        "text-message" : "Write a message..",
+        "loading" : "Loading your profile.."
     },
     "addFolder" : {
         "error" : "Required",
