@@ -13,7 +13,8 @@
         "confirm" : "Confirm",
         "answer" : "Answer",
         "copied-message": "The message has been copied",
-        "text-message" : "Write a message.."
+        "text-message" : "Write a message..",
+        "loading" : "Loading your profile.."
     },
     "addFolder" : {
         "error" : "Required",
@@ -24,7 +25,11 @@
         "chatName": "Chat name or nickname",
         "selected" : "Selected",
         "create" : "Create",
-        "createFolder" : "Create folder"
+        "createFolder" : "Create folder",
+        "editFolder" : "Edit folder",
+        "delete" : "Delete",
+        "deleteFolder" : "Are you sure you want to delete this folder?"
+
     },
     "info": {
         "welcome-text-p1": "Welcome to the world of fast and convenient communication!",

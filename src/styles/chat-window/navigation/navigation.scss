@@ -40,7 +40,7 @@
     &__container {
         // .folders__container
         margin: 4px 0;
-        padding: 8px;
+        padding: 8px 4px;
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -62,6 +62,10 @@
             color: $color-yellow;
         }
 
+        @include max-screen(940px) {
+            justify-content: center;
+        }
+
         .ml-5px {
             @include max-screen(940px) {
                 display: none;
@@ -72,7 +76,7 @@
 
 
     &__title {
-        //.folders__title"
+        //.folders__title
         display: flex;
         gap: 8px;
         align-items: center;
@@ -97,9 +101,16 @@
                 display: none;
             }
         }
+
+        &-public {
+            .text-inter-16-400 {
+                max-width: 94px;
+            }
+        }
     }
 
     &__public-container {
+        //.folders__public-container
         border-top: 1px solid $color-light-white;
         padding: 8px 4px;
 
@@ -111,6 +122,7 @@
         display: flex;
         gap: 8px;
         align-items: center;
+        justify-content: space-between;
 
         @include max-screen(940px) {
             justify-content: center;
@@ -128,6 +140,7 @@
             color: $color-yellow;
         }
     }
+
 }
 
 .add {
@@ -139,7 +152,6 @@
         justify-content: flex-start;
         padding: 8px;
         width: 100px;
-
 
         &:hover {
             color: $color-yellow;

@@ -7,13 +7,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from '../../store/actions/userActions';
 import { selectUser } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
+import { useTranslation } from 'react-i18next';
+
 
 
 export default function WindowChat() {
     const { isActive } = useContext(Context);
     const dispatch = useDispatch()
+    const { t } = useTranslation()
     const user = JSON.parse(localStorage.getItem('user'))
     const serverUser = useSelector(selectUser)
+    
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id))
@@ -28,17 +32,16 @@ export default function WindowChat() {
         return (
             <div className={isActive ? 'chat-loader' : "display-none"}>
                 <DotSpinner
-                    size={100}
+                    size={120}
                     speed={0.9}
                     color="#38328A"
                 />
+                <p className='text-inter-18-600'>{t('global.loading')}</p>
             </div>
 
         )
 
     }
-
-
 
     return (
         <div className={isActive ? 'chat' : "display-none"}>
