@@ -123,7 +123,7 @@ export default function AddFolderModal() {
         <div className="modal-container folder-modal">
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
-                    <h3 className="text-inter-18-600">{t('addFolder.createFolder')}</h3>
+                    <h3 className="text-inter-18-600">{editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}</h3>
                     <MdOutlineClose className="cursor-pointer"
                         size={24}
                         onClick={() => {
