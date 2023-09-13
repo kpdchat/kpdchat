@@ -17,7 +17,6 @@ export default function FolderDeleteModal({folder}) {
     }
 
     function onDeleteClick() {
-        console.log(folder.id, 'modal');
         dispatch(fetchDeleteFolder(deleteFolder))
         dispatch(setModalClose())
     }

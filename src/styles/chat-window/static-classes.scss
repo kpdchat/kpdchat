@@ -1,3 +1,9 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 .text-inter-18-600 {
     font-family: $font-inter;
     font-size: 18px;
@@ -151,6 +157,10 @@
     align-items: center;
     position: relative;
     color: $color-yellow;
+
+    @include max-screen(940px) {
+        justify-content: center;
+    }
 }
 
 .active-kebab {
