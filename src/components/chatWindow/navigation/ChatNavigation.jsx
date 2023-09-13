@@ -37,7 +37,6 @@ export default function ChatNavigation() {
                             <MdOutlineTextsms size={24} />
                             <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                         </div>
-                        <h3 className='text-inter-16-400'>1</h3>
                     </div>
                 </div>
 

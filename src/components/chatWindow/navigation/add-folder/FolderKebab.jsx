@@ -11,7 +11,6 @@ export default function FolderKebab({ folder }) {
     const dispatch = useDispatch()
     const menuRef = useRef()
     function onDeleteClick() {
-        console.log(folder.id, 'kebab');
         dispatch(setDeleteFolder(folder))
         dispatch(setModalOpen('delete-folder')) 
     }

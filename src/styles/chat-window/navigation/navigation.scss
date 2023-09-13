@@ -104,7 +104,9 @@
 
         &-public {
             .text-inter-16-400 {
-                max-width: 94px;
+                @include max-screen(1250px) {
+                    width: 80px;
+                }
             }
         }
     }
