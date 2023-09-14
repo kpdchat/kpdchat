@@ -1,52 +1,79 @@
 import React, { useState, useRef, useEffect } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form"
 import { useTranslation } from 'react-i18next';
-import { MdOutlineClose, MdOutlineAddPhotoAlternate } from "react-icons/md";
+import { MdOutlineClose, MdOutlineAddPhotoAlternate, MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { DotSpinner } from '@uiball/loaders'
 
-
-
-// useEffect(() => {
-//     textareaRef.current.style.height = 'auto';
-//     console.log(textareaRef.current.style.height);
-//     textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + 'px';
-// }, [textareaRef]);
-// function onTextareaInput(e) {
-//     // textareaRef.current.style.height = textareaRef.current.scrollHeight
-// console.log(textareaRef.current.style);
-
-//     textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px"
-// }
 
 
 export default function AddChatModal() {
     const [choseImg, setChoseImg] = useState(false)
+    const [link, setLink] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    const chatPictureLink = useRef()
     const { t } = useTranslation()
-    const textareaRef = useRef()
 
-    // useEffect(() => {
-    //     console.log(textareaRef?.current);
-    // }, [textareaRef]);
-    function onTextareaInput(e) {
-        if (e.target.value.length >= 55) {
-            textareaRef.current.style.height = textareaRef.current.scrollHeight + 3 + "px"
-        } else {
-            textareaRef.current.style.height = '40px'
-        }
-        // textareaRef.current.style.height = textareaRef.current.scrollHeight
-        // console.log(textareaRef.current.style);
-
-        //     textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px"
-        console.log(textareaRef?.current);
-    }
     const {
         register,
         handleSubmit,
         formState: { errors },
         getValues,
-    } = useForm({ mode: "all" })
+    } = useForm({ mode: "onChange" })
+    const { ref, ...rest } = register('chatPictureLink', {
+        onChange: onTextareaInput,
+        required: 'required',
+        maxLength: {
+            value: 2000,
+            message: t('addFolder.maxLength')
+        },
+        validate: {
+            checkUrl: validateImageOnServer
+        }
+    });
+
+    console.log(link, 'link');
+    
+
+
+
+    function onTextareaInput(e) {
+        if (e.target.value.length >= 55) {
+            chatPictureLink.current.style.height = chatPictureLink.current.scrollHeight + 3 + "px"
+        } else {
+            chatPictureLink.current.style.height = '40px'
+        }
+    }
+
+    async function validateImageOnServer(url) {
+        setLoading(true)
+        try {
+            const response = await axios.head(url, {
+                timeout: 10000,
+            });
+            setLoading(false)
+            return response.status !== 200 || !response.headers['content-type'].includes('image') ?
+                "Посилання не активне.Перевірте ще раз." : true && setLink(url);
+
+        } catch (error) {
+            setLink('')
+            setLoading(false)
+            return "Посилання не активне. Перевірте ще раз.";
+        }
+
+    }
+
+    function onImgClick() {
+        const values = getValues()
+        if (!errors?.title && values.title) {
+            setChoseImg(true)
+        }
+    }
+
 
     function onFormSubmit(data) {
-        console.log();
+        console.log('click');
         console.log(data);
     }
     return (
@@ -64,43 +91,67 @@ export default function AddChatModal() {
                 </div>
                 <form className="chat-modal__form">
                     <div className="chat-modal__form-container" >
-                        <div className="chat-modal__img cursor-pointer" onClick={() => setChoseImg(true)}>
-                            <MdOutlineAddPhotoAlternate size={24} />
+                        <div className="chat-modal__img cursor-pointer" onClick={onImgClick}>
+                        {link && <img src={link} alt="default-picture" />} 
+                        
+                        
+                           <MdOutlineAddPhotoAlternate size={24} className= {link ? 'display-none' : null}/>
                         </div>
-                        <input
-                            {...register("title", {
-                                required: 'required',
-                                maxLength: {
-                                    value: 40,
-                                    message: t('addFolder.maxLength')
-                                },
-                                minLength: {
-                                    value: 4,
-                                    message: t('addFolder.minLength')
-                                }
-                            })}
-                            placeholder='Назва чату '
-                            className={choseImg ? 'display-none' : "chat-modal__title text-inter-16-400"}
-                        />
-                        <textarea
-                            {...register("chatPictureLink", {
-                                maxLength: {
-                                    value: 2000,
-                                    message: t('addFolder.maxLength')
-                                },
-                            })}
-                            placeholder='Посилання на зображення'
-                            rows="1"
-                            onInput={onTextareaInput}
-                            className={choseImg ? "chat-modal__textarea scroll-bar text-inter-16-400" : 'display-none'}
-                            ref={textareaRef}
-                        />
+                        <div>
+                            <input
+                                {...register("title", {
+                                    required: 'required',
+                                    maxLength: {
+                                        value: 40,
+                                        message: t('addFolder.maxLength')
+                                    },
+                                    minLength: {
+                                        value: 4,
+                                        message: t('addFolder.minLength')
+                                    }
+                                })}
+                                placeholder='Назва чату '
+                                className={choseImg ? 'display-none' : "chat-modal__title text-inter-16-400"}
+                            />
+                            <div className="chat-modal__error">
+                                {errors?.title && <p className="text-inter-14-400">{errors?.title?.message || "Error"}</p>}
+                            </div>
+
+                            <textarea {...rest}
+                                name="chatPictureLink" ref={(e) => {
+                                    ref(e)
+                                    chatPictureLink.current = e
+                                }}
+                                placeholder='Посилання на зображення'
+                                rows="1"
+                                className={choseImg ? "chat-modal__textarea scroll-bar text-inter-16-400" : 'display-none'}
+                            />
+                            <div className="chat-modal__error chat-modal__error_textarea">
+                                {errors?.chatPictureLink && <p className={choseImg ? "text-inter-14-400" : 'display-none'}>{errors?.chatPictureLink?.message || "Error"}</p>}
+                            </div>
+                        </div>
+                        <div className= {loading ? "loading" : "display-none"} >
+                            <DotSpinner
+                                size={30}
+                                speed={0.9}
+                                color="#38328A"
+                            />
+                        </div>
+
+
                     </div>
-                    {/* <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="default-picture" /> */}
+
+
+
+                    
+
+                    {/* <div className="chat-modal__arrows">
+                        <MdKeyboardArrowLeft size={24}/>
+                        <MdKeyboardArrowRight size={24}/>
+                    </div> */}
 
                     <button className="text-inter-18-600 cursor-pointer" onClick={handleSubmit(onFormSubmit)}>Створити</button>
                 </form>
-
             </div>
         </div>
     )

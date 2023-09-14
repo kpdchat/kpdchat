@@ -6,7 +6,7 @@ import AddChatModal from "./AddChatModal";
 
 export default function AddChat() {
     const { t } = useTranslation()
-    const [isModal, setIsModal] = useState(false)
+    const [isModal, setIsModal] = useState(true)
     function onAddChatClick() {
         setIsModal(true)
     }
