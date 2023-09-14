@@ -1,5 +1,7 @@
 import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
 
 export default function useModalRegistrationLogic({setUniKey}) {
     // Array avatars Mops
@@ -18,7 +20,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
     const profilePictureLinkRef = useRef();
     const [activeDogImg, setActiveDogImg] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch();
 
     // Nickname validation
     function validateNickname(value) {
@@ -80,7 +82,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         if (nicknameError || profilePictureLinkError) return;
 
         try {
-            setIsLoading(true);
+            dispatch(setLoaderShow());
             const imageIsValid = await validateImageOnServer(profilePictureLink);
             if (imageIsValid) {
                 const {data} = await axios.post('https://kpdchat.onrender.com/api/users/register', {
@@ -92,7 +94,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         } catch (e) {
             console.log(e);
         } finally {
-            setIsLoading(false);
+            dispatch(setLoaderHide());
         }
     }
 
@@ -111,7 +113,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         profilePictureLinkError,
         setProfilePictureLinkError,
         activeDogImg,
-        isLoading,
         mops,
         profilePictureLinkRef,
         onChangeNickname,

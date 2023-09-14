@@ -4,7 +4,7 @@ import {
     ACTION_OPEN_MODAL,
     ACTION_CLOSE_MODAL,
     ACTION_OPEN_WINDOW_CHAT,
-    ACTION_CLOSE_WINDOW_CHAT
+    ACTION_CLOSE_WINDOW_CHAT, ACTION_SHOW_LOADER, ACTION_HIDE_LOADER
 } from '../actions/uiActions'
 
 const initialState = {
@@ -13,7 +13,8 @@ const initialState = {
     id: 0,
     isModal: false,
     modalId : 0,
-    isOpenChat: false
+    isOpenChat: false,
+    isActiveLoader: false
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -61,6 +62,18 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isOpenChat: false,
+            }
+        }
+        case ACTION_SHOW_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: true
+            }
+        }
+        case ACTION_HIDE_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: false
             }
         }
         default: return state;

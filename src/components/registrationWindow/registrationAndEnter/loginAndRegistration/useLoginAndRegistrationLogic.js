@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState} from 'react';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
-import {setWindowChatOpen} from '../../../../store/actions/uiActions';
+import {setLoaderHide, setLoaderShow, setWindowChatOpen} from '../../../../store/actions/uiActions';
+import {useTranslation} from 'react-i18next';
 
 export default function useLoginAndRegistrationLogic() {
     const [uniKey, setUniKey] = useState('');
     const [uniKeyError, setUniKeyError] = useState('');
     const [modal, setModal] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const uniKeyRef = useRef();
     const dispatch = useDispatch();
 
@@ -41,6 +41,14 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
+    // User Language
+    const {i18n} = useTranslation();
+    const languageList = {
+        'ua': 0,
+        'en': 1
+    };
+    const userLanguage = languageList[i18n.language];
+
     // Submit UniqueKey
     async function onUniqueKeySubmit(e) {
         e.preventDefault();
@@ -49,19 +57,27 @@ export default function useLoginAndRegistrationLogic() {
             setUniKeyError('registration.error-message');
         } else {
             try {
-                setIsLoading(true);
+                dispatch(setLoaderShow());
                 const validateKey = await validateUnikeyOnServer(uniKey);
                 if (validateKey) {
                     const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
                         uniqueKey: uniKey,
-                    })
+                    });
+                    const updateUser = {
+                        id: data.id,
+                        nickname: data.nickname,
+                        profilePictureLink: data.profilePictureLink,
+                        localization: userLanguage,
+                        theme: data.theme
+                    }
+                    await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
                     localStorage.setItem('user', JSON.stringify(data));
                     dispatch(setWindowChatOpen());
                 }
             } catch (e) {
                 console.log(e)
             } finally {
-                setIsLoading(false)
+                dispatch(setLoaderHide());
             }
         }
     }
@@ -77,7 +93,6 @@ export default function useLoginAndRegistrationLogic() {
         uniKeyRef,
         modal,
         setModal,
-        isLoading,
         onChangeUniqueKey,
         onUniqueKeySubmit,
     }

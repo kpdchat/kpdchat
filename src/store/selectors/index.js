@@ -6,4 +6,4 @@ export const selectEditFolder = state => state.user.editFolder
 export const selectDeleteFolder = state => state.user.deleteFolder
 export const selectUser = state => state.user.user
 export const selectOpenChat = state => state.ui.isOpenChat
-
+export const selectLoader = state => state.ui.isActiveLoader

@@ -11,8 +11,24 @@
     &__content {
         //.settings__content
         width: 400px;
-        box-shadow: 1px 1px 4px 0px #706c9f;
-        border-radius: 8px 8px 0px 0px;
+        box-shadow: 1px 1px 4px 0 #706c9f;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .loading-settings-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        //background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .loading-settings {
+        display: flex;
+        align-items: center;
     }
 
     .modal-title {
@@ -27,6 +43,17 @@
         //.settings__settings
         background: $color-white;
         padding: 24px;
+
+        .nickname-error {
+            display: flex;
+            align-items: center;
+            color: red;
+            padding: 8px 0;
+            margin: 0 auto -36px;
+            text-align: center;
+            font-size: 10px;
+            width: 186px;
+        }
     }
 
     &__user-profile {
@@ -38,6 +65,7 @@
         .text-inter-16-400 {
             width: 152px;
             color: $color-text-grey;
+            border: none;
         }
     }
 
@@ -46,7 +74,6 @@
         width: 80px;
         height: 80px;
         border-radius: 80px;
-        margin-right: 20px;
         object-fit: cover;
     }
 

@@ -4,9 +4,12 @@ import useModalRegistrationLogic from './useModalRegistrationLogic';
 import MopsAvatars from './MopsAvatars';
 import LoadingOnSubmitForm from './LoadingOnSubmitForm';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {selectLoader} from '../../../../../store/selectors';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
+    const isLoader = useSelector(selectLoader);
     const {t} = useTranslation();
 
     return (
@@ -73,7 +76,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         </button>
                     </div>
                 </form>
-                { state.isLoading && <LoadingOnSubmitForm /> }
+                { isLoader && <LoadingOnSubmitForm /> }
             </div>
         </>
     );
