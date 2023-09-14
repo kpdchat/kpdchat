@@ -19,23 +19,23 @@ export default function WindowChat() {
         e.preventDefault();
     }
 
+    // User Language
     const languageList = {
-        'ua': 0,
-        'en': 1
+        0: 'ua',
+        1: 'en'
     };
-    const userLanguage = languageList[i18n.language];
 
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id));
         }
 
-    }, [user?.id, dispatch])
+    }, [user?.id, dispatch]);
 
     useEffect( () => {
-        i18n.changeLanguage(userLanguage[serverUser?.localization])
-        // i18next.changeLanguage(userLanguage)
-    }, [user.localization])
+        void i18n.changeLanguage(languageList[serverUser?.localization])
+        // eslint-disable-next-line
+    }, [serverUser?.localization]);
 
     if (!serverUser.id) {
         return (

@@ -13,19 +13,13 @@ const resources = {
     },
 };
 
-const languageList = {
-    'ua': 0,
-    'en': 1
-};
-const userLanguage = languageList[i18n.language];
-
 i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         resources,
         // debug: true, //to see debug in console
-        lng: userLanguage,
+        lng: 'ua',
         interpolation: {
             escapeValue: false
         }

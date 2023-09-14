@@ -16,8 +16,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
-    const {t, ...b} = useTranslation();
-    console.log(b)
+    const {t} = useTranslation();
     const [isInput, setIsInput] = useState(false);
     const [editPhoto, setEditPhoto] = useState(false);
     const [nickname, setNickname] = useState(user.nickname);
@@ -30,6 +29,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
         setIsInput(!isInput)
     }
 
+    // User Language
     const languageList = {
         'ua': 0,
         'en': 1
@@ -37,7 +37,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
     const userLanguage = languageList[i18n.language];
 
     // Submit To Server Data
-    async function onSubmitDataToServer() {
+    async function onSubmitNicknameToServer() {
         if (nicknameError) return;
 
         try {
@@ -50,14 +50,13 @@ export default function SettingsModal({isOpen, setIsOpen}) {
                 theme: user.theme
             }
             await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
-            localStorage.setItem('user', JSON.stringify(user));
             dispatch(fetchUser(user.id));
         } catch (e) {
             console.log(e);
         } finally {
             dispatch(setLoaderHide());
         }
-        // setIsOpen(!isOpen); // Close window Settings User
+        setIsOpen(!isOpen); // Close window Settings User
     }
 
     function onContentClick(e) {
@@ -96,7 +95,8 @@ export default function SettingsModal({isOpen, setIsOpen}) {
             <div className='settings__content' onClick={ onContentClick }>
                 <div className='modal-title'>
                     <h2>Налаштування</h2>
-                    <MdOutlineClose className='cursor-pointer' size='24' alt='close settings'
+                    <MdOutlineClose className='cursor-pointer'
+                                    size='24'
                                     onClick={ onCloseClick } />
                 </div>
                 <div className='settings__settings'>
@@ -145,7 +145,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
                     <button
                         className='settings__submit cursor-pointer'
                         type='submit'
-                        onClick={ onSubmitDataToServer }
+                        onClick={ onSubmitNicknameToServer }
                     >
                         { t('settingsUser.save') }
                     </button>
