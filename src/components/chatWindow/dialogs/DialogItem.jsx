@@ -1,14 +1,15 @@
 import React from "react";
 import chat_logo from '../../../images/chat-window/chat_logo.png'
 
-export default function DialogItem() {
+export default function DialogItem({ dialog }) {
     return (
         <>
             <div className="list__dialog">
                 <div className="list__info">
-                    <img src={ chat_logo } alt="" />
+                    <img src={dialog.chatPictureLink}
+                     alt="" />
                     <div className="list__text">
-                        <h3 className='text-inter-18-600'>Настолки у Харкові</h3>
+                        <h3 className='text-inter-18-600'>{dialog.title}</h3>
                         <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
                             accusamus maxime, temporibus nisi repellat facere omnis et. Accusamus ad dignissimos
                             exercitationem repellat adipisci illum sequi nemo ex distinctio, magnam excepturi quibusdam
@@ -27,7 +28,7 @@ export default function DialogItem() {
 
             </div>
 
-            <div className="list__dialog">
+            {/* <div className="list__dialog">
                 <div className="list__info">
                     <img src={ chat_logo } alt="" />
                     <div className="list__text">
@@ -176,8 +177,8 @@ export default function DialogItem() {
                 <div className="list__data">
                     <span className='list__time text-inter-12-400'>12:28</span>
                     <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
+                </div> */}
+            {/* </div> */}
         </>
     )
 }

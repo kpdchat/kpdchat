@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import AddChatModal from "./AddChatModal";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalOpen } from "../../../../store/actions/uiActions";
+import { selectUi } from "../../../../store/selectors";
+
+
 
 
 export default function AddChat() {
     const { t } = useTranslation()
-    const [isModal, setIsModal] = useState(true)
+    const { isModal, modalId } = useSelector(selectUi)
+    const dispatch = useDispatch()
+
     function onAddChatClick() {
-        setIsModal(true)
+        dispatch(setModalOpen('create-chat'))
     }
     return (
         <>
@@ -16,7 +23,7 @@ export default function AddChat() {
                 <MdOutlineGroupAdd size={24} />
                 <h2 className="text-inter-18-600">{t('navigation.chat')}</h2>
             </div>
-            {isModal && <AddChatModal />}
+            {isModal && modalId === 'create-chat' && <AddChatModal />}
         </>
 
     )

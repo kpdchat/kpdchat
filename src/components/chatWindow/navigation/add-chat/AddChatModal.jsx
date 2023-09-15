@@ -1,19 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form"
-import { useTranslation } from 'react-i18next';
-import { MdOutlineClose, MdOutlineAddPhotoAlternate, MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { MdOutlineClose, MdOutlineAddPhotoAlternate } from "react-icons/md";
 import { DotSpinner } from '@uiball/loaders'
+import { useDispatch, useSelector } from 'react-redux';
+import useAddChatForm from "./useAddChatForm";
+import { setModalClose } from "../../../../store/actions/uiActions";
+import { selectUser } from "../../../../store/selectors";
+import { fetchCreateChat } from "../../../../store/actions/chatActions";
 
 
 
 export default function AddChatModal() {
-    const [choseImg, setChoseImg] = useState(false)
-    const [link, setLink] = useState('')
-    const [loading, setLoading] = useState(false)
-
     const chatPictureLink = useRef()
-    const { t } = useTranslation()
+    const dispatch = useDispatch()
+    const user = useSelector(selectUser)
 
     const {
         register,
@@ -21,6 +21,17 @@ export default function AddChatModal() {
         formState: { errors },
         getValues,
     } = useForm({ mode: "onChange" })
+
+    const {
+        choseImg,
+        link,
+        loading,
+        t,
+        onTextareaInput,
+        validateImageOnServer,
+        setChoseImg
+    } = useAddChatForm(chatPictureLink)
+
     const { ref, ...rest } = register('chatPictureLink', {
         onChange: onTextareaInput,
         required: 'required',
@@ -33,37 +44,6 @@ export default function AddChatModal() {
         }
     });
 
-    console.log(link, 'link');
-    
-
-
-
-    function onTextareaInput(e) {
-        if (e.target.value.length >= 55) {
-            chatPictureLink.current.style.height = chatPictureLink.current.scrollHeight + 3 + "px"
-        } else {
-            chatPictureLink.current.style.height = '40px'
-        }
-    }
-
-    async function validateImageOnServer(url) {
-        setLoading(true)
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000,
-            });
-            setLoading(false)
-            return response.status !== 200 || !response.headers['content-type'].includes('image') ?
-                "Посилання не активне.Перевірте ще раз." : true && setLink(url);
-
-        } catch (error) {
-            setLink('')
-            setLoading(false)
-            return "Посилання не активне. Перевірте ще раз.";
-        }
-
-    }
-
     function onImgClick() {
         const values = getValues()
         if (!errors?.title && values.title) {
@@ -71,10 +51,15 @@ export default function AddChatModal() {
         }
     }
 
-
     function onFormSubmit(data) {
+        const chat = {
+            userId : user.id,
+            ...data
+        }
         console.log('click');
-        console.log(data);
+        console.log(chat);
+        dispatch(fetchCreateChat(chat))
+        dispatch(setModalClose())
     }
     return (
         <div className="modal-container chat-modal">
@@ -83,19 +68,16 @@ export default function AddChatModal() {
                     <h3 className="text-inter-18-600">Створити чат</h3>
                     <MdOutlineClose className="cursor-pointer"
                         size={24}
-                    // onClick={() => {
-                    //     dispatch(setModalClose())
-                    //     dispatch(clearEditFolder())
-                    // }}
+                    onClick={() => {
+                        dispatch(setModalClose())
+                    }}
                     />
                 </div>
                 <form className="chat-modal__form">
                     <div className="chat-modal__form-container" >
                         <div className="chat-modal__img cursor-pointer" onClick={onImgClick}>
-                        {link && <img src={link} alt="default-picture" />} 
-                        
-                        
-                           <MdOutlineAddPhotoAlternate size={24} className= {link ? 'display-none' : null}/>
+                            {link && <img src={link} alt="default-picture" />}
+                            <MdOutlineAddPhotoAlternate size={24} className={link ? 'display-none' : null} />
                         </div>
                         <div>
                             <input
@@ -130,26 +112,14 @@ export default function AddChatModal() {
                                 {errors?.chatPictureLink && <p className={choseImg ? "text-inter-14-400" : 'display-none'}>{errors?.chatPictureLink?.message || "Error"}</p>}
                             </div>
                         </div>
-                        <div className= {loading ? "loading" : "display-none"} >
+                        <div className={loading ? "loading" : "display-none"} >
                             <DotSpinner
                                 size={30}
                                 speed={0.9}
                                 color="#38328A"
                             />
                         </div>
-
-
                     </div>
-
-
-
-                    
-
-                    {/* <div className="chat-modal__arrows">
-                        <MdKeyboardArrowLeft size={24}/>
-                        <MdKeyboardArrowRight size={24}/>
-                    </div> */}
-
                     <button className="text-inter-18-600 cursor-pointer" onClick={handleSubmit(onFormSubmit)}>Створити</button>
                 </form>
             </div>

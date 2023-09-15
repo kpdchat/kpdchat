@@ -8,6 +8,7 @@
     }
 
     &__content {
+        //.chat-modal__content
         width: 480px;
         border-radius: 8px;
         background: $color-white;
@@ -16,6 +17,7 @@
     }
 
     &__header {
+        //.chat-modal__header
         color: $color-black;
         display: flex;
         align-items: center;
@@ -23,6 +25,7 @@
     }
 
     &__form {
+        //.chat-modal__form
         margin-top: 16px;
 
         img {
@@ -45,12 +48,14 @@
     }
 
     &__form-container {
+        //.chat-modal__form-container
         // max-height: 60px;
         display: flex;
         gap: 12px;
     }
 
     &__img {
+        //.chat-modal__img
         width: 60px;
         height: 60px;
         background-color: $color-grey;
@@ -62,6 +67,7 @@
     }
 
     &__title {
+        //.chat-modal__title
         height: 40px;
         padding: 16px 0px 8px 0px;
         width: 350px;
@@ -74,6 +80,7 @@
     }
 
     &__textarea {
+        //.chat-modal__textarea
         height: 40px;
         max-height: 60px;
         border: none;
@@ -88,6 +95,7 @@
 
     }
     &__error {
+        ///.chat-modal__error
         color: $color-red;
         &_textarea {
             // margin-top: 16px;

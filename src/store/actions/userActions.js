@@ -1,4 +1,5 @@
 import axios from "axios"
+import { setRenderList, setUserChats } from "./chatActions"
 export const ACTION_SET_USER = 'ACTION_SET_USER'
 export const ACTION_CREATE_FOLDER = 'ACTION_CREATE_FOLDER'
 export const ACTION_DELETE_FOLDER = 'ACTION_DELETE_FOLDER'
@@ -13,6 +14,9 @@ export function fetchUser(id) {
         try {
             const response = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
             dispatch(setUser(response.data))
+            // dispatch(setRenderList(response.data.chats))
+            dispatch(setUserChats(response.data.chats))
+            console.log(response.data);
         } catch (e) {
             alert(e)
         }
