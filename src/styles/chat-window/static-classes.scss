@@ -147,8 +147,9 @@
     position: absolute;
     background-color: $color-white;
     box-shadow: 1px 1px 4px 0px $color-shadow-grey;
-    border-radius: 9px;
+    border-radius: 8px;
     padding: 8px;
+    z-index: 2;
 }
 
 .active-folder {

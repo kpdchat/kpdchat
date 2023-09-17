@@ -1,30 +1,35 @@
 import React from "react";
 import { icons } from "../../../extra/config/folder-icons";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
-import FolderKebab from "./add-folder/FolderKebab";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUi } from "../../../store/selectors";
-import FolderDeleteModal from "./nav-modal/FolderDeleteModal";
+import { setRenderList } from "../../../store/actions/chatActions";
 import AddFolderModal from "./add-folder/AddFolderModal";
-
+import FolderDeleteModal from "./nav-modal/FolderDeleteModal";
+import FolderKebab from "./add-folder/FolderKebab";
 
 
 export default function NavFolderItem({ folder }) {
     const type = 'onContext'
-    const { isActive, isModal, modalId } = useSelector(selectUi)
-    const { isOpen, id, onKebabClick } = useKebabClick(folder.id, type)
+    const { isActiveFolderKebab, isModal, modalId } = useSelector(selectUi)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(folder.id, type)
+    const dispatch = useDispatch()
 
     function onContextClick() {
         onKebabClick()
     }
+    function onFolderClick() {
+        dispatch(setRenderList(folder.publicChats))
+    }
     return (
         <>
-            <div className={isActive && isOpen && id === folder.id ? 'active-folder' : 'folders__folder'}>
-                <div className="folders__title cursor-pointer" onContextMenu={onContextClick}>
+            <div className={isActiveFolderKebab && isOpen && idKebab === folder.id ? 'active-folder' : 'folders__folder'}>
+                <div className="folders__title cursor-pointer" onClick={onFolderClick} onContextMenu={onContextClick}>
                     {icons[folder.iconTag]}
                     <h3 className='text-inter-16-400'>{folder.title}</h3>
                 </div>
-                {isOpen && id === folder.id && <FolderKebab folder={folder} />}
+                <h3 className="text-inter-16-400 ml-5px">{folder.publicChats.length}</h3>
+                {isOpen && idKebab === folder.id && <FolderKebab folder={folder} />}
                 {isModal && modalId === 'delete-folder' && <FolderDeleteModal folder={folder} />}
             </div>
 

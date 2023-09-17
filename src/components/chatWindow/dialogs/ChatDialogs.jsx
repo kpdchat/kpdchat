@@ -17,7 +17,7 @@ export default function ChatDialogs() {
             <DialogSearch />
             <div className='dialogs__list list scroll-bar'>
                 <div className="list__container ">
-                    {renderChatList?.map(dialog =><DialogItem dialog={dialog}  key={dialog.id}/> )}
+                    {renderChatList?.map(chat =><DialogItem chat={chat}  key={chat.id}/> )}
                 </div>
 
             </div>

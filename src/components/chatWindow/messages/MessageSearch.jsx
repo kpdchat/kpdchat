@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 export default function MessageSearch() {
     const { isModal, modalId } = useSelector(selectUi)
     const titleId = -1
-    const { isOpen, id, onKebabClick } = useKebabClick(titleId)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(titleId)
     const { t } = useTranslation()
 
     return (
@@ -20,7 +20,7 @@ export default function MessageSearch() {
             </form>
             <div className="messages__info" >
                 <img className="cursor-pointer" src={menu_kebab} alt="" onMouseDown={onKebabClick} />
-                {isOpen && id === titleId && <MessageTitleKebab />}
+                {isOpen && idKebab === titleId && <MessageTitleKebab />}
             </div>
             {isModal && modalId === titleId && <ChatOutModal />}
 

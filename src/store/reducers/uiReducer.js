@@ -7,8 +7,8 @@ import {
 
 const initialState = {
     isOpen: false,
-    isActive: false,
-    id: 0,
+    isActiveFolderKebab: false,
+    idKebab: 0,
     isModal: false,
     modalId : 0,
 }
@@ -18,24 +18,24 @@ export default function uiReducer(state = initialState, { type, payload }) {
         case ACTION_CLOSE_KEBAB: {
             return {
                 ...state,
-                isActive: false,
+                isActiveFolderKebab: false,
                 isOpen: false,
-                id: 0,
+                idKebab: 0,
             }
         }
         case ACTION_OPEN_KEBAB: {
             return {
                 ...state,
-                isActive: true,
+                isActiveFolderKebab: true,
                 isOpen: true,
-                id: payload,
+                idKebab: payload,
             }
         }
         case ACTION_CLOSE_MODAL: {
             return {
                 ...state,
                 isModal: false,
-                id: 0,
+                idKebab: 0,
                 modalId: 0,
 
             }
@@ -44,7 +44,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isModal: true,
-                id: 0,
+                idKebab: 0,
                 modalId: payload,
             }
         }

@@ -8,6 +8,7 @@ import { fetchUser } from '../../store/actions/userActions';
 import { selectUser } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
 import { useTranslation } from 'react-i18next';
+import { setRenderList } from '../../store/actions/chatActions';
 
 
 
@@ -23,6 +24,13 @@ export default function WindowChat() {
             dispatch(fetchUser(user.id))
         }
     }, [user?.id, dispatch])
+
+    useEffect(() =>{
+        if(serverUser?.id) {
+            dispatch(setRenderList(serverUser.chats))
+            console.log(serverUser.chats);
+        }
+    }, [serverUser.id])
     
     function onContextClick(e) {
         e.preventDefault()

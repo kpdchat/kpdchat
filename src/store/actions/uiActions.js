@@ -22,3 +22,5 @@ export function setModalClose() {
 export function setModalOpen(id) {
     return { type: ACTION_OPEN_MODAL, payload: id }
 }
+
+

@@ -1,3 +1,5 @@
+@import "./chat-kebab.scss";
+
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
         @content;
@@ -41,6 +43,11 @@
     overflow-x: hidden;
     flex: 1 1 auto;
     padding-right: 10px;
+    // min-height: calc(100vh - 132px);
+    // overflow-x: scroll;
+    // &::-webkit-scrollbar { 
+    //     display: none; 
+    // }
 
 
     &__container {
@@ -52,6 +59,8 @@
         display: flex;
         justify-content: space-between;
         padding: 12px 10px 12px 12px;
+        overflow-x: visible;
+        // position: relative;
         // border: 2px solid transparent;
 
         &:hover {

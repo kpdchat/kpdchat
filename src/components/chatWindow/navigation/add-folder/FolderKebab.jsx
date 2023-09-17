@@ -25,7 +25,7 @@ export default function FolderKebab({ folder }) {
                     <PiNotePencilFill size={24} />
                     <p className="text-inter-16-400">{t('addFolder.editFolder')}</p>
                 </div>
-                <div className="folder-kebab__row cursor-pointer mt-8px" onClick={onDeleteClick}>
+                <div className="folder-kebab__row cursor-pointer" onClick={onDeleteClick}>
                     <PiTrashBold size={24} />
                     <p className="text-inter-16-400">{t('addFolder.delete')}</p>
                 </div>
