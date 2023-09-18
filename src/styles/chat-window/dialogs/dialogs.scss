@@ -42,26 +42,24 @@
     padding-top: 4px;
     overflow-x: hidden;
     flex: 1 1 auto;
-    padding-right: 10px;
-    // min-height: calc(100vh - 132px);
-    // overflow-x: scroll;
-    // &::-webkit-scrollbar { 
-    //     display: none; 
-    // }
-
 
     &__container {
         // .list__container
+        display: flex;
+        flex-direction: column;
     }
 
     &__dialog {
         // .list__dialog
+        width: 365px;
         display: flex;
         justify-content: space-between;
         padding: 12px 10px 12px 12px;
-        overflow-x: visible;
-        // position: relative;
-        // border: 2px solid transparent;
+        position: relative;
+
+        @include max-screen(1250px) {
+            width: 263px;
+        }
 
         &:hover {
             border-radius: 8px;

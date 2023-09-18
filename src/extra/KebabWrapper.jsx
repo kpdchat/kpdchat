@@ -5,6 +5,7 @@ import { setKebabClose } from "../store/actions/uiActions";
 export default function KebabWrapper({ elRef, children }) {
     const dispatch = useDispatch()
     useEffect(() => {
+        console.log(elRef.current);
         let handler = (e) => {
             if (!elRef.current?.contains(e.target)) {
                 dispatch(setKebabClose())

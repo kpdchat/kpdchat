@@ -13,6 +13,7 @@ const initialState = {
     userChats: [],
     publicChats: [],
     renderList: [],
+    listName: ''
 }
 
 export default function chatReducer(state = initialState, { type, payload }) {
@@ -21,6 +22,7 @@ export default function chatReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 publicChats: payload,
+                
             }
         }
         case ACTION_SET_USER_CHATS: {
@@ -32,7 +34,8 @@ export default function chatReducer(state = initialState, { type, payload }) {
         case ACTION_RENDER_CHAT_LIST: {
             return {
                 ...state,
-                renderList: payload,
+                renderList: payload.list,
+                listName: payload.name
             }
         }
         case ACTION_ADD_USER_CHAT: {

@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUi } from "../../../store/selectors";
 
 
-export default function DialogItem({ chat }) {
+export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
     const { isModal, modalId } = useSelector(selectUi)
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
@@ -28,7 +28,7 @@ export default function DialogItem({ chat }) {
                     <span className='list__time text-inter-12-400'>12:28</span>
                     <span className='list__new-count text-inter-12-400'>12</span>
                 </div>
-                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} />}
+                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} index={index} />}
             </div>
         </>
     )

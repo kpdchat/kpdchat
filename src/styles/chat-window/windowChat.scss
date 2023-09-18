@@ -16,8 +16,6 @@
         display: grid;
         grid-template-columns: 192px 386px 1fr;
 
-
-
         @include max-screen(1250px) {
             grid-template-columns: 160px 284px 1fr;
         }

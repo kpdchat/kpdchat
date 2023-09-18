@@ -13,7 +13,11 @@ export function fetchPublicChats() {
         try {
             const response = await axios.get('https://kpdchat.onrender.com/api/chats/all')
             // dispatch(setPublicChats(response.data))
-            dispatch(setRenderList(response.data))
+            const data = {
+                list: response.data,
+                name: 'publicChats'
+            }
+            dispatch(setRenderList(data))
             console.log(response);
         } catch (e) {
             alert(e)
@@ -41,8 +45,8 @@ export function setPublicChats(chats) {
 export function setUserChats(chats) {
     return { type: ACTION_SET_USER_CHATS, payload: chats }
 }
-export function setRenderList(chats) {
-    return { type: ACTION_RENDER_CHAT_LIST, payload: chats }
+export function setRenderList(data) {
+    return { type: ACTION_RENDER_CHAT_LIST, payload: data }
 }
 
 export function addUserChat(chat) {

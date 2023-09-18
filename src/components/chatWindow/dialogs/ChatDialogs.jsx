@@ -1,5 +1,5 @@
 import React from "react";
-import {ReactComponent as Logo} from '../../../images/chat-window/logo.svg'
+import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
 import DialogSearch from './DialogSearch'
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ export default function ChatDialogs() {
             <DialogSearch />
             <div className='dialogs__list list scroll-bar'>
                 <div className="list__container ">
-                    {renderChatList?.map(chat =><DialogItem chat={chat}  key={chat.id}/> )}
+                    {renderChatList?.map(chat => <DialogItem chat={chat} index={renderChatList.indexOf(chat)} key={chat.id} />)}
                 </div>
 
             </div>

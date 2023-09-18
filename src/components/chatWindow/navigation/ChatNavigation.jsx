@@ -9,7 +9,6 @@ import AddFolder from "./add-folder/AddFolder";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../store/selectors";
 import { fetchPublicChats, setRenderList } from "../../../store/actions/chatActions";
-import { fetchUser } from "../../../store/actions/userActions";
 
 export default function ChatNavigation() {
     const { t } = useTranslation()
@@ -19,8 +18,11 @@ export default function ChatNavigation() {
         dispatch(fetchPublicChats())
     }
     function onMineChatsClick() {
-        dispatch(fetchUser(user.id))
-        dispatch(setRenderList(user.chats))
+        const data = {
+            list: user.chats,
+            name: 'mineChats'
+        }
+        dispatch(setRenderList(data))
     }
 
     return (

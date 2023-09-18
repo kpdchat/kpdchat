@@ -27,7 +27,11 @@ export default function WindowChat() {
 
     useEffect(() =>{
         if(serverUser?.id) {
-            dispatch(setRenderList(serverUser.chats))
+            const data = {
+                list: serverUser.chats,
+                name: 'mineChats'
+            }
+            dispatch(setRenderList(data))
             console.log(serverUser.chats);
         }
     }, [serverUser.id])

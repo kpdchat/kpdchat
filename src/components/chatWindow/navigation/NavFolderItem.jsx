@@ -19,7 +19,11 @@ export default function NavFolderItem({ folder }) {
         onKebabClick()
     }
     function onFolderClick() {
-        dispatch(setRenderList(folder.publicChats))
+        const data = {
+            list: folder.publicChats,
+            name: 'folderChats'
+        }
+        dispatch(setRenderList(data))
     }
     return (
         <>
