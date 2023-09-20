@@ -1,156 +1,85 @@
-import React, { useState} from 'react';
+import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {MdOutlineClose} from 'react-icons/md';
-import {PiNotePencilFill} from 'react-icons/pi';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectLoader, selectUser} from '../../../../../store/selectors';
+import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
+import useSettingsModalLogic from './useSettingsModalLogic';
 import SettingsLanguages from './SettingsLanguages';
 import ExitChat from './ExitChat';
-import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
-import axios from 'axios';
-import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
-import {fetchUser} from '../../../../../store/actions/userActions';
-import i18n from 'i18next';
+import {mops} from '../../../../../extra/config/mops-icons';
+import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
 
 export default function SettingsModal({isOpen, setIsOpen}) {
-    const user = useSelector(selectUser);
-    const isLoader = useSelector(selectLoader);
-    const dispatch = useDispatch();
+    const state = useSettingsModalLogic({isOpen, setIsOpen});
     const {t} = useTranslation();
-    const [isInput, setIsInput] = useState(false);
-    const [editPhoto, setEditPhoto] = useState(false);
-    const [nickname, setNickname] = useState(user.nickname);
-    const [nicknameError, setNicknameError] = useState('');
-
-    // Edit Nickname
-    function onEditNicknameClick(e) {
-        e.stopPropagation();
-        if (nicknameError) return;
-        setIsInput(!isInput)
-    }
-
-    // User Language
-    const languageList = {
-        'ua': 0,
-        'en': 1
-    };
-    const userLanguage = languageList[i18n.language];
-
-    // Submit To Server Data
-    async function onSubmitNicknameToServer() {
-        if (nicknameError) return;
-
-        try {
-            dispatch(setLoaderShow());
-            const updateUser = {
-                id: user.id,
-                nickname,
-                profilePictureLink: user.profilePictureLink,
-                localization: userLanguage,
-                theme: user.theme
-            }
-            await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
-            dispatch(fetchUser(user.id));
-        } catch (e) {
-            console.log(e);
-        } finally {
-            dispatch(setLoaderHide());
-        }
-        setIsOpen(!isOpen); // Close window Settings User
-    }
-
-    function onContentClick(e) {
-        e.stopPropagation();
-    }
-
-    function onEditPhotoClick(e) {
-        e.preventDefault();
-        setEditPhoto(!editPhoto);
-    }
-
-    function onCloseClick() {
-        setIsOpen(!isOpen);
-        setNickname(user.nickname);
-    }
-
-    // Nickname validation
-    function validateNicknameSettings(value) {
-        if (!value) {
-            setNicknameError('registration.error-message');
-        } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('registration.input-nickname-error');
-        } else {
-            setNicknameError('');
-        }
-    }
-
-    function onChangeNickname(e) {
-        const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
-        setNickname(checkingForSpaces);
-        validateNicknameSettings(e.target.value);
-    }
 
     return (
-        <div className='settings__container modal-container' onClick={ onCloseClick }>
-            <div className='settings__content' onClick={ onContentClick }>
+        <div className='settings__container modal-container' onClick={ state.onCloseClick }>
+            <div className='settings__content' onClick={ state.onContentClick }>
                 <div className='modal-title'>
                     <h2>Налаштування</h2>
                     <MdOutlineClose className='cursor-pointer'
                                     size='24'
-                                    onClick={ onCloseClick } />
+                                    onClick={ state.onCloseClick } />
                 </div>
                 <div className='settings__settings'>
                     <div className='settings__user-profile'>
-                        <img className='settings__photo cursor-pointer'
-                             src={ user.profilePictureLink }
-                             alt='user foto'
-                             onClick={ onEditPhotoClick } />
-
-                        { isInput
-                            ? <form>
+                        <div className='settings__user-photo'>
+                            <img className='user-photo'
+                                 src={ state.user.profilePictureLink }
+                                 alt='user foto'
+                            />
+                        </div>
+                        <div className='settings__user-data'>
+                            <form onSubmit={state.onSubmitDataToServer}>
                                 <input
                                     maxLength='12'
                                     type='name'
-                                    value={ nickname }
-                                    onChange={ onChangeNickname }
-                                    onBlur={ onChangeNickname }
+                                    value={ state.nickname }
+                                    onChange={ state.onChangeNicknameSettings }
+                                    onBlur={ state.onChangeNicknameSettings }
                                 />
-                                { nicknameError && <p className='nickname-error'>{ t(nicknameError) }</p> }
-                            </form>
-                            : <form>
-                                <input
-                                    readOnly
-                                    className='text-inter-16-400'
-                                    value={ nickname }
+                                { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
+
+                                <textarea
+                                    className='scroll-bar'
+                                    maxLength='2000'
+                                    value={ state.profilePictureLink }
+                                    rows='1'
+                                    ref={ state.profilePictureLinkRef }
+                                    onChange={ state.onChangeTextareaInputSettings }
+                                    onBlur={ state.onChangeTextareaInputSettings }
                                 />
+                                { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
                             </form>
-                        }
-                        <PiNotePencilFill
-                            className='settings__edit-name cursor-pointer'
-                            onClick={ onEditNicknameClick }
-                        />
+                        </div>
                     </div>
 
+                    <div className='text-or'>{ t('registration.divider-span') }</div>
 
-                    { editPhoto
-                        ? <div></div>
+                    <div className='modal__content-img'>
+                        { mops.map(el => <MopsAvatars
+                            src={ el.src }
+                            alt={ el.alt }
+                            value={ state }
+                            index={ el.alt }
+                            key={ `avatar-${ el.alt }` } />)
+                        }
+                    </div>
 
-                        : <div className='settings__user-buttons'>
-                            <SettingsLanguages />
-                            <ExitChat isOpen={ isOpen } setIsOpen={ setIsOpen } />
-                        </div>
-                    }
-
+                    <div className='settings__user-buttons'>
+                        <SettingsLanguages />
+                        <ExitChat isOpen={ isOpen } setIsOpen={ setIsOpen } />
+                    </div>
 
                     <button
                         className='settings__submit cursor-pointer'
                         type='submit'
-                        onClick={ onSubmitNicknameToServer }
+                        onClick={ state.onSubmitDataToServer }
                     >
                         { t('settingsUser.save') }
                     </button>
                 </div>
-                { isLoader && <LoadingOnSubmitSettings /> }
+                { state.isLoader && <LoadingOnSubmitSettings /> }
             </div>
         </div>
     )

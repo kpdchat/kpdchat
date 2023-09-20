@@ -2,14 +2,14 @@
     position: relative;
 
     &__container {
-        //.settings__container
+        // .settings__container
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     &__content {
-        //.settings__content
+        // .settings__content
         width: 400px;
         box-shadow: 1px 1px 4px 0 #706c9f;
         border-radius: 8px 8px 0 0;
@@ -23,7 +23,6 @@
         height: 100%;
         display: flex;
         justify-content: center;
-        //background-color: rgba(255, 255, 255, 0.5);
     }
 
     .loading-settings {
@@ -40,28 +39,38 @@
     }
 
     &__settings {
-        //.settings__settings
+        // .settings__settings
         background: $color-white;
         padding: 24px;
 
-        .nickname-error {
+        .nickname-error,
+        .link-error {
             display: flex;
             align-items: center;
             color: red;
             padding: 8px 0;
-            margin: 0 auto -36px;
             text-align: center;
-            font-size: 10px;
-            width: 186px;
+            font-size: 12px;
+            width: 100%;
+        }
+
+        .text-or {
+            color: $color-black;
+            text-align: center;
+            font-family: $font-inter;
+            font-size: 16px;
+            font-weight: $f-weight-400;
+            line-height: 140%;
+            margin-bottom: 16px;
         }
     }
 
     &__user-profile {
-        //.settings__user-profile
+        // .settings__user-profile
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        margin-bottom: 30px;
+        margin-bottom: 12px;
+
         .text-inter-16-400 {
             width: 152px;
             color: $color-text-grey;
@@ -69,40 +78,67 @@
         }
     }
 
-    &__photo {
-        //.settings__photo
-        width: 80px;
-        height: 80px;
-        border-radius: 80px;
+    &__user-photo {
+        // .settings__user-photo
+        width: 25%;
+        height: 100%;
         object-fit: cover;
-    }
+        border-radius: 50%;
 
-    form {
-        input {
-            width: 100%;
-            height: 45px;
-            border: none;
-            border-bottom: 1px solid $color-black;
-            color: $color-black;
-            font-family: $font-inter;
-            font-weight: 600;
-            font-size: 16px;
-
-            &:focus-visible {
-                outline: none;
-            }
+        .user-photo {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            object-fit: cover;
         }
     }
 
+    &__user-data {
+        // .settings__user-data
+        margin-left: 16px;
+        width: 100%;
+
+            input {
+                width: 100%;
+                //height: 45px;
+                padding: 6px 0;
+                border: none;
+                border-bottom: 1px solid $color-black;
+                color: $color-black;
+                font-family: $font-inter;
+                font-weight: 600;
+                font-size: 16px;
+
+                &:focus-visible {
+                    outline: 0;
+                }
+            }
+
+            textarea {
+                resize: none;
+                max-height: 58px;
+                width: 100%;
+                padding: 10px 0;
+                color: $color-light-black;
+                font-family: $font-inter;
+                font-size: 16px;
+                font-weight: $f-weight-500;
+                line-height: 140%;
+                border: none;
+                border-bottom: 1px solid $color-black;
+                outline: 0;
+            }
+    }
+
     &__edit-name {
-        //.settings__edit-name
+        // .settings__edit-name
         margin-left: 20px;
         color: $color-text-grey;
         font-size: 24px;
     }
 
     &__user-buttons {
-        //.settings__user-buttons
+        // .settings__user-buttons
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -116,7 +152,7 @@
     }
 
     &__labels {
-        //.settings__labels
+        // .settings__labels
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -155,8 +191,7 @@
     }
 
     &__buttons {
-        //.settings__buttons
-
+        // .settings__buttons
         button {
             background-color: inherit;
             border-radius: 8px;
@@ -174,6 +209,7 @@
     }
 
     &__submit {
+        // .settings__submit
         padding: 8px 22px;
         border-radius: 8px;
         color: $color-white;

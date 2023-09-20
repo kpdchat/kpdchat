@@ -6,6 +6,7 @@ import LoadingOnSubmitForm from './LoadingOnSubmitForm';
 import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {selectLoader} from '../../../../../store/selectors';
+import {mops} from '../../../../../extra/config/mops-icons';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
@@ -25,7 +26,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                     <div className='modal__content-column'>
                         <div className='title'>{ t('registration.modal-title') }</div>
 
-                        <div className='add-link'>
+                        <div className='add-data'>
                             <input
                                 maxLength='12'
                                 type='name'
@@ -38,7 +39,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
 
                         { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
 
-                        <div className='add-link'>
+                        <div className='add-data'>
                         <textarea
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
@@ -51,15 +52,13 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         />
                         </div>
 
-                        { state.profilePictureLinkError &&
-                            <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
-
+                        { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
                     </div>
 
                     <div className='text-or'>{ t('registration.divider-span') }</div>
 
                     <div className='modal__content-img'>
-                        { state.mops.map(el => <MopsAvatars
+                        { mops.map(el => <MopsAvatars
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }

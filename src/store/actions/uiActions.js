@@ -7,7 +7,6 @@ export const ACTION_CLOSE_WINDOW_CHAT = 'ACTION_CLOSE_WINDOW_CHAT';
 export const ACTION_SHOW_LOADER = 'ACTION_SHOW_LOADER';
 export const ACTION_HIDE_LOADER = 'ACTION_HIDE_LOADER';
 
-
 export function setKebabClose() {
     return {type: ACTION_CLOSE_KEBAB};
 }

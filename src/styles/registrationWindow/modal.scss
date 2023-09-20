@@ -37,13 +37,14 @@
             text-align: center;
         }
 
-        .add-link {
+        .add-data {
             width: 100%;
             margin-bottom: 32px;
             border-radius: 16px;
 
             input, textarea {
                 width: 100%;
+                padding: 16px 28px;
                 color: $color-light-black;
                 font-family: $font-inter;
                 font-size: 18px;
@@ -68,13 +69,8 @@
                 }
             }
 
-            input {
-                padding: 16px 28px;
-            }
-
             textarea {
                 resize: none;
-                padding: 16px 28px;
                 max-height: 106px
             }
         }
