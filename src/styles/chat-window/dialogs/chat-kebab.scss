@@ -16,16 +16,6 @@
     &_last {
         bottom: 10px;
     }
-
-    // @include max-screen(1250px) {
-    //     left: 448px;
-    // }
-
-    
-
-    // .pos-absolute {
-    //     position: absolute;
-    // }
     &__row {
         display: flex;
         color: $color-text-grey;
@@ -46,3 +36,4 @@
         margin-left: 4px;
     }
 }
+

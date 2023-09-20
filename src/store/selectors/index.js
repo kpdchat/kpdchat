@@ -7,6 +7,8 @@ export const selectDeleteFolder = state => state.user.deleteFolder
 export const selectUser = state => state.user.user
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
+export const selectLeaveChat = state => state.chat.leaveChat
+
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder, 

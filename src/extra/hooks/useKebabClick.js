@@ -23,6 +23,6 @@ export function useKebabClick(messageId, type = undefined) {
     return {
         isOpen,
         idKebab,
-        onKebabClick
+        onKebabClick,
     }
 }
