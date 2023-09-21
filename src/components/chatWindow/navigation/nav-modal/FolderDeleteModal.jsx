@@ -2,7 +2,7 @@ import React from "react"
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
 import {setModalClose} from "../../../../store/actions/uiActions"
-import { fetchDeleteFolder } from "../../../../store/actions/userActions";
+import { fetchDeleteFolder } from "../../../../store/actions/folderActions";
 import { selectDeleteFolder } from "../../../../store/selectors";
 import { useTranslation } from 'react-i18next';
 

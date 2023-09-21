@@ -32,9 +32,9 @@ export default function WindowChat() {
                 name: 'mineChats'
             }
             dispatch(setRenderList(data))
-            console.log(serverUser.chats);
         }
-    }, [serverUser.id])
+    }, [serverUser?.id])
+// }, [serverUser.chats.length])
     
     function onContextClick(e) {
         e.preventDefault()

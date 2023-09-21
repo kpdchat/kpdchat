@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
 import { icons } from "../../../../extra/config/folder-icons";
-import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
+import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/folderActions";
 import { selectUser, selectEditFolderForForm } from "../../../../store/selectors";
 import { setModalClose } from "../../../../store/actions/uiActions";
 

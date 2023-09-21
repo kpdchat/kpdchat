@@ -1,7 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { MdOutlineCreateNewFolder, MdArrowForward } from "react-icons/md";
 import { PiDoorOpen, PiTrashBold } from "react-icons/pi";
-export default function FolderChatKebab({ menuRef, style, chat }) {
+export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
+    useEffect(() => {
+        if (style.top === '-10px') {
+            setStyle({
+                ...style,
+                top: '-80px'
+            })
+        }
+    })
+
     // const menuRef = useRef()
     return (
         <div ref={menuRef} style={style}>

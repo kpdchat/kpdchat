@@ -10,7 +10,7 @@ import ExitChat from "./ExitChat";
 import JoinChat from "./JoinChat";
 
 
-export default function ChatKebab({ chat, index, style }) {
+export default function ChatKebab({ chat, style, setStyle }) {
     const user = useSelector(selectUser)
     // const chatList = useSelector(selectRenderChatList)
     const listName = useSelector(selectListName)
@@ -28,36 +28,8 @@ export default function ChatKebab({ chat, index, style }) {
 
     return (
         <KebabWrapper elRef={menuRef} >
-            {listName === 'folderChats' && <FolderChatKebab menuRef={menuRef} style={style} chat ={chat}/>
-            // <div ref={menuRef} style={style}>
-            //     <div className="chat-kebab__row cursor-pointer">
-            //         <MdOutlineCreateNewFolder size={24} />
-            //         <p className="text-inter-16-400">Додати до папки</p>
-            //         <MdArrowForward className="chat-kebab__arrow" size={24} />
-            //     </div>
-            //     <div className="chat-kebab__row cursor-pointer">
-            //         <PiDoorOpen size={24} />
-            //         <p className="text-inter-16-400">Вийти з чату</p>
-            //     </div>
-            //     <div className="chat-kebab__row cursor-pointer">
-            //         <PiTrashBold size={24} />
-            //         <p className="text-inter-16-400">Видалити з папки</p>
-            //     </div>
-            // </div>
-            }
-            {listName === 'mineChats' && <MyChatKebab menuRef={menuRef} style={style} chat ={chat}/>
-            // <div ref={menuRef} style={style}>
-            //     <div className="chat-kebab__row cursor-pointer">
-            //         <MdOutlineCreateNewFolder size={24} />
-            //         <p className="text-inter-16-400">Додати до папки</p>
-            //         <MdArrowForward className="chat-kebab__arrow" size={24} />
-            //     </div>
-            //     <div className="chat-kebab__row cursor-pointer">
-            //         <PiDoorOpen size={24} />
-            //         <p className="text-inter-16-400">Вийти з чату</p>
-            //     </div>
-            // </div>
-            }
+            {listName === 'folderChats' && <FolderChatKebab menuRef={menuRef} setStyle ={setStyle} style={style} chat ={chat}/>}
+            {listName === 'mineChats' && <MyChatKebab menuRef={menuRef} setStyle ={setStyle} style={style} chat ={chat}/>}
             {listName === 'publicChats' && kebab}
         </KebabWrapper>
     )

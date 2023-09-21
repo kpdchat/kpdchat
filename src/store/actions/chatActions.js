@@ -8,6 +8,8 @@ export const ACTION_ADD_USER_CHAT = 'ACTION_ADD_USER_CHAT'
 export const ACTION_SET_JOIN_CHAT = 'ACTION_SET_JOIN_CHAT'
 export const ACTION_SET_LEAVE_CHAT = 'ACTION_SET_LEAVE_CHAT'
 export const ACTION_CLEAN_LEAVE_CHAT = 'ACTION_CLEAN_LEAVE_CHAT'
+export const ACTION_SET_SELECT_CHAT = 'ACTION_SET_SELECT_CHAT'
+
 
 
 
@@ -87,6 +89,10 @@ export function setChatToJoin(chat) { //???????/
 
 export function setChatToLeave(chat) {
     return { type: ACTION_SET_LEAVE_CHAT, payload: chat }
+}
+
+export function setSelectChat(chat) {
+    return { type: ACTION_SET_SELECT_CHAT, payload: chat }
 }
 
 export function cleanChatToLeave() {
