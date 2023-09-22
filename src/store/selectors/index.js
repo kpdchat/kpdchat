@@ -8,6 +8,7 @@ export const selectUser = state => state.user.user
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
 export const selectLeaveChat = state => state.chat.leaveChat
+export const selectChat = state => state.chat.selectChat
 
 
 export const selectEditFolderForForm = createSelector(
@@ -24,6 +25,21 @@ export const selectEditFolderForForm = createSelector(
             'publicChatIds': publicChatIds,
         }
     }
+)
+
+export const selectFolderListKebab = createSelector(
+    selectUser,
+    selectChat,
+    (user, chat) => {
+        const folderList = user.folders.reduce((list, folder) => {
+            if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
+                list.push(folder.id)
+            }
+             return list
+        }, [])
+        return { "folderId" : folderList}
+    }
+
 )
 
 

@@ -5,7 +5,7 @@ import {
     ACTION_RENDER_CHAT_LIST,
     ACTION_SET_JOIN_CHAT,
     ACTION_SET_LEAVE_CHAT,
-    ACTION_CLEAN_LEAVE_CHAT,
+    ACTION_CLEAN_CHAT,
     ACTION_SET_SELECT_CHAT,
 
 } from '../actions/chatActions'
@@ -46,16 +46,18 @@ export default function chatReducer(state = initialState, { type, payload }) {
                 leaveChat: payload
             }
         }
-        case ACTION_CLEAN_LEAVE_CHAT: {
+        case ACTION_CLEAN_CHAT: {
             return {
                 ...state,
-                leaveChat: {}
+                joinChat: {},
+                leaveChat: {},
+                selectChat: {}
             }
         }
         case ACTION_SET_SELECT_CHAT: {
             return {
                 ...state,
-                selectChat: {}
+                selectChat: payload
             }
         }
         // case ACTION_SET_PUBLIC_CHATS: {

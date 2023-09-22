@@ -31,6 +31,17 @@
         "deleteFolder" : "Are you sure you want to delete this folder?"
 
     },
+    "addChat" : {
+        "error": "Required",
+        "maxLength": "Max 40 symbols",
+        "minLength": "Min 4 symbols",
+        "chatName": "Chat name",
+        "createChat" : "New public chat",
+        "wrongUrl" : "The link is invalid. Check the link.",
+        "addPictureLink" : "Image link",
+        "create" : "Create",
+        "linkMax" : "Max 2000 symbols"
+    },
     "info": {
         "welcome-text-p1": "Welcome to the world of fast and convenient communication!",
         "welcome-text-p2": "Join us and start incredible conversations right now.",

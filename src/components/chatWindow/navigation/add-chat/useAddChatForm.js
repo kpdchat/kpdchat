@@ -3,7 +3,6 @@ import axios from "axios";
 import { useTranslation } from 'react-i18next';
 
 export default function useAddChatForm(chatPictureLink) {
-    const [choseImg, setChoseImg] = useState(false)
     const [link, setLink] = useState('')
     const [loading, setLoading] = useState(false)
     const { t } = useTranslation()
@@ -11,7 +10,7 @@ export default function useAddChatForm(chatPictureLink) {
         if (e.target.value.length >= 55) {
             chatPictureLink.current.style.height = chatPictureLink.current.scrollHeight + 3 + "px"
         } else {
-            chatPictureLink.current.style.height = '40px'
+            chatPictureLink.current.style.height = '27px'
         }
     }
 
@@ -23,23 +22,21 @@ export default function useAddChatForm(chatPictureLink) {
             });
             setLoading(false)
             return response.status !== 200 || !response.headers['content-type'].includes('image') ?
-                "Посилання не активне.Перевірте ще раз." : true && setLink(url);
+                t('addChat.wrongUrl') : true && setLink(url);
 
         } catch (error) {
             setLink('')
             setLoading(false)
-            return "Посилання не активне. Перевірте ще раз.";
+            return t('addChat.wrongUrl');
         }
 
     }
 
     return {
-        choseImg,
         link,
         loading,
         t,
         onTextareaInput,
         validateImageOnServer,
-        setChoseImg
     }
 }

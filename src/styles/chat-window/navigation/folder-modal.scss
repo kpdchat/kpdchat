@@ -31,7 +31,7 @@
         display: flex;
         position: relative;
         // margin-bottom: 16px;
-        padding: 8px ;
+        padding: 8px;
 
     }
 
@@ -120,6 +120,7 @@
     }
 
     &__chat {
+
         //.form__chat
         label {
             display: flex;
@@ -159,6 +160,7 @@
                     position: absolute;
                     top: 0;
                     right: 0;
+                    cursor: pointer;
                     background: url(../../../images/chat-window/add-folder-icon.png) center no-repeat;
 
                 }

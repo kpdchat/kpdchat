@@ -1,10 +1,11 @@
-import React , { useEffect } from "react"
+import React , { useEffect, useState } from "react"
 import { MdOutlineCreateNewFolder, MdArrowForward } from "react-icons/md";
 import { PiDoorOpen } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../../store/selectors";
-import { useState } from "react";
-import { setSelectChat } from "../../../../store/actions/chatActions";
+import { setSelectChat, setChatToLeave } from "../../../../store/actions/chatActions";
+import FolderListForm from "./FolderListForm";
+import { setModalOpen } from "../../../../store/actions/uiActions";
 
 export default function MyChatKebab({ menuRef, style, chat, setStyle }) {
     const [open, setOpen] = useState(false)
@@ -14,33 +15,38 @@ export default function MyChatKebab({ menuRef, style, chat, setStyle }) {
         if (style.top === '-10px') {
             setStyle({
                 ...style,
-                top: '-40px'
+                top: '',
+                bottom: '10px'
             })
         }
     })
 
     function onAddFolderClick() {
-        const folderList = user.folders.reduce((list, folder) => {
-            if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
-                list[folder.id] = folder
-            }
-             return list
-        }, {})
         dispatch(setSelectChat(chat))
-        console.log(folderList);
+        setOpen(true)
+    }
+
+    function onLeaveChatClick() {
+        dispatch(setChatToLeave(chat))
+        dispatch(setModalOpen('leave chat'))
     }
 
     return (
         <div ref={menuRef} style={style}>
-            <div className="chat-kebab__row cursor-pointer" onClick={onAddFolderClick}>
+            <div 
+            className={open ? 'display-none' : "chat-kebab__row cursor-pointer"} 
+            onClick={onAddFolderClick}>
                 <MdOutlineCreateNewFolder size={24}/>
                 <p className="text-inter-16-400">Додати до папки</p>
                 <MdArrowForward className="chat-kebab__arrow" size={24} />
             </div>
-            <div className="chat-kebab__row cursor-pointer">
+            <div 
+            className={open ? 'display-none' : "chat-kebab__row cursor-pointer"} 
+            onClick={onLeaveChatClick}>
                 <PiDoorOpen size={24} />
                 <p className="text-inter-16-400">Вийти з чату</p>
             </div>
+            {open && <FolderListForm setOpen= {setOpen}/>}
         </div>
     )
 }

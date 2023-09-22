@@ -7,7 +7,7 @@ export const ACTION_RENDER_CHAT_LIST = 'ACTION_RENDER_CHAT_LIST'
 export const ACTION_ADD_USER_CHAT = 'ACTION_ADD_USER_CHAT'
 export const ACTION_SET_JOIN_CHAT = 'ACTION_SET_JOIN_CHAT'
 export const ACTION_SET_LEAVE_CHAT = 'ACTION_SET_LEAVE_CHAT'
-export const ACTION_CLEAN_LEAVE_CHAT = 'ACTION_CLEAN_LEAVE_CHAT'
+export const ACTION_CLEAN_CHAT = 'ACTION_CLEAN_CHAT'
 export const ACTION_SET_SELECT_CHAT = 'ACTION_SET_SELECT_CHAT'
 
 
@@ -60,7 +60,7 @@ export function fetchLeaveChat(data) {
     return async (dispatch) => {
         try {
             const response = await axios.post('https://kpdchat.onrender.com/api/chats/leave', data)
-            dispatch(cleanChatToLeave())
+            dispatch(cleanChat())
             console.log(response);
         } catch (e) {
             alert(e)
@@ -95,7 +95,7 @@ export function setSelectChat(chat) {
     return { type: ACTION_SET_SELECT_CHAT, payload: chat }
 }
 
-export function cleanChatToLeave() {
-    return { type: ACTION_CLEAN_LEAVE_CHAT }
+export function cleanChat() {
+    return { type: ACTION_CLEAN_CHAT }
 }
 

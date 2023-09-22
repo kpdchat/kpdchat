@@ -26,7 +26,7 @@ export default function DialogItem({ chat, index }) {
 
         // let top = e.pageY - (156 + 76 * (index))
         let top 
-        if (list.length >= 6 && list.length < (index + 3)) {
+        if (list.length >= 6 && list.length < (index + 6)) {
             top = '-10px'
         } else {
             top = '60px'

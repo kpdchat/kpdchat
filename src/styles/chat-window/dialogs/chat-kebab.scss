@@ -16,6 +16,7 @@
     &_last {
         bottom: 10px;
     }
+
     &__row {
         display: flex;
         color: $color-text-grey;
@@ -31,9 +32,53 @@
             background: $background-active-lilac;
         }
     }
+    &__row_violet {
+        color: $color-light-violet;
+    }
 
     &__arrow {
         margin-left: 4px;
     }
-}
 
+    &__folders {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        z-index: 10;
+
+        .flex-container {
+            gap: 7px;
+            align-items: center;
+        }
+
+        label {
+            padding: 8px 6px;
+            display: flex;
+            
+            position: relative;
+            justify-content: space-between;
+        }
+
+        input[type="checkbox"] {
+            vertical-align: middle;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+
+            &:checked {
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    cursor: pointer;
+                    background: url(../../../images/chat-window/done.svg) center no-repeat;
+
+                }
+            }
+        }
+    }
+
+
+}

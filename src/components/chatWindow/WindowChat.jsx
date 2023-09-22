@@ -18,24 +18,24 @@ export default function WindowChat() {
     const { t } = useTranslation()
     const user = JSON.parse(localStorage.getItem('user'))
     const serverUser = useSelector(selectUser)
-    
+
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id))
         }
     }, [user?.id, dispatch])
 
-    useEffect(() =>{
-        if(serverUser?.id) {
+    useEffect(() => {
+        if (serverUser?.id) {
             const data = {
                 list: serverUser.chats,
                 name: 'mineChats'
             }
             dispatch(setRenderList(data))
         }
-    }, [serverUser?.id])
-// }, [serverUser.chats.length])
-    
+        // }, [serverUser?.id])
+    }, [serverUser?.chats?.length])
+
     function onContextClick(e) {
         e.preventDefault()
     }

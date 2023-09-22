@@ -1,7 +1,7 @@
 import React from "react"
 import { PiDoorOpen } from "react-icons/pi";
 import { useDispatch } from "react-redux";
-import { fetchLeaveChat, setChatToLeave } from "../../../../store/actions/chatActions";
+import { setChatToLeave } from "../../../../store/actions/chatActions";
 import { setModalOpen } from "../../../../store/actions/uiActions";
 
 export default function ExitChat({ menuRef, style, chat }) {

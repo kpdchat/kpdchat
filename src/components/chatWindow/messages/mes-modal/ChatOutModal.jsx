@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 import { setModalClose } from "../../../../store/actions/uiActions"
 import { selectLeaveChat, selectUser } from "../../../../store/selectors";
-import { cleanChatToLeave, fetchLeaveChat } from "../../../../store/actions/chatActions";
+import { cleanChat, fetchLeaveChat } from "../../../../store/actions/chatActions";
 
 export default function ChatOutModal() {
     const user = useSelector(selectUser)
@@ -14,7 +14,7 @@ export default function ChatOutModal() {
 
     function onCloseClick() {
         dispatch(setModalClose())
-        dispatch(cleanChatToLeave())
+        dispatch(cleanChat())
     }
 
     function onContentClick(e) {

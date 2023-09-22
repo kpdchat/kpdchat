@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react"; 
+import React, { useState, useEffect, useMemo } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
