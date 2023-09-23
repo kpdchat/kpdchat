@@ -3,12 +3,11 @@ import ChatKebab from "./chat-kebab/ChatKebab";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { useSelector, useDispatch } from "react-redux";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
-import ChatOutModal from '../messages/mes-modal/ChatOutModal'
 
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
-    const { isModal, modalId, isActiveFolderKebab } = useSelector(selectUi)
+    const {  isActiveFolderKebab } = useSelector(selectUi)
     const list = useSelector(selectRenderChatList)
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
     const [style, setStyle] = useState('')
@@ -23,15 +22,12 @@ export default function DialogItem({ chat, index }) {
         } else if (window.innerWidth < 1250 && left > 60) {
             left = 40 
         }
-
-        // let top = e.pageY - (156 + 76 * (index))
         let top 
         if (list.length >= 6 && list.length < (index + 6)) {
             top = '-10px'
         } else {
             top = '60px'
         }
-
 
         setStyle({
             position: 'absolute',
@@ -67,7 +63,6 @@ export default function DialogItem({ chat, index }) {
                 </div>
                 {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle ={setStyle} style={style} />}
             </div>
-            {isModal && modalId === 'leave chat' && <ChatOutModal/>}
         </>
     )
 }

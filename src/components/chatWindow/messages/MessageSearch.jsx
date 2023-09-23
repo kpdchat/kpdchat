@@ -22,8 +22,8 @@ export default function MessageSearch() {
                 <img className="cursor-pointer" src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 {isOpen && idKebab === titleId && <MessageTitleKebab />}
             </div>
-            {isModal && modalId === titleId && <ChatOutModal />}
-
+            {isModal && modalId === 'leave chat' && <ChatOutModal/>}
+            
         </div>
     )
 }

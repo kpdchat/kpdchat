@@ -133,6 +133,13 @@
         padding: 4px 0px;
 
     }
+
+    &__flex {
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .active-chat {

@@ -19,7 +19,7 @@ export default function AddFolderModal() {
     const user = useSelector(selectUser)
     const chats = user.chats
     const { t } = useTranslation()
-
+    console.log(editFolder);
     const {
         register,
         handleSubmit,
@@ -56,17 +56,14 @@ export default function AddFolderModal() {
         if (!data.publicChatIds) {
             data.publicChatIds = []
         }
-        console.log(editFolder)
-        console.log(data);
         if (editFolder.id) {
-            // const updateFolder = {
-            //     ...editFolder,
-            //     ...data,
-            //     "publicChatIds": data.publicChatIds,
-
-            // }
-            console.log(data, 'updateFolder');
-            dispatch(fetchUpdateFolder(data))
+            const updateFolder = {
+                "id": editFolder.id,
+                "title": data.title,
+                "iconTag": data.iconTag,
+                "newChatIds": data.publicChatIds
+            }
+            dispatch(fetchUpdateFolder(updateFolder))
         } else {
             const folder = {
                 userId: user.id,

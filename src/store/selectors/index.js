@@ -42,4 +42,18 @@ export const selectFolderListKebab = createSelector(
 
 )
 
+export const selectFolderObjKebab = createSelector(
+    selectUser,
+    selectChat,
+    (user, chat) => {
+        const folderList = user.folders.reduce((list, folder) => {
+            if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
+                list.push(folder.id)
+            }
+             return list
+        }, [])
+        return folderList
+    }
+
+)
 

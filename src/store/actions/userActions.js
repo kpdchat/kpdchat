@@ -8,7 +8,7 @@ export function fetchUser(id) {
         try {
             const response = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
             dispatch(setUser(response.data))
-            dispatch(fetchUser(id))
+            // dispatch(fetchUser(id))
         } catch (e) {
             console.error(e)
             setTimeout(() => {

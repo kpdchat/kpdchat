@@ -6,17 +6,6 @@
 
 
 .chat-kebab {
-    // top: 35px;
-    left: 143px;
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    &_last {
-        bottom: 10px;
-    }
-
     &__row {
         display: flex;
         color: $color-text-grey;
@@ -36,6 +25,10 @@
         color: $color-light-violet;
     }
 
+    &__row_folders {
+        justify-content: space-between;
+    }
+
     &__arrow {
         margin-left: 4px;
     }
@@ -43,11 +36,9 @@
     &__folders {
         display: flex;
         flex-direction: column;
-        gap: 8px;
         z-index: 10;
 
         .flex-container {
-            gap: 7px;
             align-items: center;
         }
 

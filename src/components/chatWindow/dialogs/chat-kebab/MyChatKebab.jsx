@@ -4,7 +4,7 @@ import { PiDoorOpen } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../../store/selectors";
 import { setSelectChat, setChatToLeave } from "../../../../store/actions/chatActions";
-import FolderListForm from "./FolderListForm";
+import KebabFolderList from "./folders-list-kebab/KebabFolderList";
 import { setModalOpen } from "../../../../store/actions/uiActions";
 
 export default function MyChatKebab({ menuRef, style, chat, setStyle }) {
@@ -46,7 +46,8 @@ export default function MyChatKebab({ menuRef, style, chat, setStyle }) {
                 <PiDoorOpen size={24} />
                 <p className="text-inter-16-400">Вийти з чату</p>
             </div>
-            {open && <FolderListForm setOpen= {setOpen}/>}
+            {open && <KebabFolderList setOpen= {setOpen}/>}
+
         </div>
     )
 }

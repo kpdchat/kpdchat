@@ -4,8 +4,8 @@ import { PiDoorOpen, PiTrashBold } from "react-icons/pi";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../../../store/selectors";
 import { setSelectChat, setChatToLeave } from "../../../../store/actions/chatActions";
-import FolderListForm from "./FolderListForm";
 import { setModalOpen } from "../../../../store/actions/uiActions";
+import KebabFolderList from "./folders-list-kebab/KebabFolderList";
 
 
 export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
@@ -50,7 +50,7 @@ export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
                 <PiTrashBold size={24} />
                 <p className="text-inter-16-400">Видалити з папки</p>
             </div>
-            {open && <FolderListForm setOpen= {setOpen}/>}
+            {open && <KebabFolderList setOpen= {setOpen}/>}
         </div>
     )
 }

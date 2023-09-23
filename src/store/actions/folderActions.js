@@ -35,6 +35,17 @@ export function fetchUpdateFolder(folder) {
     }
 }
 
+export function fetchRemoveChatFromFolder(folderId, arrChatId) {
+    return async () => {
+        try {
+            await axios.delete(`https://kpdchat.onrender.com/api/folders/${folderId}/removeChats`, 
+            { data: { chatIds: arrChatId } })
+        } catch (e) {
+            alert(e)
+        }
+    }
+}
+
 
 export function setEditFolder(folder) {
     return { type: ACTION_SET_EDIT_FOLDER, payload: folder }

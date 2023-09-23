@@ -12,7 +12,7 @@ export default function MessageTitleKebab() {
     const { t } = useTranslation()
 
     function onOutClick() {
-        dispatch(setModalOpen(-1))
+        dispatch(setModalOpen('leave chat'))
     }
 
     return (

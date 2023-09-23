@@ -33,8 +33,8 @@ export default function WindowChat() {
             }
             dispatch(setRenderList(data))
         }
-        // }, [serverUser?.id])
-    }, [serverUser?.chats?.length])
+        }, [serverUser?.id])
+    // }, [serverUser?.chats?.length])
 
     function onContextClick(e) {
         e.preventDefault()
