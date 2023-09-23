@@ -16,6 +16,7 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
     const [profilePictureLink, setProfilePictureLink] = useState(user.profilePictureLink);
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
     const [activeDogImg, setActiveDogImg] = useState(null);
+    const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
 
     function onContentClick(e) {
@@ -83,6 +84,11 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
         setProfilePictureLinkError('');
     }
 
+    // Show Standarts Avatars
+    function onShowAvatars() {
+        setShowImg(!showImg);
+    }
+
     // User Language
     const languageList = {
         'ua': 0,
@@ -107,7 +113,6 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
                 }
                 await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
                 dispatch(fetchUser(user.id));
-                setIsOpen(!isOpen); // Close window Settings User
             }
         } catch (e) {
             console.log(e);
@@ -118,7 +123,7 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
 
     useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
-        profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
+        profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 4 + 'px';
     }, [profilePictureLink]);
 
     return {
@@ -128,12 +133,14 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
         onSubmitDataToServer,
         onChangeTextareaInputSettings,
         onePickAvatar,
+        onShowAvatars,
         user,
         nickname,
         nicknameError,
         profilePictureLink,
         profilePictureLinkError,
         activeDogImg,
+        showImg,
         profilePictureLinkRef,
         isLoader
     }

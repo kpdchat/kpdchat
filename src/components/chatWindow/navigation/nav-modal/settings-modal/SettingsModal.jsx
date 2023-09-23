@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {MdOutlineClose} from 'react-icons/md';
+import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp} from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
 import SettingsLanguages from './SettingsLanguages';
@@ -15,22 +15,27 @@ export default function SettingsModal({isOpen, setIsOpen}) {
     return (
         <div className='settings__container modal-container' onClick={ state.onCloseClick }>
             <div className='settings__content' onClick={ state.onContentClick }>
-                <div className='modal-title'>
-                    <h2>Налаштування</h2>
-                    <MdOutlineClose className='cursor-pointer'
-                                    size='24'
-                                    onClick={ state.onCloseClick } />
-                </div>
+
                 <div className='settings__settings'>
+                    <div className='settings__title'>
+                        <h2>{ t('settingsUser.settings') }</h2>
+                        <MdOutlineClose
+                            className='cursor-pointer'
+                            size='24'
+                            onClick={ state.onCloseClick } />
+                    </div>
+
                     <div className='settings__user-profile'>
                         <div className='settings__user-photo'>
-                            <img className='user-photo'
-                                 src={ state.user.profilePictureLink }
-                                 alt='user foto'
+                            <img
+                                className='user-photo'
+                                src={ state.user.profilePictureLink }
+                                alt='user foto'
                             />
                         </div>
+
                         <div className='settings__user-data'>
-                            <form onSubmit={state.onSubmitDataToServer}>
+                            <form onSubmit={ state.onSubmitDataToServer }>
                                 <input
                                     maxLength='12'
                                     type='name'
@@ -49,21 +54,38 @@ export default function SettingsModal({isOpen, setIsOpen}) {
                                     onChange={ state.onChangeTextareaInputSettings }
                                     onBlur={ state.onChangeTextareaInputSettings }
                                 />
-                                { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                                { state.profilePictureLinkError &&
+                                    <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
                             </form>
                         </div>
                     </div>
 
-                    <div className='text-or'>{ t('registration.divider-span') }</div>
+                    <div className='settings__standard-avatars'>
+                        <div className='standard-img cursor-pointer' onClick={ state.onShowAvatars }>
+                            <h2>{ t('settingsUser.standartAvatars') }</h2>
+                            { state.showImg
+                                ?
+                                <MdArrowDropUp
+                                    size='28'
+                                    color='#38328A'
+                                />
+                                :
+                                <MdArrowDropDown
+                                    size='28'
+                                    color='#38328A'
+                                />
+                            }
+                        </div>
 
-                    <div className='modal__content-img'>
-                        { mops.map(el => <MopsAvatars
-                            src={ el.src }
-                            alt={ el.alt }
-                            value={ state }
-                            index={ el.alt }
-                            key={ `avatar-${ el.alt }` } />)
-                        }
+                        <div className={ state.showImg ? 'images' : 'display-none' }>
+                            { mops.map(el => <MopsAvatars
+                                src={ el.src }
+                                alt={ el.alt }
+                                value={ state }
+                                index={ el.alt }
+                                key={ `avatar-${ el.alt }` } />)
+                            }
+                        </div>
                     </div>
 
                     <div className='settings__user-buttons'>

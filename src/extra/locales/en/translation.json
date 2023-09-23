@@ -16,6 +16,8 @@
         "text-message" : "Write a message.."
     },
     "settingsUser": {
+        "settings": "Profile settings",
+        "standartAvatars": "Standard images",
         "language": "Language",
         "exit": "Exit",
         "save": "Save"

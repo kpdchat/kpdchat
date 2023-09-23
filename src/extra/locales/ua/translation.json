@@ -16,6 +16,8 @@
         "text-message": "Написати повідомлення.."
     },
     "settingsUser": {
+        "settings": "Налаштування профілю",
+        "standartAvatars": "Стандартні зображення",
         "language": "Мова",
         "exit": "Вийти",
         "save": "Зберегти"
