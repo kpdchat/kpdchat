@@ -20,7 +20,7 @@ export default function AddChat() {
     return (
         <>
             <div className="add__item cursor-pointer" onClick={onAddChatClick}>
-                <MdOutlineGroupAdd size={24} />
+                <MdOutlineGroupAdd size={23} className="add__item_chat-svg"/>
                 <h2 className="text-inter-18-600">{t('navigation.chat')}</h2>
             </div>
             {isModal && modalId === 'create-chat' && <AddChatModal />}

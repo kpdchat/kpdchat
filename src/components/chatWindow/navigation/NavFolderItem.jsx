@@ -18,6 +18,7 @@ export default function NavFolderItem({ folder }) {
     function onContextClick() {
         onKebabClick()
     }
+    
     function onFolderClick() {
         const data = {
             list: folder.publicChats,

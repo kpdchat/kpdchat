@@ -94,9 +94,10 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            width: 100px;
 
             @include max-screen(1250px) {
-                width: 55px;
+                width: 70px;
             }
 
             @include max-screen(940px) {
@@ -156,6 +157,20 @@
         justify-content: flex-start;
         padding: 8px 4px;
         width: 100px;
+
+        @include max-screen(940px) {
+            width: 100%;
+            margin-left: 4px;
+        }
+
+        &_chat-svg {
+            //.add__item_chat-svg
+            margin-left: 3px;
+
+            @include max-screen(940px) {
+                margin-left: 3px;
+            }
+        }
 
         &:hover {
             color: $color-yellow;
