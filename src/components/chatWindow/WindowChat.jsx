@@ -1,27 +1,25 @@
-import React, { useContext, useEffect } from 'react';
+import React, {useEffect} from 'react';
 import ChatNavigation from './navigation/ChatNavigation';
 import ChatDialogs from './dialogs/ChatDialogs';
 import ChatMessages from './messages/ChatMessages';
-import { Context } from "../../context/Context";
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../store/actions/userActions';
-import { selectUser } from '../../store/selectors';
-import { DotSpinner } from '@uiball/loaders'
-import { useTranslation } from 'react-i18next';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchUser} from '../../store/actions/userActions';
+import {selectOpenChat, selectUser} from '../../store/selectors';
+import {DotSpinner} from '@uiball/loaders'
+import {useTranslation} from 'react-i18next';
 import { setRenderList } from '../../store/actions/chatActions';
-
-
+import {languageList} from '../../extra/config/language-list';
 
 export default function WindowChat() {
-    const { isActive } = useContext(Context);
-    const dispatch = useDispatch()
-    const { t } = useTranslation()
-    const user = JSON.parse(localStorage.getItem('user'))
-    const serverUser = useSelector(selectUser)
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem('user'));
+    const serverUser = useSelector(selectUser);
+    const isOpenChat = useSelector(selectOpenChat);
+    const {i18n, t} = useTranslation();
 
     useEffect(() => {
         if (user?.id) {
-            dispatch(fetchUser(user.id))
+            dispatch(fetchUser(user.id));
         }
     }, [user?.id, dispatch])
 
@@ -40,9 +38,14 @@ export default function WindowChat() {
         e.preventDefault()
     }
 
+    useEffect( () => {
+        void i18n.changeLanguage(languageList[serverUser?.localization])
+        // eslint-disable-next-line
+    }, [serverUser?.localization]);
+
     if (!serverUser.id) {
         return (
-            <div className={isActive ? 'chat-loader' : "display-none"}>
+            <div className={ isOpenChat ? 'chat-loader' : 'display-none' }>
                 <DotSpinner
                     size={120}
                     speed={0.9}
@@ -50,19 +53,16 @@ export default function WindowChat() {
                 />
                 <p className='text-inter-18-600'>{t('global.loading')}</p>
             </div>
-
         )
-
     }
 
     return (
-        <div className={isActive ? 'chat' : "display-none"}>
-            <div className='container-grid' onContextMenu={onContextClick}>
+        <div className={ isOpenChat ? 'chat' : 'display-none' }>
+            <div className='container-grid' onContextMenu={ onContextClick }>
                 <ChatNavigation />
                 <ChatDialogs />
                 <ChatMessages />
             </div>
         </div>
-
     );
 }

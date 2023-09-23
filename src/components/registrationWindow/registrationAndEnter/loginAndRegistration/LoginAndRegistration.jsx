@@ -3,9 +3,12 @@ import useLoginAndRegistrationLogic from './useLoginAndRegistrationLogic';
 import ModalRegistration from './modalRegistration/ModalRegistration';
 import LoadingOnSubmitKey from './LoadingOnSubmitKey';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {selectLoader} from '../../../../store/selectors';
 
 export default function LoginAndRegistration({setUniKey}) {
     const state = useLoginAndRegistrationLogic();
+    const isLoader = useSelector(selectLoader);
     const {t} = useTranslation();
 
     return (
@@ -26,7 +29,7 @@ export default function LoginAndRegistration({setUniKey}) {
                     ref={ state.uniKeyRef }
                     placeholder={ t('registration.input-unikey') }
                 />
-                { state.isLoading && <LoadingOnSubmitKey /> }
+                { isLoader && <LoadingOnSubmitKey /> }
             </div>
             { state.uniKeyError && <p className='uniKey-error'>{ t(state.uniKeyError) }</p> }
 

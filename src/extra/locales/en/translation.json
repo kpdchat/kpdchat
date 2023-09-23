@@ -16,6 +16,13 @@
         "text-message" : "Write a message..",
         "loading" : "Loading your profile.."
     },
+    "settingsUser": {
+        "settings": "Profile settings",
+        "standartAvatars": "Standard images",
+        "language": "Language",
+        "exit": "Exit",
+        "save": "Save"
+    },
     "addFolder" : {
         "error" : "Required",
         "maxLength" : "Max 12 symbols",

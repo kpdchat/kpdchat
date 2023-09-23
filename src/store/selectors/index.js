@@ -5,6 +5,7 @@ export const selectModal = state => state.ui.isModal
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 export const selectUser = state => state.user.user
+export const selectOpenChat = state => state.ui.isOpenChat
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
 export const selectLeaveChat = state => state.chat.leaveChat
