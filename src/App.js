@@ -13,6 +13,7 @@ export default function App() {
         if (userInLocalStorage) {
             dispatch(setWindowChatOpen());
         }
+        // eslint-disable-next-line
     }, [])
 
     return (
