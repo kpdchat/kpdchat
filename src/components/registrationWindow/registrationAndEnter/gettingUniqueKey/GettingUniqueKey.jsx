@@ -2,9 +2,12 @@ import React from 'react';
 import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
 import LoadingOnEnterChat from './LoadingOnEnterChat';
 import {useTranslation} from 'react-i18next';
+import {useSelector} from 'react-redux';
+import {selectLoader} from '../../../../store/selectors';
 
 export default function GettingUniqueKey({uniKey}) {
     const state = useGettingUniqueKeyLogic({uniKey});
+    const isLoader = useSelector(selectLoader);
     const {t} = useTranslation();
 
     return (
@@ -25,7 +28,7 @@ export default function GettingUniqueKey({uniKey}) {
                                 value={ uniKey }
                                 readOnly
                             />
-                            { state.isLoading && <LoadingOnEnterChat /> }
+                            { isLoader && <LoadingOnEnterChat /> }
                         </div>
                         { state.copyActiveMessage && <p className='copy-message'>{ t(state.copyActiveMessage) }</p> }
 

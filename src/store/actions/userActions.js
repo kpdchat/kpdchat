@@ -7,7 +7,6 @@ export const ACTION_SET_EDIT_FOLDER = 'ACTION_SET_EDIT_FOLDER'
 export const ACTION_CLEAR_FOLDER = 'ACTION_CLEAR_FOLDER'
 export const ACTION_SET_DELETE_FOLDER = 'ACTION_SET_DELETE_FOLDER'
 
-
 export function fetchUser(id) {
     return async (dispatch) => {
         try {

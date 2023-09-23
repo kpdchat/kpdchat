@@ -18,7 +18,7 @@ i18n
     .use(initReactI18next)
     .init({
         resources,
-        debug: true, //to see debug in console
+        // debug: true, //to see debug in console
         lng: 'ua',
         interpolation: {
             escapeValue: false

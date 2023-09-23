@@ -7,7 +7,7 @@ const locales = {
 };
 
 export default function LanguageButton() {
-    const {i18n} = useTranslation()
+    const {i18n} = useTranslation();
 
     return (
         <div className='language-buttons'>
