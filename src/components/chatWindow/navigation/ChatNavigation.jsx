@@ -33,11 +33,10 @@ export default function ChatNavigation() {
                 </div>
                 <div className='folders__public-container'>
                     <div className="folders__public">
-                        <div className="folders__title cursor-pointer">
+                        <div className="folders__title folders__title-public cursor-pointer">
                             <MdOutlineTextsms size={24} />
                             <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                         </div>
-                        <h3 className='text-inter-16-400 ml-5px'>1</h3>
                     </div>
                 </div>
 
@@ -45,7 +44,7 @@ export default function ChatNavigation() {
             <div className='navigation__settings settings'>
                 <NavSettings />
                 <NavInfo />
-                <MdOutlineDarkMode size={35} />
+                <MdOutlineDarkMode size={35} className="cursor-pointer"/>
             </div>
         </section>
     )

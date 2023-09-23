@@ -13,11 +13,7 @@ export default function WindowChat() {
     const user = JSON.parse(localStorage.getItem('user'));
     const serverUser = useSelector(selectUser);
     const isOpenChat = useSelector(selectOpenChat);
-    const {i18n} = useTranslation();
-
-    function onContextClick(e) {
-        e.preventDefault();
-    }
+    const {i18n, t} = useTranslation();
 
     // User Language
     const languageList = {
@@ -29,8 +25,11 @@ export default function WindowChat() {
         if (user?.id) {
             dispatch(fetchUser(user.id));
         }
-
     }, [user?.id, dispatch]);
+    
+    function onContextClick(e) {
+        e.preventDefault()
+    }
 
     useEffect( () => {
         void i18n.changeLanguage(languageList[serverUser?.localization])
@@ -41,10 +40,11 @@ export default function WindowChat() {
         return (
             <div className={ isOpenChat ? 'chat-loader' : 'display-none' }>
                 <DotSpinner
-                    size={ 100 }
-                    speed={ 0.9 }
-                    color='#38328A'
+                    size={120}
+                    speed={0.9}
+                    color="#38328A"
                 />
+                <p className='text-inter-18-600'>{t('global.loading')}</p>
             </div>
         )
     }
@@ -57,5 +57,5 @@ export default function WindowChat() {
                 <ChatMessages />
             </div>
         </div>
-    )
+    );
 }
