@@ -55,12 +55,6 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 24px;
-
-            h2 {
-                font-family: $font-inter;
-                font-size: 18px;
-                font-weight: 600;
-            }
     }
 
     &__user-profile {
@@ -97,9 +91,6 @@
                 border: none;
                 border-bottom: 1px solid $color-black;
                 color: $color-black;
-                font-family: $font-inter;
-                font-weight: 600;
-                font-size: 16px;
 
                 &:focus-visible {
                     outline: 0;

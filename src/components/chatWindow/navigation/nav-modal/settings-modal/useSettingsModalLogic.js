@@ -6,7 +6,7 @@ import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActio
 import axios from 'axios';
 import {fetchUser} from '../../../../../store/actions/userActions';
 
-export default function useSettingsModalLogic({isOpen, setIsOpen}) {
+export default function useSettingsModalLogic({setIsOpen}) {
     const user = useSelector(selectUser);
     console.log(user);
     const isLoader = useSelector(selectLoader);
@@ -25,7 +25,7 @@ export default function useSettingsModalLogic({isOpen, setIsOpen}) {
 
     // Close Window Settings
     function onCloseClick() {
-        setIsOpen(!isOpen); // Close window Settings User
+        setIsOpen(prev => !prev); // Close window Settings User
         setNickname(user.nickname);
     }
 

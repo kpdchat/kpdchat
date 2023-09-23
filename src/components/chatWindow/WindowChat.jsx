@@ -7,6 +7,7 @@ import {fetchUser} from '../../store/actions/userActions';
 import {selectOpenChat, selectUser} from '../../store/selectors';
 import {DotSpinner} from '@uiball/loaders'
 import {useTranslation} from 'react-i18next';
+import {languageList} from '../../extra/config/language-list';
 
 export default function WindowChat() {
     const dispatch = useDispatch();
@@ -14,12 +15,6 @@ export default function WindowChat() {
     const serverUser = useSelector(selectUser);
     const isOpenChat = useSelector(selectOpenChat);
     const {i18n, t} = useTranslation();
-
-    // User Language
-    const languageList = {
-        0: 'ua',
-        1: 'en'
-    };
 
     useEffect(() => {
         if (user?.id) {

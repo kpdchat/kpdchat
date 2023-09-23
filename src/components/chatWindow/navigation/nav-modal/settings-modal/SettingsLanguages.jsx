@@ -1,11 +1,7 @@
 import React from 'react';
 import {MdOutlineLanguage} from 'react-icons/md';
 import {useTranslation} from 'react-i18next';
-
-const locales = {
-    en: {title: 'EN'},
-    ua: {title: 'UA'}
-};
+import {locales} from '../../../../../extra/config/locales';
 
 export default function SettingsLanguages() {
     const {i18n, t} = useTranslation();

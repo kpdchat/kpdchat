@@ -8,8 +8,8 @@ import ExitChat from './ExitChat';
 import {mops} from '../../../../../extra/config/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
 
-export default function SettingsModal({isOpen, setIsOpen}) {
-    const state = useSettingsModalLogic({isOpen, setIsOpen});
+export default function SettingsModal({setIsOpen}) {
+    const state = useSettingsModalLogic({setIsOpen});
     const {t} = useTranslation();
 
     return (
@@ -18,7 +18,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
 
                 <div className='settings__settings'>
                     <div className='settings__title'>
-                        <h2>{ t('settingsUser.settings') }</h2>
+                        <h2 className='text-inter-18-600'>{ t('settingsUser.settings') }</h2>
                         <MdOutlineClose
                             className='cursor-pointer'
                             size='24'
@@ -37,6 +37,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
                         <div className='settings__user-data'>
                             <form onSubmit={ state.onSubmitDataToServer }>
                                 <input
+                                    className='text-inter-16-600'
                                     maxLength='12'
                                     type='name'
                                     value={ state.nickname }
@@ -90,7 +91,7 @@ export default function SettingsModal({isOpen, setIsOpen}) {
 
                     <div className='settings__user-buttons'>
                         <SettingsLanguages />
-                        <ExitChat isOpen={ isOpen } setIsOpen={ setIsOpen } />
+                        <ExitChat setIsOpen={ setIsOpen } />
                     </div>
 
                     <button

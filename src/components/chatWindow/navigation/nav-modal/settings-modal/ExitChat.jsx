@@ -4,13 +4,13 @@ import {setWindowChatClose} from '../../../../../store/actions/uiActions';
 import {useDispatch} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 
-export default function ExitChat({setIsOpen, isOpen}) {
+export default function ExitChat({setIsOpen}) {
     const dispatch = useDispatch();
     const {t} = useTranslation();
 
     function onExitChat() {
         localStorage.removeItem('user');
-        setIsOpen(!isOpen);
+        setIsOpen(prev => !prev);
         dispatch(setWindowChatClose())
     }
 
