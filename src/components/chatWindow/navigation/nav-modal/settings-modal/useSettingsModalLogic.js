@@ -81,6 +81,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
     function onChangeTextareaInputSettings(e) {
         setProfilePictureLink(e.target.value);
         validateImageValueSettings(e.target.value);
+        validateImageOnServerSettings(e.target.value);
     }
 
     // Insert Dog Links

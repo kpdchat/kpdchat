@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdWebAssetOff} from 'react-icons/md';
+import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage} from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
 import SettingsLanguages from './SettingsLanguages';
@@ -29,15 +29,15 @@ export default function SettingsModal({setIsOpen}) {
                         <div className='settings__user-photo'>
                             { state.profilePictureLink &&
                                 <img
-                                    className='user-photo'
+                                    className={ state.profilePictureLinkError ? 'display-none': 'user-photo' }
                                     src={ state.profilePictureLink }
                                     alt='user foto'
                                 />
                             }
 
-                                <div className={ state.profilePictureLink ? 'display-none' : 'user-photo' }>
-                                    <MdWebAssetOff
-                                        color={ 'black' }
+                                <div className={ state.profilePictureLinkError ? 'user-photo' : 'display-none' }>
+                                    <MdOutlineHideImage
+                                        color='#7C7C85'
                                         size='24'
                                     />
                                 </div>
