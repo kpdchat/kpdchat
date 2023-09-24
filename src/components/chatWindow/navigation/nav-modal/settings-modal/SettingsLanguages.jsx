@@ -17,9 +17,11 @@ export default function SettingsLanguages() {
 
           <div className='settings__buttons '>
               { Object.keys(locales).map((locale =>
-                  <button onClick={ () => i18n.changeLanguage(locale) }
-                          className={ i18n.resolvedLanguage === locale ? 'active' : 'cursor-pointer' }
-                          key={ locale }>{ locales[locale].title }</button>)) }
+                  <button
+                  onClick={ () => i18n.changeLanguage(locale) }
+                  className={ i18n.resolvedLanguage === locale ? 'active' : 'cursor-pointer' }
+                  key={ locale }>{ locales[locale].title }
+              </button>)) }
           </div>
       </div>
   );

@@ -8,7 +8,6 @@ import {fetchUser} from '../../../../../store/actions/userActions';
 
 export default function useSettingsModalLogic({setIsOpen}) {
     const user = useSelector(selectUser);
-    console.log(user);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
     const [nickname, setNickname] = useState(user.nickname);
@@ -18,6 +17,13 @@ export default function useSettingsModalLogic({setIsOpen}) {
     const [activeDogImg, setActiveDogImg] = useState(null);
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
+
+    // User Language
+    const languageListSend = {
+        'ua': 0,
+        'en': 1
+    };
+    const userLanguage = languageListSend[i18n.language];
 
     function onContentClick(e) {
         e.stopPropagation();
@@ -88,13 +94,6 @@ export default function useSettingsModalLogic({setIsOpen}) {
     function onShowAvatars() {
         setShowImg(!showImg);
     }
-
-    // User Language
-    const languageList = {
-        'ua': 0,
-        'en': 1
-    };
-    const userLanguage = languageList[i18n.language];
 
     // Submit To Server Data
     async function onSubmitDataToServer() {

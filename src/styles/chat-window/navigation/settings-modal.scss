@@ -73,10 +73,14 @@
     &__user-photo {
         // .settings__user-photo
         .user-photo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 66px;
             height: 66px;
             object-fit: cover;
             border-radius: 50%;
+            background-color: $color-grey;
         }
     }
 
