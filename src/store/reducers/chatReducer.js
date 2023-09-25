@@ -60,29 +60,6 @@ export default function chatReducer(state = initialState, { type, payload }) {
                 selectChat: payload
             }
         }
-        // case ACTION_SET_PUBLIC_CHATS: {
-        //     return {
-        //         ...state,
-        //         publicChats: payload,
-
-        //     }
-        // }
-        // case ACTION_SET_USER_CHATS: {
-        //     return {
-        //         ...state,
-        //         userChats: payload,
-        //     }
-        // }
-
-        // case ACTION_ADD_USER_CHAT: {
-        //     return {
-        //         ...state,
-        //         userChats: [
-        //             ...state.userChats,
-        //             payload
-        //         ],
-        //     }
-        // }
 
         default: return state
     }

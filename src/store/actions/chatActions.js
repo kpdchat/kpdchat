@@ -11,11 +11,6 @@ export const ACTION_CLEAN_CHAT = 'ACTION_CLEAN_CHAT'
 export const ACTION_SET_SELECT_CHAT = 'ACTION_SET_SELECT_CHAT'
 
 
-
-
-
-
-
 export function fetchPublicChats() {
     return async (dispatch) => {
         try {

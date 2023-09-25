@@ -1,14 +1,14 @@
 import React  from "react";
 import { MdOutlineCreateNewFolder, MdArrowBack } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFolderObjKebab, selectUser } from "../../../../../store/selectors";
+import { selectFolderList, selectUser } from "../../../../../store/selectors";
 import { setModalOpen } from "../../../../../store/actions/uiActions";
 import SelectFolder from "./SelectFolder";
 import UnSelectFolder from "./UnSelectFolder";
 
 export default function KebabFolderList({ setOpen }) {
     const dispatch = useDispatch()
-    const selectFolders = useSelector(selectFolderObjKebab)
+    const selectFolders = useSelector(selectFolderList)
     const user = useSelector(selectUser)
 
     function onAddFolderClick() {

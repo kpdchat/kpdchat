@@ -1,14 +1,10 @@
 import React from "react";
 import MessageTitleKebab from "./mes-kebab/MessageTitleKebab";
-import ChatOutModal from "./mes-modal/ChatOutModal";
-import { useSelector } from 'react-redux'
-import { selectUi } from "../../../store/selectors";
 import menu_kebab from "../../../images/chat-window/menu-kebab.png"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 import { useTranslation } from 'react-i18next';
 
 export default function MessageSearch() {
-    const { isModal, modalId } = useSelector(selectUi)
     const titleId = -1
     const { isOpen, idKebab, onKebabClick } = useKebabClick(titleId)
     const { t } = useTranslation()
@@ -22,8 +18,6 @@ export default function MessageSearch() {
                 <img className="cursor-pointer" src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 {isOpen && idKebab === titleId && <MessageTitleKebab />}
             </div>
-            {isModal && modalId === 'leave chat' && <ChatOutModal/>}
-            
         </div>
     )
 }

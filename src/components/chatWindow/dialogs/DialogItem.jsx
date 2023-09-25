@@ -19,7 +19,7 @@ export default function DialogItem({ chat, index }) {
         }
         if (window.innerWidth > 1250 && left > 142) {
                 left = 142
-        } else if (window.innerWidth < 1250 && left > 60) {
+        } else if (window.innerWidth < 1250 && left > 50) {
             left = 40 
         }
         let top 

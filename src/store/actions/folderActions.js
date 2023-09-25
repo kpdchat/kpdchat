@@ -1,4 +1,6 @@
 import axios from "axios"
+import { setLoaderKebabHide, setLoaderKebabShow } from "./uiActions"
+import { set } from "react-hook-form"
 export const ACTION_SET_EDIT_FOLDER = 'ACTION_SET_EDIT_FOLDER'
 export const ACTION_CLEAR_FOLDER = 'ACTION_CLEAR_FOLDER'
 export const ACTION_SET_DELETE_FOLDER = 'ACTION_SET_DELETE_FOLDER'
@@ -35,13 +37,35 @@ export function fetchUpdateFolder(folder) {
     }
 }
 
+export function fetchUpdateKebabFolder(folder) {
+    return async (dispatch) => {
+        dispatch(setLoaderKebabShow(folder.id))
+        try {
+            await axios.put("https://kpdchat.onrender.com/api/folders", folder)
+        } catch (e) {
+            alert(e)
+        }
+        finally {
+            setTimeout(() => {
+                dispatch(setLoaderKebabHide())
+            }, 500) 
+        }
+    }
+}
+
 export function fetchRemoveChatFromFolder(folderId, arrChatId) {
-    return async () => {
+    return async (dispatch) => {
+        dispatch(setLoaderKebabShow(folderId))
         try {
             await axios.delete(`https://kpdchat.onrender.com/api/folders/${folderId}/removeChats`, 
             { data: { chatIds: arrChatId } })
         } catch (e) {
             alert(e)
+        }
+        finally {
+            setTimeout(() => {
+                dispatch(setLoaderKebabHide())
+            }, 500) 
         }
     }
 }

@@ -1,0 +1,87 @@
+.copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        //.copy__content
+        background-color: $color-white;
+        border-radius: 8px;
+        box-shadow: 1px 2px 6px 0px $color-shadow-grey;
+        padding: 36px;
+        width: 365px;
+
+        p {
+            text-align: center;
+        }
+    }
+}
+
+
+.modal-chat{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        //.modal-chat__content
+        background-color: $color-white;
+        border-radius: 8px;
+        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        padding: 24px;
+        width: 480px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: $color-violet;
+            color: $color-white;
+            border: none;
+        }
+    }
+
+    &__header {
+        //.modal-chat__header
+        display: flex;
+        justify-content: space-between;
+        color: $color-black;
+
+        .text-inter-18-600 {
+
+            line-height: 24.3px;
+        }
+    }
+
+    .flex-container {
+        justify-content: start;
+        align-items: center;
+        gap: 16px;
+
+        img {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    &__about {
+        //.modal-chat__about
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        max-width: 350px;
+
+        .text-inter-14-400 {
+            color: $color-text-grey;
+        }
+
+        .text-inter-18-600 {
+            color: $color-light-black;
+        }
+    }
+}

@@ -7,6 +7,8 @@ import {
     ACTION_CLOSE_WINDOW_CHAT,
     ACTION_SHOW_LOADER,
     ACTION_HIDE_LOADER,
+    ACTION_SHOW_KEBAB_LOADER,
+    ACTION_HIDE_KEBAB_LOADER
 } from '../actions/uiActions'
 
 const initialState = {
@@ -14,9 +16,10 @@ const initialState = {
     isActiveFolderKebab: false,
     idKebab: 0,
     isModal: false,
-    modalId : 0,
+    modalId: 0,
     isOpenChat: false,
     isActiveLoader: false,
+    loaderId: 0,
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -76,6 +79,20 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isActiveLoader: false
+            }
+        }
+        case ACTION_SHOW_KEBAB_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: true,
+                loaderId: payload,
+            }
+        }
+        case ACTION_HIDE_KEBAB_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: false,
+                loaderId: 0,
             }
         }
         default: return state;

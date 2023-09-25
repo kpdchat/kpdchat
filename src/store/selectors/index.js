@@ -10,6 +10,7 @@ export const selectLoader = state => state.ui.isActiveLoader
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
 export const selectLeaveChat = state => state.chat.leaveChat
+export const selectJoinChat = state => state.chat.joinChat
 export const selectChat = state => state.chat.selectChat
 
 
@@ -29,22 +30,22 @@ export const selectEditFolderForForm = createSelector(
     }
 )
 
-export const selectFolderListKebab = createSelector(
-    selectUser,
-    selectChat,
-    (user, chat) => {
-        const folderList = user.folders.reduce((list, folder) => {
-            if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
-                list.push(folder.id)
-            }
-             return list
-        }, [])
-        return { "folderId" : folderList}
-    }
+// export const selectFolderListKebab = createSelector(
+//     selectUser,
+//     selectChat,
+//     (user, chat) => {
+//         const folderList = user.folders.reduce((list, folder) => {
+//             if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
+//                 list.push(folder.id)
+//             }
+//              return list
+//         }, [])
+//         return { "folderId" : folderList}
+//     }
 
-)
+// )
 
-export const selectFolderObjKebab = createSelector(
+export const selectFolderList = createSelector(
     selectUser,
     selectChat,
     (user, chat) => {

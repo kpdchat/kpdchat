@@ -3,12 +3,12 @@ import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next';
 import { setModalClose } from "../../../../store/actions/uiActions"
-import { selectLeaveChat, selectUser } from "../../../../store/selectors";
-import { cleanChat, fetchLeaveChat } from "../../../../store/actions/chatActions";
+import { selectJoinChat, selectUser } from "../../../../store/selectors";
+import { cleanChat, fetchJoinChat } from "../../../../store/actions/chatActions";
 
-export default function ChatOutModal() {
+export default function JoinChatModal() {
     const user = useSelector(selectUser)
-    const chat = useSelector(selectLeaveChat)
+    const joinChat = useSelector(selectJoinChat)
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
@@ -17,39 +17,36 @@ export default function ChatOutModal() {
         dispatch(cleanChat())
     }
 
-
-    function onLeaveClick() {
+    function onJoinChatClick() {
         const data = {
             "userId": user.id,
-            "publicChatId": chat.id
+            "publicChatId": joinChat.id
         }
-        dispatch(fetchLeaveChat(data))
+        dispatch(fetchJoinChat(data))
         dispatch(setModalClose())
-
     }
-
     return (
-        <div className="modal-container modal-chat" >
+        <div className="modal-container modal-chat">
             <div className="modal-chat__content">
                 <div className="modal-chat__header">
-                    <h3 className="text-inter-18-600">Вийти з чату</h3>
+                    <h3 className="text-inter-18-600">Приєднатись до чату</h3>
                     <MdClose
                         className="modal-chat__close cursor-pointer"
-                        size={24} onClick={onCloseClick} />
+                        size={24}
+                        onClick={onCloseClick} />
                 </div>
-
                 <div className="flex-container">
-                    <img src={chat.chatPictureLink} />
+                    <img src={joinChat.chatPictureLink} />
                     <div className="modal-chat__about">
-
-                        <p className="text-inter-18-600">{chat?.title}</p>
-                        <p className="text-inter-14-400">{chat?.members?.length} учасників будуть за вами  сумувати </p>
-
-                    </div>
+                    
+                    <p className="text-inter-18-600">{joinChat.title}</p>
+                    <p className="text-inter-14-400">{joinChat.members.length} учасників </p>
                 </div>
+                </div>
+                
                 <button
                     className="text-inter-18-600 cursor-pointer"
-                    onClick={onLeaveClick} >Вийти</button>
+                    onClick={onJoinChatClick}>Приєднатись</button>
             </div>
         </div>
     )
