@@ -1,12 +1,12 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage} from 'react-icons/md';
+import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage, MdOutlineLanguage} from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
-import SettingsLanguages from './SettingsLanguages';
-import ExitChat from './ExitChat';
 import {mops} from '../../../../../extra/config/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
+import {PiDoorOpen} from 'react-icons/pi';
+import {locales} from '../../../../../extra/config/locales';
 
 export default function SettingsModal({setIsOpen}) {
     const state = useSettingsModalLogic({setIsOpen});
@@ -27,20 +27,17 @@ export default function SettingsModal({setIsOpen}) {
 
                     <div className='settings__user-profile'>
                         <div className='settings__user-photo'>
-                            { state.profilePictureLink &&
-                                <img
-                                    className={ state.profilePictureLinkError ? 'display-none': 'user-photo' }
+                            { state.profilePictureLink
+                                && <img
+                                    className={ state.profilePictureLinkError ? 'display-none' : 'user-photo' }
                                     src={ state.profilePictureLink }
                                     alt='user foto'
                                 />
                             }
 
-                                <div className={ state.profilePictureLinkError ? 'user-photo' : 'display-none' }>
-                                    <MdOutlineHideImage
-                                        color='#7C7C85'
-                                        size='24'
-                                    />
-                                </div>
+                            <div className={ state.profilePictureLinkError ? 'user-photo' : 'display-none' }>
+                                <MdOutlineHideImage color='#7C7C85' size='24' />
+                            </div>
                         </div>
 
                         <div className='settings__user-data'>
@@ -53,7 +50,8 @@ export default function SettingsModal({setIsOpen}) {
                                     onChange={ state.onChangeNicknameSettings }
                                     onBlur={ state.onChangeNicknameSettings }
                                 />
-                                { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
+                                { state.nicknameError
+                                    && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
 
                                 <textarea
                                     className='scroll-bar'
@@ -64,8 +62,8 @@ export default function SettingsModal({setIsOpen}) {
                                     onChange={ state.onChangeTextareaInputSettings }
                                     onBlur={ state.onChangeTextareaInputSettings }
                                 />
-                                { state.profilePictureLinkError &&
-                                    <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                                { state.profilePictureLinkError
+                                    && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
                             </form>
                         </div>
                     </div>
@@ -74,16 +72,8 @@ export default function SettingsModal({setIsOpen}) {
                         <div className='standard-img cursor-pointer' onClick={ state.onShowAvatars }>
                             <h2>{ t('settingsUser.standartAvatars') }</h2>
                             { state.showImg
-                                ?
-                                <MdArrowDropUp
-                                    size='28'
-                                    color='#38328A'
-                                />
-                                :
-                                <MdArrowDropDown
-                                    size='28'
-                                    color='#38328A'
-                                />
+                                ? <MdArrowDropUp size='28' color='#38328A' />
+                                : <MdArrowDropDown size='28' color='#38328A' />
                             }
                         </div>
 
@@ -99,13 +89,61 @@ export default function SettingsModal({setIsOpen}) {
                     </div>
 
                     <div className='settings__user-buttons'>
-                        <SettingsLanguages />
-                        <ExitChat setIsOpen={ setIsOpen } />
+
+                        <div className='settings__buttons-language'>
+                            <div className='settings__labels labels'>
+                                <div className='labels__label-language'>
+                                    <MdOutlineLanguage
+                                        size='24'
+                                        color='black'
+                                    />
+                                    <p className='text-inter-14-400'>
+                                        { t('settingsUser.language') }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className='settings__buttons'>
+                                { Object.keys(locales).map((locale) => (
+                                    <label
+                                        key={ locale }
+                                        className={ state.selectedLocale === locale ? 'active' : 'cursor-pointer' }
+                                        onClick={ () => state.handleLocaleChange(locale) }
+                                    >
+                                        { locales[locale].title }
+
+                                        <input
+                                            type='radio'
+                                            name='languages'
+                                            value={ locales[locale].value }
+                                            checked={ state.selectedLocale === locale }
+                                            onChange={ () => {
+                                            } }
+                                        />
+                                    </label>
+                                )) }
+                            </div>
+                        </div>
+
+                        <div className='user__buttons-exit'>
+                            <div className='settings__labels labels'>
+                                <div className='labels__label-exit'>
+                                    <PiDoorOpen
+                                        size='24'
+                                        color='black'
+                                        className='cursor-pointer'
+                                        onClick={ state.onExitChat } />
+                                    <p className='text-inter-14-400' onClick={ state.onExitChat }>
+                                        { t('settingsUser.exit') }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <button
                         className='settings__submit cursor-pointer'
-                        type='submit'
+                        type='button'
                         onClick={ state.onSubmitDataToServer }
                     >
                         { t('settingsUser.save') }

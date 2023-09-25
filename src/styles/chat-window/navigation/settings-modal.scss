@@ -223,6 +223,22 @@
 
     &__buttons {
         // .settings__buttons
+        color: $color-light-grey;
+
+        input {
+            display: none;
+        }
+
+        label {
+            padding: 8px;
+            font-family: $font-inter;
+            font-size: 12px;
+            font-weight: 400;
+            border-radius: 8px;
+            color: $color-light-grey;
+            background-color: inherit;
+        }
+
         button {
             background-color: inherit;
             border-radius: 8px;

@@ -2,9 +2,10 @@ import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectLoader, selectUser} from '../../../../../store/selectors';
 import i18n from 'i18next';
-import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
+import {setLoaderHide, setLoaderShow, setWindowChatClose} from '../../../../../store/actions/uiActions';
 import axios from 'axios';
 import {fetchUser} from '../../../../../store/actions/userActions';
+import {locales} from '../../../../../extra/config/locales';
 
 export default function useSettingsModalLogic({setIsOpen}) {
     const user = useSelector(selectUser);
@@ -17,14 +18,14 @@ export default function useSettingsModalLogic({setIsOpen}) {
     const [activeDogImg, setActiveDogImg] = useState(null);
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
+    const [selectedLocale, setSelectedLocale] = useState(i18n.resolvedLanguage);
 
-    // User Language
-    const languageListSend = {
-        'ua': 0,
-        'en': 1
-    };
-    const userLanguage = languageListSend[i18n.language];
+    // Language User Change
+    function handleLocaleChange(locale) {
+        setSelectedLocale(locale);
+    }
 
+    // ***
     function onContentClick(e) {
         e.stopPropagation();
     }
@@ -61,10 +62,11 @@ export default function useSettingsModalLogic({setIsOpen}) {
         }
     }
 
+    // Validation Images on Server
     async function validateImageOnServerSettings(url) {
         try {
             const response = await axios.head(url, {
-                timeout: 10000,
+                timeout: 10000
             });
 
             if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
@@ -78,6 +80,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
         }
     }
 
+    // Change Users Link in Textarea
     function onChangeTextareaInputSettings(e) {
         setProfilePictureLink(e.target.value);
         validateImageValueSettings(e.target.value);
@@ -96,6 +99,13 @@ export default function useSettingsModalLogic({setIsOpen}) {
         setShowImg(!showImg);
     }
 
+    // Exit Chat
+    function onExitChat() {
+        localStorage.removeItem('user');
+        setIsOpen(prev => !prev);
+        dispatch(setWindowChatClose())
+    }
+
     // Submit To Server Data
     async function onSubmitDataToServer() {
         if (nicknameError || profilePictureLinkError) return;
@@ -108,7 +118,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
                     id: user.id,
                     nickname,
                     profilePictureLink,
-                    localization: userLanguage,
+                    localization: locales[selectedLocale].value,
                     theme: user.theme
                 }
                 await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
@@ -134,6 +144,8 @@ export default function useSettingsModalLogic({setIsOpen}) {
         onChangeTextareaInputSettings,
         onePickAvatar,
         onShowAvatars,
+        onExitChat,
+        handleLocaleChange,
         user,
         nickname,
         nicknameError,
@@ -142,6 +154,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
         activeDogImg,
         showImg,
         profilePictureLinkRef,
-        isLoader
+        isLoader,
+        selectedLocale
     }
 }
