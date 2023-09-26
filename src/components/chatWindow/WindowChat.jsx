@@ -7,8 +7,9 @@ import { fetchUser } from '../../store/actions/userActions';
 import { selectOpenChat, selectUser } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
 import { useTranslation } from 'react-i18next';
-import { setRenderList } from '../../store/actions/chatActions';
+import { setRenderList, setRenderListName } from '../../store/actions/chatActions';
 import { languageList } from '../../extra/config/language-list';
+import { useState } from 'react';
 
 export default function WindowChat() {
     const dispatch = useDispatch();
@@ -16,23 +17,20 @@ export default function WindowChat() {
     const serverUser = useSelector(selectUser);
     const isOpenChat = useSelector(selectOpenChat);
     const { i18n, t } = useTranslation();
+    const [renderCount, setRenderCount] = useState(0)
 
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id));
         }
     }, [user?.id, dispatch])
-
     useEffect(() => {
-        if (serverUser?.id) {
-            const data = {
-                list: serverUser.chats,
-                name: 'mineChats'
-            }
-            dispatch(setRenderList(data))
+        if (serverUser?.id && renderCount < 1) {
+            setRenderCount(1)
+            dispatch(setRenderListName('mineChats'))
+            dispatch(setRenderList(serverUser.chats))
         }
-        // }, [serverUser?.id])
-    }, [serverUser?.chats?.length])
+    }, [serverUser?.id, dispatch, renderCount, serverUser.chats])
 
     function onContextClick(e) {
         e.preventDefault()
@@ -40,7 +38,7 @@ export default function WindowChat() {
 
     useEffect(() => {
         i18n.changeLanguage(languageList[serverUser?.localization])
-    }, [serverUser?.localization]);
+    }, [serverUser?.localization, i18n]);
 
     if (!serverUser.id) {
         return (

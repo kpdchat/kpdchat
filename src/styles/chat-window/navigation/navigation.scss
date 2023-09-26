@@ -59,6 +59,7 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
+        border-bottom: 1px solid transparent;
 
         &:hover {
             color: $color-yellow;
@@ -73,9 +74,15 @@
                 display: none;
             }
         }
+
+        &_active {
+            border-bottom: 1px solid $color-yellow;
+            color: $color-yellow;
+            @include max-screen(940px) {
+                border-bottom: 1px solid transparent;
+            }
+        }
     }
-
-
 
     &__title {
         //.folders__title
@@ -128,6 +135,7 @@
         gap: 8px;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 1px solid transparent;
 
         @include max-screen(940px) {
             justify-content: center;
@@ -143,6 +151,15 @@
 
         &:hover {
             color: $color-yellow;
+        }
+
+        &_active {
+            border-bottom: 1px solid $color-yellow;
+            color: $color-yellow;
+
+            @include max-screen(940px) {
+                border-bottom: 1px solid transparent;
+            }
         }
     }
 

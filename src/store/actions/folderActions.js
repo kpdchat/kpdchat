@@ -65,7 +65,7 @@ export function fetchRemoveChatFromFolder(folderId, arrChatId) {
         finally {
             setTimeout(() => {
                 dispatch(setLoaderKebabHide())
-            }, 500) 
+            }, 1000) 
         }
     }
 }
@@ -78,8 +78,6 @@ export function setEditFolder(folder) {
 export function setDeleteFolder(folder) {
     return { type: ACTION_SET_DELETE_FOLDER, payload: folder }
 }
-
-
 
 export function clearEditFolder() {
     return { type: ACTION_CLEAR_FOLDER }

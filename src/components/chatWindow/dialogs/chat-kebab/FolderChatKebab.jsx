@@ -31,26 +31,34 @@ export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
         dispatch(setModalOpen('leave chat'))
     }
 
+    function onDeleteFromFolderClick() {
+        dispatch(setSelectChat(chat))
+        console.log(chat);
+        dispatch(setModalOpen('delete-from-folder'))
+    }
+
     return (
         <div ref={menuRef} style={style}>
-            <div 
-            className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
-            onClick={onAddFolderClick}>
+            <div
+                className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
+                onClick={onAddFolderClick}>
                 <MdOutlineCreateNewFolder size={24} />
                 <p className="text-inter-16-400">Додати до папки</p>
                 <MdArrowForward className="chat-kebab__arrow" size={24} />
             </div>
-            <div 
-            className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
-            onClick={onLeaveChatClick}>
+            <div
+                className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
+                onClick={onLeaveChatClick}>
                 <PiDoorOpen size={24} />
                 <p className="text-inter-16-400">Вийти з чату</p>
             </div>
-            <div className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}>
+            <div
+                className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
+                onClick={onDeleteFromFolderClick}>
                 <PiTrashBold size={24} />
                 <p className="text-inter-16-400">Видалити з папки</p>
             </div>
-            {open && <KebabFolderList setOpen= {setOpen}/>}
+            {open && <KebabFolderList setOpen={setOpen} />}
         </div>
     )
 }

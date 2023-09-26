@@ -28,7 +28,7 @@ export default function ChatKebab({ chat, style, setStyle }) {
 
     return (
         <KebabWrapper elRef={menuRef} >
-            {listName === 'folderChats' && <FolderChatKebab menuRef={menuRef} setStyle ={setStyle} style={style} chat ={chat}/>}
+            {listName.length > 15 && <FolderChatKebab menuRef={menuRef} setStyle ={setStyle} style={style} chat ={chat}/>}
             {listName === 'mineChats' && <MyChatKebab menuRef={menuRef} setStyle ={setStyle} style={style} chat ={chat}/>}
             {listName === 'publicChats' && kebab}
         </KebabWrapper>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
@@ -12,7 +12,7 @@ export default function ChatDialogs() {
     const { t } = useTranslation()
 
     const filteredChats = useMemo(() => {
-        return renderChatList.filter(chat => {
+        return renderChatList?.filter(chat => {
             return chat.title.toLowerCase().includes(query.toLowerCase())
         })
     }, [query, renderChatList])
@@ -43,7 +43,7 @@ export default function ChatDialogs() {
             </section>
         )
     }
-    
+
     return (
         <section className='chat__dialogs dialogs'>
             <div className='dialogs__logo'>

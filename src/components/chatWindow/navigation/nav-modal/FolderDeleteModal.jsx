@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 
 
-export default function FolderDeleteModal({folder}) {
+export default function FolderDeleteModal() {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const deleteFolder = useSelector(selectDeleteFolder)
@@ -25,6 +25,7 @@ export default function FolderDeleteModal({folder}) {
         <div className="modal-container folder-modal">
             <div className="folder-delete__content">
                 <div className="folder-delete__header">
+                    <h3 className="text-inter-18-600">Видалити папку</h3>
                     <MdClose size = {24} className = 'cursor-pointer' onClick={onCloseClick}/>
                 </div>
                 <p className= 'text-inter-18-400'>{t('addFolder.deleteFolder')}</p>

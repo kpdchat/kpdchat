@@ -30,7 +30,6 @@
         //.form__name-container
         display: flex;
         position: relative;
-        // margin-bottom: 16px;
         padding: 8px;
 
     }
@@ -44,6 +43,7 @@
         align-items: center;
         border-radius: 8px;
         background: $color-violet;
+        color: $color-white;
     }
 
     &__folder-name {

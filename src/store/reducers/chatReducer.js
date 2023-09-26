@@ -1,12 +1,10 @@
 import {
-    // ACTION_SET_USER_CHATS,
-    // ACTION_SET_PUBLIC_CHATS,
-    // ACTION_ADD_USER_CHAT,
     ACTION_RENDER_CHAT_LIST,
     ACTION_SET_JOIN_CHAT,
     ACTION_SET_LEAVE_CHAT,
     ACTION_CLEAN_CHAT,
     ACTION_SET_SELECT_CHAT,
+    ACTION_SET_RENDER_LIST_NAME,
 
 } from '../actions/chatActions'
 
@@ -15,7 +13,6 @@ import {
 
 
 const initialState = {
-    // userChats: [],
     publicChats: [],
     renderList: [],
     listName: '',
@@ -29,12 +26,18 @@ export default function chatReducer(state = initialState, { type, payload }) {
         case ACTION_RENDER_CHAT_LIST: {
             return {
                 ...state,
-                renderList: payload.list,
-                listName: payload.name
+                renderList: payload,
             }
         }
 
-        case ACTION_SET_JOIN_CHAT: { ///???????
+        case ACTION_SET_RENDER_LIST_NAME: {
+            return {
+                ...state,
+                listName: payload,
+            }
+        }
+
+        case ACTION_SET_JOIN_CHAT: { 
             return {
                 ...state,
                 joinChat: payload

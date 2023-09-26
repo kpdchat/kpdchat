@@ -1,0 +1,35 @@
+import React from "react"
+import { MdClose } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux'
+import { setModalClose } from "../../../../store/actions/uiActions"
+import { fetchDeleteFolder, fetchRemoveChatFromFolder } from "../../../../store/actions/folderActions";
+import { useTranslation } from 'react-i18next';
+import { selectChat, selectListName } from "../../../../store/selectors";
+
+export default function DeleteFromFolderModal() {
+    const { t } = useTranslation()
+    const dispatch = useDispatch()
+    const listName = useSelector(selectListName)
+    const chat = useSelector(selectChat)
+
+    function onCloseClick() {
+        dispatch(setModalClose())
+    }
+    function onDeleteClick() {
+        const arrChatId = [chat.id]
+        dispatch(fetchRemoveChatFromFolder(listName, arrChatId))
+        dispatch(setModalClose())
+    }
+    return (
+        <div className="modal-container folder-modal">
+            <div className="folder-delete__content">
+                <div className="folder-delete__header">
+                    <h3 className="text-inter-18-600">Видалити з папки</h3>
+                    <MdClose size={24} className='cursor-pointer' onClick={onCloseClick} />
+                </div>
+                <p className='text-inter-18-400'>Ви точно хочете видалити цей чат з папки?</p>
+                <button onClick={onDeleteClick} className='text-inter-18-600 cursor-pointer'> {t('global.confirm')} </button>
+            </div>
+        </div>
+    )
+}

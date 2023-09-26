@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import ChatKebab from "./chat-kebab/ChatKebab";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
 
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
-    const {  isActiveFolderKebab } = useSelector(selectUi)
+    const { isActiveFolderKebab } = useSelector(selectUi)
     const list = useSelector(selectRenderChatList)
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
     const [style, setStyle] = useState('')
 
     function onContextClick(e) {
         let left = e.pageX - 192
-        if(left < 0) {
+        if (left < 0) {
             left = 2
         }
         if (window.innerWidth > 1250 && left > 142) {
-                left = 142
+            left = 142
         } else if (window.innerWidth < 1250 && left > 50) {
-            left = 40 
+            left = 40
         }
-        let top 
-        if (list.length >= 6 && list.length < (index + 6)) {
+        let top
+        if (list.length >= 6 && list.length < (index + 2)) {
             top = '-10px'
         } else {
             top = '60px'
@@ -32,7 +32,7 @@ export default function DialogItem({ chat, index }) {
         setStyle({
             position: 'absolute',
             left: left + 'px',
-            top: top ,
+            top: top,
             width: '220px',
             display: 'flex',
             flexDirection: 'column',
@@ -61,7 +61,7 @@ export default function DialogItem({ chat, index }) {
                     <span className='list__time text-inter-12-400'>12:28</span>
                     <span className='list__new-count text-inter-12-400'>12</span>
                 </div>
-                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle ={setStyle} style={style} />}
+                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
             </div>
         </>
     )
