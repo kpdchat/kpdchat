@@ -16,7 +16,9 @@ export default function AddFolderModal() {
     const dispatch = useDispatch()
     const editFolder = useSelector(selectEditFolderForForm)
     const user = useSelector(selectUser)
-    const chats = user.chats
+    const chats = user.chats.sort((a, b) => {
+        return a.id.localeCompare(b.id)
+    })
     const { t } = useTranslation()
 
     const {

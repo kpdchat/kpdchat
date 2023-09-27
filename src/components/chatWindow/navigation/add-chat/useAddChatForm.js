@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { useTranslation } from 'react-i18next';
+import { validateImageOnServer } from "../../../../extra/config/validateImageOnServer";
 
 export default function useAddChatForm(chatPictureLink) {
     const [link, setLink] = useState('')
@@ -14,22 +14,17 @@ export default function useAddChatForm(chatPictureLink) {
         }
     }
 
-    async function validateImageOnServer(url) {
+    async function validateImageServer(url) {
         setLoading(true)
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000,
-            });
-            setLoading(false)
-            return response.status !== 200 || !response.headers['content-type'].includes('image') ?
-                t('addChat.wrongUrl') : true && setLink(url);
 
-        } catch (error) {
+        if (await validateImageOnServer(url)) {
+            setLoading(false)
+            setLink(url)
+        } else {
             setLink('')
             setLoading(false)
-            return t('addChat.wrongUrl');
+            return t('addChat.wrongUrl')
         }
-
     }
 
     return {
@@ -37,6 +32,6 @@ export default function useAddChatForm(chatPictureLink) {
         loading,
         t,
         onTextareaInput,
-        validateImageOnServer,
+        validateImageServer,
     }
 }

@@ -35,6 +35,7 @@
         "createFolder" : "Створити папку",
         "editFolder" : "Редагувати папку",
         "delete" : "Видалити",
+        "deleteFolderTitle" : "Видалити папку",
         "deleteFolder" : "Ви остаточно хочете видалити дану папку?"
 
     },
@@ -48,6 +49,19 @@
         "addPictureLink" : "Посилання на зображення",
         "create" : "Створити",
         "linkMax" : "Максимум 2000 символів"
+    },
+    "chat-context-menu" : {
+        "return": "Повернутись",
+        "newFolder": "Cтворити нову",
+        "exitChat": "Вийти з чату",
+        "addToFolder": "Додати до папки",
+        "deleteFromFolder" : "Видалити з папки",
+        "joinChat" : "Приєднатись",
+        "cryMembers" : "учасників будуть за вами  сумувати",
+        "leave" : "Вийти",
+        "joinToChat" : "Приєднатись до чату",
+        "membersCount" : "учасників",
+        "delete-from-folder-text" : "Ви точно хочете видалити цей чат з папки?"
     },
     "info": {
         "welcome-text-p1": "Ласкаво просимо у світ швидкого та зручного спілкування!",

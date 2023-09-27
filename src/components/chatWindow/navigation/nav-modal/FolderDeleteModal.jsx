@@ -1,7 +1,7 @@
 import React from "react"
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
-import {setModalClose} from "../../../../store/actions/uiActions"
+import { setModalClose } from "../../../../store/actions/uiActions"
 import { fetchDeleteFolder } from "../../../../store/actions/folderActions";
 import { selectDeleteFolder } from "../../../../store/selectors";
 import { useTranslation } from 'react-i18next';
@@ -25,11 +25,18 @@ export default function FolderDeleteModal() {
         <div className="modal-container folder-modal">
             <div className="folder-delete__content">
                 <div className="folder-delete__header">
-                    <h3 className="text-inter-18-600">Видалити папку</h3>
-                    <MdClose size = {24} className = 'cursor-pointer' onClick={onCloseClick}/>
+                    <h3 className="text-inter-18-600">
+                        {t('addFolder.deleteFolderTitle')}</h3>
+                    <MdClose size={24}
+                        className='cursor-pointer'
+                        onClick={onCloseClick} />
                 </div>
-                <p className= 'text-inter-18-400'>{t('addFolder.deleteFolder')}</p>
-                <button onClick={onDeleteClick} className= 'text-inter-18-600 cursor-pointer'> {t('global.confirm')} </button>
+                <p className='text-inter-18-400'>
+                    {t('addFolder.deleteFolder')}</p>
+                <button
+                    onClick={onDeleteClick}
+                    className='text-inter-18-600 cursor-pointer'>
+                    {t('global.confirm')} </button>
             </div>
         </div>
     )

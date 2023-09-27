@@ -46,7 +46,6 @@ export default function DialogItem({ chat, index }) {
         onKebabClick()
     }
     return (
-        <>
             <div className={isActiveFolderKebab && isOpen && idKebab === chat.id ? "active-chat list__dialog cursor-pointer " : "list__dialog cursor-pointer"} onContextMenu={onContextClick}>
                 <div className="list__info">
                     <img src={chat.chatPictureLink}
@@ -63,6 +62,5 @@ export default function DialogItem({ chat, index }) {
                 </div>
                 {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
             </div>
-        </>
     )
 }

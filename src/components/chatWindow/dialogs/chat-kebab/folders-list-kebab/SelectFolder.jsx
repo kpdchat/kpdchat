@@ -1,10 +1,11 @@
 import React from "react";
 import { MdDone } from "react-icons/md";
-import { icons } from "../../../../../extra/config/folder-icons";
 import { useDispatch, useSelector } from 'react-redux';
+import { DotSpinner } from '@uiball/loaders'
+import { icons } from "../../../../../extra/config/folder-icons";
 import { selectChat, selectUi } from "../../../../../store/selectors";
 import { fetchRemoveChatFromFolder } from "../../../../../store/actions/folderActions";
-import { DotSpinner } from '@uiball/loaders'
+
 
 export default function SelectFolder({ folder }) {
     const dispatch = useDispatch()

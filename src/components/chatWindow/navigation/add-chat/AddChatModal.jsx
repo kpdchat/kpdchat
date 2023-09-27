@@ -19,7 +19,6 @@ export default function AddChatModal() {
         register,
         handleSubmit,
         formState: { errors },
-        getValues,
     } = useForm({ mode: "onChange" })
 
     const {
@@ -27,7 +26,7 @@ export default function AddChatModal() {
         loading,
         t,
         onTextareaInput,
-        validateImageOnServer,
+        validateImageServer,
     } = useAddChatForm(chatPictureLink)
 
     const { ref, ...rest } = register('chatPictureLink', {
@@ -38,7 +37,7 @@ export default function AddChatModal() {
             message: t('addChat.linkMax')
         },
         validate: {
-            checkUrl: validateImageOnServer
+            checkUrl: validateImageServer
         }
     });
 
@@ -67,7 +66,7 @@ export default function AddChatModal() {
                 <form className="chat-modal__form">
                     <div className="chat-modal__form-container" >
                         <div className="chat-modal__img">
-                            {link && <img src={link} alt="default-picture" />}
+                            {link && <img src={link} alt="default" />}
                             <MdOutlineHideImage size={24} className={link ? 'display-none' : null} />
 
                         </div>

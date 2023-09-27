@@ -32,24 +32,28 @@ export default function ChatOutModal() {
         <div className="modal-container modal-chat" >
             <div className="modal-chat__content">
                 <div className="modal-chat__header">
-                    <h3 className="text-inter-18-600">Вийти з чату</h3>
+                    <h3 className="text-inter-18-600">{t('chat-context-menu.exitChat')}</h3>
                     <MdClose
                         className="modal-chat__close cursor-pointer"
-                        size={24} onClick={onCloseClick} />
+                        size={24}
+                        onClick={onCloseClick} />
                 </div>
 
                 <div className="flex-container">
-                    <img src={chat.chatPictureLink} />
+                    <img 
+                    src={chat.chatPictureLink} 
+                    alt="chat-logo"/>
                     <div className="modal-chat__about">
-
                         <p className="text-inter-18-600">{chat?.title}</p>
-                        <p className="text-inter-14-400">{chat?.members?.length} учасників будуть за вами  сумувати </p>
-
+                        <p className="text-inter-14-400">
+                            {chat?.members?.length} {t('chat-context-menu.cryMembers')}
+                        </p>
                     </div>
                 </div>
+
                 <button
                     className="text-inter-18-600 cursor-pointer"
-                    onClick={onLeaveClick} >Вийти</button>
+                    onClick={onLeaveClick} >{t('chat-context-menu.leave')}</button>
             </div>
         </div>
     )

@@ -29,24 +29,27 @@ export default function JoinChatModal() {
         <div className="modal-container modal-chat">
             <div className="modal-chat__content">
                 <div className="modal-chat__header">
-                    <h3 className="text-inter-18-600">Приєднатись до чату</h3>
+                    <h3 className="text-inter-18-600">{t('chat-context-menu.joinToChat')}</h3>
                     <MdClose
                         className="modal-chat__close cursor-pointer"
                         size={24}
                         onClick={onCloseClick} />
                 </div>
+                
                 <div className="flex-container">
-                    <img src={joinChat.chatPictureLink} />
+                    <img 
+                    src={joinChat.chatPictureLink}
+                    alt="chat-logo" />
                     <div className="modal-chat__about">
                     
                     <p className="text-inter-18-600">{joinChat.title}</p>
-                    <p className="text-inter-14-400">{joinChat.members.length} учасників </p>
+                    <p className="text-inter-14-400">{joinChat.members.length} {t('chat-context-menu.membersCount')} </p>
                 </div>
                 </div>
                 
                 <button
                     className="text-inter-18-600 cursor-pointer"
-                    onClick={onJoinChatClick}>Приєднатись</button>
+                    onClick={onJoinChatClick}>{t('chat-context-menu.joinChat')}</button>
             </div>
         </div>
     )

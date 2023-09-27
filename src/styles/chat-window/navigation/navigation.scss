@@ -59,11 +59,6 @@
         justify-content: space-between;
         align-items: center;
         position: relative;
-        border-bottom: 1px solid transparent;
-
-        &:hover {
-            color: $color-yellow;
-        }
 
         @include max-screen(940px) {
             justify-content: center;
@@ -76,11 +71,7 @@
         }
 
         &_active {
-            border-bottom: 1px solid $color-yellow;
             color: $color-yellow;
-            @include max-screen(940px) {
-                border-bottom: 1px solid transparent;
-            }
         }
     }
 
@@ -149,17 +140,9 @@
             }
         }
 
-        &:hover {
-            color: $color-yellow;
-        }
 
         &_active {
-            border-bottom: 1px solid $color-yellow;
             color: $color-yellow;
-
-            @include max-screen(940px) {
-                border-bottom: 1px solid transparent;
-            }
         }
     }
 
