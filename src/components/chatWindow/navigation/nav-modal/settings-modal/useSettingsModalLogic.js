@@ -8,7 +8,6 @@ import {fetchUser} from '../../../../../store/actions/userActions';
 
 export default function useSettingsModalLogic({setIsOpen}) {
     const user = useSelector(selectUser);
-    console.log(user);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
     const [nickname, setNickname] = useState(user.nickname);

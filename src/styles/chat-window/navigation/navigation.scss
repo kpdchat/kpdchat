@@ -3,6 +3,8 @@
 @import "./info-modal.scss";
 @import "./folder-kebab.scss";
 @import "./folder-delete-modal.scss";
+@import "./chat-modal.scss";
+
 
 
 @mixin max-screen($res) {
@@ -58,10 +60,6 @@
         align-items: center;
         position: relative;
 
-        &:hover {
-            color: $color-yellow;
-        }
-
         @include max-screen(940px) {
             justify-content: center;
         }
@@ -71,9 +69,11 @@
                 display: none;
             }
         }
+
+        &_active {
+            color: $color-yellow;
+        }
     }
-
-
 
     &__title {
         //.folders__title
@@ -92,9 +92,10 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            width: 100px;
 
             @include max-screen(1250px) {
-                width: 55px;
+                width: 70px;
             }
 
             @include max-screen(940px) {
@@ -125,6 +126,7 @@
         gap: 8px;
         align-items: center;
         justify-content: space-between;
+        border-bottom: 1px solid transparent;
 
         @include max-screen(940px) {
             justify-content: center;
@@ -138,7 +140,8 @@
             }
         }
 
-        &:hover {
+
+        &_active {
             color: $color-yellow;
         }
     }
@@ -152,8 +155,22 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        padding: 8px;
+        padding: 8px 4px;
         width: 100px;
+
+        @include max-screen(940px) {
+            width: 100%;
+            margin-left: 4px;
+        }
+
+        &_chat-svg {
+            //.add__item_chat-svg
+            margin-left: 3px;
+
+            @include max-screen(940px) {
+                margin-left: 3px;
+            }
+        }
 
         &:hover {
             color: $color-yellow;

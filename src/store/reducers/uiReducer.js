@@ -7,16 +7,19 @@ import {
     ACTION_CLOSE_WINDOW_CHAT,
     ACTION_SHOW_LOADER,
     ACTION_HIDE_LOADER,
+    ACTION_SHOW_KEBAB_LOADER,
+    ACTION_HIDE_KEBAB_LOADER
 } from '../actions/uiActions'
 
 const initialState = {
     isOpen: false,
-    isActive: false,
-    id: 0,
+    isActiveFolderKebab: false,
+    idKebab: 0,
     isModal: false,
-    modalId : 0,
+    modalId: 0,
     isOpenChat: false,
     isActiveLoader: false,
+    loaderId: 0,
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -24,24 +27,24 @@ export default function uiReducer(state = initialState, { type, payload }) {
         case ACTION_CLOSE_KEBAB: {
             return {
                 ...state,
-                isActive: false,
+                isActiveFolderKebab: false,
                 isOpen: false,
-                id: 0,
+                idKebab: 0,
             }
         }
         case ACTION_OPEN_KEBAB: {
             return {
                 ...state,
-                isActive: true,
+                isActiveFolderKebab: true,
                 isOpen: true,
-                id: payload,
+                idKebab: payload,
             }
         }
         case ACTION_CLOSE_MODAL: {
             return {
                 ...state,
                 isModal: false,
-                id: 0,
+                idKebab: 0,
                 modalId: 0,
 
             }
@@ -50,7 +53,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isModal: true,
-                id: 0,
+                idKebab: 0,
                 modalId: payload,
             }
         }
@@ -76,6 +79,20 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isActiveLoader: false
+            }
+        }
+        case ACTION_SHOW_KEBAB_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: true,
+                loaderId: payload,
+            }
+        }
+        case ACTION_HIDE_KEBAB_LOADER: {
+            return {
+                ...state,
+                isActiveLoader: false,
+                loaderId: 0,
             }
         }
         default: return state;

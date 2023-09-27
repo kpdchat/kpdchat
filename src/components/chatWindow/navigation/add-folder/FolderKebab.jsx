@@ -3,7 +3,7 @@ import KebabWrapper from "../../../../extra/KebabWrapper"
 import { PiNotePencilFill, PiTrashBold } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { setModalOpen } from "../../../../store/actions/uiActions";
-import { setDeleteFolder, setEditFolder } from "../../../../store/actions/userActions";
+import { setDeleteFolder, setEditFolder } from "../../../../store/actions/folderActions";
 import { useTranslation } from 'react-i18next';
 
 export default function FolderKebab({ folder }) {
@@ -25,7 +25,7 @@ export default function FolderKebab({ folder }) {
                     <PiNotePencilFill size={24} />
                     <p className="text-inter-16-400">{t('addFolder.editFolder')}</p>
                 </div>
-                <div className="folder-kebab__row cursor-pointer mt-8px" onClick={onDeleteClick}>
+                <div className="folder-kebab__row cursor-pointer" onClick={onDeleteClick}>
                     <PiTrashBold size={24} />
                     <p className="text-inter-16-400">{t('addFolder.delete')}</p>
                 </div>

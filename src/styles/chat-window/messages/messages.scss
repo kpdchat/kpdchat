@@ -1,3 +1,6 @@
+@import "./mes-kebab.scss";
+@import "./mes-modal.scss";
+
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
         @content;
@@ -61,7 +64,7 @@
     &__window-mes {
         // .messages__window-mes
         flex: 1 1 auto;
-        background: url(../../images/chat-window/background-chat.png) 50% / cover no-repeat;
+        background: url(../../../images/chat-window/background-chat.png) 50% / cover no-repeat;
         overflow-x: hidden;
     }
 
@@ -229,7 +232,7 @@
             width: 29px;
             height: 29px;
             align-self: flex-end;
-            background: $color-light-violet url("../../images/chat-window/send.png") center no-repeat;
+            background: $color-light-violet url("../../../images/chat-window/send.png") center no-repeat;
         }
     }
 }

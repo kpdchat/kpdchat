@@ -5,7 +5,7 @@ import MessageSelfKebab from "./mes-kebab/MessageSelfKebab"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 
 export default function SelfMessage({ message }) {
-    const { isOpen, id, onKebabClick } = useKebabClick(message.id)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id)
     
     return (
         <div className="window-mes__self self">
@@ -15,7 +15,7 @@ export default function SelfMessage({ message }) {
             </div>
             <div className="self__message" >
                 <div className="self__kebab">
-                    {isOpen && id === message.id && <MessageSelfKebab message={message}/>}
+                    {isOpen && idKebab === message.id && <MessageSelfKebab message={message}/>}
                     <img className="cursor-pointer " src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 </div>
 
