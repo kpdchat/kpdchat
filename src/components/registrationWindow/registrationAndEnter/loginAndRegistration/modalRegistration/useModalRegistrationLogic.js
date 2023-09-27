@@ -2,6 +2,7 @@ import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
+import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
 
 export default function useModalRegistrationLogic({setUniKey}) {
     const [nickname, setNickname] = useState('');
@@ -23,6 +24,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
+    // Change Nickname User
     function onChangeNickname(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
         setNickname(checkingForSpaces);
@@ -37,26 +39,16 @@ export default function useModalRegistrationLogic({setUniKey}) {
         }
     }
 
-    async function validateImageOnServer(url) {
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000,
-            });
-
-            if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('registration.input-pictureLink-error');
-                return false;
-            }
-            return true;
-        } catch (error) {
-            setProfilePictureLinkError('registration.input-pictureLink-error');
-            return false;
-        }
-    }
-
-    function onChangeTextareaInput(e) {
+    // Change Users Link in Textarea
+    async function onChangeTextareaInput(e) {
         setProfilePictureLink(e.target.value);
         validateImageValue(e.target.value);
+
+        if (e.target.value && (await validateImageOnServer(e.target.value))) {
+
+        } else {
+            setProfilePictureLinkError('registration.input-pictureLink-error');
+        }
     }
 
     // Insert Dog Links

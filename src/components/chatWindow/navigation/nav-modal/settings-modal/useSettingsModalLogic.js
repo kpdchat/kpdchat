@@ -6,6 +6,7 @@ import {setLoaderHide, setLoaderShow, setWindowChatClose} from '../../../../../s
 import axios from 'axios';
 import {fetchUser} from '../../../../../store/actions/userActions';
 import {locales} from '../../../../../extra/config/locales';
+import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
 
 export default function useSettingsModalLogic({setIsOpen}) {
     const user = useSelector(selectUser);
@@ -25,7 +26,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
         setSelectedLocale(locale);
     }
 
-    // ***
+    //
     function onContentClick(e) {
         e.stopPropagation();
     }
@@ -62,29 +63,16 @@ export default function useSettingsModalLogic({setIsOpen}) {
         }
     }
 
-    // Validation Images on Server
-    async function validateImageOnServerSettings(url) {
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000
-            });
-
-            if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('registration.input-pictureLink-error');
-                return false;
-            }
-            return true;
-        } catch (error) {
-            setProfilePictureLinkError('registration.input-pictureLink-error');
-            return false;
-        }
-    }
-
     // Change Users Link in Textarea
-    function onChangeTextareaInputSettings(e) {
+    async function onChangeTextareaInputSettings(e) {
         setProfilePictureLink(e.target.value);
         validateImageValueSettings(e.target.value);
-        validateImageOnServerSettings(e.target.value);
+
+        if (e.target.value && (await validateImageOnServer(e.target.value))) {
+
+        } else {
+            setProfilePictureLinkError('registration.input-pictureLink-error');
+        }
     }
 
     // Insert Dog Links
@@ -112,7 +100,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
 
         try {
             dispatch(setLoaderShow());
-            const imageSettingsIsValid = await validateImageOnServerSettings(profilePictureLink);
+            const imageSettingsIsValid = await validateImageOnServer(profilePictureLink);
             if (imageSettingsIsValid) {
                 const updateUser = {
                     id: user.id,
