@@ -48,7 +48,7 @@
     }
 
     &__form-container {
-        //.chat-modal__form-containe
+        //.chat-modal__form-container
         display: flex;
         gap: 12px;
     }
@@ -93,23 +93,14 @@
         }
 
     }
+
     &__error {
         ///.chat-modal__error
         color: $color-red;
+
         p {
             padding-top: 4px;
         }
-        
-        &_textarea {
-            // margin-top: 16px;
-        }
-    }
-    &__arrows {
-        margin-top: 16px;
-        color: $color-light-grey;
-        display: flex;
-        justify-content: center;
-        
     }
 }
 

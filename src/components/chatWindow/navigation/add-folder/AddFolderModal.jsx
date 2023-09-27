@@ -30,14 +30,6 @@ export default function AddFolderModal() {
 
     let checked = watch("publicChatIds")
 
-    //setting icon
-    useEffect(() => {
-        if (editFolder?.id) {
-            setIconName(icons[editFolder.iconTag])
-        }
-
-    }, [editFolder?.id, editFolder?.iconTag, editFolder?.publicChatIds?.length])
-
     //search-logic
     const filteredChats = useMemo(() => {
         return chats.filter(chat => {
@@ -68,6 +60,14 @@ export default function AddFolderModal() {
         dispatch(clearEditFolder())
         dispatch(setModalClose())
     }
+
+    //setting icon
+    useEffect(() => {
+        if (editFolder?.id) {
+            setIconName(icons[editFolder.iconTag])
+        }
+
+    }, [editFolder?.id, editFolder?.iconTag, editFolder?.publicChatIds?.length])
 
     return (
         <div className="modal-container folder-modal">

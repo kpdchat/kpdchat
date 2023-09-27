@@ -36,7 +36,7 @@ export default function ChatDialogs() {
                 </div>
                 <div className='dialogs__list list list__flex'>
                     <div className="list__container">
-                        <img src={emptyChats} alt="" />
+                        <img src={emptyChats} alt="chats are empty" />
                     </div>
                 </div>
                 <span></span>

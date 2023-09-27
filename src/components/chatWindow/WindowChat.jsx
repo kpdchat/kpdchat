@@ -19,11 +19,18 @@ export default function WindowChat() {
     const { i18n, t } = useTranslation();
     const [renderCount, setRenderCount] = useState(0)
 
+    function onContextClick(e) {
+        e.preventDefault()
+    }
+    
+    // set user first time
     useEffect(() => {
         if (user?.id) {
             dispatch(fetchUser(user.id));
         }
     }, [user?.id, dispatch])
+
+    //set render mine chats only for first load
     useEffect(() => {
         if (serverUser?.id && renderCount < 1) {
             setRenderCount(1)
@@ -32,10 +39,7 @@ export default function WindowChat() {
         }
     }, [serverUser?.id, dispatch, renderCount, serverUser.chats])
 
-    function onContextClick(e) {
-        e.preventDefault()
-    }
-
+    //set localization 
     useEffect(() => {
         i18n.changeLanguage(languageList[serverUser?.localization])
     }, [serverUser?.localization, i18n]);

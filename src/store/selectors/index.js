@@ -15,35 +15,20 @@ export const selectChat = state => state.chat.selectChat
 
 
 export const selectEditFolderForForm = createSelector(
-    selectEditFolder, 
+    selectEditFolder,
     (editFolder) => {
         const publicChatIds = editFolder?.publicChats?.reduce((list, chat) => {
             list.push(chat.id)
             return list
         }, [])
         return {
-            'id' : editFolder.id,
+            'id': editFolder.id,
             'title': editFolder.title,
             'iconTag': editFolder.iconTag,
             'publicChatIds': publicChatIds,
         }
     }
 )
-
-// export const selectFolderListKebab = createSelector(
-//     selectUser,
-//     selectChat,
-//     (user, chat) => {
-//         const folderList = user.folders.reduce((list, folder) => {
-//             if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
-//                 list.push(folder.id)
-//             }
-//              return list
-//         }, [])
-//         return { "folderId" : folderList}
-//     }
-
-// )
 
 export const selectFolderList = createSelector(
     selectUser,
@@ -53,10 +38,9 @@ export const selectFolderList = createSelector(
             if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
                 list.push(folder.id)
             }
-             return list
+            return list
         }, [])
         return folderList
     }
-
 )
 

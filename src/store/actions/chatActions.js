@@ -1,7 +1,6 @@
 import axios from "axios"
 
 export const ACTION_RENDER_CHAT_LIST = 'ACTION_RENDER_CHAT_LIST'
-export const ACTION_ADD_USER_CHAT = 'ACTION_ADD_USER_CHAT'
 export const ACTION_SET_JOIN_CHAT = 'ACTION_SET_JOIN_CHAT'
 export const ACTION_SET_LEAVE_CHAT = 'ACTION_SET_LEAVE_CHAT'
 export const ACTION_CLEAN_CHAT = 'ACTION_CLEAN_CHAT'
@@ -13,8 +12,8 @@ export const ACTION_SET_RENDER_LIST_NAME = 'ACTION_SET_RENDER_LIST_NAME'
 export function fetchPublicChats() {
     return async (dispatch) => {
         try {
-            const response = await axios.get('https://kpdchat.onrender.com/api/chats/all')
-            dispatch(setRenderList(response.data))
+            const { data } = await axios.get('https://kpdchat.onrender.com/api/chats/all')
+            dispatch(setRenderList(data))
         } catch (e) {
             alert(e)
         }
@@ -22,10 +21,9 @@ export function fetchPublicChats() {
 }
 
 export function fetchCreateChat(chat) {
-    return async (dispatch) => {
+    return async () => {
         try {
-            const response = await axios.post('https://kpdchat.onrender.com/api/chats', chat)
-            dispatch(addUserChat(response.data))
+            await axios.post('https://kpdchat.onrender.com/api/chats', chat)
         } catch (e) {
             alert(e)
         }
@@ -54,8 +52,6 @@ export function fetchLeaveChat(data) {
     }
 }
 
-
-
 export function setRenderList(list) {
     const sortList = list.sort((a, b) => {
         return a.id.localeCompare(b.id)
@@ -65,10 +61,6 @@ export function setRenderList(list) {
 
 export function setRenderListName(name) {
     return { type: ACTION_SET_RENDER_LIST_NAME, payload: name }
-}
-
-export function addUserChat(chat) {
-    return { type: ACTION_ADD_USER_CHAT, payload: chat }
 }
 
 export function setChatToJoin(chat) {
