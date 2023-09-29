@@ -2,11 +2,11 @@ import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectLoader, selectUser} from '../../../../../store/selectors';
 import i18n from 'i18next';
-import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
+import {setLoaderHide, setLoaderShow, setModalClose} from '../../../../../store/actions/uiActions';
 import axios from 'axios';
 import {fetchUser} from '../../../../../store/actions/userActions';
 
-export default function useSettingsModalLogic({setIsOpen}) {
+export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
 
     // Close Window Settings
     function onCloseClick() {
-        setIsOpen(prev => !prev); // Close window Settings User
+        dispatch(setModalClose())// Close window Settings User
         setNickname(user.nickname);
     }
 

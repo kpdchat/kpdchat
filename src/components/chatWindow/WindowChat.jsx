@@ -19,9 +19,7 @@ export default function WindowChat() {
     const { i18n, t } = useTranslation();
     const [renderCount, setRenderCount] = useState(0)
 
-    function onContextClick(e) {
-        e.preventDefault()
-    }
+
     
     // set user first time
     useEffect(() => {
@@ -59,7 +57,7 @@ export default function WindowChat() {
 
     return (
         <div className={isOpenChat ? 'chat' : 'display-none'}>
-            <div className='container-grid' onContextMenu={onContextClick}>
+            <div className='container-grid' >
                 <ChatNavigation />
                 <ChatDialogs />
                 <ChatMessages />

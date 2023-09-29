@@ -17,10 +17,16 @@ export default function ChatDialogs() {
         })
     }, [query, renderChatList])
 
+    function onContextClick(e) {
+        e.preventDefault()
+    }
+
     if (filteredChats?.length === 0) {
         return (
-            <section className='chat__dialogs dialogs'>
-                <div className='dialogs__logo'>
+            <section className='chat__dialogs dialogs' >
+                <div
+                    className='dialogs__logo'
+                    onContextMenu={onContextClick}>
                     <Logo />
                     <h1><span>kpd</span>Chat</h1>
                 </div>
@@ -34,7 +40,9 @@ export default function ChatDialogs() {
                         />
                     </form>
                 </div>
-                <div className='dialogs__list list list__flex'>
+                <div
+                    className='dialogs__list list list__flex'
+                    onContextMenu={onContextClick}>
                     <div className="list__container">
                         <img src={emptyChats} alt="chats are empty" />
                     </div>
@@ -45,8 +53,10 @@ export default function ChatDialogs() {
     }
 
     return (
-        <section className='chat__dialogs dialogs'>
-            <div className='dialogs__logo'>
+        <section className='chat__dialogs dialogs' >
+            <div
+                className='dialogs__logo'
+                onContextMenu={onContextClick}>
                 <Logo />
                 <h1><span>kpd</span>Chat</h1>
             </div>
@@ -60,7 +70,7 @@ export default function ChatDialogs() {
                     />
                 </form>
             </div>
-            <div className='dialogs__list list scroll-bar'>
+            <div className='dialogs__list list scroll-bar' onContextMenu={onContextClick}>
                 <div className="list__container ">
                     {filteredChats?.map(chat => <DialogItem chat={chat} index={renderChatList.indexOf(chat)} key={chat.id} />)}
                 </div>

@@ -8,8 +8,8 @@ import ExitChat from './ExitChat';
 import {mops} from '../../../../../extra/config/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
 
-export default function SettingsModal({setIsOpen}) {
-    const state = useSettingsModalLogic({setIsOpen});
+export default function SettingsModal() {
+    const state = useSettingsModalLogic();
     const {t} = useTranslation();
 
     return (
@@ -91,7 +91,7 @@ export default function SettingsModal({setIsOpen}) {
 
                     <div className='settings__user-buttons'>
                         <SettingsLanguages />
-                        <ExitChat setIsOpen={ setIsOpen } />
+                        <ExitChat  />
                     </div>
 
                     <button
