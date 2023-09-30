@@ -120,8 +120,8 @@
     &__standard-avatars {
         // .settings__standard-avatars
         background-color: $color-grey;
-        padding: 8px;
-        margin-bottom: 32px;
+        padding: 8px 12px;
+        margin-bottom: 16px;
         border-radius: 8px;
 
         .standard-img {
@@ -141,7 +141,7 @@
         .images {
             display: flex;
             justify-content: space-between;
-            margin-top: 24px;
+            margin-top: 16px;
 
             .img {
                 .dogs-img {
