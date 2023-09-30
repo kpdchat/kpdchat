@@ -5,7 +5,7 @@ import MessageAnotherKebab from "./mes-kebab/MessageAnotherKebab"
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 
 export default function AnotherMessage({ message }) {
-    const { isOpen, id, onKebabClick } = useKebabClick(message.id)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id)
 
     return (
         <div className="window-mes__another">
@@ -19,7 +19,7 @@ export default function AnotherMessage({ message }) {
                     <span className='time-mes text-inter-12-400'>12:28</span>
                 </div>
                 <div className="another__kebab">
-                    {isOpen && id === message.id && <MessageAnotherKebab message={message}/>}
+                    {isOpen && idKebab === message.id && <MessageAnotherKebab message={message}/>}
                     <img className="cursor-pointer " src={menu_kebab} alt="" onMouseDown={onKebabClick} />
                 </div>
             </div>

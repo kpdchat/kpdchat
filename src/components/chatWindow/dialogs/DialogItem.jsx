@@ -1,183 +1,66 @@
-import React from "react";
-import chat_logo from '../../../images/chat-window/chat_logo.png'
+import React, { useState } from "react";
+import ChatKebab from "./chat-kebab/ChatKebab";
+import { useKebabClick } from "../../../extra/hooks/useKebabClick";
+import { useSelector } from "react-redux";
+import { selectRenderChatList, selectUi } from "../../../store/selectors";
 
-export default function DialogItem() {
+
+export default function DialogItem({ chat, index }) {
+    const type = 'onContextChat'
+    const { isActiveFolderKebab } = useSelector(selectUi)
+    const list = useSelector(selectRenderChatList)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
+    const [style, setStyle] = useState('')
+
+    function onContextClick(e) {
+        let left = e.pageX - 192
+        if (left < 0) {
+            left = 2
+        }
+        if (window.innerWidth > 1250 && left > 142) {
+            left = 142
+        } else if (window.innerWidth < 1250 && left > 50) {
+            left = 40
+        }
+        let top
+        if (list.length >= 6 && list.length < (index + 2)) {
+            top = '-10px'
+        } else {
+            top = '60px'
+        }
+
+        setStyle({
+            position: 'absolute',
+            left: left + 'px',
+            top: top,
+            width: '220px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '8px',
+            zIndex: '2',
+            backgroundColor: '#fff',
+            boxShadow: '1px 1px 4px 0px #bdbae0',
+            borderRadius: '8px',
+            padding: '8px',
+        })
+        onKebabClick()
+    }
     return (
-        <>
-            <div className="list__dialog">
+            <div className={isActiveFolderKebab && isOpen && idKebab === chat.id ? "active-chat list__dialog cursor-pointer " : "list__dialog cursor-pointer"} onContextMenu={onContextClick}>
                 <div className="list__info">
-                    <img src={ chat_logo } alt="" />
+                    <img src={chat.chatPictureLink}
+                        alt="" />
                     <div className="list__text">
-                        <h3 className='text-inter-18-600'>Настолки у Харкові</h3>
+                        <h3 className='text-inter-18-600'>{chat.title}</h3>
                         <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                            accusamus maxime, temporibus nisi repellat facere omnis et. Accusamus ad dignissimos
-                            exercitationem repellat adipisci illum sequi nemo ex distinctio, magnam excepturi quibusdam
-                            est officia soluta, sint impedit cupiditate architecto nobis sit unde eius quos, quia harum!
-                            Beatae possimus obcaecati pariatur dolore nulla deleniti est repellendus, architecto,
-                            recusandae libero quo assumenda voluptatibus veniam sapiente cupiditate corrupti laborum
-                            officia? Nobis, pariatur quam nam rem quibusdam sint aut reiciendis et voluptates assumenda
-                            corporis alias obcaecati ab ipsa vel temporibus numquam ullam veniam esse asperiores! Ipsa
-                            nulla perferendis dolor impedit laboriosam ullam magnam, iusto recusandae?</p>
+                            accusamus maxime, temporibus n</p>
                     </div>
                 </div>
                 <div className="list__data">
                     <span className='list__time text-inter-12-400'>12:28</span>
                     <span className='list__new-count text-inter-12-400'>12</span>
                 </div>
-
+                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
             </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>new games</h3>
-                        <p className='text-inter-14-400'> Rail Time частина ll, вийшла на цьому</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Мистецтво_modern Ukraine</h3>
-                        <p className='text-inter-14-400'>Зелена галерея запрошує усіх ба...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста Миколаів...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Новини Луцьк</h3>
-                        <p className='text-inter-14-400'> Погода буде спектна вже завтра ... </p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>OLD School | Rock</h3>
-                        <p className='text-inter-14-400'> Концерт в Докер-пабі на підтримку ...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>Пн</span>
-                    <span className='list__new-count text-inter-12-400'>9</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Fresh огляд Toni</h3>
-                        <p className='text-inter-14-400'> Огляд смартфона New GAlAXY 23 A ...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-
-            <div className="list__dialog">
-                <div className="list__info">
-                    <img onClick={ () => console.log('on img click') } src={ chat_logo } alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>Знайомства 20 +</h3>
-                        <p className='text-inter-14-400'> Шукаю хлопця з мого міста...</p>
-                    </div>
-                </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>1</span>
-                </div>
-            </div>
-        </>
     )
 }

@@ -1,9 +1,8 @@
 @import "static-classes.scss";
 @import "./navigation/navigation.scss";
-@import "./dialogs.scss";
-@import "messages.scss";
-@import "mes-kebab.scss";
-@import "mes-modal.scss";
+@import "./dialogs/dialogs.scss";
+@import "./messages/messages.scss";
+
 
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
@@ -19,6 +18,7 @@
         @include max-screen(1250px) {
             grid-template-columns: 160px 284px 1fr;
         }
+
         @include max-screen(940px) {
             grid-template-columns: 72px 284px 1fr;
         }
@@ -34,7 +34,6 @@
 
         @media screen and (max-height: 790px) {
             padding: 40px 16px 10px 16px;
-
         }
     }
 
@@ -70,6 +69,7 @@
     align-items: center;
     justify-content: center;
     background-color: $color-grey;
+
     .text-inter-18-600 {
         color: $color-violet;
         margin-top: 20px;

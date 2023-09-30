@@ -1,108 +1,53 @@
-import React, { useState, useEffect } from "react"; //useMemo
+import React, { useState, useEffect, useMemo } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
-// import chat_logo from '../../../../images/chat-window/chat-logo-full.png'
 import { icons } from "../../../../extra/config/folder-icons";
-import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/userActions";
-import { selectUser, selectEditFolder } from "../../../../store/selectors";
+import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/folderActions";
+import { selectUser, selectEditFolderForForm } from "../../../../store/selectors";
 import { setModalClose } from "../../../../store/actions/uiActions";
-
-//for render chats
-
-// const chats = [
-//     {
-//         id: 1,
-//         title: "Настолки у Харкові"
-//     },
-//     {
-//         id: 2,
-//         title: "Знайомства 20+"
-//     },
-//     {
-//         id: 3,
-//         title: "New game"
-//     },
-//     {
-//         id: 4,
-//         title: "Мистецтво_modern Ukraine"
-//     },
-//     {
-//         id: 5,
-//         title: "Новини Луцьк"
-//     },
-//     {
-//         id: 6,
-//         title: "Маркетинг_сьогодні"
-//     },
-//     {
-//         id: 7,
-//         title: "Good Job"
-//     },
-//     {
-//         id: 8,
-//         title: "Fresh огляд Tony"
-//     },
-//     {
-//         id: 9,
-//         title: "OLD School | Rock"
-//     },
-
-// ]
-
-
 
 export default function AddFolderModal() {
     const [iconName, setIconName] = useState(icons.default)
     const [iconChose, setIconChose] = useState(false)
-    const [chatCount, setChatCount] = useState(0)
     const [query, setQuery] = useState("")
 
     const dispatch = useDispatch()
-    const editFolder = useSelector(selectEditFolder)
+    const editFolder = useSelector(selectEditFolderForForm)
     const user = useSelector(selectUser)
-
+    const chats = user.chats.sort((a, b) => {
+        return a.id.localeCompare(b.id)
+    })
     const { t } = useTranslation()
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-        getValues,
+        watch,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
-    //setting icon
-    useEffect(() => {
-        if (editFolder?.id) {
-            setIconName(icons[editFolder.iconTag])
-        }
-    }, [editFolder?.id, editFolder.iconTag])
+    let checked = watch("publicChatIds")
 
-    //function for display how many chats were chosen 
-    function onUlClick(e) {
-        e.stopPropagation()
-        setTimeout(() => {
-            const values = getValues("publicChatIds")
-            !values.length ? setChatCount(0) : setChatCount(values.length)
-        }, 50)
-    }
     //search-logic
+    const filteredChats = useMemo(() => {
+        return chats.filter(chat => {
+            return chat.title.toLowerCase().includes(query.toLowerCase())
+        })
+    }, [query, chats])
 
-    // const filteredChats = useMemo(() => {
-    //     return chats.filter(chat => {
-    //         return chat.title.toLowerCase().includes(query.toLowerCase())
-    //     })
-    // }, [query])
-
+    //form submit
     function onFormSubmit(data) {
         if (!data.publicChatIds) {
             data.publicChatIds = []
         }
         if (editFolder.id) {
             const updateFolder = {
-                ...editFolder,
-                ...data
+                "id": editFolder.id,
+                "title": data.title,
+                "iconTag": data.iconTag,
+                "newChatIds": data.publicChatIds
             }
             dispatch(fetchUpdateFolder(updateFolder))
         } else {
@@ -116,12 +61,23 @@ export default function AddFolderModal() {
         dispatch(setModalClose())
     }
 
+    //setting icon
+    useEffect(() => {
+        if (editFolder?.id) {
+            setIconName(icons[editFolder.iconTag])
+        }
+
+    }, [editFolder?.id, editFolder?.iconTag, editFolder?.publicChatIds?.length])
+
     return (
         <div className="modal-container folder-modal">
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
-                    <h3 className="text-inter-18-600">{editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}</h3>
-                    <MdOutlineClose className="cursor-pointer"
+                    <h3 className="text-inter-18-600">
+                        {editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}
+                    </h3>
+                    <MdOutlineClose
+                        className="cursor-pointer"
                         size={24}
                         onClick={() => {
                             dispatch(setModalClose())
@@ -141,7 +97,7 @@ export default function AddFolderModal() {
                                 {...register("title", {
                                     required: t('addFolder.error'),
                                     pattern: {
-                                        value: /^[^\s][а-яА-Яa-zA-Z0-9]*[\s]{0,1}[а-яА-Яa-zA-Z0-9]*$/,
+                                        value: /^[^\s][а-яА-Яієa-zA-Z0-9]*[\s]{0,1}[а-яА-Яієa-zA-Z0-9]*$/,
                                         message: t('addFolder.pattern')
                                     },
                                     maxLength: {
@@ -158,38 +114,41 @@ export default function AddFolderModal() {
                             />
 
                             <div className={iconChose ? "form__icon" : "display-none"}>
-                                {Object.keys(icons).map(el => <label className="icon cursor-pointer"
-                                    key={el}
-                                    onClick={() => {
-                                        setIconChose(false)
-                                        setIconName(icons[el])
-                                    }}>
-                                    {icons[el]}
-                                    <input {...register("iconTag")} type="radio"
-                                        value={el}
-                                        className="display-none" />
-                                </label>)}
+                                {Object.keys(icons).map(el =>
+                                    <label
+                                        className="icon cursor-pointer"
+                                        key={el}
+                                        onClick={() => {
+                                            setIconChose(false)
+                                            setIconName(icons[el])
+                                        }}>
+                                        {icons[el]}
+                                        <input {...register("iconTag")}
+                                            type="radio"
+                                            value={el}
+                                            className="display-none" />
+                                    </label>)}
                             </div>
-
                         </div>
+
                         <div className="form__error">
                             {errors?.title && <p className="text-inter-14-400">{errors?.title?.message || "Error"}</p>}
                         </div>
+
                         <input
                             className="form__search-chat text-inter-16-400"
                             placeholder={t('addFolder.chatName')}
                             value={query}
                             onChange={e => setQuery(e.target.value)} />
-                        <div className="form__chat-container scroll-bar">
 
-                            <ul onClick={onUlClick}>
-                                {/* logic for render chats */}
-                                {/* {filteredChats.map(chat =>
+                        <div className="form__chat-container scroll-bar">
+                            <ul>
+                                {filteredChats.map(chat =>
                                     <li className="form__chat"
                                         key={chat.id} >
                                         <label className="cursor-pointer">
                                             <div className="flex-container">
-                                                <img src={chat_logo} alt="" />
+                                                <img src={chat.chatPictureLink} alt="" />
                                                 <h3 className="text-inter-18-600">{chat.title}</h3>
                                             </div>
 
@@ -198,13 +157,12 @@ export default function AddFolderModal() {
                                                 value={chat.id}
                                                 type="checkbox" />
                                         </label>
-                                    </li>)} */}
+                                    </li>)}
                             </ul>
-
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} {chatCount}
+                            {t('addFolder.selected')} {checked?.length ? checked?.length : '0'}
                         </div>
 
                         <input
