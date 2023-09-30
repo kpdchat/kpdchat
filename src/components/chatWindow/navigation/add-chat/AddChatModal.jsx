@@ -67,8 +67,9 @@ export default function AddChatModal() {
                     <div className="chat-modal__form-container" >
                         <div className="chat-modal__img">
                             {link && <img src={link} alt="default" />}
-                            <MdOutlineHideImage size={24} className={link ? 'display-none' : null} />
-
+                            <MdOutlineHideImage
+                                size={24}
+                                className={link ? 'display-none' : null} />
                         </div>
                         <div>
                             <input
@@ -111,7 +112,9 @@ export default function AddChatModal() {
                             />
                         </div>
                     </div>
-                    <button className="text-inter-18-600 cursor-pointer" onClick={handleSubmit(onFormSubmit)}>{t('addChat.create')}</button>
+                    <button
+                        className="text-inter-18-600 cursor-pointer"
+                        onClick={handleSubmit(onFormSubmit)}>{t('addChat.create')}</button>
                 </form>
             </div>
         </div>
