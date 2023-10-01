@@ -8,8 +8,8 @@ import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/log
 import {PiDoorOpen} from 'react-icons/pi';
 import {locales} from '../../../../../extra/config/locales';
 
-export default function SettingsModal({setIsOpen}) {
-    const state = useSettingsModalLogic({setIsOpen});
+export default function SettingsModal() {
+    const state = useSettingsModalLogic();
     const {t} = useTranslation();
 
     return (

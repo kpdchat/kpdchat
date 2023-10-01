@@ -2,13 +2,12 @@ import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectLoader, selectUser} from '../../../../../store/selectors';
 import i18n from 'i18next';
-import {setLoaderHide, setLoaderShow, setWindowChatClose} from '../../../../../store/actions/uiActions';
-import axios from 'axios';
-import {fetchUser} from '../../../../../store/actions/userActions';
+import {setLoaderHide, setLoaderShow, setModalClose, setWindowChatClose} from '../../../../../store/actions/uiActions';
 import {locales} from '../../../../../extra/config/locales';
 import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
+import {fetchUpdateUser} from '../../../../../store/actions/userActions';
 
-export default function useSettingsModalLogic({setIsOpen}) {
+export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
@@ -36,7 +35,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
     // Close Window Settings
     function onCloseWindowSettings() {
         if (change === false) {
-            setIsOpen(prev => !prev); // Close window Settings User
+            dispatch(setModalClose()); // Close window Settings User
             setNickname(user.nickname);
             setChange(false);
         } else {
@@ -46,7 +45,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
 
     // Close Window Modal Exit and Window Settings
     function onCloseSettings() {
-        setIsOpen(prev => !prev); // Close window Settings User
+        dispatch(setModalClose()); // Close window Settings User
         setNickname(user.nickname);
         setChange(false);
     }
@@ -113,7 +112,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
     // Exit Chat
     function onExitChat() {
         localStorage.removeItem('user');
-        setIsOpen(prev => !prev);
+        dispatch(setModalClose());
         dispatch(setWindowChatClose())
     }
 
@@ -121,26 +120,15 @@ export default function useSettingsModalLogic({setIsOpen}) {
     async function onSubmitDataToServer() {
         if (change === false || nicknameError || profilePictureLinkError) return;
 
-        try {
-            dispatch(setLoaderShow());
-            const imageSettingsIsValid = await validateImageOnServer(profilePictureLink);
-            if (imageSettingsIsValid) {
-                const updateUser = {
-                    id: user.id,
-                    nickname,
-                    profilePictureLink,
-                    localization: locales[selectedLocale].value,
-                    theme: user.theme
-                }
-                await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
-                dispatch(fetchUser(user.id));
-                setChange(false);
-            }
-        } catch (e) {
-            console.log(e);
-        } finally {
-            dispatch(setLoaderHide());
+        const updateUser = {
+            ...user,
+            nickname,
+            profilePictureLink,
+            localization: locales[selectedLocale].value,
         }
+
+        dispatch(fetchUpdateUser(updateUser))
+        setChange(false);
     }
 
     useEffect(() => {

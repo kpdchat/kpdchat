@@ -12,6 +12,7 @@ import AddFolder from "./add-folder/AddFolder";
 import FolderDeleteModal from "./nav-modal/FolderDeleteModal";
 import AddFolderModal from "./add-folder/AddFolderModal";
 import DeleteFromFolderModal from "./nav-modal/DeleteFromFolderModal";
+import SettingsModal from './nav-modal/settings-modal/SettingsModal';
 
 export default function ChatNavigation() {
     const { t } = useTranslation()
@@ -77,7 +78,7 @@ export default function ChatNavigation() {
             {isModal && modalId === 'edit-folder' && <AddFolderModal />}
             {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
             {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
+            {isModal && modalId === 'settings' && <SettingsModal />}
         </>
-
     )
 }
