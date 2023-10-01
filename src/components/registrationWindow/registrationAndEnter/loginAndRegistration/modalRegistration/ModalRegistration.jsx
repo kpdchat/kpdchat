@@ -62,8 +62,9 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             src={ el.src }
                             alt={ el.alt }
                             value={ state }
-                            index={ el.alt }
-                            key={ `avatar-${ el.alt }` } />)
+                            key={ `avatar-${ el.alt }` }
+                            pictureLink={ state.profilePictureLink }
+                        />)
                         }
                     </div>
                     <div className='button'>

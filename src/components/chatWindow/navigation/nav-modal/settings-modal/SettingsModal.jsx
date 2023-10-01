@@ -13,7 +13,7 @@ export default function SettingsModal({setIsOpen}) {
     const {t} = useTranslation();
 
     return (
-        <div className='settings__container modal-container' onClick={ state.onCloseClick }>
+        <div className='settings__container modal-container' onClick={ state.onCloseWindowSettings }>
             <div className='settings__content' onClick={ state.onContentClick }>
 
                 <div className='settings__settings'>
@@ -22,7 +22,7 @@ export default function SettingsModal({setIsOpen}) {
                         <MdOutlineClose
                             className='cursor-pointer'
                             size='24'
-                            onClick={ state.onCloseClick } />
+                            onClick={ state.onCloseWindowSettings } />
                     </div>
 
                     <div className='settings__user-profile'>
@@ -48,7 +48,6 @@ export default function SettingsModal({setIsOpen}) {
                                     type='name'
                                     value={ state.nickname }
                                     onChange={ state.onChangeNicknameSettings }
-                                    onBlur={ state.onChangeNicknameSettings }
                                 />
                                 { state.nicknameError
                                     && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
@@ -60,7 +59,6 @@ export default function SettingsModal({setIsOpen}) {
                                     rows='1'
                                     ref={ state.profilePictureLinkRef }
                                     onChange={ state.onChangeTextareaInputSettings }
-                                    onBlur={ state.onChangeTextareaInputSettings }
                                 />
                                 { state.profilePictureLinkError
                                     && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
@@ -82,8 +80,9 @@ export default function SettingsModal({setIsOpen}) {
                                 src={ el.src }
                                 alt={ el.alt }
                                 value={ state }
-                                index={ el.alt }
-                                key={ `avatar-${ el.alt }` } />)
+                                key={ `avatar-${ el.alt }` }
+                                pictureLink={ state.profilePictureLink }
+                            />)
                             }
                         </div>
                     </div>
@@ -142,14 +141,34 @@ export default function SettingsModal({setIsOpen}) {
                     </div>
 
                     <button
-                        className='settings__submit cursor-pointer'
+                        className={ state.change || state.nicknameError || state.profilePictureLinkError
+                            ? 'buttons submit-active'
+                            : 'buttons submit-inactive'
+                        }
                         type='button'
                         onClick={ state.onSubmitDataToServer }
                     >
                         { t('settingsUser.save') }
                     </button>
+                    { state.isLoader && <LoadingOnSubmitSettings /> }
+
+                    { state.modalExitSettings &&
+                        <div className='modal-exit__settings'>
+                            <div className='modal-exit__settings-content'>
+                                <div className='exit-info'>
+                                    <p className='text-inter-16-600'>
+                                        Зміни не будуть збережені. Вийти з налаштувань профіля ?
+                                    </p>
+                                </div>
+
+                                <div className='exit-buttons'>
+                                    <button onClick={ state.onCloseSettings }>Вийти</button>
+                                    <button onClick={ state.onCloseModalExit }>Повернутися</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-                { state.isLoader && <LoadingOnSubmitSettings /> }
             </div>
         </div>
     )

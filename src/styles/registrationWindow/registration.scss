@@ -45,7 +45,7 @@
 
     &-block {
         // .registration-block
-        width: 44%;
+        width: 480px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -88,9 +88,9 @@
 
             p {
                 font-size: 18px;
-                line-height: 40px;
-                letter-spacing: 2px;
-                font-weight: $f-weight-400;
+                line-height: 140%;
+                letter-spacing: 0.36px;
+                font-weight: $f-weight-500;
             }
         }
 
@@ -244,30 +244,12 @@
                             // .copyKeyForm__buttons-copy
 
                             .active-copy {
-                                width: 100%;
-                                color: $color-white;
-                                font-family: $font-inter;
-                                font-size: 18px;
-                                font-weight: 500;
-                                line-height: 140%;
-                                padding: 16px 0;
-                                border-radius: 16px;
                                 background-color: $color-violet;
-                                border: none;
                                 cursor: pointer;
                             }
 
                             .inactive-copy {
-                                width: 100%;
-                                color: $color-white;
-                                font-family: $font-inter;
-                                font-size: 18px;
-                                font-weight: 500;
-                                line-height: 140%;
-                                padding: 16px 0;
-                                border-radius: 16px;
                                 background-color: $color-background-light-grey;
-                                border: none;
                             }
                         }
 
@@ -275,32 +257,14 @@
                             // .copyKeyForm__buttons-enter
 
                             .active-enter {
-                                width: 100%;
-                                color: $color-white;
                                 text-align: center;
-                                font-family: $font-inter;
-                                font-size: 18px;
-                                font-weight: 500;
-                                line-height: 140%;
-                                padding: 16px 0;
-                                border-radius: 16px;
                                 background-color: $color-violet;
-                                border: none;
                                 cursor: pointer;
                             }
 
                             .inactive-enter {
-                                width: 100%;
-                                color: $color-white;
                                 text-align: center;
-                                font-family: $font-inter;
-                                font-size: 18px;
-                                font-weight: 500;
-                                line-height: 140%;
-                                padding: 16px 0;
-                                border-radius: 16px;
                                 background-color: $color-background-light-grey;
-                                border: none;
                             }
                         }
                     }

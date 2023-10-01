@@ -10,7 +10,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
     const [profilePictureLink, setProfilePictureLink] = useState('');
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
     const profilePictureLinkRef = useRef();
-    const [activeDogImg, setActiveDogImg] = useState(null);
     const dispatch = useDispatch();
 
     // Nickname validation
@@ -52,9 +51,8 @@ export default function useModalRegistrationLogic({setUniKey}) {
     }
 
     // Insert Dog Links
-    function onePickAvatar(url, index) {
+    function onePickAvatar(url) {
         setProfilePictureLink(url);
-        setActiveDogImg(index);
         setProfilePictureLinkError('');
     }
 
@@ -94,7 +92,6 @@ export default function useModalRegistrationLogic({setUniKey}) {
         setProfilePictureLink,
         profilePictureLinkError,
         setProfilePictureLinkError,
-        activeDogImg,
         profilePictureLinkRef,
         onChangeNickname,
         onChangeTextareaInput,

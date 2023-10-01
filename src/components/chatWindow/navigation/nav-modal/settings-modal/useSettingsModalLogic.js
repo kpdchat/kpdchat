@@ -16,14 +16,16 @@ export default function useSettingsModalLogic({setIsOpen}) {
     const [nicknameError, setNicknameError] = useState('');
     const [profilePictureLink, setProfilePictureLink] = useState(user.profilePictureLink);
     const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
-    const [activeDogImg, setActiveDogImg] = useState(null);
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
     const [selectedLocale, setSelectedLocale] = useState(i18n.resolvedLanguage);
+    const [change, setChange] = useState(false);
+    const [modalExitSettings, setModalExitSettings] = useState(false);
 
     // Language User Change
     function handleLocaleChange(locale) {
         setSelectedLocale(locale);
+        setChange(true);
     }
 
     //
@@ -32,9 +34,26 @@ export default function useSettingsModalLogic({setIsOpen}) {
     }
 
     // Close Window Settings
-    function onCloseClick() {
+    function onCloseWindowSettings() {
+        if (change === false) {
+            setIsOpen(prev => !prev); // Close window Settings User
+            setNickname(user.nickname);
+            setChange(false);
+        } else {
+            setModalExitSettings(true);
+        }
+    }
+
+    // Close Window Modal Exit and Window Settings
+    function onCloseSettings() {
         setIsOpen(prev => !prev); // Close window Settings User
         setNickname(user.nickname);
+        setChange(false);
+    }
+
+    // Back to Window Settings
+    function onCloseModalExit() {
+        setModalExitSettings(false);
     }
 
     // Nickname validation
@@ -53,6 +72,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
         setNickname(checkingForSpaces);
         validateNicknameSettings(e.target.value);
+        setChange(true);
     }
 
     // Change Avatar User
@@ -66,19 +86,22 @@ export default function useSettingsModalLogic({setIsOpen}) {
     // Change Users Link in Textarea
     async function onChangeTextareaInputSettings(e) {
         setProfilePictureLink(e.target.value);
+        dispatch(setLoaderShow());
         validateImageValueSettings(e.target.value);
+        setChange(true);
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
-
+            dispatch(setLoaderHide());
         } else {
+            dispatch(setLoaderHide());
             setProfilePictureLinkError('registration.input-pictureLink-error');
         }
     }
 
     // Insert Dog Links
-    function onePickAvatar(url, index) {
+    function onePickAvatar(url) {
         setProfilePictureLink(url);
-        setActiveDogImg(index);
+        setChange(true);
         setProfilePictureLinkError('');
     }
 
@@ -96,7 +119,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
 
     // Submit To Server Data
     async function onSubmitDataToServer() {
-        if (nicknameError || profilePictureLinkError) return;
+        if (change === false || nicknameError || profilePictureLinkError) return;
 
         try {
             dispatch(setLoaderShow());
@@ -111,6 +134,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
                 }
                 await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
                 dispatch(fetchUser(user.id));
+                setChange(false);
             }
         } catch (e) {
             console.log(e);
@@ -125,7 +149,7 @@ export default function useSettingsModalLogic({setIsOpen}) {
     }, [profilePictureLink]);
 
     return {
-        onCloseClick,
+        onCloseWindowSettings,
         onContentClick,
         onChangeNicknameSettings,
         onSubmitDataToServer,
@@ -134,15 +158,18 @@ export default function useSettingsModalLogic({setIsOpen}) {
         onShowAvatars,
         onExitChat,
         handleLocaleChange,
+        onCloseSettings,
+        onCloseModalExit,
         user,
         nickname,
         nicknameError,
         profilePictureLink,
         profilePictureLinkError,
-        activeDogImg,
         showImg,
         profilePictureLinkRef,
         isLoader,
-        selectedLocale
+        selectedLocale,
+        change,
+        modalExitSettings
     }
 }
