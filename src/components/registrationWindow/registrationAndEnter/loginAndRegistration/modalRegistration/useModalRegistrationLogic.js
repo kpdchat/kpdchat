@@ -30,21 +30,14 @@ export default function useModalRegistrationLogic({setUniKey}) {
         validateNickname(e.target.value);
     }
 
-    // Link Validation
-    function validateImageValue(value) {
-        setProfilePictureLinkError('');
-        if (!value) {
-            setProfilePictureLinkError('registration.error-message');
-        }
-    }
-
     // Change Users Link in Textarea
     async function onChangeTextareaInput(e) {
         setProfilePictureLink(e.target.value);
-        validateImageValue(e.target.value);
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
-
+            setProfilePictureLinkError('');
+        } else if (e.target.value === '') {
+            setProfilePictureLinkError('registration.error-message');
         } else {
             setProfilePictureLinkError('registration.input-pictureLink-error');
         }

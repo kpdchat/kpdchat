@@ -15,7 +15,6 @@ export default function SettingsModal() {
     return (
         <div className='settings__container modal-container' onClick={ state.onCloseWindowSettings }>
             <div className='settings__content' onClick={ state.onContentClick }>
-
                 <div className='settings__settings'>
                     <div className='settings__title'>
                         <h2 className='text-inter-18-600'>{ t('settingsUser.settings') }</h2>

@@ -10,7 +10,7 @@ export default function LanguageButton() {
             { Object.keys(locales).map((locale =>
                 <button
                     onClick={ () => i18n.changeLanguage(locale) }
-                    className={ i18n.resolvedLanguage === locale ? 'active' : 'default' }
+                    className={ i18n.resolvedLanguage === locale ? 'text-inter-16-400 active' : 'text-inter-16-400 default' }
                     key={ locale }>{ locales[locale].title }
                 </button>))
             }

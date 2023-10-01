@@ -12,19 +12,20 @@ export default function GettingUniqueKey({uniKey}) {
 
     return (
         <>
-            <div className='registration-block__enter'>
-                <div className='registration-block__enter-title'>
+            <div className='form__enter enter'>
+                <div className='enter__title'>
                     <p>{ t('registration.enter-title') }</p>
                 </div>
 
-                <div className='registration-block__enter-description'>
+                <div className='enter__description text-inter-18-500'>
                     <p>{ t('registration.enter-description') }</p>
                 </div>
 
-                <div className='registration-block__enter-copyKey'>
-                    <form className='copyKeyForm'>
-                        <div className='copyKeyForm__input'>
+                <div className='enter__copy-key copy-key'>
+                    <form className='copy-key__form'>
+                        <div className='copy-key__form-input'>
                             <textarea
+                                className='text-inter-18-500'
                                 value={ uniKey }
                                 readOnly
                             />
@@ -32,8 +33,8 @@ export default function GettingUniqueKey({uniKey}) {
                         </div>
                         { state.copyActiveMessage && <p className='copy-message'>{ t(state.copyActiveMessage) }</p> }
 
-                        <div className='copyKeyForm__buttons'>
-                            <div className='copyKeyForm__buttons-copy'>
+                        <div className='copy-key__form-buttons buttons-copy'>
+                            <div className='buttons-copy__copy'>
                                 <button
                                     onClick={ state.handleCopyChange }
                                     className={ !state.copyActive ? 'buttons active-copy' : 'buttons inactive-copy' }
@@ -42,7 +43,7 @@ export default function GettingUniqueKey({uniKey}) {
                                 </button>
                             </div>
 
-                            <div className='copyKeyForm__buttons-enter'>
+                            <div className='buttons-copy__enter'>
                                 <button
                                     onClick={ state.handleEnterChange }
                                     className={ state.copyActive

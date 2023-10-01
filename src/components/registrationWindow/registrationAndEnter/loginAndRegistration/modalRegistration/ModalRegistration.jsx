@@ -15,18 +15,18 @@ export default function ModalRegistration({onClose, setUniKey}) {
 
     return (
         <>
-            <div className='modal__content'>
-
-                <div className='modal__content-close'>
+            <div className='authorization__modal-content content'>
+                <div className='content__close'>
                     <MdOutlineClose className='close' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>
+                    <div className='content__form modal-form'>
+                        <div className='modal-form__title'>
+                            { t('registration.modal-title') }
+                        </div>
 
-                    <div className='modal__content-column'>
-                        <div className='title'>{ t('registration.modal-title') }</div>
-
-                        <div className='add-data'>
+                        <div className='modal-form__data'>
                             <input
                                 maxLength='12'
                                 type='name'
@@ -37,9 +37,9 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             />
                         </div>
 
-                        { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
+                        { state.nicknameError && <p className='modal-form__error-message'>{ t(state.nicknameError) }</p> }
 
-                        <div className='add-data'>
+                        <div className='modal-form__data'>
                         <textarea
                             maxLength='2000'
                             className={ ` scroll-bar ${ state.profilePictureLinkError ? 'invalid' : '' }` }
@@ -52,12 +52,12 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         />
                         </div>
 
-                        { state.profilePictureLinkError && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                        { state.profilePictureLinkError && <p className='modal-form__error-message'>{ t(state.profilePictureLinkError) }</p> }
                     </div>
 
-                    <div className='text-or'>{ t('registration.divider-span') }</div>
+                    <div className='content__text-or'>{ t('registration.divider-span') }</div>
 
-                    <div className='modal__content-img'>
+                    <div className='content__img'>
                         { mops.map(el => <MopsAvatars
                             src={ el.src }
                             alt={ el.alt }
@@ -67,7 +67,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         />)
                         }
                     </div>
-                    <div className='button'>
+                    <div className='content__button'>
                         <button
                             type='submit'
                             disabled={ !!state.nicknameError || !!state.profilePictureLinkError }

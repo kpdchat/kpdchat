@@ -78,23 +78,17 @@ export default function useSettingsModalLogic() {
         setChange(true);
     }
 
-    // Change Avatar User
-    function validateImageValueSettings(value) {
-        setErrors({...errors, pictureLinkErr: ''});
-        if (!value) {
-            setErrors({...errors, pictureLinkErr: 'registration.error-message'});
-        }
-    }
-
     // Change Users Link in Textarea
     async function onChangeTextareaInputSettings(e) {
         setUserData({...userData, profilePictureLink: e.target.value});
         dispatch(setLoaderShow());
-        validateImageValueSettings(e.target.value);
         setChange(true);
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
             dispatch(setLoaderHide());
+        } else if (e.target.value === '') {
+            dispatch(setLoaderHide());
+            setErrors({...errors, pictureLinkErr: 'registration.error-message'});
         } else {
             dispatch(setLoaderHide());
             setErrors({...errors, pictureLinkErr: 'registration.input-pictureLink-error'});
