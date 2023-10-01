@@ -66,7 +66,7 @@
     input {
         width: 100%;
         height: 45px;
-        background: $color-grey url(../../images/chat-window/search.svg) 15px no-repeat;
+        background: $color-grey url(../images/chat-window/search.svg) 15px no-repeat;
         border: none;
         border-radius: 8px;
         padding-left: 52px;
@@ -80,7 +80,7 @@
 .menu-kebab {
     width: 20px;
     height: 20px;
-    background-image: url(../../images/chat-window/menu-kebab.png);
+    background-image: url(../images/chat-window/menu-kebab.png);
 }
 
 .chat-img {
@@ -130,7 +130,7 @@
 }
 
 .modal-title {
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0 0;
     border-bottom: 1px solid $color-border-light-gray;
     background: $color-violet;
     padding: 10px 30px;
@@ -178,6 +178,10 @@
 
 .mt-8px {
     margin-top: 8px;
+}
+
+.mt-24px {
+    margin-top: 24px;
 }
 
 .ml-5px {

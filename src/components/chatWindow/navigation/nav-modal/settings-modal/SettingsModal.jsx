@@ -27,15 +27,15 @@ export default function SettingsModal() {
 
                     <div className='settings__user-profile'>
                         <div className='settings__user-photo'>
-                            { state.profilePictureLink
+                            { state.userData.profilePictureLink
                                 && <img
-                                    className={ state.profilePictureLinkError ? 'display-none' : 'user-photo' }
-                                    src={ state.profilePictureLink }
+                                    className={ state.errors.pictureLinkErr ? 'display-none' : 'user-photo' }
+                                    src={ state.userData.profilePictureLink }
                                     alt='user foto'
                                 />
                             }
 
-                            <div className={ state.profilePictureLinkError ? 'user-photo' : 'display-none' }>
+                            <div className={ state.errors.pictureLinkErr ? 'user-photo' : 'display-none' }>
                                 <MdOutlineHideImage color='#7C7C85' size='24' />
                             </div>
                         </div>
@@ -46,22 +46,22 @@ export default function SettingsModal() {
                                     className='text-inter-16-600'
                                     maxLength='12'
                                     type='name'
-                                    value={ state.nickname }
+                                    value={ state.userData.nickname }
                                     onChange={ state.onChangeNicknameSettings }
                                 />
-                                { state.nicknameError
-                                    && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
+                                { state.errors.nicknameErr
+                                    && <p className='nickname-error'>{ t(state.errors.nicknameErr) }</p> }
 
                                 <textarea
                                     className='scroll-bar'
                                     maxLength='2000'
-                                    value={ state.profilePictureLink }
+                                    value={ state.userData.profilePictureLink }
                                     rows='1'
                                     ref={ state.profilePictureLinkRef }
                                     onChange={ state.onChangeTextareaInputSettings }
                                 />
-                                { state.profilePictureLinkError
-                                    && <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                                { state.errors.pictureLinkErr
+                                    && <p className='link-error'>{ t(state.errors.pictureLinkErr) }</p> }
                             </form>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ export default function SettingsModal() {
                                 alt={ el.alt }
                                 value={ state }
                                 key={ `avatar-${ el.alt }` }
-                                pictureLink={ state.profilePictureLink }
+                                pictureLink={ state.userData.profilePictureLink }
                             />)
                             }
                         </div>
@@ -106,7 +106,7 @@ export default function SettingsModal() {
                                 { Object.keys(locales).map((locale) => (
                                     <label
                                         key={ locale }
-                                        className={ state.selectedLocale === locale ? 'active' : 'cursor-pointer' }
+                                        className={ state.userData.localization === locale ? 'active' : 'cursor-pointer' }
                                         onClick={ () => state.handleLocaleChange(locale) }
                                     >
                                         { locales[locale].title }
@@ -115,7 +115,7 @@ export default function SettingsModal() {
                                             type='radio'
                                             name='languages'
                                             value={ locales[locale].value }
-                                            checked={ state.selectedLocale === locale }
+                                            checked={ state.userData.localization === locale }
                                             onChange={ () => {
                                             } }
                                         />
@@ -141,10 +141,11 @@ export default function SettingsModal() {
                     </div>
 
                     <button
-                        className={ state.change || state.nicknameError || state.profilePictureLinkError
-                            ? 'buttons submit-active'
-                            : 'buttons submit-inactive'
-                        }
+                        className={ `buttons ${
+                            state.change && !(state.errors.nicknameErr || state.errors.pictureLinkErr)
+                                ? 'submit-active'
+                                : 'submit-inactive'
+                        }` }
                         type='button'
                         onClick={ state.onSubmitDataToServer }
                     >

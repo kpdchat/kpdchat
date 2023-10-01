@@ -10,7 +10,7 @@ export default function RegistrationAndEnter() {
     return (
         <div className='registration'>
 
-            <div className='language-block'>
+            <div className='registration__language language'>
                 <LanguageButton />
             </div>
 

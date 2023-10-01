@@ -1,8 +1,6 @@
-@import "static-classes.scss";
 @import "./navigation/navigation.scss";
 @import "./dialogs/dialogs.scss";
 @import "./messages/messages.scss";
-
 
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {

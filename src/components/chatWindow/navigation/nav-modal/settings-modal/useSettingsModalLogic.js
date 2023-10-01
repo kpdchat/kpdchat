@@ -11,19 +11,23 @@ export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
-    const [nickname, setNickname] = useState(user.nickname);
-    const [nicknameError, setNicknameError] = useState('');
-    const [profilePictureLink, setProfilePictureLink] = useState(user.profilePictureLink);
-    const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
+    const [errors, setErrors] = useState({
+        nicknameErr: '',
+        pictureLinkErr: ''
+    });
+    const [userData, setUserData] = useState({
+        nickname: user.nickname,
+        profilePictureLink: user.profilePictureLink,
+        localization: i18n.resolvedLanguage,
+    });
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
-    const [selectedLocale, setSelectedLocale] = useState(i18n.resolvedLanguage);
     const [change, setChange] = useState(false);
     const [modalExitSettings, setModalExitSettings] = useState(false);
 
     // Language User Change
     function handleLocaleChange(locale) {
-        setSelectedLocale(locale);
+        setUserData({...userData, localization: locale});
         setChange(true);
     }
 
@@ -36,7 +40,7 @@ export default function useSettingsModalLogic() {
     function onCloseWindowSettings() {
         if (change === false) {
             dispatch(setModalClose()); // Close window Settings User
-            setNickname(user.nickname);
+            setUserData({...userData, nickname: user.nickname});
             setChange(false);
         } else {
             setModalExitSettings(true);
@@ -46,7 +50,7 @@ export default function useSettingsModalLogic() {
     // Close Window Modal Exit and Window Settings
     function onCloseSettings() {
         dispatch(setModalClose()); // Close window Settings User
-        setNickname(user.nickname);
+        setUserData({...userData, nickname: user.nickname});
         setChange(false);
     }
 
@@ -58,33 +62,33 @@ export default function useSettingsModalLogic() {
     // Nickname validation
     function validateNicknameSettings(value) {
         if (!value) {
-            setNicknameError('registration.error-message');
+            setErrors({...errors, nicknameErr: 'registration.error-message'});
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('registration.input-nickname-error');
+            setErrors({...errors, nicknameErr: 'registration.input-nickname-error'});
         } else {
-            setNicknameError('');
+            setErrors({...errors, nicknameErr: ''});
         }
     }
 
     // Change Nickname User
     function onChangeNicknameSettings(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
-        setNickname(checkingForSpaces);
+        setUserData({...userData, nickname: checkingForSpaces});
         validateNicknameSettings(e.target.value);
         setChange(true);
     }
 
     // Change Avatar User
     function validateImageValueSettings(value) {
-        setProfilePictureLinkError('');
+        setErrors({...errors, pictureLinkErr: ''});
         if (!value) {
-            setProfilePictureLinkError('registration.error-message');
+            setErrors({...errors, pictureLinkErr: 'registration.error-message'});
         }
     }
 
     // Change Users Link in Textarea
     async function onChangeTextareaInputSettings(e) {
-        setProfilePictureLink(e.target.value);
+        setUserData({...userData, profilePictureLink: e.target.value});
         dispatch(setLoaderShow());
         validateImageValueSettings(e.target.value);
         setChange(true);
@@ -93,15 +97,15 @@ export default function useSettingsModalLogic() {
             dispatch(setLoaderHide());
         } else {
             dispatch(setLoaderHide());
-            setProfilePictureLinkError('registration.input-pictureLink-error');
+            setErrors({...errors, pictureLinkErr: 'registration.input-pictureLink-error'});
         }
     }
 
     // Insert Dog Links
     function onePickAvatar(url) {
-        setProfilePictureLink(url);
+        setUserData({...userData, profilePictureLink: url});
         setChange(true);
-        setProfilePictureLinkError('');
+        setErrors({...errors, pictureLinkErr: ''});
     }
 
     // Show Standarts Avatars
@@ -118,13 +122,13 @@ export default function useSettingsModalLogic() {
 
     // Submit To Server Data
     async function onSubmitDataToServer() {
-        if (change === false || nicknameError || profilePictureLinkError) return;
+        if (change === false || errors.nicknameErr || errors.pictureLinkErr) return;
 
         const updateUser = {
             ...user,
-            nickname,
-            profilePictureLink,
-            localization: locales[selectedLocale].value,
+            nickname: userData.nickname,
+            profilePictureLink: userData.profilePictureLink,
+            localization: locales[userData.localization].value
         }
 
         dispatch(fetchUpdateUser(updateUser))
@@ -134,7 +138,7 @@ export default function useSettingsModalLogic() {
     useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
         profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 4 + 'px';
-    }, [profilePictureLink]);
+    }, [userData.profilePictureLink]);
 
     return {
         onCloseWindowSettings,
@@ -149,14 +153,11 @@ export default function useSettingsModalLogic() {
         onCloseSettings,
         onCloseModalExit,
         user,
-        nickname,
-        nicknameError,
-        profilePictureLink,
-        profilePictureLinkError,
+        userData,
+        errors,
         showImg,
         profilePictureLinkRef,
         isLoader,
-        selectedLocale,
         change,
         modalExitSettings
     }

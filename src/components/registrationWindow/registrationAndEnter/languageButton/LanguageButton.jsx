@@ -7,11 +7,13 @@ export default function LanguageButton() {
 
     return (
         <div className='language-buttons'>
-            { Object.keys(locales)
-                .map((locale =>
-                    <button onClick={ () => i18n.changeLanguage(locale) }
-                            className={ i18n.resolvedLanguage === locale ? 'active' : 'default' }
-                            key={ locale }>{ locales[locale].title }</button>)) }
+            { Object.keys(locales).map((locale =>
+                <button
+                    onClick={ () => i18n.changeLanguage(locale) }
+                    className={ i18n.resolvedLanguage === locale ? 'active' : 'default' }
+                    key={ locale }>{ locales[locale].title }
+                </button>))
+            }
         </div>
     );
 }
