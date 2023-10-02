@@ -17,11 +17,14 @@ export default function SettingsModal() {
             <div className='settings__content' onClick={ state.onContentClick }>
                 <div className='settings__settings'>
                     <div className='settings__title'>
-                        <h2 className='text-inter-18-600'>{ t('settingsUser.settings') }</h2>
+                        <h2 className='text-inter-18-600'>
+                            { t('settingsUser.settings') }
+                        </h2>
                         <MdOutlineClose
                             className='cursor-pointer'
                             size='24'
-                            onClick={ state.onCloseWindowSettings } />
+                            onClick={ state.onCloseWindowSettings }
+                        />
                     </div>
 
                     <div className='settings__user-profile'>
@@ -52,7 +55,7 @@ export default function SettingsModal() {
                                     && <p className='nickname-error'>{ t(state.errors.nicknameErr) }</p> }
 
                                 <textarea
-                                    className='scroll-bar'
+                                    className='text-inter-16-500 scroll-bar'
                                     maxLength='2000'
                                     value={ state.userData.profilePictureLink }
                                     rows='1'
@@ -67,7 +70,9 @@ export default function SettingsModal() {
 
                     <div className='settings__standard-avatars'>
                         <div className='standard-img cursor-pointer' onClick={ state.onShowAvatars }>
-                            <h2>{ t('settingsUser.standartAvatars') }</h2>
+                            <h2 className='text-inter-16-400'>
+                                { t('settingsUser.standartAvatars') }
+                            </h2>
                             { state.showImg
                                 ? <MdArrowDropUp size='28' color='#38328A' />
                                 : <MdArrowDropDown size='28' color='#38328A' />
@@ -105,8 +110,11 @@ export default function SettingsModal() {
                                 { Object.keys(locales).map((locale) => (
                                     <label
                                         key={ locale }
-                                        className={ state.userData.localization === locale ? 'active' : 'cursor-pointer' }
                                         onClick={ () => state.handleLocaleChange(locale) }
+                                        className={ state.userData.localization === locale
+                                            ? 'text-inter-12-400 active'
+                                            : 'text-inter-12-400 cursor-pointer'
+                                        }
                                     >
                                         { locales[locale].title }
 
@@ -115,8 +123,7 @@ export default function SettingsModal() {
                                             name='languages'
                                             value={ locales[locale].value }
                                             checked={ state.userData.localization === locale }
-                                            onChange={ () => {
-                                            } }
+                                            onChange={ () => {} }
                                         />
                                     </label>
                                 )) }
@@ -130,7 +137,8 @@ export default function SettingsModal() {
                                         size='24'
                                         color='black'
                                         className='cursor-pointer'
-                                        onClick={ state.onExitChat } />
+                                        onClick={ state.onExitChat }
+                                    />
                                     <p className='text-inter-14-400' onClick={ state.onExitChat }>
                                         { t('settingsUser.exit') }
                                     </p>
@@ -140,13 +148,13 @@ export default function SettingsModal() {
                     </div>
 
                     <button
+                        type='button'
+                        onClick={ state.onSubmitDataToServer }
                         className={ `buttons ${
                             state.change && !(state.errors.nicknameErr || state.errors.pictureLinkErr)
                                 ? 'submit-active'
                                 : 'submit-inactive'
                         }` }
-                        type='button'
-                        onClick={ state.onSubmitDataToServer }
                     >
                         { t('settingsUser.save') }
                     </button>
@@ -162,8 +170,18 @@ export default function SettingsModal() {
                                 </div>
 
                                 <div className='exit-buttons'>
-                                    <button onClick={ state.onCloseSettings }>Вийти</button>
-                                    <button onClick={ state.onCloseModalExit }>Повернутися</button>
+                                    <button
+                                        onClick={ state.onCloseSettings }
+                                        className='text-inter-18-600'
+                                    >
+                                        Вийти
+                                    </button>
+                                    <button
+                                        onClick={ state.onCloseModalExit }
+                                        className='text-inter-18-600'
+                                    >
+                                        Повернутися
+                                    </button>
                                 </div>
                             </div>
                         </div>

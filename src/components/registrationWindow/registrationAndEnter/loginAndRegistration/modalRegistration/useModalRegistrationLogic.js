@@ -5,62 +5,66 @@ import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActio
 import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
 
 export default function useModalRegistrationLogic({setUniKey}) {
-    const [nickname, setNickname] = useState('');
-    const [nicknameError, setNicknameError] = useState('');
-    const [profilePictureLink, setProfilePictureLink] = useState('');
-    const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
+    const [userValue, setUserValue] = useState({
+        nickname: '',
+        profilePictureLink: ''
+    });
+    const [errors, setErrors] = useState({
+        nickname: '',
+        profilePictureLink: ''
+    });
     const profilePictureLinkRef = useRef();
     const dispatch = useDispatch();
 
     // Nickname validation
     function validateNickname(value) {
         if (!value) {
-            setNicknameError('registration.error-message');
+            setErrors({...errors, nickname: 'registration.error-message'});
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('registration.input-nickname-error');
+            setErrors({...errors, nickname: 'registration.input-nickname-error'});
         } else {
-            setNicknameError('');
+            setErrors({...errors, nickname: ''});
         }
     }
 
     // Change Nickname User
     function onChangeNickname(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
-        setNickname(checkingForSpaces);
+        setUserValue({...userValue, nickname: checkingForSpaces});
         validateNickname(e.target.value);
     }
 
     // Change Users Link in Textarea
     async function onChangeTextareaInput(e) {
-        setProfilePictureLink(e.target.value);
+        setUserValue({...userValue, profilePictureLink: e.target.value});
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
-            setProfilePictureLinkError('');
-        } else if (e.target.value === '') {
-            setProfilePictureLinkError('registration.error-message');
+            setErrors({...errors, profilePictureLink: ''});
+        } else if (!e.target.value) {
+            setErrors({...errors, profilePictureLink: 'registration.error-message'});
         } else {
-            setProfilePictureLinkError('registration.input-pictureLink-error');
+            setErrors({...errors, profilePictureLink: 'registration.input-pictureLink-error'});
         }
     }
 
     // Insert Dog Links
     function onePickAvatar(url) {
-        setProfilePictureLink(url);
-        setProfilePictureLinkError('');
+        setUserValue({...userValue, profilePictureLink: url});
+        setErrors({...errors, profilePictureLink: ''});
     }
 
     // Submitting form data
     async function onFormSubmit(e) {
         e.preventDefault();
-        if (nicknameError || profilePictureLinkError) return;
+        if (errors.nickname || errors.profilePictureLink) return;
 
         try {
             dispatch(setLoaderShow());
-            const imageIsValid = await validateImageOnServer(profilePictureLink);
+            const imageIsValid = await validateImageOnServer(userValue.profilePictureLink);
             if (imageIsValid) {
                 const {data} = await axios.post('https://kpdchat.onrender.com/api/users/register', {
-                    nickname: nickname,
-                    profilePictureLink: profilePictureLink,
+                    nickname: userValue.nickname,
+                    profilePictureLink: userValue.profilePictureLink,
                 })
                 setUniKey(data.uniqueKey);
             }
@@ -74,17 +78,11 @@ export default function useModalRegistrationLogic({setUniKey}) {
     useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
         profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
-    }, [profilePictureLink]);
+    }, [userValue.profilePictureLink]);
 
     return {
-        nickname,
-        setNickname,
-        nicknameError,
-        setNicknameError,
-        profilePictureLink,
-        setProfilePictureLink,
-        profilePictureLinkError,
-        setProfilePictureLinkError,
+        userValue,
+        errors,
         profilePictureLinkRef,
         onChangeNickname,
         onChangeTextareaInput,

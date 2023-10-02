@@ -11,14 +11,14 @@ export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
-    const [errors, setErrors] = useState({
-        nicknameErr: '',
-        pictureLinkErr: ''
-    });
     const [userData, setUserData] = useState({
         nickname: user.nickname,
         profilePictureLink: user.profilePictureLink,
         localization: i18n.resolvedLanguage,
+    });
+    const [errors, setErrors] = useState({
+        nicknameErr: '',
+        pictureLinkErr: ''
     });
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
@@ -38,13 +38,13 @@ export default function useSettingsModalLogic() {
 
     // Close Window Settings
     function onCloseWindowSettings() {
-        if (change === false) {
+        if (!change) {
             dispatch(setModalClose()); // Close window Settings User
             setUserData({...userData, nickname: user.nickname});
             setChange(false);
-        } else {
-            setModalExitSettings(true);
+            return;
         }
+        setModalExitSettings(true);
     }
 
     // Close Window Modal Exit and Window Settings
@@ -86,7 +86,7 @@ export default function useSettingsModalLogic() {
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
             dispatch(setLoaderHide());
-        } else if (e.target.value === '') {
+        } else if (!e.target.value) {
             dispatch(setLoaderHide());
             setErrors({...errors, pictureLinkErr: 'registration.error-message'});
         } else {
@@ -117,7 +117,7 @@ export default function useSettingsModalLogic() {
 
     // Submit To Server Data
     async function onSubmitDataToServer() {
-        if (change === false || errors.nicknameErr || errors.pictureLinkErr) return;
+        if (!change || errors.nicknameErr || errors.pictureLinkErr) return;
 
         const updateUser = {
             ...user,

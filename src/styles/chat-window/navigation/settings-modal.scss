@@ -61,15 +61,12 @@
                         width: 210px;
                         color: $color-violet;
                         line-height: 110%;
-                        font-weight: 600;
                         padding: 8px 22px;
                         border-radius: 8px;
                         border: 2px $color-white solid;
                         background-color: $color-white;
                         margin-top: 16px;
                         cursor: pointer;
-                        font-size: 18px;
-                        font-family: $font-inter;
                     }
                 }
             }
@@ -174,9 +171,6 @@
             width: 100%;
             margin-top: 16px;
             color: $color-light-black;
-            font-family: $font-inter;
-            font-size: 16px;
-            font-weight: $f-weight-500;
             line-height: 140%;
             border: none;
             border-bottom: 1px solid $color-black;
@@ -198,9 +192,6 @@
 
             h2 {
                 color: $color-black;
-                font-family: $font-inter;
-                font-size: 16px;
-                font-weight: $f-weight-400;
                 line-height: 140%;
             }
         }
@@ -291,23 +282,9 @@
 
         label {
             padding: 8px;
-            font-family: $font-inter;
-            font-size: 12px;
-            font-weight: 400;
             border-radius: 8px;
             color: $color-light-grey;
             background-color: inherit;
-        }
-
-        button {
-            background-color: inherit;
-            border-radius: 8px;
-            padding: 8px;
-            font-family: $font-inter;
-            font-size: 12px;
-            font-weight: 400;
-            border: none;
-            color: $color-light-grey;
         }
 
         .active {

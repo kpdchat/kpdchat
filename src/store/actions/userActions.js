@@ -25,7 +25,7 @@ export function fetchUpdateUser(user) {
             dispatch(setLoaderShow());
             await axios.put('https://kpdchat.onrender.com/api/users', user);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         } finally {
             dispatch(setLoaderHide());
         }
