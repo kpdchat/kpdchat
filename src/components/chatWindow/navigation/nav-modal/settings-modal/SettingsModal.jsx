@@ -123,7 +123,6 @@ export default function SettingsModal() {
                                             name='languages'
                                             value={ locales[locale].value }
                                             checked={ state.userData.localization === locale }
-                                            onChange={ () => {} }
                                         />
                                     </label>
                                 )) }
