@@ -2,7 +2,9 @@
     background-color: $color-violet;
     width: 35.42%;
     min-height: 100%;
-    padding: 120px 80px;
+    padding: 10px 80px;
+    display: flex;
+    align-items: center;
 
     &__block {
         // .info__block

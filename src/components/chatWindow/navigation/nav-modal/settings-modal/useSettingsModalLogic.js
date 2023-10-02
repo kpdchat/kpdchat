@@ -110,6 +110,7 @@ export default function useSettingsModalLogic() {
     // Exit Chat
     function onExitChat() {
         localStorage.removeItem('user');
+        // dispatch(setStopFetch());
         dispatch(setModalClose());
         dispatch(setWindowChatClose())
     }
