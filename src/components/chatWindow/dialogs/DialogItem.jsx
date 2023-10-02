@@ -46,21 +46,24 @@ export default function DialogItem({ chat, index }) {
         onKebabClick()
     }
     return (
-            <div className={isActiveFolderKebab && isOpen && idKebab === chat.id ? "active-chat list__dialog cursor-pointer " : "list__dialog cursor-pointer"} onContextMenu={onContextClick}>
-                <div className="list__info">
-                    <img src={chat.chatPictureLink}
-                        alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>{chat.title}</h3>
-                        <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                            accusamus maxime, temporibus n</p>
-                    </div>
+        <div className={isActiveFolderKebab && isOpen && idKebab === chat.id
+            ? "active-chat list__dialog cursor-pointer"
+            : "list__dialog cursor-pointer"}
+            onContextMenu={onContextClick}>
+            <div className="list__info">
+                <img src={chat.chatPictureLink}
+                    alt="" />
+                <div className="list__text">
+                    <h3 className='text-inter-18-600'>{chat.title}</h3>
+                    <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
+                        accusamus maxime, temporibus n</p>
                 </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>12</span>
-                </div>
-                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
             </div>
+            <div className="list__data">
+                <span className='list__time text-inter-12-400'>12:28</span>
+                <span className='list__new-count text-inter-12-400'>12</span>
+            </div>
+            {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
+        </div>
     )
 }

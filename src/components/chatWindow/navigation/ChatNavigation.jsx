@@ -47,7 +47,7 @@ export default function ChatNavigation() {
 
     return (
         <>
-            <section className='chat__navigation navigation' onContextMenu={onContextClick}>
+            <section className='chat__navigation navigation no-select' onContextMenu={onContextClick}>
                 <div className='navigation__folders folders'>
                     <div className='folders__add add'>
                         <AddChat />

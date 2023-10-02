@@ -51,7 +51,7 @@ export default function AddChatModal() {
         dispatch(setModalClose())
     }
     return (
-        <div className="modal-container chat-modal">
+        <div className="modal-container chat-modal no-select">
             <div className="chat-modal__content">
                 <div className="chat-modal__header">
                     <h3 className="text-inter-18-600">{t('addChat.createChat')}</h3>

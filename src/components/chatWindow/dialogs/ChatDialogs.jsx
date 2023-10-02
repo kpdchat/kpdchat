@@ -23,7 +23,7 @@ export default function ChatDialogs() {
 
     if (filteredChats?.length === 0) {
         return (
-            <section className='chat__dialogs dialogs' >
+            <section className='chat__dialogs dialogs no-select' >
                 <div
                     className='dialogs__logo'
                     onContextMenu={onContextClick}>
@@ -53,7 +53,7 @@ export default function ChatDialogs() {
     }
 
     return (
-        <section className='chat__dialogs dialogs' >
+        <section className='chat__dialogs dialogs no-select' >
             <div
                 className='dialogs__logo'
                 onContextMenu={onContextClick}>
