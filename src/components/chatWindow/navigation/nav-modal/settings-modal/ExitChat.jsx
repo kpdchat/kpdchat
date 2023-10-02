@@ -3,6 +3,7 @@ import {PiDoorOpen} from 'react-icons/pi';
 import {setModalClose, setWindowChatClose} from '../../../../../store/actions/uiActions';
 import {useDispatch} from 'react-redux';
 import {useTranslation} from 'react-i18next';
+import { setStopFetch } from '../../../../../store/actions/userActions';
 
 export default function ExitChat() {
     const dispatch = useDispatch();
@@ -10,6 +11,7 @@ export default function ExitChat() {
 
     function onExitChat() {
         localStorage.removeItem('user');
+        dispatch(setStopFetch())
         dispatch(setModalClose())
         dispatch(setWindowChatClose())
     }

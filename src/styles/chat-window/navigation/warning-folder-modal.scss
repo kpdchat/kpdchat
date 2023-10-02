@@ -23,16 +23,10 @@
             line-height: 24.3px;
         }
 
-        .text-inter-18-400 {
+        .text-inter-16-400 {
+            color: $color-black;
+            text-align: center;
             line-height: 24.3px;
-            letter-spacing: 0.9px;
-
         }
-    }
-
-    &__header {
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 16px;
     }
 }
