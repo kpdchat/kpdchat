@@ -11,7 +11,7 @@ export default function DialogItem({ chat, index }) {
     const list = useSelector(selectRenderChatList)
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
     const [style, setStyle] = useState('')
-
+    
     function onContextClick(e) {
         let left = e.pageX - 192
         if (left < 0) {
@@ -55,8 +55,7 @@ export default function DialogItem({ chat, index }) {
                     alt="" />
                 <div className="list__text">
                     <h3 className='text-inter-18-600'>{chat.title}</h3>
-                    <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                        accusamus maxime, temporibus n</p>
+                    <p className='text-inter-14-400'>{chat?.lastMessage ? chat?.lastMessage : "Повідомлень ще немає" } </p>
                 </div>
             </div>
             <div className="list__data">

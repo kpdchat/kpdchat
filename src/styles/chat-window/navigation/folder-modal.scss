@@ -74,11 +74,13 @@
     }
 
     &__error {
+        //.form__error
         color: $color-red;
         margin-left: 72px;
     }
 
     &__search-chat {
+        //.form__search-chat
         margin: 16px 0;
         width: 100%;
         background: url(../../../images/chat-window/search.svg) 15px no-repeat;
@@ -105,11 +107,10 @@
     }
 
     &__chat-container {
+        //.form__chat-container
         margin-bottom: 16px;
-        height: 349px;
-        // overflow-y: hidden;
+        max-height: 349px;
         overflow-x: hidden;
-
     }
 
     ul {
@@ -119,7 +120,6 @@
     }
 
     &__chat {
-
         //.form__chat
         label {
             display: flex;
@@ -169,6 +169,7 @@
     }
 
     &__chat-count {
+        //.form__chat-count 
         color: $color-violet;
         margin-bottom: 16px;
     }
@@ -189,5 +190,3 @@
         outline: 2px solid $color-violet;
     }
 }
-
-

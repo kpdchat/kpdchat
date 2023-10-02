@@ -7,7 +7,6 @@ export const ACTION_STOP_FETCH = 'ACTION_STOP_FETCH'
 export function fetchUser(id) {
     return async (dispatch, getState) => {
         const { user } = getState()
-        console.log(user);
         try {
             if (user.isFetch) {
                 const response = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
