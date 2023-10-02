@@ -9,21 +9,24 @@ export default function RegistrationAndEnter() {
 
     return (
         <div className='registration'>
-
-            <div className='language-block'>
-                <LanguageButton />
-            </div>
-
-            <div className='registration-block'>
-                <div className='logo_chat'>
-                    <h2><span>KPD</span>CHAT</h2>
-                    <img src={ logo_kpd } alt='logo KPD Chat' />
+            <div className='registration__block'>
+                <div className='registration__block-language language'>
+                    <LanguageButton />
                 </div>
 
-                { uniKey
-                    ? <GettingUniqueKey uniKey={ uniKey } setUniKey={ setUniKey } />
-                    : <LoginAndRegistration setUniKey={ setUniKey } />
-                }
+                <div className='registration__container'>
+                    <div className='registration__block-form form'>
+                        <div className='form__logo-chat'>
+                            <h2><span>KPD</span>CHAT</h2>
+                            <img src={ logo_kpd } alt='logo KPD Chat' />
+                        </div>
+
+                        { uniKey
+                            ? <GettingUniqueKey uniKey={ uniKey } setUniKey={ setUniKey } />
+                            : <LoginAndRegistration setUniKey={ setUniKey } />
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );

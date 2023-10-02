@@ -1,10 +1,11 @@
 @import "info";
 @import "registration";
+@import "authorization";
+@import "copy-key";
 @import "modal";
 
 .registration_window {
     display: flex;
-    flex-direction: row;
     width: 100%;
     min-height: 100dvh;
 }

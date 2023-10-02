@@ -19,6 +19,12 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
+    // Close and Reset UnikeyError after close ModalRegistration components
+    function resetUnikey() {
+        setUniKeyError('');
+        setModal(false);
+    }
+
     function onChangeUniqueKey(e) {
         setUniKey(e.target.value);
         uniKeyValidate(e.target.value);
@@ -95,5 +101,6 @@ export default function useLoginAndRegistrationLogic() {
         setModal,
         onChangeUniqueKey,
         onUniqueKeySubmit,
+        resetUnikey,
     }
 }

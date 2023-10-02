@@ -2,82 +2,69 @@ import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
+import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
 
 export default function useModalRegistrationLogic({setUniKey}) {
-    const [nickname, setNickname] = useState('');
-    const [nicknameError, setNicknameError] = useState('');
-    const [profilePictureLink, setProfilePictureLink] = useState('');
-    const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
+    const [userValue, setUserValue] = useState({
+        nickname: '',
+        profilePictureLink: ''
+    });
+    const [errors, setErrors] = useState({
+        nickname: '',
+        profilePictureLink: ''
+    });
     const profilePictureLinkRef = useRef();
-    const [activeDogImg, setActiveDogImg] = useState(null);
     const dispatch = useDispatch();
 
     // Nickname validation
     function validateNickname(value) {
         if (!value) {
-            setNicknameError('registration.error-message');
+            setErrors({...errors, nickname: 'registration.error-message'});
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('registration.input-nickname-error');
+            setErrors({...errors, nickname: 'registration.input-nickname-error'});
         } else {
-            setNicknameError('');
+            setErrors({...errors, nickname: ''});
         }
     }
 
+    // Change Nickname User
     function onChangeNickname(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
-        setNickname(checkingForSpaces);
+        setUserValue({...userValue, nickname: checkingForSpaces});
         validateNickname(e.target.value);
     }
 
-    // Link Validation
-    function validateImageValue(value) {
-        setProfilePictureLinkError('');
-        if (!value) {
-            setProfilePictureLinkError('registration.error-message');
+    // Change Users Link in Textarea
+    async function onChangeTextareaInput(e) {
+        setUserValue({...userValue, profilePictureLink: e.target.value});
+
+        if (e.target.value && (await validateImageOnServer(e.target.value))) {
+            setErrors({...errors, profilePictureLink: ''});
+        } else if (!e.target.value) {
+            setErrors({...errors, profilePictureLink: 'registration.error-message'});
+        } else {
+            setErrors({...errors, profilePictureLink: 'registration.input-pictureLink-error'});
         }
-    }
-
-    async function validateImageOnServer(url) {
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000,
-            });
-
-            if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('registration.input-pictureLink-error');
-                return false;
-            }
-            return true;
-        } catch (error) {
-            setProfilePictureLinkError('registration.input-pictureLink-error');
-            return false;
-        }
-    }
-
-    function onChangeTextareaInput(e) {
-        setProfilePictureLink(e.target.value);
-        validateImageValue(e.target.value);
     }
 
     // Insert Dog Links
-    function onePickAvatar(url, index) {
-        setProfilePictureLink(url);
-        setActiveDogImg(index);
-        setProfilePictureLinkError('');
+    function onePickAvatar(url) {
+        setUserValue({...userValue, profilePictureLink: url});
+        setErrors({...errors, profilePictureLink: ''});
     }
 
     // Submitting form data
     async function onFormSubmit(e) {
         e.preventDefault();
-        if (nicknameError || profilePictureLinkError) return;
+        if (errors.nickname || errors.profilePictureLink) return;
 
         try {
             dispatch(setLoaderShow());
-            const imageIsValid = await validateImageOnServer(profilePictureLink);
+            const imageIsValid = await validateImageOnServer(userValue.profilePictureLink);
             if (imageIsValid) {
                 const {data} = await axios.post('https://kpdchat.onrender.com/api/users/register', {
-                    nickname: nickname,
-                    profilePictureLink: profilePictureLink,
+                    nickname: userValue.nickname,
+                    profilePictureLink: userValue.profilePictureLink,
                 })
                 setUniKey(data.uniqueKey);
             }
@@ -91,18 +78,11 @@ export default function useModalRegistrationLogic({setUniKey}) {
     useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
         profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 10 + 'px';
-    }, [profilePictureLink]);
+    }, [userValue.profilePictureLink]);
 
     return {
-        nickname,
-        setNickname,
-        nicknameError,
-        setNicknameError,
-        profilePictureLink,
-        setProfilePictureLink,
-        profilePictureLinkError,
-        setProfilePictureLinkError,
-        activeDogImg,
+        userValue,
+        errors,
         profilePictureLinkRef,
         onChangeNickname,
         onChangeTextareaInput,

@@ -1,4 +1,5 @@
 import axios from "axios"
+import {setLoaderShow, setLoaderHide} from './uiActions';
 export const ACTION_SET_USER = 'ACTION_SET_USER'
 
 export function fetchUser(id) {
@@ -18,6 +19,18 @@ export function fetchUser(id) {
     }
 }
 
+export function fetchUpdateUser(user) {
+    return async (dispatch) => {
+        try {
+            dispatch(setLoaderShow());
+            await axios.put('https://kpdchat.onrender.com/api/users', user);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            dispatch(setLoaderHide());
+        }
+    }
+}
 
 export function setUser(user) {
     return { type: ACTION_SET_USER, payload: user }

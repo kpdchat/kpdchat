@@ -75,7 +75,7 @@
     "registration": {
         "description": "To enter the chat, you need to enter a unique key",
         "input-unikey": "Unique key",
-        "error-message": "This field is mandatory",
+        "error-message": "This field is required to fill",
         "input-unikey-error": "No user found",
         "button-sign-in": "Sign in",
         "divider-span": "or",
@@ -84,7 +84,7 @@
         "input-nickname": "Nickname",
         "input-nickname-error": "From 4 to 12 characters, without spaces, only latin and special characters",
         "input-pictureLink": "Link to photo",
-        "input-pictureLink-error": "The link is incorrect",
+        "input-pictureLink-error": "The link is not active. Try something else.",
         "enter-title": "Congratulations, registration was successful!",
         "enter-description": "Copy and save this unique key, it is required to log in to the account.",
         "button-copy": "Copy",

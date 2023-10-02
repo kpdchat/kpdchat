@@ -1,3 +1,5 @@
+
+// Validation Images on Server
 export async function validateImageOnServer(url) {
     return new Promise((resolve) => {
         const img = new Image();
