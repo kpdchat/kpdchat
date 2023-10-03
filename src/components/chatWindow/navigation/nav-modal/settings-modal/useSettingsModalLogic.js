@@ -31,11 +31,6 @@ export default function useSettingsModalLogic() {
         setChange(true);
     }
 
-    //
-    function onContentClick(e) {
-        e.stopPropagation();
-    }
-
     // Close Window Settings
     function onCloseWindowSettings() {
         if (!change) {
@@ -85,13 +80,14 @@ export default function useSettingsModalLogic() {
         setChange(true);
 
         if (e.target.value && (await validateImageOnServer(e.target.value))) {
+            setErrors({...errors, pictureLinkErr: ''});
             dispatch(setLoaderHide());
         } else if (!e.target.value) {
-            dispatch(setLoaderHide());
             setErrors({...errors, pictureLinkErr: 'registration.error-message'});
-        } else {
             dispatch(setLoaderHide());
+        } else {
             setErrors({...errors, pictureLinkErr: 'registration.input-pictureLink-error'});
+            dispatch(setLoaderHide());
         }
     }
 
@@ -137,7 +133,6 @@ export default function useSettingsModalLogic() {
 
     return {
         onCloseWindowSettings,
-        onContentClick,
         onChangeNicknameSettings,
         onSubmitDataToServer,
         onChangeTextareaInputSettings,
