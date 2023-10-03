@@ -47,7 +47,7 @@ export function fetchUpdateKebabFolder(folder) {
         finally {
             setTimeout(() => {
                 dispatch(setLoaderKebabHide())
-            }, 500) 
+            }, 1000) 
         }
     }
 }

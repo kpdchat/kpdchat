@@ -13,8 +13,9 @@ export default function SettingsModal() {
     const {t} = useTranslation();
 
     return (
-        <div className='settings__container modal-container'>
-            <div className='settings__content'>
+        <div className='settings__container modal-container no-select' onClick={ state.onCloseClick }>
+            <div className='settings__content' onClick={ state.onContentClick }>
+
                 <div className='settings__settings'>
                     <div className='settings__title'>
                         <h2 className='text-inter-18-600'>

@@ -130,8 +130,9 @@
         border-radius: 100px;
         background: $color-light-violet;
         text-align: center;
-        padding: 4px 0;
-
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__flex {

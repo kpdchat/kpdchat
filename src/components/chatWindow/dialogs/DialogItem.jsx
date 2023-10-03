@@ -3,7 +3,7 @@ import ChatKebab from "./chat-kebab/ChatKebab";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { useSelector } from "react-redux";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
-
+import { getStyleKebab } from "../../../extra/config/getStyleKebab";
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
@@ -12,55 +12,39 @@ export default function DialogItem({ chat, index }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, type)
     const [style, setStyle] = useState('')
 
-    function onContextClick(e) {
-        let left = e.pageX - 192
-        if (left < 0) {
-            left = 2
-        }
-        if (window.innerWidth > 1250 && left > 142) {
-            left = 142
-        } else if (window.innerWidth < 1250 && left > 50) {
-            left = 40
-        }
-        let top
-        if (list.length >= 6 && list.length < (index + 2)) {
-            top = '-10px'
-        } else {
-            top = '60px'
-        }
 
-        setStyle({
-            position: 'absolute',
-            left: left + 'px',
-            top: top,
-            width: '220px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-            zIndex: '2',
-            backgroundColor: '#fff',
-            boxShadow: '1px 1px 4px 0px #bdbae0',
-            borderRadius: '8px',
-            padding: '8px',
-        })
+    const time = chat?.lastMessage?.sentAt?.split('+')[0]
+    const date = new Date(time)
+    const today = new Date().toLocaleDateString()
+    let sentAt = date.getHours() + ':' + date.getMinutes()
+    if (today !== date.toLocaleDateString()) {
+        sentAt = date.toLocaleDateString('uk-UA', {weekday: 'short',})
+    }
+
+    function onContextClick(e) {
+        const styleKebab = getStyleKebab(list, index, e)
+        setStyle(styleKebab)
         onKebabClick()
     }
+
     return (
-            <div className={isActiveFolderKebab && isOpen && idKebab === chat.id ? "active-chat list__dialog cursor-pointer " : "list__dialog cursor-pointer"} onContextMenu={onContextClick}>
-                <div className="list__info">
-                    <img src={chat.chatPictureLink}
-                        alt="" />
-                    <div className="list__text">
-                        <h3 className='text-inter-18-600'>{chat.title}</h3>
-                        <p className='text-inter-14-400'> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt
-                            accusamus maxime, temporibus n</p>
-                    </div>
+        <div className={isActiveFolderKebab && isOpen && idKebab === chat.id
+            ? "active-chat list__dialog cursor-pointer"
+            : "list__dialog cursor-pointer"}
+            onContextMenu={onContextClick}>
+            <div className="list__info">
+                <img src={chat.chatPictureLink}
+                    alt="" />
+                <div className="list__text">
+                    <h3 className='text-inter-18-600'>{chat.title}</h3>
+                    <p className='text-inter-14-400'>{chat?.lastMessage?.text} </p>
                 </div>
-                <div className="list__data">
-                    <span className='list__time text-inter-12-400'>12:28</span>
-                    <span className='list__new-count text-inter-12-400'>12</span>
-                </div>
-                {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
             </div>
+            <div className="list__data">
+                <span className='list__time text-inter-12-400'>{chat?.lastMessage?.sentAt ? sentAt : ''}</span>
+                {/* <span className='list__new-count text-inter-12-400'>12</span> */}
+            </div>
+            {isOpen && idKebab === chat.id && <ChatKebab chat={chat} setStyle={setStyle} style={style} />}
+        </div>
     )
 }

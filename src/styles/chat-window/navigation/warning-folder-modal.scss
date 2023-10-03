@@ -1,4 +1,8 @@
-.folder-delete {
+.warning-folder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &__content {
         width: 480px;
         padding: 24px;
@@ -19,15 +23,10 @@
             line-height: 24.3px;
         }
 
-        .text-inter-18-400 {
+        .text-inter-16-400 {
+            color: $color-black;
+            text-align: center;
             line-height: 24.3px;
-            letter-spacing: 0.9px;
         }
-    }
-
-    &__header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 16px;
     }
 }

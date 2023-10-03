@@ -1,29 +1,26 @@
 import React from "react";
-import AddFolderModal from "./AddFolderModal";
 import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUi } from "../../../../store/selectors";
 import { setModalOpen } from "../../../../store/actions/uiActions";
-
-
+import { selectUser } from "../../../../store/selectors";
 
 export default function AddFolder() {
+    const user = useSelector(selectUser)
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const { isModal, modalId } = useSelector(selectUi)
 
     function onAddFolderClick() {
+        if (user.folders.length >= 10) {
+            dispatch(setModalOpen('not-create-folder'))
+            return
+        }
         dispatch(setModalOpen('create-folder'))
     }
     return (
-        <>
-            <div className="add__item cursor-pointer" onClick={onAddFolderClick}>
-                <MdOutlineCreateNewFolder size={24} />
-                <h2 className="text-inter-18-600">{t('navigation.folder')}</h2>
-            </div>
-            {isModal && modalId === 'create-folder' && <AddFolderModal />}
-        </>
-
+        <div className="add__item cursor-pointer" onClick={onAddFolderClick}>
+            <MdOutlineCreateNewFolder size={24} />
+            <h2 className="text-inter-18-600">{t('navigation.folder')}</h2>
+        </div>
     )
 }

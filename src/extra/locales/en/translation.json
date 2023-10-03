@@ -36,7 +36,9 @@
         "editFolder": "Edit folder",
         "delete": "Delete",
         "deleteFolderTitle": "Delete folder",
-        "deleteFolder": "Are you sure you want to delete this folder?"
+        "deleteFolder": "Are you sure you want to delete this folder?",
+        "warningDelete" : "You can not create more then 10 folders",
+        "understand" : "Of course"
     },
     "addChat": {
         "error": "Required",

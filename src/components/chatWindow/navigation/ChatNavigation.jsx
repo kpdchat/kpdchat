@@ -12,8 +12,12 @@ import AddFolder from "./add-folder/AddFolder";
 import FolderDeleteModal from "./nav-modal/FolderDeleteModal";
 import AddFolderModal from "./add-folder/AddFolderModal";
 import DeleteFromFolderModal from "./nav-modal/DeleteFromFolderModal";
-import SettingsModal from './nav-modal/settings-modal/SettingsModal';
-import NavInfoModal from './nav-modal/NavInfoModal';
+import SettingsModal from "./nav-modal/settings-modal/SettingsModal";
+import AddChatModal from "./add-chat/AddChatModal";
+import JoinChatModal from "../messages/mes-modal/JoinChatModal";
+import ChatOutModal from "../messages/mes-modal/ChatOutModal";
+import WarningFolderModal from "./add-folder/WarningFolderModal";
+import NavInfoModal from "./nav-modal/NavInfoModal";
 
 export default function ChatNavigation() {
     const { t } = useTranslation()
@@ -29,6 +33,10 @@ export default function ChatNavigation() {
         dispatch(setRenderListName('mineChats'))
     }
 
+    function onContextClick(e) {
+        e.preventDefault()
+    }
+
     useEffect(() => {
         if (listName === 'mineChats') {
             dispatch(setRenderList(user.chats))
@@ -40,7 +48,7 @@ export default function ChatNavigation() {
 
     return (
         <>
-            <section className='chat__navigation navigation'>
+            <section className='chat__navigation navigation no-select' onContextMenu={onContextClick}>
                 <div className='navigation__folders folders'>
                     <div className='folders__add add'>
                         <AddChat />
@@ -75,11 +83,16 @@ export default function ChatNavigation() {
                     <NavInfo />
                     <MdOutlineDarkMode size={35} className="cursor-pointer" />
                 </div>
+                {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
+                {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
+                {isModal && modalId === 'leave chat' && <ChatOutModal />}
+                {isModal && modalId === 'join-chat' && <JoinChatModal />}
+                {isModal && modalId === 'not-create-folder' && <WarningFolderModal />}
             </section>
             {isModal && modalId === 'edit-folder' && <AddFolderModal />}
-            {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
-            {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
             {isModal && modalId === 'settings' && <SettingsModal />}
+            {isModal && modalId === 'create-chat' && <AddChatModal />}
+            {isModal && modalId === 'create-folder' && <AddFolderModal />}
             {isModal && modalId === 'info' && <NavInfoModal />}
         </>
     )

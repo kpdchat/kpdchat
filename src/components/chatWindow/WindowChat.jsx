@@ -3,7 +3,7 @@ import ChatNavigation from './navigation/ChatNavigation';
 import ChatDialogs from './dialogs/ChatDialogs';
 import ChatMessages from './messages/ChatMessages';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../store/actions/userActions';
+import { fetchUser, setFetch } from '../../store/actions/userActions';
 import { selectOpenChat, selectUser } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
 import { useTranslation } from 'react-i18next';
@@ -19,13 +19,12 @@ export default function WindowChat() {
     const { i18n, t } = useTranslation();
     const [renderCount, setRenderCount] = useState(0)
 
-    function onContextClick(e) {
-        e.preventDefault()
-    }
+
     
     // set user first time
     useEffect(() => {
         if (user?.id) {
+            dispatch(setFetch())
             dispatch(fetchUser(user.id));
         }
     }, [user?.id, dispatch])
@@ -59,7 +58,7 @@ export default function WindowChat() {
 
     return (
         <div className={isOpenChat ? 'chat' : 'display-none'}>
-            <div className='container-grid' onContextMenu={onContextClick}>
+            <div className='container-grid' >
                 <ChatNavigation />
                 <ChatDialogs />
                 <ChatMessages />
