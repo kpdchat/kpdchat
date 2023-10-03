@@ -15,12 +15,12 @@ export default function WarningFolderModal() {
         <div className="modal-container warning-folder">
             <div className="warning-folder__content">
                 <p className="text-inter-16-400">
-                    Не можна створити більше 10 папок
+                    {t('addFolder.warningDelete')}
                 </p>
                 <button
                     className="text-inter-18-600 cursor-pointer"
                     onClick={onCloseClick}>
-                    Зрозуміло</button>
+                    {t('addFolder.understand')}</button>
             </div>
         </div>
     )

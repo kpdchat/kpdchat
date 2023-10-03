@@ -32,6 +32,18 @@ export default function AddFolderModal() {
 
     let checked = watch("publicChatIds")
 
+    let selected = getSelected()
+
+    function getSelected() {
+        if(typeof checked === 'string') {
+            return 1
+        }
+        if(!checked) {
+            return 0
+        }
+        return checked?.length
+    }
+
     //search-logic
     const filteredChats = useMemo(() => {
         return chats.filter(chat => {
@@ -73,7 +85,7 @@ export default function AddFolderModal() {
             setIconName(icons[editFolder.iconTag])
         }
 
-    }, [editFolder?.id, editFolder?.iconTag, editFolder?.publicChatIds?.length])
+    }, [editFolder?.id, editFolder?.iconTag])
 
     return (
         <div className="modal-container folder-modal no-select">
@@ -168,7 +180,7 @@ export default function AddFolderModal() {
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} {checked?.length ? checked?.length : '0'}
+                            {t('addFolder.selected')} {selected}
                         </div>
 
                         <input
