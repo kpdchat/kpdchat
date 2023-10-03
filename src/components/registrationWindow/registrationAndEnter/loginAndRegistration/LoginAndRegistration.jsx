@@ -13,11 +13,11 @@ export default function LoginAndRegistration({setUniKey}) {
 
     return (
         <>
-            <div className='registration-block__description'>
+            <div className='form__description'>
                 <p>{ t('registration.description') }</p>
             </div>
 
-            <div className='registration-block__input'>
+            <div className='form__input'>
                 <textarea
                     className='scroll-bar'
                     value={ state.uniKey }
@@ -31,29 +31,31 @@ export default function LoginAndRegistration({setUniKey}) {
                 />
                 { isLoader && <LoadingOnSubmitKey /> }
             </div>
-            { state.uniKeyError && <p className='uniKey-error'>{ t(state.uniKeyError) }</p> }
+            { state.uniKeyError && <p className='form__uniKey-error'>{ t(state.uniKeyError) }</p> }
 
-            <div className='registration__authorization'>
-                <div className='registration__log-in'>
+            <div className='form__authorization authorization mt-24px'>
+                <div className='authorization__log-in'>
                     <button
+                        className='text-inter-18-500'
                         onClick={ state.onUniqueKeySubmit }
                     >
                         { t('registration.button-sign-in') }
                     </button>
                 </div>
 
-                <div className='registration-divider'>
+                <div className='authorization__divider'>
                     <span>{ t('registration.divider-span') }</span>
                 </div>
 
-                <div className='registration__sing-in'>
+                <div className='authorization__sing-in'>
                     <button
+                        className='text-inter-18-500'
                         onClick={ () => state.setModal(true) }
                     >
                         { t('registration.button-sing-up') }
                     </button>
                 </div>
-                { state.modal && <ModalRegistration setUniKey={ setUniKey } onClose={ () => state.setModal(false) } /> }
+                { state.modal && <ModalRegistration setUniKey={ setUniKey } onClose={ state.resetUnikey } /> }
             </div>
         </>
     );

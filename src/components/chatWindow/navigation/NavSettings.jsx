@@ -4,13 +4,11 @@ import { useDispatch } from "react-redux";
 import { setModalOpen } from "../../../store/actions/uiActions";
 
 export default function NavSettings() {
-    const dispatch = useDispatch()
-
-    function onSettingsClick() {
-        dispatch(setModalOpen('settings'))
-    }
+    const dispatch = useDispatch();
 
     return (
-        <MdOutlineSettings size={36} className="cursor-pointer" onClick={onSettingsClick} />
+        <>
+            <MdOutlineSettings size={36} className="cursor-pointer" onClick={() => dispatch(setModalOpen('settings'))} />
+        </>
     )
 }

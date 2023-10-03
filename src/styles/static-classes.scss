@@ -12,6 +12,14 @@
     line-height: normal;
 }
 
+.text-inter-18-500 {
+    font-family: $font-inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 .text-inter-18-400 {
     font-family: $font-inter;
     font-size: 18px;
@@ -66,7 +74,7 @@
     input {
         width: 100%;
         height: 45px;
-        background: $color-grey url(../../images/chat-window/search.svg) 15px no-repeat;
+        background: $color-grey url(../images/chat-window/search.svg) 15px no-repeat;
         border: none;
         border-radius: 8px;
         padding-left: 52px;
@@ -80,7 +88,7 @@
 .menu-kebab {
     width: 20px;
     height: 20px;
-    background-image: url(../../images/chat-window/menu-kebab.png);
+    background-image: url(../images/chat-window/menu-kebab.png);
 }
 
 .chat-img {
@@ -130,7 +138,7 @@
 }
 
 .modal-title {
-    border-radius: 8px 8px 0px 0px;
+    border-radius: 8px 8px 0 0;
     border-bottom: 1px solid $color-border-light-gray;
     background: $color-violet;
     padding: 10px 30px;
@@ -180,29 +188,29 @@
     margin-top: 8px;
 }
 
+.mt-24px {
+    margin-top: 24px;
+}
+
 .ml-5px {
     margin-left: 5px;
 }
 
-.loading {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(2px);
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.buttons {
+    width: 100%;
+    color: $color-white;
+    font-family: $font-inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    padding: 16px 0;
+    border-radius: 16px;
+    border: none;
 }
 
-.no-select {
-    -moz-user-select: none;
-    -o-user-select:none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-     user-select: none;
+.mops-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
 }

@@ -92,8 +92,7 @@ export default function ChatNavigation() {
             {isModal && modalId === 'settings' && <SettingsModal />}
             {isModal && modalId === 'create-chat' && <AddChatModal />}
             {isModal && modalId === 'create-folder' && <AddFolderModal />}
-
+            {isModal && modalId === 'info' && <NavInfoModal />}
         </>
-
     )
 }

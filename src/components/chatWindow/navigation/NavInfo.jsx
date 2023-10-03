@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { MdInfoOutline } from "react-icons/md";
-import NavInfoModal from "./nav-modal/NavInfoModal";
+import {useDispatch} from 'react-redux';
+import {setModalOpen} from '../../../store/actions/uiActions';
 
 export default function NavInfo () {
-    const [isOpen, setIsOpen] = useState(false)
+    const dispatch = useDispatch();
 
     return (
         <>
-            <MdInfoOutline size={36} className="cursor-pointer" onClick={() => setIsOpen(!isOpen)} />
-            {isOpen && <NavInfoModal isOpen ={isOpen} setOpen = {setIsOpen}/>}
+            <MdInfoOutline size={36} className="cursor-pointer" onClick={() => dispatch(setModalOpen('info'))} />
         </>
     )
 }

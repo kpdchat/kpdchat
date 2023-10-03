@@ -2,85 +2,100 @@ import {useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectLoader, selectUser} from '../../../../../store/selectors';
 import i18n from 'i18next';
-import {setLoaderHide, setLoaderShow, setModalClose} from '../../../../../store/actions/uiActions';
-import axios from 'axios';
-import {fetchUser} from '../../../../../store/actions/userActions';
+import {setLoaderHide, setLoaderShow, setModalClose, setWindowChatClose} from '../../../../../store/actions/uiActions';
+import {locales} from '../../../../../extra/config/locales';
+import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
+import {fetchUpdateUser} from '../../../../../store/actions/userActions';
 
 export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
     const isLoader = useSelector(selectLoader);
     const dispatch = useDispatch();
-    const [nickname, setNickname] = useState(user.nickname);
-    const [nicknameError, setNicknameError] = useState('');
-    const [profilePictureLink, setProfilePictureLink] = useState(user.profilePictureLink);
-    const [profilePictureLinkError, setProfilePictureLinkError] = useState('');
-    const [activeDogImg, setActiveDogImg] = useState(null);
+    const [userData, setUserData] = useState({
+        nickname: user.nickname,
+        profilePictureLink: user.profilePictureLink,
+        localization: i18n.resolvedLanguage,
+    });
+    const [errors, setErrors] = useState({
+        nicknameErr: '',
+        pictureLinkErr: ''
+    });
     const [showImg, setShowImg] = useState(false);
     const profilePictureLinkRef = useRef();
+    const [change, setChange] = useState(false);
+    const [modalExitSettings, setModalExitSettings] = useState(false);
 
-    function onContentClick(e) {
-        e.stopPropagation();
+    // Language User Change
+    function handleLocaleChange(locale) {
+        setUserData({...userData, localization: locale});
+        setChange(true);
     }
 
     // Close Window Settings
-    function onCloseClick() {
-        dispatch(setModalClose())// Close window Settings User
-        setNickname(user.nickname);
+    function onCloseWindowSettings() {
+        if (!change) {
+            dispatch(setModalClose()); // Close window Settings User
+            setUserData({...userData, nickname: user.nickname});
+            setChange(false);
+            return;
+        }
+        setModalExitSettings(true);
+    }
+
+    // Close Window Modal Exit and Window Settings
+    function onCloseSettings() {
+        dispatch(setModalClose()); // Close window Settings User
+        setUserData({...userData, nickname: user.nickname});
+        setChange(false);
+    }
+
+    // Back to Window Settings
+    function onCloseModalExit() {
+        setModalExitSettings(false);
     }
 
     // Nickname validation
     function validateNicknameSettings(value) {
         if (!value) {
-            setNicknameError('registration.error-message');
+            setErrors({...errors, nicknameErr: 'registration.error-message'});
         } else if (value.length < 4 || value.length > 12) {
-            setNicknameError('registration.input-nickname-error');
+            setErrors({...errors, nicknameErr: 'registration.input-nickname-error'});
         } else {
-            setNicknameError('');
+            setErrors({...errors, nicknameErr: ''});
         }
     }
 
     // Change Nickname User
     function onChangeNicknameSettings(e) {
         const checkingForSpaces = e.target.value.replace(/[^a-zA-Z0-9?!_\-@^*'.,:;"{}#$%&()=+<>/|]/g, '');
-        setNickname(checkingForSpaces);
+        setUserData({...userData, nickname: checkingForSpaces});
         validateNicknameSettings(e.target.value);
+        setChange(true);
     }
 
-    // Change Avatar User
-    function validateImageValueSettings(value) {
-        setProfilePictureLinkError('');
-        if (!value) {
-            setProfilePictureLinkError('registration.error-message');
+    // Change Users Link in Textarea
+    async function onChangeTextareaInputSettings(e) {
+        setUserData({...userData, profilePictureLink: e.target.value});
+        dispatch(setLoaderShow());
+        setChange(true);
+
+        if (e.target.value && (await validateImageOnServer(e.target.value))) {
+            setErrors({...errors, pictureLinkErr: ''});
+            dispatch(setLoaderHide());
+        } else if (!e.target.value) {
+            setErrors({...errors, pictureLinkErr: 'registration.error-message'});
+            dispatch(setLoaderHide());
+        } else {
+            setErrors({...errors, pictureLinkErr: 'registration.input-pictureLink-error'});
+            dispatch(setLoaderHide());
         }
-    }
-
-    async function validateImageOnServerSettings(url) {
-        try {
-            const response = await axios.head(url, {
-                timeout: 10000,
-            });
-
-            if (response.status !== 200 || !response.headers['content-type'].includes('image')) {
-                setProfilePictureLinkError('registration.input-pictureLink-error');
-                return false;
-            }
-            return true;
-        } catch (error) {
-            setProfilePictureLinkError('registration.input-pictureLink-error');
-            return false;
-        }
-    }
-
-    function onChangeTextareaInputSettings(e) {
-        setProfilePictureLink(e.target.value);
-        validateImageValueSettings(e.target.value);
     }
 
     // Insert Dog Links
-    function onePickAvatar(url, index) {
-        setProfilePictureLink(url);
-        setActiveDogImg(index);
-        setProfilePictureLinkError('');
+    function onePickAvatar(url) {
+        setUserData({...userData, profilePictureLink: url});
+        setChange(true);
+        setErrors({...errors, pictureLinkErr: ''});
     }
 
     // Show Standarts Avatars
@@ -88,59 +103,52 @@ export default function useSettingsModalLogic() {
         setShowImg(!showImg);
     }
 
-    // User Language
-    const languageList = {
-        'ua': 0,
-        'en': 1
-    };
-    const userLanguage = languageList[i18n.language];
+    // Exit Chat
+    function onExitChat() {
+        localStorage.removeItem('user');
+        // dispatch(setStopFetch());
+        dispatch(setModalClose());
+        dispatch(setWindowChatClose())
+    }
 
     // Submit To Server Data
     async function onSubmitDataToServer() {
-        if (nicknameError || profilePictureLinkError) return;
+        if (!change || errors.nicknameErr || errors.pictureLinkErr) return;
 
-        try {
-            dispatch(setLoaderShow());
-            const imageSettingsIsValid = await validateImageOnServerSettings(profilePictureLink);
-            if (imageSettingsIsValid) {
-                const updateUser = {
-                    id: user.id,
-                    nickname,
-                    profilePictureLink,
-                    localization: userLanguage,
-                    theme: user.theme
-                }
-                await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
-                dispatch(fetchUser(user.id));
-            }
-        } catch (e) {
-            console.log(e);
-        } finally {
-            dispatch(setLoaderHide());
+        const updateUser = {
+            ...user,
+            nickname: userData.nickname,
+            profilePictureLink: userData.profilePictureLink,
+            localization: locales[userData.localization].value
         }
+
+        dispatch(fetchUpdateUser(updateUser))
+        setChange(false);
     }
 
     useEffect(() => {
         profilePictureLinkRef.current.style.height = 'auto';
         profilePictureLinkRef.current.style.height = profilePictureLinkRef.current.scrollHeight + 4 + 'px';
-    }, [profilePictureLink]);
+    }, [userData.profilePictureLink]);
 
     return {
-        onCloseClick,
-        onContentClick,
+        onCloseWindowSettings,
         onChangeNicknameSettings,
         onSubmitDataToServer,
         onChangeTextareaInputSettings,
         onePickAvatar,
         onShowAvatars,
+        onExitChat,
+        handleLocaleChange,
+        onCloseSettings,
+        onCloseModalExit,
         user,
-        nickname,
-        nicknameError,
-        profilePictureLink,
-        profilePictureLinkError,
-        activeDogImg,
+        userData,
+        errors,
         showImg,
         profilePictureLinkRef,
-        isLoader
+        isLoader,
+        change,
+        modalExitSettings
     }
 }

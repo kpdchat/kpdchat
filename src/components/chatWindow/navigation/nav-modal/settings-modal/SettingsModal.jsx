@@ -1,12 +1,12 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp} from 'react-icons/md';
+import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage, MdOutlineLanguage} from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
-import SettingsLanguages from './SettingsLanguages';
-import ExitChat from './ExitChat';
 import {mops} from '../../../../../extra/config/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
+import {PiDoorOpen} from 'react-icons/pi';
+import {locales} from '../../../../../extra/config/locales';
 
 export default function SettingsModal() {
     const state = useSettingsModalLogic();
@@ -18,20 +18,29 @@ export default function SettingsModal() {
 
                 <div className='settings__settings'>
                     <div className='settings__title'>
-                        <h2 className='text-inter-18-600'>{ t('settingsUser.settings') }</h2>
+                        <h2 className='text-inter-18-600'>
+                            { t('settingsUser.settings') }
+                        </h2>
                         <MdOutlineClose
                             className='cursor-pointer'
                             size='24'
-                            onClick={ state.onCloseClick } />
+                            onClick={ state.onCloseWindowSettings }
+                        />
                     </div>
 
                     <div className='settings__user-profile'>
                         <div className='settings__user-photo'>
-                            <img
-                                className='user-photo'
-                                src={ state.user.profilePictureLink }
-                                alt='user foto'
-                            />
+                            { state.userData.profilePictureLink
+                                && <img
+                                    className={ state.errors.pictureLinkErr ? 'display-none' : 'user-photo' }
+                                    src={ state.userData.profilePictureLink }
+                                    alt='user foto'
+                                />
+                            }
+
+                            <div className={ state.errors.pictureLinkErr ? 'user-photo' : 'display-none' }>
+                                <MdOutlineHideImage color='#7C7C85' size='24' />
+                            </div>
                         </div>
 
                         <div className='settings__user-data'>
@@ -40,41 +49,34 @@ export default function SettingsModal() {
                                     className='text-inter-16-600'
                                     maxLength='12'
                                     type='name'
-                                    value={ state.nickname }
+                                    value={ state.userData.nickname }
                                     onChange={ state.onChangeNicknameSettings }
-                                    onBlur={ state.onChangeNicknameSettings }
                                 />
-                                { state.nicknameError && <p className='nickname-error'>{ t(state.nicknameError) }</p> }
+                                { state.errors.nicknameErr
+                                    && <p className='nickname-error'>{ t(state.errors.nicknameErr) }</p> }
 
                                 <textarea
-                                    className='scroll-bar'
+                                    className='text-inter-16-500 scroll-bar'
                                     maxLength='2000'
-                                    value={ state.profilePictureLink }
+                                    value={ state.userData.profilePictureLink }
                                     rows='1'
                                     ref={ state.profilePictureLinkRef }
                                     onChange={ state.onChangeTextareaInputSettings }
-                                    onBlur={ state.onChangeTextareaInputSettings }
                                 />
-                                { state.profilePictureLinkError &&
-                                    <p className='link-error'>{ t(state.profilePictureLinkError) }</p> }
+                                { state.errors.pictureLinkErr
+                                    && <p className='link-error'>{ t(state.errors.pictureLinkErr) }</p> }
                             </form>
                         </div>
                     </div>
 
                     <div className='settings__standard-avatars'>
                         <div className='standard-img cursor-pointer' onClick={ state.onShowAvatars }>
-                            <h2>{ t('settingsUser.standartAvatars') }</h2>
+                            <h2 className='text-inter-16-400'>
+                                { t('settingsUser.standartAvatars') }
+                            </h2>
                             { state.showImg
-                                ?
-                                <MdArrowDropUp
-                                    size='28'
-                                    color='#38328A'
-                                />
-                                :
-                                <MdArrowDropDown
-                                    size='28'
-                                    color='#38328A'
-                                />
+                                ? <MdArrowDropUp size='28' color='#38328A' />
+                                : <MdArrowDropDown size='28' color='#38328A' />
                             }
                         </div>
 
@@ -83,26 +85,108 @@ export default function SettingsModal() {
                                 src={ el.src }
                                 alt={ el.alt }
                                 value={ state }
-                                index={ el.alt }
-                                key={ `avatar-${ el.alt }` } />)
+                                key={ `avatar-${ el.alt }` }
+                                pictureLink={ state.userData.profilePictureLink }
+                            />)
                             }
                         </div>
                     </div>
 
                     <div className='settings__user-buttons'>
-                        <SettingsLanguages />
-                        <ExitChat  />
+
+                        <div className='settings__buttons-language'>
+                            <div className='settings__labels labels'>
+                                <div className='labels__label-language'>
+                                    <MdOutlineLanguage
+                                        size='24'
+                                        color='black'
+                                    />
+                                    <p className='text-inter-14-400'>
+                                        { t('settingsUser.language') }
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className='settings__buttons'>
+                                { Object.keys(locales).map((locale) => (
+                                    <label
+                                        key={ locale }
+                                        onClick={ () => state.handleLocaleChange(locale) }
+                                        className={ state.userData.localization === locale
+                                            ? 'text-inter-12-400 active'
+                                            : 'text-inter-12-400 cursor-pointer'
+                                        }
+                                    >
+                                        { locales[locale].title }
+
+                                        <input
+                                            type='radio'
+                                            name='languages'
+                                            value={ locales[locale].value }
+                                            checked={ state.userData.localization === locale }
+                                        />
+                                    </label>
+                                )) }
+                            </div>
+                        </div>
+
+                        <div className='user__buttons-exit'>
+                            <div className='settings__labels labels'>
+                                <div className='labels__label-exit'>
+                                    <PiDoorOpen
+                                        size='24'
+                                        color='black'
+                                        className='cursor-pointer'
+                                        onClick={ state.onExitChat }
+                                    />
+                                    <p className='text-inter-14-400' onClick={ state.onExitChat }>
+                                        { t('settingsUser.exit') }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <button
-                        className='settings__submit cursor-pointer'
-                        type='submit'
+                        type='button'
                         onClick={ state.onSubmitDataToServer }
+                        className={ `buttons ${
+                            state.change && !(state.errors.nicknameErr || state.errors.pictureLinkErr)
+                                ? 'submit-active'
+                                : 'submit-inactive'
+                        }` }
                     >
                         { t('settingsUser.save') }
                     </button>
+                    { state.isLoader && <LoadingOnSubmitSettings /> }
+
+                    { state.modalExitSettings &&
+                        <div className='modal-exit__settings'>
+                            <div className='modal-exit__settings-content'>
+                                <div className='exit-info'>
+                                    <p className='text-inter-16-600'>
+                                        Зміни не будуть збережені. Вийти з налаштувань профіля ?
+                                    </p>
+                                </div>
+
+                                <div className='exit-buttons'>
+                                    <button
+                                        onClick={ state.onCloseSettings }
+                                        className='text-inter-18-600'
+                                    >
+                                        Вийти
+                                    </button>
+                                    <button
+                                        onClick={ state.onCloseModalExit }
+                                        className='text-inter-18-600'
+                                    >
+                                        Повернутися
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-                { state.isLoader && <LoadingOnSubmitSettings /> }
             </div>
         </div>
     )
