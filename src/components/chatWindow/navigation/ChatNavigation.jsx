@@ -17,6 +17,7 @@ import AddChatModal from "./add-chat/AddChatModal";
 import JoinChatModal from "../messages/mes-modal/JoinChatModal";
 import ChatOutModal from "../messages/mes-modal/ChatOutModal";
 import WarningFolderModal from "./add-folder/WarningFolderModal";
+import NavInfoModal from "./nav-modal/NavInfoModal";
 
 export default function ChatNavigation() {
     const { t } = useTranslation()

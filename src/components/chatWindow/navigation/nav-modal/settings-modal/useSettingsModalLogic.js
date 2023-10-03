@@ -5,7 +5,7 @@ import i18n from 'i18next';
 import {setLoaderHide, setLoaderShow, setModalClose, setWindowChatClose} from '../../../../../store/actions/uiActions';
 import {locales} from '../../../../../extra/config/locales';
 import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
-import {fetchUpdateUser} from '../../../../../store/actions/userActions';
+import {fetchUpdateUser, setStopFetch} from '../../../../../store/actions/userActions';
 
 export default function useSettingsModalLogic() {
     const user = useSelector(selectUser);
@@ -106,7 +106,7 @@ export default function useSettingsModalLogic() {
     // Exit Chat
     function onExitChat() {
         localStorage.removeItem('user');
-        // dispatch(setStopFetch());
+        dispatch(setStopFetch());
         dispatch(setModalClose());
         dispatch(setWindowChatClose())
     }
