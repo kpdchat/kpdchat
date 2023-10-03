@@ -1,5 +1,5 @@
 import axios from "axios"
-import {setLoaderShow, setLoaderHide} from './uiActions';
+import { setLoaderShow, setLoaderHide } from './uiActions';
 export const ACTION_SET_USER = 'ACTION_SET_USER'
 export const ACTION_START_FETCH = 'ACTION_START_FETCH'
 export const ACTION_STOP_FETCH = 'ACTION_STOP_FETCH'
@@ -10,8 +10,8 @@ export function fetchUser(id) {
         const { user } = getState()
         try {
             if (user.isFetch) {
-                const response = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
-                dispatch(setUser(response.data))
+                const { data } = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
+                dispatch(setUser(data))
                 setTimeout(() => {
                     dispatch(fetchUser(id))
                 }, 1000)
