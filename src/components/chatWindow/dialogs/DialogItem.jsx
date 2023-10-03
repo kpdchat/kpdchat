@@ -15,8 +15,11 @@ export default function DialogItem({ chat, index }) {
 
     const time = chat?.lastMessage?.sentAt?.split('+')[0]
     const date = new Date(time)
-    const sentAt =  date.getHours() + ':' + date.getMinutes()
-
+    const today = new Date().toLocaleDateString()
+    let sentAt = date.getHours() + ':' + date.getMinutes()
+    if (today !== date.toLocaleDateString()) {
+        sentAt = date.toLocaleDateString('uk-UA', {weekday: 'short',})
+    }
 
     function onContextClick(e) {
         const styleKebab = getStyleKebab(list, index, e)

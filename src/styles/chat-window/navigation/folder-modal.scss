@@ -109,8 +109,15 @@
     &__chat-container {
         //.form__chat-container
         margin-bottom: 16px;
-        max-height: 349px;
+        height: 349px;
         overflow-x: hidden;
+        @media screen and (max-height: 790px) {
+            height: 200px;
+        }
+
+        @media screen and (max-height: 570px) {
+            height: 100px;
+        }
     }
 
     ul {
