@@ -15,7 +15,7 @@
         "copied-message": "The message has been copied",
         "text-message": "Write a message..",
         "loading": "Loading your profile..",
-        "error" : "Unfortunately, an error occurred",
+        "error" : "Unfortunately, an error occurred. You will be redirected to the registration window",
         "empty-chat" : "No messages yet..."
     },
     "settingsUser": {
