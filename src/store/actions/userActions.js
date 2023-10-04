@@ -3,6 +3,23 @@ import { setLoaderShow, setLoaderHide } from './uiActions';
 export const ACTION_SET_USER = 'ACTION_SET_USER'
 export const ACTION_START_FETCH = 'ACTION_START_FETCH'
 export const ACTION_STOP_FETCH = 'ACTION_STOP_FETCH'
+export const ACTION_SET_USER_ERROR = 'ACTION_SET_USER_ERROR';
+export const ACTION_DELETE_USER_ERROR = 'ACTION_DELETE_USER_ERROR';
+
+export function singleUserFetch(id) {
+    return async (dispatch) => {
+        try {
+            await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
+            dispatch(setFetch())
+            dispatch(fetchUser(id))
+        } catch (e) {
+            console.error(e)
+            dispatch(setUserError())
+        }
+
+
+    }
+}
 
 
 export function fetchUser(id) {
@@ -52,5 +69,13 @@ export function setFetch() {
 
 export function setStopFetch() {
     return { type: ACTION_STOP_FETCH }
+}
+
+export function setUserError() {
+    return { type: ACTION_SET_USER_ERROR };
+}
+
+export function deleteUserError() {
+    return { type: ACTION_DELETE_USER_ERROR };
 }
 

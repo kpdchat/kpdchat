@@ -1,4 +1,4 @@
-.warning-folder {
+.warning {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,9 +17,9 @@
             background: $color-violet;
             padding: 10px;
             text-align: center;
-            margin-top: 24px;
+            margin-top: 24px !important;
             border: none;
-            color: $color-white;
+            color: $color-white !important;
             line-height: 24.3px;
         }
 

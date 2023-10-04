@@ -52,22 +52,7 @@ export function fetchUpdateKebabFolder(folder) {
     }
 }
 
-export function fetchRemoveChatFromFolder(folderId, arrChatId) {
-    return async (dispatch) => {
-        dispatch(setLoaderKebabShow(folderId))
-        try {
-            await axios.delete(`https://kpdchat.onrender.com/api/folders/${folderId}/removeChats`, 
-            { data: { chatIds: arrChatId } })
-        } catch (e) {
-            alert(e)
-        }
-        finally {
-            setTimeout(() => {
-                dispatch(setLoaderKebabHide())
-            }, 1000) 
-        }
-    }
-}
+
 
 
 export function setEditFolder(folder) {
