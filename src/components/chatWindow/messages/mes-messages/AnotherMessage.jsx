@@ -1,8 +1,8 @@
 import React from "react"
-import user_photo from '../../../images/chat-window/user-photo.png'
-import menu_kebab from "../../../images/chat-window/menu-kebab.png"
-import MessageAnotherKebab from "./mes-kebab/MessageAnotherKebab"
-import { useKebabClick } from "../../../extra/hooks/useKebabClick"
+import user_photo from '../../../../images/chat-window/user-photo.png'
+import { MdOutlineMoreVert } from "react-icons/md";
+import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
+import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
 
 export default function AnotherMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
@@ -23,9 +23,9 @@ export default function AnotherMessage({ message }) {
                 </div>
                 <div className="another__kebab">
                     {isOpen && idKebab === 'message' + message.id && <MessageAnotherKebab message={message} />}
-                    <img
-                        className="cursor-pointer "
-                        src={menu_kebab} alt=""
+                    <MdOutlineMoreVert
+                        className="another__kebab-icon cursor-pointer"
+                        size={20}
                         onMouseDown={onMessageKebabClick} />
                 </div>
             </div>

@@ -85,12 +85,6 @@
     }
 }
 
-.menu-kebab {
-    width: 20px;
-    height: 20px;
-    background-image: url(../images/chat-window/menu-kebab.png);
-}
-
 .chat-img {
     width: 40px;
     height: 40px;
@@ -217,9 +211,9 @@
 
 .no-select {
     -moz-user-select: none;
-    -o-user-select:none;
+    -o-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-     user-select: none;
+    user-select: none;
 }

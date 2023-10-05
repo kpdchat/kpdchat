@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { setModalClose, setWindowChatClose } from '../../store/actions/uiActions';
 import { deleteUserError } from '../../store/actions/userActions';
+import { deleteStartWindow } from '../../store/actions/messageAction';
 
 export default function UserFetchError() {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ export default function UserFetchError() {
         dispatch(setModalClose())
         dispatch(setWindowChatClose())
         dispatch(deleteUserError())
+        dispatch(deleteStartWindow())
     }
 
     return (

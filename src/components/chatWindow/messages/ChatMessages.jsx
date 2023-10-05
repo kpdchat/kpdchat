@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import MessageTitle from './MessageTitle'
 import MessageSearch from './MessageSearch'
 import MessageSendForm from './MessageSendForm'
-import MesDate from "./MesDate";
-import SelfMessage from "./SelfMessage";
-import AnotherMessage from "./AnotherMessage";
+import MesDate from "./mes-messages/MesDate";
+import SelfMessage from "./mes-messages/SelfMessage";
+import AnotherMessage from "./mes-messages/AnotherMessage";
+import { useSelector } from "react-redux";
+import { selectIsWindowStart } from "../../../store/selectors";
 const messages = [
     {
         id: 1,
@@ -45,24 +47,40 @@ const messages = [
 ]
 export default function ChatMessages() {
     const [list, setList] = useState(messages)
+    const isStartWindow = useSelector(selectIsWindowStart)
 
     function onMessageSend(message) {
         setList([...list, message])
     }
 
     return (
-        <section className='chat__messages messages'>
-            <div className="messages__title">
-                <MessageTitle />
-                <MessageSearch />
-            </div>
-            <div className="messages__window-mes window-mes scroll-bar">
-                <MesDate />
-                {list.map(message => message.userId === 1 ? <SelfMessage key={message.id} message={message} /> : <AnotherMessage key={message.id} message={message} />)}
-            </div>
-            <div className="messages__input-mes input-mes">
-                <MessageSendForm onMessageSend={onMessageSend}/>
-            </div>
-        </section>
+        <>
+            <section className={isStartWindow ? 'chat__messages messages' : "display-none"}>
+                <div className="messages__start">
+                    <div className="text-inter-16-400">
+                        Почнемо спілкування!
+                    </div>
+                </div>
+            </section>
+
+            <section className={!isStartWindow ? 'chat__messages messages' : "display-none"}>
+
+                <div className="messages__title">
+                    <MessageTitle />
+                    <MessageSearch />
+                </div>
+                <div className="messages__window-mes window-mes scroll-bar">
+                    <MesDate />
+                    {list
+                        .map(message => message.userId === 1
+                            ? <SelfMessage key={message.id} message={message} />
+                            : <AnotherMessage key={message.id} message={message} />)}
+                </div>
+                <div className="messages__input-mes input-mes">
+                    <MessageSendForm onMessageSend={onMessageSend} />
+                </div>
+            </section>
+        </>
+
     )
 }

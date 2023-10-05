@@ -45,6 +45,7 @@
 
         input {
             min-width: 364px;
+
             @include max-screen(1250px) {
                 min-width: 200px;
             }
@@ -55,10 +56,7 @@
         // .messages__info
         margin-left: 12px;
         position: relative;
-        img {
-            width: 20px;
-            height: 20px;
-        }
+        color: $color-text-grey;
     }
 
     &__window-mes {
@@ -74,6 +72,25 @@
         padding: 20px 24px;
         border-top: 1px solid $color-border-light-gray;
     }
+
+    &__start {
+        height: 100%;
+        background: url(../../../images/chat-window/background-chat.png) 50% / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text-inter-16-400 {
+            width: 336px;
+            padding: 18px 0;
+            text-align: center;
+            border-radius: 8px;
+            background-color: rgba(124, 124, 133, 0.30);
+            line-height: 21.6px;
+            color: $color-text-grey;
+        }
+    }
+
 }
 
 .window-mes {
@@ -129,6 +146,10 @@
     &__kebab {
         position: relative;
         align-self: center;
+    }
+
+    &__kebab-icon {
+        color: $color-text-grey;
     }
 
     &__text {
@@ -187,6 +208,10 @@
         align-self: center;
     }
 
+    &__kebab-icon {
+        color: $color-text-grey;
+    }
+
     &__text {
         // .self__text
         border-radius: 8px 0 8px 8px;
@@ -207,9 +232,11 @@
         }
     }
 }
+
 .input-mes {
     form {
         display: flex;
+
         .text-inter-16-400 {
             width: 100%;
             max-height: 80px;
@@ -219,11 +246,13 @@
             background: $color-grey;
             padding: 10px 15px;
             line-height: 21.6px;
+
             &:focus {
                 outline: 1px solid $color-light-violet;
                 background-color: $color-white;
             }
         }
+
         button {
             border: none;
             margin-left: 16px;
