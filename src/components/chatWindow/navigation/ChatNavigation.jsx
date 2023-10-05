@@ -5,6 +5,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {selectListName, selectUi, selectUser} from '../../../store/selectors';
 import {fetchPublicChats, setRenderList, setRenderListName} from '../../../store/actions/chatActions';
 import NavFolderItem from './NavFolderItem'
+import AddChatModal from "./add-chat/AddChatModal";
+import JoinChatModal from "../messages/mes-modal/JoinChatModal";
+import ChatOutModal from "../messages/mes-modal/ChatOutModal";
+import WarningFolderModal from "./add-folder/WarningFolderModal";
 import NavSettings from './NavSettings';
 import NavInfo from './NavInfo';
 import AddChat from './add-chat/AddChat';
@@ -46,7 +50,7 @@ export default function ChatNavigation() {
 
     return (
         <>
-            <section className='chat__navigation navigation'>
+            <section className='chat__navigation navigation no-select'>
                 <div className='navigation__folders folders'>
                     <div className='folders__add add'>
                         <AddChat />
@@ -88,12 +92,17 @@ export default function ChatNavigation() {
                         }
                     </div>
                 </div>
+                {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
+                {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
+                {isModal && modalId === 'leave chat' && <ChatOutModal />}
+                {isModal && modalId === 'join-chat' && <JoinChatModal />}
+                {isModal && modalId === 'not-create-folder' && <WarningFolderModal />}
             </section>
-            { isModal && modalId === 'edit-folder' && <AddFolderModal /> }
-            { isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal /> }
-            { isModal && modalId === 'delete-folder' && <FolderDeleteModal /> }
-            { isModal && modalId === 'settings' && <SettingsModal /> }
-            { isModal && modalId === 'info' && <NavInfoModal /> }
+            {isModal && modalId === 'edit-folder' && <AddFolderModal />}
+            {isModal && modalId === 'settings' && <SettingsModal />}
+            {isModal && modalId === 'create-chat' && <AddChatModal />}
+            {isModal && modalId === 'create-folder' && <AddFolderModal />}
+            {isModal && modalId === 'info' && <NavInfoModal />}
         </>
     )
 }

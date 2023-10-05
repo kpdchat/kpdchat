@@ -1,32 +1,29 @@
-import React, { useEffect } from 'react';
-import ChatNavigation from './navigation/ChatNavigation';
-import ChatDialogs from './dialogs/ChatDialogs';
-import ChatMessages from './messages/ChatMessages';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from '../../store/actions/userActions';
-import { selectOpenChat, selectUser } from '../../store/selectors';
+import { singleUserFetch } from '../../store/actions/userActions';
+import { selectOpenChat, selectUser, selectUserError } from '../../store/selectors';
 import { DotSpinner } from '@uiball/loaders'
 import { useTranslation } from 'react-i18next';
 import { setRenderList, setRenderListName } from '../../store/actions/chatActions';
 import { languageList } from '../../extra/config/language-list';
-import { useState } from 'react';
+import ChatNavigation from './navigation/ChatNavigation';
+import ChatDialogs from './dialogs/ChatDialogs';
+import ChatMessages from './messages/ChatMessages';
+import UserFetchError from './UserFetchError';
 
 export default function WindowChat() {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
     const serverUser = useSelector(selectUser);
     const isOpenChat = useSelector(selectOpenChat);
+    const userError = useSelector(selectUserError)
     const { i18n, t } = useTranslation();
     const [renderCount, setRenderCount] = useState(0)
 
-    function onContextClick(e) {
-        e.preventDefault()
-    }
-    
     // set user first time
     useEffect(() => {
         if (user?.id) {
-            dispatch(fetchUser(user.id));
+            dispatch(singleUserFetch(user.id));
         }
     }, [user?.id, dispatch])
 
@@ -53,13 +50,14 @@ export default function WindowChat() {
                     color="#38328A"
                 />
                 <p className='text-inter-18-600'>{t('global.loading')}</p>
+                {userError && <UserFetchError />}
             </div>
         )
     }
 
     return (
         <div className={isOpenChat ? 'chat' : 'display-none'}>
-            <div className='container-grid' onContextMenu={onContextClick}>
+            <div className='container-grid' >
                 <ChatNavigation />
                 <ChatDialogs />
                 <ChatMessages />

@@ -11,7 +11,6 @@ export default function JoinChatModal() {
     const joinChat = useSelector(selectJoinChat)
     const dispatch = useDispatch()
     const { t } = useTranslation()
-
     function onCloseClick() {
         dispatch(setModalClose())
         dispatch(cleanChat())
@@ -20,7 +19,7 @@ export default function JoinChatModal() {
     function onJoinChatClick() {
         const data = {
             "userId": user.id,
-            "publicChatId": joinChat.id
+            "chatId": joinChat.id
         }
         dispatch(fetchJoinChat(data))
         dispatch(setModalClose())

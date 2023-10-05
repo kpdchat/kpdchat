@@ -53,8 +53,8 @@ export function fetchLeaveChat(data) {
 }
 
 export function setRenderList(list) {
-    const sortList = list.sort((a, b) => {
-        return a.id.localeCompare(b.id)
+    let sortList = list.sort((a, b) => {
+        return (a.id - b.id)
     })
     return { type: ACTION_RENDER_CHAT_LIST, payload: sortList }
 }

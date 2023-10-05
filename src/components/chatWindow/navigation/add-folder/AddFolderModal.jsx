@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { MdOutlineClose } from "react-icons/md";
+import { DotSpinner } from '@uiball/loaders';
 import { useTranslation } from 'react-i18next';
 import { useForm } from "react-hook-form"
 import { useDispatch, useSelector } from 'react-redux';
 import { icons } from "../../../../extra/config/folder-icons";
 import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/folderActions";
-import { selectUser, selectEditFolderForForm } from "../../../../store/selectors";
-import { setModalClose } from "../../../../store/actions/uiActions";
+import { selectUser, selectEditFolderForForm, selectUi } from "../../../../store/selectors";
+import { setLoaderHide, setLoaderShow, setModalClose } from "../../../../store/actions/uiActions";
 
 export default function AddFolderModal() {
     const [iconName, setIconName] = useState(icons.default)
@@ -14,11 +15,12 @@ export default function AddFolderModal() {
     const [query, setQuery] = useState("")
 
     const dispatch = useDispatch()
+    const { isActiveLoader } = useSelector(selectUi)
     const editFolder = useSelector(selectEditFolderForForm)
     const user = useSelector(selectUser)
-    const chats = user.chats.sort((a, b) => {
-        return a.id.localeCompare(b.id)
-    })
+    const chats = user.chats.sort(((a, b) => {
+        return (a.id - b.id)
+    }))
     const { t } = useTranslation()
 
     const {
@@ -28,7 +30,19 @@ export default function AddFolderModal() {
         watch,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
-    let checked = watch("publicChatIds")
+    const checked = watch("chatIds")
+
+    let selected = getSelected()
+
+    function getSelected() {
+        if(typeof checked === 'string') {
+            return 1
+        }
+        if(!checked) {
+            return 0
+        }
+        return checked?.length
+    }
 
     //search-logic
     const filteredChats = useMemo(() => {
@@ -39,15 +53,16 @@ export default function AddFolderModal() {
 
     //form submit
     function onFormSubmit(data) {
-        if (!data.publicChatIds) {
-            data.publicChatIds = []
+        
+        if (!data.chatIds) {
+            data.chatIds = []
         }
         if (editFolder.id) {
             const updateFolder = {
                 "id": editFolder.id,
                 "title": data.title,
                 "iconTag": data.iconTag,
-                "newChatIds": data.publicChatIds
+                "chatIds": data.chatIds.map(id => Number(id))
             }
             dispatch(fetchUpdateFolder(updateFolder))
         } else {
@@ -57,8 +72,13 @@ export default function AddFolderModal() {
             }
             dispatch(fetchCreateFolder(folder))
         }
-        dispatch(clearEditFolder())
-        dispatch(setModalClose())
+        
+        dispatch(setLoaderShow())
+        setTimeout(() => {
+            dispatch(setLoaderHide())
+            dispatch(setModalClose())
+            dispatch(clearEditFolder())
+        }, 1500)
     }
 
     //setting icon
@@ -67,10 +87,10 @@ export default function AddFolderModal() {
             setIconName(icons[editFolder.iconTag])
         }
 
-    }, [editFolder?.id, editFolder?.iconTag, editFolder?.publicChatIds?.length])
+    }, [editFolder?.id, editFolder?.iconTag])
 
     return (
-        <div className="modal-container folder-modal">
+        <div className="modal-container folder-modal no-select">
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
                     <h3 className="text-inter-18-600">
@@ -153,7 +173,7 @@ export default function AddFolderModal() {
                                             </div>
 
                                             <input
-                                                {...register("publicChatIds")}
+                                                {...register("chatIds")}
                                                 value={chat.id}
                                                 type="checkbox" />
                                         </label>
@@ -162,7 +182,7 @@ export default function AddFolderModal() {
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} {checked?.length ? checked?.length : '0'}
+                            {t('addFolder.selected')} {selected}
                         </div>
 
                         <input
@@ -170,6 +190,13 @@ export default function AddFolderModal() {
                             className="text-inter-16-600 cursor-pointer"
                             value={t('addFolder.create')} />
                     </form>
+                    <div className={isActiveLoader ? "loading" : "display-none"} >
+                        <DotSpinner
+                            size={70}
+                            speed={0.9}
+                            color="#38328A"
+                        />
+                    </div>
                 </div>
             </div>
         </div>

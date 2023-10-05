@@ -2,15 +2,14 @@ import React from "react"
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
 import { setModalClose } from "../../../../store/actions/uiActions"
-import { fetchRemoveChatFromFolder } from "../../../../store/actions/folderActions";
+import { fetchUpdateFolder } from "../../../../store/actions/folderActions";
 import { useTranslation } from 'react-i18next';
-import { selectChat, selectListName } from "../../../../store/selectors";
+import { selectFolderToDeleteFrom} from "../../../../store/selectors";
 
 export default function DeleteFromFolderModal() {
     const { t } = useTranslation()
     const dispatch = useDispatch()
-    const listName = useSelector(selectListName)
-    const chat = useSelector(selectChat)
+    const updateFolder = useSelector(selectFolderToDeleteFrom)
 
     function onCloseClick() {
         dispatch(setModalClose())
@@ -18,8 +17,7 @@ export default function DeleteFromFolderModal() {
 
     //delete from folder function
     function onDeleteClick() {
-        const arrChatId = [chat.id]
-        dispatch(fetchRemoveChatFromFolder(listName, arrChatId))
+        dispatch(fetchUpdateFolder(updateFolder))
         dispatch(setModalClose())
     }
     return (

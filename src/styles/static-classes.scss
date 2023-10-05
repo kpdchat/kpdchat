@@ -214,3 +214,12 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.no-select {
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+     user-select: none;
+}
