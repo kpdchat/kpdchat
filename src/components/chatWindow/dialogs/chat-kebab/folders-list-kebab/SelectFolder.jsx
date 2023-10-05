@@ -4,20 +4,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DotSpinner } from '@uiball/loaders'
 import { icons } from "../../../../../extra/config/folder-icons";
 import { selectChat, selectUi } from "../../../../../store/selectors";
-import { fetchRemoveChatFromFolder } from "../../../../../store/actions/folderActions";
+import { fetchUpdateKebabFolder } from "../../../../../store/actions/folderActions";
 
 
 export default function SelectFolder({ folder }) {
     const dispatch = useDispatch()
     const chat = useSelector(selectChat)
     const { loaderId, isActiveLoader } = useSelector(selectUi)
-
+    
     function onRemoveFolderClick() {
-        const arrChatId = [chat.id]
-        if(isActiveLoader) {
+
+        if (isActiveLoader) {
             return
         }
-        dispatch(fetchRemoveChatFromFolder(folder.id, arrChatId))
+
+        const publicChatsId = folder.publicChats
+            .map(el => el.id)
+            .filter(el => el !== chat.id)
+        const updateFolder = {
+            "id": folder.id,
+            "title": folder.title,
+            "iconTag": folder.iconTag,
+            "chatIds": publicChatsId
+        }
+
+        dispatch(fetchUpdateKebabFolder(updateFolder))
     }
 
     return (

@@ -21,11 +21,10 @@ export default function ChatKebab({ chat, style, setStyle }) {
         }
     }
 
-
     return (
         <KebabWrapper elRef={menuRef} >
-            {listName.length > 15 && <FolderChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
-            {listName === 'mineChats' && <MyChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
+            {listName.substr(0,6)  === 'folder' && <FolderChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
+            {listName=== 'mineChats' && <MyChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
             {listName === 'publicChats' && kebab}
         </KebabWrapper>
     )

@@ -18,9 +18,9 @@ export default function AddFolderModal() {
     const { isActiveLoader } = useSelector(selectUi)
     const editFolder = useSelector(selectEditFolderForForm)
     const user = useSelector(selectUser)
-    const chats = user.chats.sort((a, b) => {
-        return a.id.localeCompare(b.id)
-    })
+    const chats = user.chats.sort(((a, b) => {
+        return (a.id - b.id)
+    }))
     const { t } = useTranslation()
 
     const {
@@ -30,7 +30,7 @@ export default function AddFolderModal() {
         watch,
     } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
 
-    let checked = watch("publicChatIds")
+    const checked = watch("chatIds")
 
     let selected = getSelected()
 
@@ -53,15 +53,16 @@ export default function AddFolderModal() {
 
     //form submit
     function onFormSubmit(data) {
-        if (!data.publicChatIds) {
-            data.publicChatIds = []
+        
+        if (!data.chatIds) {
+            data.chatIds = []
         }
         if (editFolder.id) {
             const updateFolder = {
                 "id": editFolder.id,
                 "title": data.title,
                 "iconTag": data.iconTag,
-                "newChatIds": data.publicChatIds
+                "chatIds": data.chatIds.map(id => Number(id))
             }
             dispatch(fetchUpdateFolder(updateFolder))
         } else {
@@ -71,11 +72,12 @@ export default function AddFolderModal() {
             }
             dispatch(fetchCreateFolder(folder))
         }
-        dispatch(clearEditFolder())
+        
         dispatch(setLoaderShow())
         setTimeout(() => {
             dispatch(setLoaderHide())
             dispatch(setModalClose())
+            dispatch(clearEditFolder())
         }, 1500)
     }
 
@@ -171,7 +173,7 @@ export default function AddFolderModal() {
                                             </div>
 
                                             <input
-                                                {...register("publicChatIds")}
+                                                {...register("chatIds")}
                                                 value={chat.id}
                                                 type="checkbox" />
                                         </label>

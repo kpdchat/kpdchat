@@ -19,9 +19,8 @@ export default function UnSelectFolder({ folder }) {
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "newChatIds": [...publicChatsId, chat.id]
+            "chatIds": [...publicChatsId, chat.id]
         }
-        
         dispatch(fetchUpdateKebabFolder(updateFolder))
     }
 

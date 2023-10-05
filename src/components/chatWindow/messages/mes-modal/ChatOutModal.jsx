@@ -21,7 +21,7 @@ export default function ChatOutModal() {
     function onLeaveClick() {
         const data = {
             "userId": user.id,
-            "publicChatId": chat.id
+            "chatId": chat.id
         }
         dispatch(fetchLeaveChat(data))
         dispatch(setModalClose())

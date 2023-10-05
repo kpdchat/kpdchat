@@ -8,7 +8,7 @@ import {
     ACTION_SHOW_LOADER,
     ACTION_HIDE_LOADER,
     ACTION_SHOW_KEBAB_LOADER,
-    ACTION_HIDE_KEBAB_LOADER
+    ACTION_HIDE_KEBAB_LOADER,
 } from '../actions/uiActions'
 
 const initialState = {
@@ -95,6 +95,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
                 loaderId: 0,
             }
         }
+        
         default: return state;
     }
 }

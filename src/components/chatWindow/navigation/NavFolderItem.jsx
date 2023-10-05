@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 export default function NavFolderItem({ folder }) {
     const type = 'onContext'
-    const { isOpen, idKebab, onKebabClick } = useKebabClick(folder.id, type)
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(folder.id, 'folder', type)
     const user = useSelector(selectUser)
     const listName = useSelector(selectListName)
     const dispatch = useDispatch()
@@ -20,16 +20,16 @@ export default function NavFolderItem({ folder }) {
     }
 
     function onFolderClick() {
-        dispatch(setRenderListName(folder.id))
+        dispatch(setRenderListName('folder' + folder.id))
     }
     useEffect(() => {
-        if (listName === folder.id) {
+        if (listName === 'folder' + folder.id) {
             dispatch(setRenderList(folder.publicChats))
         }
     }, [listName, user, dispatch, folder.id, folder.publicChats])
     return (
         <div
-            className={listName === folder.id ? 'folders__folder folders__folder_active' : 'folders__folder'}>
+            className={listName === 'folder' + folder.id ? 'folders__folder folders__folder_active' : 'folders__folder'}>
             <div
                 className='folders__title cursor-pointer'
                 onClick={onFolderClick}
@@ -41,7 +41,7 @@ export default function NavFolderItem({ folder }) {
                 className='text-inter-16-400 ml-5px'>
                 {folder.publicChats.length}
             </h3>
-            {isOpen && idKebab === folder.id && <FolderKebab folder={folder} />}
+            {isOpen && idKebab === 'folder' + folder.id && <FolderKebab folder={folder} />}
         </div>
     )
 }

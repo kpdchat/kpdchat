@@ -5,6 +5,7 @@ export const selectModal = state => state.ui.isModal
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 export const selectUser = state => state.user.user
+export const selectUserError =  state => state.user.userError
 export const selectOpenChat = state => state.ui.isOpenChat
 export const selectLoader = state => state.ui.isActiveLoader
 export const selectRenderChatList = state => state.chat.renderList
@@ -17,15 +18,15 @@ export const selectChat = state => state.chat.selectChat
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
     (editFolder) => {
-        const publicChatIds = editFolder?.publicChats?.reduce((list, chat) => {
-            list.push(chat.id)
+        const chatIds = editFolder?.publicChats?.reduce((list, chat) => {
+            list.push('' + chat.id)
             return list
         }, [])
         return {
             'id': editFolder.id,
             'title': editFolder.title,
             'iconTag': editFolder.iconTag,
-            'publicChatIds': publicChatIds,
+            'chatIds': chatIds,
         }
     }
 )
@@ -41,6 +42,29 @@ export const selectFolderList = createSelector(
             return list
         }, [])
         return folderList
+    }
+)
+
+export const selectFolderToDeleteFrom = createSelector(
+    selectUser,
+    selectListName,
+    selectChat,
+    (user, listName, chat) => {
+        const folderId = listName.substr(6)
+        const folder = user.folders.find(folder => {
+            return folder.id === Number(folderId)
+        })
+        const publicChatsId = folder.publicChats
+            .map(el => el.id)
+            .filter(el => el !== chat.id)
+
+        const updateFolder = {
+            "id": folder.id,
+            "title": folder.title,
+            "iconTag": folder.iconTag,
+            "chatIds": publicChatsId
+        }
+        return updateFolder
     }
 )
 

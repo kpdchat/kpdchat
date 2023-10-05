@@ -9,6 +9,9 @@ export const ACTION_HIDE_LOADER = 'ACTION_HIDE_LOADER';
 export const ACTION_SHOW_KEBAB_LOADER = 'ACTION_SHOW_KEBAB_LOADER';
 export const ACTION_HIDE_KEBAB_LOADER = 'ACTION_HIDE_LOADER';
 
+
+
+
 export function setKebabClose() {
     return {type: ACTION_CLOSE_KEBAB};
 }
@@ -48,3 +51,4 @@ export function setLoaderKebabShow(id) {
 export function setLoaderKebabHide() {
     return {type: ACTION_HIDE_KEBAB_LOADER};
 }
+
