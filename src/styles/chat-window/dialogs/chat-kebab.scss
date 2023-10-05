@@ -4,15 +4,16 @@
     }
 }
 
-
 .chat-kebab {
+
     &__row {
-        //.chat-kebab__row
+        // .chat-kebab__row
         display: flex;
         color: $color-text-grey;
         align-items: center;
         padding: 8px 6px;
         border-radius: 8px;
+
         .flex-container {
             align-items: center;
         }
@@ -26,17 +27,17 @@
     }
 
     &__row_violet {
-        //.chat-kebab__row_violet
+        // .chat-kebab__row_violet
         color: $color-light-violet;
     }
 
     &__row_folders {
-        //.chat-kebab__row_folders
+        // .chat-kebab__row_folders
         justify-content: space-between;
     }
 
     &__folders {
-        //.chat-kebab__folders
+        // .chat-kebab__folders
         display: flex;
         flex-direction: column;
 
@@ -44,6 +45,4 @@
             align-items: center;
         }
     }
-
-
 }

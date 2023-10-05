@@ -1,5 +1,4 @@
 import React, {useEffect, Suspense } from 'react';
-import './styles/index.scss'
 import RegistrationWindow from './components/registrationWindow/RegistrationWindow';
 import WindowChat from './components/chatWindow/WindowChat';
 import {useDispatch} from 'react-redux';

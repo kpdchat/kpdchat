@@ -6,7 +6,7 @@
     &__content {
         // .info-about__content
         width: 480px;
-        box-shadow: 1px 1px 4px 0 #706c9f;
+        box-shadow: var(--about-content-boxShadow);
         border-radius: 8px;
     }
 
@@ -23,7 +23,7 @@
         //.info-about__text
         padding: 24px;
         border-radius: 8px;
-        background-color: $color-white;
+        background-color: var(--about-text-back-color);
 
         .text {
 
@@ -31,6 +31,7 @@
                 // .text__title
                 display: flex;
                 justify-content: space-between;
+                color: var(--about-text-title-color);
 
                 h2 {
                     line-height: 135%;
@@ -41,9 +42,9 @@
                 // .text__description
                 margin-top: 32px;
                 padding: 0 6px 6px 6px;
+                color: var(--about-text-title-color);
 
                 .text-inter-14-400 {
-                    color: $color-black;
                     line-height: 135%;
                 }
 

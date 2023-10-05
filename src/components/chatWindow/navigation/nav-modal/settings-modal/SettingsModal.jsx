@@ -75,8 +75,8 @@ export default function SettingsModal() {
                                 { t('settingsUser.standartAvatars') }
                             </h2>
                             { state.showImg
-                                ? <MdArrowDropUp size='28' color='#38328A' />
-                                : <MdArrowDropDown size='28' color='#38328A' />
+                                ? <MdArrowDropUp size='28' />
+                                : <MdArrowDropDown size='28' />
                             }
                         </div>
 
@@ -99,7 +99,6 @@ export default function SettingsModal() {
                                 <div className='labels__label-language'>
                                     <MdOutlineLanguage
                                         size='24'
-                                        color='black'
                                     />
                                     <p className='text-inter-14-400'>
                                         { t('settingsUser.language') }
@@ -135,7 +134,6 @@ export default function SettingsModal() {
                                 <div className='labels__label-exit'>
                                     <PiDoorOpen
                                         size='24'
-                                        color='black'
                                         className='cursor-pointer'
                                         onClick={ state.onExitChat }
                                     />

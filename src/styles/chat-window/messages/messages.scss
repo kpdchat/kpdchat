@@ -64,7 +64,7 @@
     &__window-mes {
         // .messages__window-mes
         flex: 1 1 auto;
-        background: url(../../../images/chat-window/background-chat.png) 50% / cover no-repeat;
+        background: var(--window-message-background);
         overflow-x: hidden;
     }
 

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {MdOutlineTextsms, MdOutlineDarkMode, MdOutlineFolderShared, MdOutlineWbSunny} from 'react-icons/md';
-import {useTranslation} from 'react-i18next';
-import {useSelector, useDispatch} from 'react-redux';
-import {selectListName, selectUi, selectUser} from '../../../store/selectors';
-import {fetchPublicChats, setRenderList, setRenderListName} from '../../../store/actions/chatActions';
-import NavFolderItem from './NavFolderItem'
+import React, { useEffect, useState } from 'react';
+import { MdOutlineTextsms, MdOutlineDarkMode, MdOutlineFolderShared, MdOutlineWbSunny } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectListName, selectUi, selectUser } from '../../../store/selectors';
+import { fetchPublicChats, setRenderList, setRenderListName } from '../../../store/actions/chatActions';
+import NavFolderItem from './NavFolderItem';
 import AddChatModal from "./add-chat/AddChatModal";
 import JoinChatModal from "../messages/mes-modal/JoinChatModal";
 import ChatOutModal from "../messages/mes-modal/ChatOutModal";
@@ -18,15 +18,16 @@ import AddFolderModal from './add-folder/AddFolderModal';
 import DeleteFromFolderModal from './nav-modal/DeleteFromFolderModal';
 import SettingsModal from './nav-modal/settings-modal/SettingsModal';
 import NavInfoModal from './nav-modal/NavInfoModal';
+import useTheme from '../../../extra/hooks/useTheme';
 
 export default function ChatNavigation() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const user = useSelector(selectUser);
     const listName = useSelector(selectListName);
-    const {isModal, modalId} = useSelector(selectUi);
+    const { isModal, modalId } = useSelector(selectUi);
     const dispatch = useDispatch();
-    const [theme, setTheme] = useState(true);
-
+    const [changeTheme, setChangeTheme] = useState(true);
+    const { theme, setTheme } = useTheme();
 
     function onPublicChatClick() {
         dispatch(setRenderListName('publicChats'));
@@ -36,8 +37,20 @@ export default function ChatNavigation() {
         dispatch(setRenderListName('mineChats'));
     }
 
+    function onContextClick(e) {
+        e.preventDefault()
+    }
+
     function onChangeTheme() {
-        setTheme(!theme);
+        setChangeTheme(!changeTheme);
+    }
+
+    function handleLightTheme() {
+        setTheme('light');
+    }
+
+    function handleDarkTheme() {
+        setTheme('dark');
     }
 
     useEffect(() => {
@@ -50,7 +63,7 @@ export default function ChatNavigation() {
 
     return (
         <>
-            <section className='chat__navigation navigation no-select'>
+            <section className='chat__navigation navigation no-select' onContextMenu={onContextClick}>
                 <div className='navigation__folders folders'>
                     <div className='folders__add add'>
                         <AddChat />
@@ -86,9 +99,9 @@ export default function ChatNavigation() {
                     <NavSettings />
                     <NavInfo />
                     <div onClick={ onChangeTheme }>
-                        { theme
-                            ? <MdOutlineDarkMode size={ 35 } className='cursor-pointer' />
-                            : <MdOutlineWbSunny size={ 35 } className='cursor-pointer' />
+                        { changeTheme
+                            ? <MdOutlineDarkMode size={ 35 } className='cursor-pointer' onClick={handleDarkTheme}/>
+                            : <MdOutlineWbSunny size={ 35 } className='cursor-pointer' onClick={handleLightTheme}/>
                         }
                     </div>
                 </div>

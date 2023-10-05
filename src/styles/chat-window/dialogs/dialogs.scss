@@ -7,7 +7,7 @@
 }
 
 .dialogs {
-    padding: 0 0 0 10px;
+    padding-left: 10px;
 
     &__logo {
         // .dialog__logo
@@ -15,6 +15,7 @@
         align-items: center;
         justify-content: center;
         padding: 20px 0 16px 0;
+        color: var(--logo-color);
 
         h1 {
             font-family: $font-lexend;
@@ -63,7 +64,7 @@
 
         &:hover {
             border-radius: 8px;
-            background: $color-grey;
+            background: var(--list-dialog-hover-back-color);
         }
     }
 
@@ -93,7 +94,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            color: $color-black;
+            color: var(--list-text-h3-color);
         }
 
         p {
@@ -101,7 +102,7 @@
             overflow: hidden;
             white-space: nowrap;
             margin-top: 8px;
-            color: $color-text-grey;
+            color: var(--list-text-p-color);
         }
     }
 
@@ -111,7 +112,6 @@
         flex-wrap: wrap;
         flex-direction: column;
         gap: 10px 0;
-
     }
 
     &__time {
@@ -136,6 +136,7 @@
     }
 
     &__flex {
+        // .list__flex
         padding-right: 10px;
         display: flex;
         align-items: center;
@@ -145,5 +146,5 @@
 
 .active-chat {
     border-radius: 8px;
-    background: $color-grey;
+    background: var(--list-dialog-hover-back-color);
 }

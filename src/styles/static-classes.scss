@@ -74,10 +74,11 @@
     input {
         width: 100%;
         height: 45px;
-        background: $color-grey url(../images/chat-window/search.svg) 15px no-repeat;
+        background: var(--search-form-input-back-color) url(../images/chat-window/search.svg) 15px no-repeat;
         border: none;
         border-radius: 8px;
         padding-left: 52px;
+        color: var(--search-form-input-color);
 
         &:focus-visible {
             outline: 1px solid $color-border-light-gray;
@@ -119,7 +120,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-        background: $color-violet;
+        background: var(--scroll-bar-back-color);
         background-clip: content-box;
         border: 4px solid transparent;
         border-radius: 24px;
@@ -153,7 +154,7 @@
 
 .kebab-menu {
     position: absolute;
-    background-color: $color-white;
+    background-color: var(--kebab-back-color);
     box-shadow: 1px 1px 4px 0px $color-shadow-grey;
     border-radius: 8px;
     padding: 8px;
