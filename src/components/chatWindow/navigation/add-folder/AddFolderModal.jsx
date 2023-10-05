@@ -53,7 +53,7 @@ export default function AddFolderModal() {
 
     //form submit
     function onFormSubmit(data) {
-        console.log(data);
+        
         if (!data.chatIds) {
             data.chatIds = []
         }

@@ -24,7 +24,6 @@ export default function WindowChat() {
     useEffect(() => {
         if (user?.id) {
             dispatch(singleUserFetch(user.id));
-            console.log('fetch');
         }
     }, [user?.id, dispatch])
 
