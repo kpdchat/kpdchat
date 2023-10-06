@@ -27,7 +27,7 @@ export default function ChatNavigation() {
     const { isModal, modalId } = useSelector(selectUi);
     const dispatch = useDispatch();
     const [changeTheme, setChangeTheme] = useState(true);
-    const { theme, setTheme } = useTheme();
+    const { setTheme } = useTheme();
 
     function onPublicChatClick() {
         dispatch(setRenderListName('publicChats'));

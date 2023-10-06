@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { MdOutlineClose } from "react-icons/md";
 import { DotSpinner } from '@uiball/loaders';
 import { useTranslation } from 'react-i18next';
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from 'react-redux';
 import { icons } from "../../../../extra/config/folder-icons";
 import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/folderActions";
@@ -10,44 +10,44 @@ import { selectUser, selectEditFolderForForm, selectUi } from "../../../../store
 import { setLoaderHide, setLoaderShow, setModalClose } from "../../../../store/actions/uiActions";
 
 export default function AddFolderModal() {
-    const [iconName, setIconName] = useState(icons.default)
-    const [iconChose, setIconChose] = useState(false)
-    const [query, setQuery] = useState("")
+    const [iconName, setIconName] = useState(icons.default);
+    const [iconChose, setIconChose] = useState(false);
+    const [query, setQuery] = useState("");
 
-    const dispatch = useDispatch()
-    const { isActiveLoader } = useSelector(selectUi)
-    const editFolder = useSelector(selectEditFolderForForm)
-    const user = useSelector(selectUser)
+    const dispatch = useDispatch();
+    const { isActiveLoader } = useSelector(selectUi);
+    const editFolder = useSelector(selectEditFolderForForm);
+    const user = useSelector(selectUser);
     const chats = user.chats.sort(((a, b) => {
-        return (a.id - b.id)
+        return (a.id - b.id);
     }))
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
         watch,
-    } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" })
+    } = useForm({ defaultValues: editFolder.id ? editFolder : { "iconTag": "default" }, mode: "onSubmit" });
 
-    const checked = watch("chatIds")
+    const checked = watch("chatIds");
 
-    let selected = getSelected()
+    let selected = getSelected();
 
     function getSelected() {
         if(typeof checked === 'string') {
-            return 1
+            return 1;
         }
         if(!checked) {
-            return 0
+            return 0;
         }
-        return checked?.length
+        return checked?.length;
     }
 
     //search-logic
     const filteredChats = useMemo(() => {
         return chats.filter(chat => {
-            return chat.title.toLowerCase().includes(query.toLowerCase())
+            return chat.title.toLowerCase().includes(query.toLowerCase());
         })
     }, [query, chats])
 
@@ -55,7 +55,7 @@ export default function AddFolderModal() {
     function onFormSubmit(data) {
         
         if (!data.chatIds) {
-            data.chatIds = []
+            data.chatIds = [];
         }
         if (editFolder.id) {
             const updateFolder = {
@@ -64,27 +64,27 @@ export default function AddFolderModal() {
                 "iconTag": data.iconTag,
                 "chatIds": data.chatIds.map(id => Number(id))
             }
-            dispatch(fetchUpdateFolder(updateFolder))
+            dispatch(fetchUpdateFolder(updateFolder));
         } else {
             const folder = {
                 userId: user.id,
                 ...data
             }
-            dispatch(fetchCreateFolder(folder))
+            dispatch(fetchCreateFolder(folder));
         }
         
-        dispatch(setLoaderShow())
+        dispatch(setLoaderShow());
         setTimeout(() => {
-            dispatch(setLoaderHide())
-            dispatch(setModalClose())
-            dispatch(clearEditFolder())
+            dispatch(setLoaderHide());
+            dispatch(setModalClose());
+            dispatch(clearEditFolder());
         }, 1500)
     }
 
     //setting icon
     useEffect(() => {
         if (editFolder?.id) {
-            setIconName(icons[editFolder.iconTag])
+            setIconName(icons[editFolder.iconTag]);
         }
 
     }, [editFolder?.id, editFolder?.iconTag])
@@ -97,11 +97,11 @@ export default function AddFolderModal() {
                         {editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}
                     </h3>
                     <MdOutlineClose
-                        className="cursor-pointer"
+                        className="close-img"
                         size={24}
                         onClick={() => {
-                            dispatch(setModalClose())
-                            dispatch(clearEditFolder())
+                            dispatch(setModalClose());
+                            dispatch(clearEditFolder());
                         }}
                     />
                 </div>

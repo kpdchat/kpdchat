@@ -15,7 +15,7 @@
         align-items: center;
         justify-content: center;
         padding: 20px 0 16px 0;
-        color: var(--logo-color);
+        color: var(--color-white-grey);
 
         h1 {
             font-family: $font-lexend;
@@ -94,7 +94,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            color: var(--list-text-h3-color);
+            color: var(--color-white-grey);
         }
 
         p {

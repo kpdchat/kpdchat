@@ -19,7 +19,7 @@ export default function NavInfoModal() {
                             Особливості KPD Chat
                         </h2>
                         <MdOutlineClose
-                            className='cursor-pointer'
+                            className='close-img'
                             size='24'
                             onClick={ onCloseClick }
                         />

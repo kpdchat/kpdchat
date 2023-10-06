@@ -1,25 +1,23 @@
 import React, { useRef } from "react";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import { MdOutlineClose, MdOutlineHideImage } from "react-icons/md";
-import { DotSpinner } from '@uiball/loaders'
+import { DotSpinner } from '@uiball/loaders';
 import { useDispatch, useSelector } from 'react-redux';
 import useAddChatForm from "./useAddChatForm";
 import { setModalClose } from "../../../../store/actions/uiActions";
 import { selectUser } from "../../../../store/selectors";
 import { fetchCreateChat } from "../../../../store/actions/chatActions";
 
-
-
 export default function AddChatModal() {
-    const chatPictureLink = useRef()
-    const dispatch = useDispatch()
-    const user = useSelector(selectUser)
+    const chatPictureLink = useRef();
+    const dispatch = useDispatch();
+    const user = useSelector(selectUser);
 
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({ mode: "onChange" })
+    } = useForm({ mode: "onChange" });
 
     const {
         link,
@@ -27,7 +25,7 @@ export default function AddChatModal() {
         t,
         onTextareaInput,
         validateImageServer,
-    } = useAddChatForm(chatPictureLink)
+    } = useAddChatForm(chatPictureLink);
 
     const { ref, ...rest } = register('chatPictureLink', {
         onChange: onTextareaInput,
@@ -41,24 +39,23 @@ export default function AddChatModal() {
         }
     });
 
-
     function onFormSubmit(data) {
         const chat = {
             userId: user.id,
             ...data
         }
-        dispatch(fetchCreateChat(chat))
-        dispatch(setModalClose())
+        dispatch(fetchCreateChat(chat));
+        dispatch(setModalClose());
     }
     return (
         <div className="modal-container chat-modal no-select">
             <div className="chat-modal__content">
                 <div className="chat-modal__header">
                     <h3 className="text-inter-18-600">{t('addChat.createChat')}</h3>
-                    <MdOutlineClose className="cursor-pointer"
+                    <MdOutlineClose className="close-img"
                         size={24}
                         onClick={() => {
-                            dispatch(setModalClose())
+                            dispatch(setModalClose());
                         }}
                     />
                 </div>

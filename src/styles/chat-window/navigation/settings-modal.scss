@@ -11,7 +11,7 @@
     &__content {
         // .settings__content
         width: 480px;
-        box-shadow: var(--settings-content-boxShadow-color);
+        box-shadow: var(--boxShadow-color);
         border-radius: 8px;
 
         .loading-settings-container {
@@ -60,12 +60,12 @@
 
                     button {
                         width: 210px;
-                        color: var(--settings-modal-exit-buttons-color);
+                        color: var(--color-lavender-white);
                         line-height: 110%;
                         padding: 8px 22px;
                         border-radius: 8px;
                         border: 2px $color-white solid;
-                        background-color: var(--settings-modal-exit-buttons-back-color);
+                        background-color: var(--color-white-black);
                         margin-top: 16px;
                         cursor: pointer;
 
@@ -80,7 +80,7 @@
 
     &__settings {
         // .settings__settings
-        background: var(--settings-back-color);
+        background: var(--color-white-black);
         padding: 24px;
         border-radius: 8px;
 
@@ -120,7 +120,7 @@
 
     &__title {
         // .settings__title
-        color: var(--settings-title-color);
+        color: var(--color-white-grey);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -165,7 +165,7 @@
             border: none;
             border-bottom: var(--settings-user-borderBottom);
             color: var(--settings-user-input-color);
-            background-color: var(--settings-user-input-back-color);
+            background-color: var(--color-white-black);
 
             &:focus-visible {
                 outline: 0;
@@ -181,7 +181,7 @@
             line-height: 140%;
             border: none;
             border-bottom: var(--settings-user-borderBottom);
-            background-color: var(--settings-user-input-back-color);
+            background-color: var(--color-white-black);
             outline: 0;
         }
     }
@@ -197,7 +197,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--settings-avatars-h2-color);
+            color: var(--color-white-grey);
 
             h2 {
                 line-height: 140%;
@@ -255,7 +255,7 @@
                 display: flex;
                 align-items: center;
                 gap: 16px;
-                color: var(--settings-language-p-color);
+                color: var(--color-white-grey);
 
                 p {
                     font-size: 16px;
@@ -269,7 +269,7 @@
                 display: flex;
                 gap: 16px;
                 align-items: center;
-                color: var(--settings-exit-p-color);
+                color: var(--color-white-grey);
 
                 p {
                     font-size: 16px;

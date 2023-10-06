@@ -4,10 +4,10 @@
     justify-content: center;
 
     &__content {
-        //.copy__content
+        // .copy__content
         background-color: $color-white;
         border-radius: 8px;
-        box-shadow: 1px 2px 6px 0px $color-shadow-grey;
+        box-shadow: 1px 2px 6px 0 $color-shadow-grey;
         padding: 36px;
         width: 365px;
 
@@ -17,17 +17,16 @@
     }
 }
 
-
 .modal-chat{
     display: flex;
     align-items: center;
     justify-content: center;
 
     &__content {
-        //.modal-chat__content
-        background-color: $color-white;
+        // .modal-chat__content
+        background-color: var(--color-white-black);
         border-radius: 8px;
-        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        box-shadow: var(--boxShadow-color);
         padding: 24px;
         width: 480px;
         display: flex;
@@ -45,13 +44,12 @@
     }
 
     &__header {
-        //.modal-chat__header
+        // .modal-chat__header
         display: flex;
         justify-content: space-between;
-        color: $color-black;
+        color: var(--color-white-grey);
 
         .text-inter-18-600 {
-
             line-height: 24.3px;
         }
     }
@@ -70,7 +68,7 @@
     }
 
     &__about {
-        //.modal-chat__about
+        // .modal-chat__about
         display: flex;
         flex-direction: column;
         gap: 3px;
@@ -81,7 +79,7 @@
         }
 
         .text-inter-18-600 {
-            color: $color-light-black;
+            color: var(--color-white-grey);
         }
     }
 }

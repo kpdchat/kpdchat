@@ -6,7 +6,7 @@
     &__content {
         // .info-about__content
         width: 480px;
-        box-shadow: var(--about-content-boxShadow);
+        box-shadow: var(--boxShadow-color);
         border-radius: 8px;
     }
 
@@ -23,7 +23,7 @@
         //.info-about__text
         padding: 24px;
         border-radius: 8px;
-        background-color: var(--about-text-back-color);
+        background-color: var(--color-white-black);
 
         .text {
 
@@ -31,7 +31,7 @@
                 // .text__title
                 display: flex;
                 justify-content: space-between;
-                color: var(--about-text-title-color);
+                color: var(--color-darkGrey-white);
 
                 h2 {
                     line-height: 135%;
@@ -42,7 +42,7 @@
                 // .text__description
                 margin-top: 32px;
                 padding: 0 6px 6px 6px;
-                color: var(--about-text-title-color);
+                color: var(--color-darkGrey-white);
 
                 .text-inter-14-400 {
                     line-height: 135%;

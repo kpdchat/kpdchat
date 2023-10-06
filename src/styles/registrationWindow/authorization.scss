@@ -5,7 +5,7 @@
         text-align: center;
         border: 2px $color-violet solid;
         background-color: $color-violet;
-        border-radius: 16px;
+        border-radius: 8px;
 
         button {
             width: 100%;
@@ -14,7 +14,7 @@
             background-color: $color-violet;
             border: none;
             font-size: 20px;
-            border-radius: 16px;
+            border-radius: 8px;
             cursor: pointer;
 
             &:hover {
@@ -52,7 +52,7 @@
         width: 100%;
         text-align: center;
         border: 2px $color-light-violet solid;
-        border-radius: 16px;
+        border-radius: 8px;
 
         button {
             width: 100%;
@@ -61,7 +61,7 @@
             background-color: $color-white;
             border: none;
             font-size: 20px;
-            border-radius: 16px;
+            border-radius: 8px;
             cursor: pointer;
 
             &:hover {

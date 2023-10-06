@@ -11,14 +11,14 @@
         //.chat-modal__content
         width: 480px;
         border-radius: 8px;
-        background: var(--modal-chat-content-back-color);
-        box-shadow: var(--modal-content-boxShadow-color);
+        background: var(--color-white-black);
+        box-shadow: var(--boxShadow-color);
         padding: 24px;
     }
 
     &__header {
         //.chat-modal__header
-        color: var(--modal-chat-content-header-color);
+        color: var(--color-white-grey);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -71,9 +71,9 @@
         padding-bottom: 6px;
         width: 353px;
         border: none;
-        border-bottom: var(--modal-chat-content-title-borderBottom-color);
-        background-color: var(--modal-chat-content-title-back-color);
-        color: var(--modal-chat-content-title-color);
+        border-bottom: var(--border-color-lavender-white);
+        background-color: var(--color-white-black);
+        color: var(--color-darkGrey-white);
 
         &:focus-visible {
             outline: none;
@@ -87,9 +87,9 @@
         resize: none;
         padding-bottom: 6px;
         width: 353px;
-        border-bottom: var(--modal-chat-content-title-borderBottom-color);
-        background-color: var(--modal-chat-content-title-back-color);
-        color: var(--modal-chat-content-title-color);
+        border-bottom: var(--border-color-lavender-white);
+        background-color: var(--color-white-black);
+        color: var(--color-darkGrey-white);
         margin-top: 16px;
 
         &:focus-visible {

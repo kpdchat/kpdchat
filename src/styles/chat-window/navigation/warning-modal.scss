@@ -6,10 +6,10 @@
     &__content {
         width: 480px;
         padding: 24px;
-        background-color: var(--warning-loader-back-color);
+        background-color: var(--color-white-black);
         box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
         border-radius: 8px;
-        color: var(--warning-loader-text-color);
+        color: var(--color-white-grey);
 
         button {
             width: 100%;
@@ -24,7 +24,7 @@
         }
 
         .text-inter-16-400 {
-            color: var(--warning-loader-text-color);
+            color: var(--color-white-grey);
             text-align: center;
             line-height: 24.3px;
         }

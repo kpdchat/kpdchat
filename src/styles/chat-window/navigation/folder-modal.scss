@@ -7,20 +7,20 @@
         // .folder-modal__content
         width: 480px;
         padding: 24px;
-        background-color: var(--modal-content-back-color);
-        box-shadow: var(--modal-content-boxShadow-color);
+        background-color: var(--color-white-black);
+        box-shadow: var(--boxShadow-color);
         border-radius: 8px;
     }
 
     &__header {
         // .folder-modal__header
-        color: var(--modal-header-color);
+        color: var(--color-white-grey);
         display: flex;
         justify-content: space-between;
         margin-bottom: 16px;
 
         .text-inter-18-600 {
-            color: var(--modal-header-color);
+            color: var(--color-white-grey);
         }
     }
 }
@@ -52,8 +52,8 @@
         padding: 0 16px;
         border-radius: 8px;
         border: 1px solid transparent;
-        background: var(--modal-folder-name-back-color);
-        color: var(--modal-folder-name-color);
+        background: var(--color-lightGrey-grey);
+        color: var(--color-white-grey);
 
         &:focus-visible {
             outline: 1px solid $color-border-light-gray;
@@ -81,14 +81,14 @@
 
     &__search-chat {
         // .form__search-chat
-        margin: 16px 0;
+        margin-bottom: 16px;
         width: 100%;
         background: url(../../../images/chat-window/search.svg) 15px no-repeat;
         border: none;
         padding-left: 52px;
         height: 56px;
         border-bottom: var(--modal-folder-search-borderBottom-color);
-        color: var(--modal-folder-search-color);
+        color: var(--color-white-grey);
 
         &:focus-visible {
             outline: none;
@@ -154,7 +154,7 @@
         }
 
         .text-inter-18-600 {
-            color: var(--modal-form-chat-color);
+            color: var(--color-white-grey);
             line-height: 24.3px;
             margin-left: 16px;
         }
@@ -189,7 +189,7 @@
 }
 
 .icon {
-    color: var(--modal-icon-color);
+    color: var(--color-lavender-white);
     display: flex;
     width: 56px;
     height: 56px;

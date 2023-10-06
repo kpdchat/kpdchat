@@ -29,136 +29,98 @@ code {
 
 // light theme styles
 [data-theme = 'light'] {
+    // static variables styles
+    --color-white-grey: #272732;
+    --color-white-black: #FFF;
+    --color-lightGrey-grey: #EBEAEF;
+    --color-lavender-white: #38328A;
+    --color-darkGrey-white: #1B1F23;
+    --border-color-lavender-white: 1px solid #38328A;
+    --boxShadow-color: 1px 1px 4px 0 #706C9F;
+
     // windowChat.scss
     --chat-navigation-background: #38328A;
     --border-right: 1px solid #ABA8D4;
-    --chat-dialogs-back-color: #FFF;
     // dialogs.scss
-    --logo-color: #272732;
-    --search-form-input-back-color: #EBEAEF;
-    --search-form-input-color: #272732;
-    --list-text-h3-color: #272732;
     --list-text-p-color: #5B5B66;
     --list-dialog-hover-back-color: #EBEAEF;
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-light.png) 50% / cover no-repeat;
-    // warning-modal.scss
-    --warning-loader-back-color: #FFF;
-    --warning-loader-text-color: #272732;
+    --message-self-text-back-color: #38328A;
+    --messagess-info-color: #1B1F23;
+    --messages-input-focus-outline: 1px solid #5750A8;
+    --messages-input-focus-back-color: #FFF;
     // folder-kebab.scss
     --folder-kebab-color: #5B5B66;
     --folder-kebab-hover-color: #EAE9FF;
     // static-classes.scss
-    --kebab-back-color: #FFF;
     --scroll-bar-back-color: #38328A;
     // chat-modal.scss
-    --modal-chat-content-back-color: #FFF;
-    --modal-chat-content-header-color: #272732;
     --modal-chat-content-title-back-color: #FFF;
-    --modal-chat-content-title-color: #1B1F23;
-    --modal-chat-content-title-borderBottom-color: 1px solid #38328A;
     // folder-modal.scss
-    --modal-content-back-color: #FFF;
-    --modal-content-boxShadow-color: 1px 1px 4px 0 #706C9F;
-    --modal-header-color: #272732;
-    --modal-folder-name-back-color: #EBEAEF;
-    --modal-folder-name-color: #272732;
-    --modal-folder-search-color: #272732;
     --modal-folder-search-borderBottom-color: 1px solid #8A8A98;
     --modal-folder-search-borderBottomFocus-color: 1px solid #272732;
     --modal-form-icon-back-color: #EAE9FF;
-    --modal-icon-color: #38328A;
     --modal-icon-back-color: #FFF;
     --modal-icon-outline-color: 2px solid #38328A;
-    --modal-form-chat-color: #272732;
     --modal-form-chatCount-color: #38328A;
     // .settings-modal.scss
-    --settings-content-boxShadow-color: 1px 1px 4px 0 #706c9f;
-    --settings-back-color: #FFF;
-    --settings-title-color: #272732;
     --settings-user-input-color: #272732;
     --settings-user-borderBottom: 1px solid #272732;
-    --settings-user-input-back-color: #FFF;
     --settings-avatars-back-color: #EBEAEF;
-    --settings-avatars-h2-color: #272732;
-    --settings-language-p-color: #272732;
-    --settings-exit-p-color: #272732;
     --settings-buttons-color: #7C7C85;
     --settings-modal-exit-back-color: #38328A;
-    --settings-modal-exit-boxShadow: 1px 1px 4px 0 #706c9f;
-    --settings-modal-exit-buttons-color: #38328A;
-    --settings-modal-exit-buttons-back-color: #FFF;
+    --settings-modal-exit-boxShadow: 1px 1px 4px 0 #706C9F;
     --settings-modal-exit-buttons-backHover-color: #FFF;
-    // info-modal.scss
-    --about-content-boxShadow: 1px 1px 4px 0 #706C9F;
-    --about-text-back-color: #FFF;
-    --about-text-title-color: #1B1F23;
+    // chat-kebab.scss
+    --kebab-row-color: #5750A8;
 }
 
 // dark theme styles
 [data-theme = 'dark'] {
+    // static variables styles
+    --color-white-grey: #FFF;
+    --color-white-black: #1B1F23;
+    --color-lightGrey-grey: rgba(91, 91, 102, 0.65);
+    --color-lavender-white: #FFF;
+    --color-darkGrey-white: #FFF;
+    --border-color-lavender-white: 1px solid #FFF;
+    --boxShadow-color: 1px 1px 4px 0 #38328A;
+
     // windowChat.scss
     --chat-navigation-background: linear-gradient(190deg, #38328A -40.12%, #000 199.12%);
-    --border-right: 1px solid var(--Violet, #38328A);
-    --chat-dialogs-back-color: #1B1F23;
+    --border-right: 1px solid #38328A;
     // dialogs.scss
-    --logo-color: #FFF;
-    --search-form-input-back-color: rgba(91, 91, 102, 0.65);
-    --search-form-input-color: #FFF;
-    --list-text-h3-color: #FFF;
     --list-text-p-color: #BBB;
     --list-dialog-hover-back-color: rgba(171, 168, 212, 0.20);
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-dark.png) 50% / cover no-repeat;
-    // warning-modal.scss
-    --warning-loader-back-color: #1B1F23;
-    --warning-loader-text-color: #FFF;
+    --message-self-text-back-color: rgba(56, 50, 138, 0.65);
+    --messagess-info-color: #FFF;
+    --messages-input-focus-outline: 1px solid #FFF;
+    --messages-input-focus-back-color: rgba(91, 91, 102, 0.65);
     // folder-kebab.scss
     --folder-kebab-color: #FFF;
     --folder-kebab-hover-color: rgba(171, 168, 212, 0.20);
     // static-classes.scss
-    --kebab-back-color: #272732;
     --scroll-bar-back-color: #FFF44F;
     // chat-modal.scss
-    --modal-chat-content-back-color: #1B1F23;
-    --modal-chat-content-header-color: #FFF;
     --modal-chat-content-title-back-color: #1B1F23;
-    --modal-chat-content-title-color: #FFF;
-    --modal-chat-content-title-borderBottom-color: 1px solid #FFF;
     // folder-modal.scss
-    --modal-content-back-color: #1B1F23;
-    --modal-content-boxShadow-color: 1px 1px 4px 0 #38328A;
-    --modal-header-color: #FFF;
-    --modal-folder-name-back-color: rgba(91, 91, 102, 0.65);
-    --modal-folder-name-color: #FFF;
-    --modal-folder-search-color: #FFF;
     --modal-folder-search-borderBottom-color: 1px solid #272732;
     --modal-folder-search-borderBottomFocus-color: 1px solid #8A8A98;
     --modal-form-icon-back-color: #1B1F23;
-    --modal-icon-color: #FFF;
     --modal-icon-back-color: rgba(91, 91, 102, 0.65);
     --modal-icon-outline-color: 2px solid #FFF;
-    --modal-form-chat-color: #FFF;
     --modal-form-chatCount-color: #BBB;
     // .settings-modal.scss
-    --settings-content-boxShadow-color: 1px 1px 4px 0 #38328A;
-    --settings-back-color: #1B1F23;
-    --settings-title-color: #FFF;
     --settings-user-input-color: #BBB;
     --settings-user-borderBottom: 1px solid #BBB;
-    --settings-user-input-back-color: #1B1F23;
     --settings-avatars-back-color: rgba(171, 168, 212, 0.20);
-    --settings-avatars-h2-color: #FFF;
-    --settings-language-p-color: #FFF;
-    --settings-exit-p-color: #FFF;
     --settings-buttons-color: #FFF;
     --settings-modal-exit-back-color: #1B1F23;
     --settings-modal-exit-boxShadow: 1px 1px 4px 0 #FFF;
-    --settings-modal-exit-buttons-color: #FFF;
-    --settings-modal-exit-buttons-back-color: #1B1F23;
     --settings-modal-exit-buttons-backHover-color: rgba(171, 168, 212, 0.20);
-    // info-modal.scss
-    --about-content-boxShadow: 1px 1px 4px 0 #38328A;
-    --about-text-back-color: #1B1F23;
-    --about-text-title-color: #FFF;
+    // chat-kebab.scss
+    --kebab-row-color: #FFF;
 }

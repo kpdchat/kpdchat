@@ -13,8 +13,8 @@ export default function SettingsModal() {
     const {t} = useTranslation();
 
     return (
-        <div className='settings__container modal-container no-select' onClick={ state.onCloseClick }>
-            <div className='settings__content' onClick={ state.onContentClick }>
+        <div className='settings__container modal-container no-select'>
+            <div className='settings__content'>
 
                 <div className='settings__settings'>
                     <div className='settings__title'>
@@ -22,7 +22,7 @@ export default function SettingsModal() {
                             { t('settingsUser.settings') }
                         </h2>
                         <MdOutlineClose
-                            className='cursor-pointer'
+                            className='close-img'
                             size='24'
                             onClick={ state.onCloseWindowSettings }
                         />
