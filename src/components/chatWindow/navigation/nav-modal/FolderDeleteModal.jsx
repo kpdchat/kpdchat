@@ -1,7 +1,7 @@
 import React from "react"
 import { MdClose } from "react-icons/md";
-import { useDispatch, useSelector } from 'react-redux'
-import { setModalClose } from "../../../../store/actions/uiActions"
+import { useDispatch, useSelector } from 'react-redux';
+import { setModalClose } from "../../../../store/actions/uiActions";
 import { fetchDeleteFolder } from "../../../../store/actions/folderActions";
 import { selectDeleteFolder } from "../../../../store/selectors";
 import { useTranslation } from 'react-i18next';
@@ -9,16 +9,16 @@ import { useTranslation } from 'react-i18next';
 
 
 export default function FolderDeleteModal() {
-    const { t } = useTranslation()
-    const dispatch = useDispatch()
-    const deleteFolder = useSelector(selectDeleteFolder)
+    const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const deleteFolder = useSelector(selectDeleteFolder);
     function onCloseClick() {
-        dispatch(setModalClose())
+        dispatch(setModalClose());
     }
 
     function onDeleteClick() {
-        dispatch(fetchDeleteFolder(deleteFolder))
-        dispatch(setModalClose())
+        dispatch(fetchDeleteFolder(deleteFolder));
+        dispatch(setModalClose());
     }
 
     return (
@@ -28,7 +28,7 @@ export default function FolderDeleteModal() {
                     <h3 className="text-inter-18-600">
                         {t('addFolder.deleteFolderTitle')}</h3>
                     <MdClose size={24}
-                        className='cursor-pointer'
+                        className='close-img cursor-pointer'
                         onClick={onCloseClick} />
                 </div>
                 <p className='text-inter-18-400'>

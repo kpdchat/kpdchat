@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import ChatKebab from "./chat-kebab/ChatKebab";
 import { useSelector } from "react-redux";
 import { useTranslation } from 'react-i18next';
-import { useKebabClick } from "../../../extra/hooks/useKebabClick"
+import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
 import { getStyleKebab } from "../../../extra/config/getStyleKebab";
 
 export default function DialogItem({ chat, index }) {
-    const type = 'onContextChat'
-    const [style, setStyle] = useState('')
-    const { isActiveFolderKebab } = useSelector(selectUi)
-    const list = useSelector(selectRenderChatList)
-    const { t } = useTranslation()
-    const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type)
+    const type = 'onContextChat';
+    const [style, setStyle] = useState('');
+    const { isActiveFolderKebab } = useSelector(selectUi);
+    const list = useSelector(selectRenderChatList);
+    const { t } = useTranslation();
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type);
 
 
     //!!!! i need all comments in this component!!!!!!!
@@ -26,9 +26,9 @@ export default function DialogItem({ chat, index }) {
     // }
 
     function onContextClick(e) {
-        const styleKebab = getStyleKebab(list, index, e)
-        setStyle(styleKebab)
-        onKebabClick()
+        const styleKebab = getStyleKebab(list, index, e);
+        setStyle(styleKebab);
+        onKebabClick();
     }
 
     return (

@@ -37,8 +37,10 @@ export default function GettingUniqueKey({uniKey}) {
                             <div className='buttons-copy__copy'>
                                 <button
                                     onClick={ state.handleCopyChange }
-                                    className={ !state.copyActive ? 'buttons active-copy' : 'buttons inactive-copy' }
-                                >
+                                    className={ `buttons ${ !state.copyActive
+                                        ? 'active-button'
+                                        : 'inactive-button' }`
+                                    }>
                                     { t('registration.button-copy') }
                                 </button>
                             </div>
@@ -46,9 +48,9 @@ export default function GettingUniqueKey({uniKey}) {
                             <div className='buttons-copy__enter'>
                                 <button
                                     onClick={ state.handleEnterChange }
-                                    className={ state.copyActive
-                                        ? 'buttons active-enter'
-                                        : 'buttons inactive-enter'
+                                    className={ `buttons ${ state.copyActive
+                                        ? 'active-button'
+                                        : 'inactive-button' }`
                                     }>
                                     { t('registration.button-sign-in') }
                                 </button>

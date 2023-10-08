@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     gap: 100px;
+    background-color: var(--color-white-black);
 
     &__block {
         // .registration__block
@@ -29,8 +30,8 @@
                     .default {
                         width: 40px;
                         padding: 8px;
-                        color: $color-text-grey;
-                        background-color: $color-white;
+                        color: var(--color-lightDarkGrey-white);
+                        background-color: var(--color-white-black);
                         border-radius: 8px;
                         border: 0 solid;
                         cursor: pointer;
@@ -58,7 +59,7 @@
 
                     h2 {
                         font-weight: $f-weight-300;
-                        color: $color-black;
+                        color: var(--color-white-grey);
                         font-family: $font-lexend;
                         font-size: 24px;
                         font-style: normal;
@@ -66,7 +67,7 @@
                         letter-spacing: 1.2px;
 
                         span {
-                            color: $color-black;
+                            color: var(--color-white-grey);
                             font-family: $font-lexend;
                             font-size: 24px;
                             font-style: normal;
@@ -82,6 +83,7 @@
                     text-align: center;
                     margin: 20px 0 16px;
                     font-family: $font-inter;
+                    color: var(--color-black-white);
 
                     p {
                         font-size: 18px;
@@ -96,33 +98,39 @@
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    border: 1px solid $color-blue;
-                    border-radius: 16px;
+                    border: 1px solid var(--form-input-border-color);
+                    border-radius: 8px;
                     position: relative;
+                    background-color: var(--form-input-border-color);
 
                     textarea {
                         resize: none;
                         max-height: 80px;
+                        border-radius: 8px;
+                        background-color: var(--color-white-black);
 
                         &:valid,
                         &:invalid {
                             font-family: $font-inter;
                             border: 2px solid transparent;
                             outline: none;
-                            font-size: 18px;
+                            font-size: 16px;
                             width: 100%;
-                            border-radius: 16px;
+                            border-radius: 8px;
                             padding: 16px 28px;
+                            color: var(--color-darkGrey-white);
                         }
 
                         &:focus {
-                            border: 2px solid #3E3890;
+                            border: 2px solid var(--form-input-border-color);
                             outline: none;
                             box-shadow: none;
+                            border-radius: 8px;
+
                         }
 
                         &::placeholder {
-                            color: $color-light-black;
+                            color: var(--color-darkGrey-white);
                         }
                     }
 
@@ -135,6 +143,7 @@
                         display: flex;
                         justify-content: center;
                         background-color: rgba(255, 255, 255, 0.5);
+                        border-radius: 8px;
                     }
 
                     .loading-key {
@@ -159,7 +168,7 @@
                     .enter {
                         &__title {
                             // .enter__title
-                            color: $color-text-grey;
+                            color: var(--color-lightDarkGrey-white);
                             font-family: $font-lexend;
                             font-size: 18px;
                             font-weight: $f-weight-700;
@@ -170,7 +179,7 @@
 
                         &__description {
                             // .enter__description
-                            color: $color-blue;
+                            color: var(--enter-description-color);
                             line-height: 140%;
                             letter-spacing: 0.36px;
                             margin-bottom: 16px;

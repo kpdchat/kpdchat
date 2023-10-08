@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect'
 
 export const selectUi = state => state.ui
-export const selectModal = state => state.ui.isModal
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 export const selectUser = state => state.user.user
@@ -13,7 +12,6 @@ export const selectListName = state => state.chat.listName
 export const selectLeaveChat = state => state.chat.leaveChat
 export const selectJoinChat = state => state.chat.joinChat
 export const selectChat = state => state.chat.selectChat
-
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
@@ -67,4 +65,3 @@ export const selectFolderToDeleteFrom = createSelector(
         return updateFolder
     }
 )
-

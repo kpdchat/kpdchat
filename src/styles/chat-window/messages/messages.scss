@@ -14,7 +14,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 11px 4% 11px 2%;
-        border-bottom: 1px solid $color-border-light-gray;
+        border-bottom: var(--border-right);
+        background-color: var(--color-white-black);
     }
 
     &__dialog-name {
@@ -32,6 +33,7 @@
         // .messages__dialog-info
         white-space: nowrap;
         margin-left: 12px;
+        color: var(--color-darkGrey-white);
 
         p {
             margin-top: 4px;
@@ -55,6 +57,7 @@
         // .messages__info
         margin-left: 12px;
         position: relative;
+
         img {
             width: 20px;
             height: 20px;
@@ -64,7 +67,7 @@
     &__window-mes {
         // .messages__window-mes
         flex: 1 1 auto;
-        background: url(../../../images/chat-window/background-chat.png) 50% / cover no-repeat;
+        background: var(--window-message-background);
         overflow-x: hidden;
     }
 
@@ -72,7 +75,8 @@
         // .messages__input-mes
         width: 100%;
         padding: 20px 24px;
-        border-top: 1px solid $color-border-light-gray;
+        border-top: var(--border-right);
+        background-color: var(--color-white-black);
     }
 }
 
@@ -111,7 +115,7 @@
 
         h3 {
             margin-left: 18px;
-            color: $color-black;
+            color: var(--color-darkGrey-white);
         }
     }
 
@@ -127,6 +131,7 @@
     }
 
     &__kebab {
+        // .another__kebab
         position: relative;
         align-self: center;
     }
@@ -134,7 +139,7 @@
     &__text {
         // .another__text
         border-radius: 0 8px 8px 8px;
-        background: $color-white;
+        background: var(--backColor-white-grey);
         padding: 10px;
         min-width: 300px;
         display: flex;
@@ -146,12 +151,12 @@
         }
 
         .text-inter-16-400 {
-            color: $color-black;
+            color: var(--color-darkGrey-white);
         }
 
         span {
             text-align: right;
-            color: $color-text-grey;
+            color: var(--color-darkGrey-white);
             margin-top: 3px;
         }
     }
@@ -164,6 +169,7 @@
         align-items: center;
         justify-content: flex-end;
         margin-bottom: 8px;
+        color: var(--color-darkGrey-white);
 
         img {
             margin-left: 18px;
@@ -190,40 +196,46 @@
     &__text {
         // .self__text
         border-radius: 8px 0 8px 8px;
-        background: $color-violet;
+        background: var(--message-self-text-back-color);
         padding: 10px;
         min-width: 300px;
         display: flex;
         flex-direction: column;
 
         .text-inter-16-400 {
-            color: $color-light-white;
+            color: $color-white;
         }
 
         .text-inter-12-400 {
             text-align: right;
-            color: $color-light-white;
+            color: $color-white;
             margin-top: 3px;
         }
     }
 }
+
 .input-mes {
+
     form {
         display: flex;
+
         .text-inter-16-400 {
             width: 100%;
             max-height: 80px;
             border: none;
             resize: none;
             border-radius: 8px;
-            background: $color-grey;
+            background: var(--color-lightGrey-grey);
             padding: 10px 15px;
             line-height: 21.6px;
+            color: var(--color-darkGrey-white);
+
             &:focus {
-                outline: 1px solid $color-light-violet;
-                background-color: $color-white;
+                outline: var(--messages-input-focus-outline);
+                background-color: var(--backColor-white-grey);
             }
         }
+
         button {
             border: none;
             margin-left: 16px;
@@ -232,7 +244,11 @@
             width: 29px;
             height: 29px;
             align-self: flex-end;
-            background: $color-light-violet url("../../../images/chat-window/send.png") center no-repeat;
+            background: $color-violet url("../../../images/chat-window/send.png") center no-repeat;
+        }
+
+        .active-write-messages {
+            background: #201C59 url("../../../images/chat-window/send.png") center no-repeat;
         }
     }
 }

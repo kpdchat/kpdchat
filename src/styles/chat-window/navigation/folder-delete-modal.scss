@@ -1,11 +1,12 @@
 .folder-delete {
     &__content {
+        // .folder-delete__content
         width: 480px;
         padding: 24px;
-        background-color: $color-white;
-        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        background-color: var(--color-white-black);
+        box-shadow: var(--boxShadow-color);
         border-radius: 8px;
-        color: $color-black;
+        color: var(--color-white-grey);
 
         button {
             width: 100%;
@@ -17,6 +18,10 @@
             border: none;
             color: $color-white;
             line-height: 24.3px;
+
+            &:hover {
+                background: #201C59;
+            }
         }
 
         .text-inter-18-400 {
@@ -26,6 +31,7 @@
     }
 
     &__header {
+        // .folder-delete__header
         display: flex;
         justify-content: space-between;
         margin-bottom: 16px;

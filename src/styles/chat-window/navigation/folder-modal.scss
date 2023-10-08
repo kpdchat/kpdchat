@@ -4,38 +4,37 @@
     align-items: center;
 
     &__content {
-        //.folder-modal__content
+        // .folder-modal__content
         width: 480px;
         padding: 24px;
-        background-color: $color-white;
-        box-shadow: 1px 1px 4px 0px $box-shadow-modal-color;
+        background-color: var(--color-white-black);
+        box-shadow: var(--boxShadow-color);
         border-radius: 8px;
     }
 
     &__header {
-        //.folder-modal__header
-        color: $color-black;
+        // .folder-modal__header
+        color: var(--color-white-grey);
         display: flex;
         justify-content: space-between;
         margin-bottom: 16px;
 
         .text-inter-18-600 {
-            color: $color-black;
+            color: var(--color-white-grey);
         }
     }
 }
 
 .form {
     &__name-container {
-        //.form__name-container
+        // .form__name-container
         display: flex;
         position: relative;
         padding: 8px;
-
     }
 
     &__icon-chose {
-        //.form__icon-chose
+        // .form__icon-chose
         display: flex;
         width: 56px !important;
         height: 56px;
@@ -47,13 +46,14 @@
     }
 
     &__folder-name {
-        //.form__folder-name
+        // .form__folder-name
         margin-left: 8px;
         width: 352px;
         padding: 0 16px;
         border-radius: 8px;
         border: 1px solid transparent;
-        background: $color-grey;
+        background: var(--color-lightGrey-grey);
+        color: var(--color-white-grey);
 
         &:focus-visible {
             outline: 1px solid $color-border-light-gray;
@@ -61,38 +61,38 @@
     }
 
     &__icon {
-        //.form__icon
+        // .form__icon
         padding: 8px;
         width: 100%;
         border-radius: 8px;
-        background: $background-active-lilac;
+        background: var(--color-violet-black);
         display: flex;
         justify-content: space-between;
         position: absolute;
         top: 0;
-        left: 0px;
+        left: 0;
     }
 
     &__error {
-        //.form__error
+        // .form__error
         color: $color-red;
         margin-left: 72px;
     }
 
     &__search-chat {
-        //.form__search-chat
-        margin: 16px 0;
+        // .form__search-chat
+        margin-bottom: 16px;
         width: 100%;
         background: url(../../../images/chat-window/search.svg) 15px no-repeat;
         border: none;
         padding-left: 52px;
         height: 56px;
-        border-bottom: 1px solid #8a8a98;
-        color: $color-black;
+        border-bottom: var(--modal-folder-search-borderBottom-color);
+        color: var(--color-white-grey);
 
         &:focus-visible {
             outline: none;
-            border-bottom: 1px solid $color-black;
+            border-bottom: var(--modal-folder-search-borderBottomFocus-color);
         }
     }
 
@@ -107,10 +107,11 @@
     }
 
     &__chat-container {
-        //.form__chat-container
+        // .form__chat-container
         margin-bottom: 16px;
         height: 349px;
         overflow-x: hidden;
+
         @media screen and (max-height: 790px) {
             height: 200px;
         }
@@ -123,17 +124,23 @@
     ul {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
     }
 
     &__chat {
-        //.form__chat
+        // .form__chat
+
+        &:hover {
+            background-color: rgba(171, 168, 212, 0.20);
+            border-radius: 8px;
+        }
+
         label {
             display: flex;
             align-items: center;
             position: relative;
+            padding: 8px;
         }
-
 
         .flex-container {
             align-items: center;
@@ -147,7 +154,7 @@
         }
 
         .text-inter-18-600 {
-            color: $color-black;
+            color: var(--color-white-grey);
             line-height: 24.3px;
             margin-left: 16px;
         }
@@ -163,37 +170,35 @@
                     content: '';
                     display: block;
                     width: 52px;
-                    height: 52px;
+                    height: 66px;
                     position: absolute;
                     top: 0;
                     right: 0;
                     cursor: pointer;
                     background: url(../../../images/chat-window/add-folder-icon.png) center no-repeat;
-
                 }
             }
         }
     }
 
     &__chat-count {
-        //.form__chat-count 
-        color: $color-violet;
+        // .form__chat-count
+        color: var(--modal-form-chatCount-color);
         margin-bottom: 16px;
     }
 }
 
 .icon {
-    display: block;
-    color: $color-violet;
+    color: var(--color-lavender-white);
     display: flex;
     width: 56px;
     height: 56px;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    background: $color-white;
+    background: var(--backColor-white-grey);
 
     &:hover {
-        outline: 2px solid $color-violet;
+        outline: var(--modal-icon-outline-color);
     }
 }

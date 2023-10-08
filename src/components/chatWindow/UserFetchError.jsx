@@ -16,16 +16,15 @@ export default function UserFetchError() {
     }
 
     return (
-        <div className="modal-container warning">
-            <div className="warning__content">
-                <p className="text-inter-16-400">
-                    {t('global.error')}
+        <div className='modal-container warning'>
+            <div className='warning__content'>
+                <p className='text-inter-16-400'>
+                    { t('global.error') }
                 </p>
                 <button
-                    className="text-inter-18-600 cursor-pointer"
-                    onClick={onCloseClick}>
-                    {t('addFolder.understand')}</button>
-
+                    className='text-inter-18-600 cursor-pointer'
+                    onClick={ onCloseClick }>
+                    { t('addFolder.understand') }</button>
             </div>
         </div>
     )

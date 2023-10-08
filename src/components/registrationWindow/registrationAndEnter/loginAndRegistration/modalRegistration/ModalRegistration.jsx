@@ -17,7 +17,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
         <>
             <div className='authorization__modal-content content'>
                 <div className='content__close'>
-                    <MdOutlineClose className='close' onClick={ onClose } />
+                    <MdOutlineClose className='close-registration-img cursor-pointer' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>
@@ -42,7 +42,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         <div className='modal-form__data'>
                         <textarea
                             maxLength='2000'
-                            className={ ` scroll-bar ${ state.errors.profilePictureLink ? 'invalid' : '' }` }
+                            className='scroll-bar'
                             rows='1'
                             placeholder={ t('registration.input-pictureLink') }
                             ref={ state.profilePictureLinkRef }

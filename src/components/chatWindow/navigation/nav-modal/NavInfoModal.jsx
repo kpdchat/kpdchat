@@ -2,9 +2,11 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {setModalClose} from '../../../../store/actions/uiActions';
 import {MdOutlineClose} from 'react-icons/md';
+import {useTranslation} from 'react-i18next';
 
 export default function NavInfoModal() {
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     function onCloseClick() {
         dispatch(setModalClose());
@@ -16,10 +18,10 @@ export default function NavInfoModal() {
                 <div className='info-about__text text'>
                     <div className='text__title'>
                         <h2 className='text-inter-18-600'>
-                            Особливості KPD Chat
+                            { t('infoAbout.title') }
                         </h2>
                         <MdOutlineClose
-                            className='cursor-pointer'
+                            className='close-img cursor-pointer'
                             size='24'
                             onClick={ onCloseClick }
                         />
@@ -27,21 +29,15 @@ export default function NavInfoModal() {
 
                     <div className='text__description'>
                         <p className='text-inter-14-400'>
-                            KPD Chat - веб додаток де будь-хто може приєднатися до обговорення різних тем,
-                            використовуючи лише ім’я користувача(без авторизації). В додатку ви можете спілкуватися
-                            більше ніж з двома користувачами, надсилати їм повідомлення, відповідати на їх повідомлення.
+                            { t('infoAbout.subtitle') }
                         </p>
 
-                        <p className='text-inter-14-400 mt-16px'>Основні функції:</p>
+                        <p className='text-inter-14-400 mt-16px'>{ t('infoAbout.functions') }</p>
 
                         <ul className='text-inter-14-400'>
-                            <li>забезпечує швидший час відповіді та покращує взаємодію користувачів між собою.</li>
-                            <li> чат привчає людей проявляти емпатію, надсилання шкидливих і образливих повідомлень не
-                                вітається.
-                            </li>
-                            <li>Кімнати чатів: онлайн-форуми або платформи, де користувачі можуть брати участь у
-                                групових дискусіях на певні теми чи спільні інтереси
-                            </li>
+                            <li>{ t('infoAbout.func1') }</li>
+                            <li>{ t('infoAbout.func2') }</li>
+                            <li>{ t('infoAbout.func3') }</li>
                         </ul>
                     </div>
                 </div>
