@@ -21,7 +21,7 @@ export default function NavInfoModal() {
                             { t('infoAbout.title') }
                         </h2>
                         <MdOutlineClose
-                            className='close-img'
+                            className='close-img cursor-pointer'
                             size='24'
                             onClick={ onCloseClick }
                         />

@@ -28,7 +28,7 @@ export default function DeleteFromFolderModal() {
                         {t('chat-context-menu.deleteFromFolder')}</h3>
                     <MdClose
                         size={24}
-                        className='close-img'
+                        className='close-img cursor-pointer'
                         onClick={onCloseClick} />
                 </div>
                 <p className='text-inter-18-400'>

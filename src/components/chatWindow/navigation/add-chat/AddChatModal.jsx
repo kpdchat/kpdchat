@@ -52,7 +52,7 @@ export default function AddChatModal() {
             <div className="chat-modal__content">
                 <div className="chat-modal__header">
                     <h3 className="text-inter-18-600">{t('addChat.createChat')}</h3>
-                    <MdOutlineClose className="close-img"
+                    <MdOutlineClose className="close-img cursor-pointer"
                         size={24}
                         onClick={() => {
                             dispatch(setModalClose());

@@ -32,7 +32,7 @@ export default function ChatOutModal() {
                 <div className="modal-chat__header">
                     <h3 className="text-inter-18-600">{t('chat-context-menu.exitChat')}</h3>
                     <MdClose
-                        className="modal-chat__close close-img"
+                        className="modal-chat__close close-img cursor-pointer"
                         size={24}
                         onClick={onCloseClick} />
                 </div>

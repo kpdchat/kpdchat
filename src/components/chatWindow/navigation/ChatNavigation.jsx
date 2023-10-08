@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MdOutlineTextsms, MdOutlineDarkMode, MdOutlineFolderShared, MdOutlineWbSunny } from 'react-icons/md';
+import { MdOutlineTextsms, MdOutlineFolderShared, } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectListName, selectUi, selectUser } from '../../../store/selectors';
@@ -18,7 +18,7 @@ import AddFolderModal from './add-folder/AddFolderModal';
 import DeleteFromFolderModal from './nav-modal/DeleteFromFolderModal';
 import SettingsModal from './nav-modal/settings-modal/SettingsModal';
 import NavInfoModal from './nav-modal/NavInfoModal';
-import useTheme from '../../../extra/hooks/useTheme';
+import NavTheme from './NavTheme';
 
 export default function ChatNavigation() {
     const { t } = useTranslation();
@@ -26,7 +26,6 @@ export default function ChatNavigation() {
     const listName = useSelector(selectListName);
     const { isModal, modalId } = useSelector(selectUi);
     const dispatch = useDispatch();
-    const { themeChange, setThemeChange, onSubmitThemeToServer } = useTheme();
 
     function onPublicChatClick() {
         dispatch(setRenderListName('publicChats'));
@@ -38,14 +37,6 @@ export default function ChatNavigation() {
 
     function onContextClick(e) {
         e.preventDefault()
-    }
-
-    function handleLightTheme() {
-        setThemeChange('light');
-    }
-
-    function handleDarkTheme() {
-        setThemeChange('dark');
     }
 
     useEffect(() => {
@@ -93,12 +84,7 @@ export default function ChatNavigation() {
                 <div className='navigation__settings settings'>
                     <NavSettings />
                     <NavInfo />
-                    <div onClick={ onSubmitThemeToServer }>
-                        { themeChange === 'light'
-                            ? <MdOutlineDarkMode size={ 35 } className='cursor-pointer' onClick={handleDarkTheme}/>
-                            : <MdOutlineWbSunny size={ 35 } className='cursor-pointer' onClick={handleLightTheme}/>
-                        }
-                    </div>
+                    <NavTheme />
                 </div>
                 {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
                 {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}

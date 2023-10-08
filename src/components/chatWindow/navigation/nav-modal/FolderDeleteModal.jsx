@@ -28,7 +28,7 @@ export default function FolderDeleteModal() {
                     <h3 className="text-inter-18-600">
                         {t('addFolder.deleteFolderTitle')}</h3>
                     <MdClose size={24}
-                        className='close-img'
+                        className='close-img cursor-pointer'
                         onClick={onCloseClick} />
                 </div>
                 <p className='text-inter-18-400'>

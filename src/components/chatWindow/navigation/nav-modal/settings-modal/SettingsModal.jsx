@@ -22,7 +22,7 @@ export default function SettingsModal() {
                             { t('settingsUser.settings') }
                         </h2>
                         <MdOutlineClose
-                            className='close-img'
+                            className='close-img cursor-pointer'
                             size='24'
                             onClick={ state.onCloseWindowSettings }
                         />

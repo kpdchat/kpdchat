@@ -68,7 +68,7 @@
 
     &__title {
         // .chat-modal__title
-        padding-bottom: 6px;
+        padding: 0 0 6px 0;
         width: 353px;
         border: none;
         border-bottom: var(--border-color-lavender-white);
@@ -85,7 +85,7 @@
         max-height: 60px;
         border: none;
         resize: none;
-        padding-bottom: 6px;
+        padding: 0 0 6px 0;
         width: 353px;
         border-bottom: var(--border-color-lavender-white);
         background-color: var(--color-white-black);

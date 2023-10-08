@@ -7,7 +7,7 @@ import useTheme from './extra/hooks/useTheme';
 
 export default function App() {
     const dispatch = useDispatch();
-    const {themeChange} = useTheme();
+    const { themeChange } = useTheme();
 
     useEffect(() => {
         const userInLocalStorage = localStorage.getItem('user');

@@ -2,7 +2,6 @@ import {useLayoutEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectUser} from '../../store/selectors';
 import {fetchUpdateUser} from '../../store/actions/userActions';
-// import {theme} from '../config/theme'
 
 const isDarkTheme = window?.matchMedia('(prefers-color-scheme: dark)').matches;
 const defaultTheme = isDarkTheme ? 'dark' : 'light';

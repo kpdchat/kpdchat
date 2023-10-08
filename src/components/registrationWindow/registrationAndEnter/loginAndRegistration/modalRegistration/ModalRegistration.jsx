@@ -17,7 +17,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
         <>
             <div className='authorization__modal-content content'>
                 <div className='content__close'>
-                    <MdOutlineClose className='close-registration-img' onClick={ onClose } />
+                    <MdOutlineClose className='close-registration-img cursor-pointer' onClick={ onClose } />
                 </div>
 
                 <form onSubmit={ state.onFormSubmit }>

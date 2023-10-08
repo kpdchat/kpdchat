@@ -97,7 +97,7 @@ export default function AddFolderModal() {
                         {editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}
                     </h3>
                     <MdOutlineClose
-                        className="close-img"
+                        className="close-img cursor-pointer"
                         size={24}
                         onClick={() => {
                             dispatch(setModalClose());
