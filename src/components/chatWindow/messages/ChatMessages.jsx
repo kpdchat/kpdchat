@@ -1,58 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import MessageTitle from './MessageTitle'
 import MessageSearch from './MessageSearch'
 import MessageSendForm from './MessageSendForm'
 import MesDate from "./mes-messages/MesDate";
 import SelfMessage from "./mes-messages/SelfMessage";
 import AnotherMessage from "./mes-messages/AnotherMessage";
-import { useSelector } from "react-redux";
-import { selectIsWindowStart } from "../../../store/selectors";
-const messages = [
-    {
-        id: 1,
-        userId: 1,
-        userName: 'lola',
-        text: '  Lorem ipsum dolor  sit amet consectetur adipisicing elit. Debitis eum a possimus, voluptate magni, eaque odio culpa harum neque, eos commodi laudantium dignissimos labore quas! Cum dolor ut saepe nisi dicta pariatur officia error est vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
-    },
-    {
-        id: 2,
-        userId: 2,
-        userName: 'oleh',
-        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
-    },
-    {
-        id: 3,
-        userId: 4,
-        userName: 'sou-chan',
-        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
-    },
-    {
-        id: 4,
-        userId: 8,
-        userName: 'Alisha66',
-        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum',
-    },
-    {
-        id: 5,
-        userId: 1,
-        userName: 'lola',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis eum a possimus, voluptate magni, eaque odio culpa harum neque, eos commodi laudantium dignissimos labore quas! Cum dolor ut saepe nisi dicta pariatur officia error est vitae nulla. Iste nostrum expeditficiis perferendis suscipit earum! Ullam inventore earum repudiandae obcaecati culpa voluptatibus harum dolorem? Possimus fuga qui aperiam ipsam tenetur quos, laudantium ipsa.',
-    },
-    {
-        id: 6,
-        userId: 8,
-        userName: 'Alisha66',
-        text: 'Lorem ipsum dolo vitae nulla. Iste nostrum',
-    },
-]
+import { useDispatch, useSelector } from "react-redux";
+import { selectDataForMessages, selectIsWindowStart } from "../../../store/selectors";
+import { useEffect } from "react";
+import { fetchRenderChat } from "../../../store/actions/messageAction";
+
+
 export default function ChatMessages() {
-    const [list, setList] = useState(messages)
+    const { user, id, chat } = useSelector(selectDataForMessages)
     const isStartWindow = useSelector(selectIsWindowStart)
+    const dispatch = useDispatch()
 
-    function onMessageSend(message) {
-        setList([...list, message])
-    }
-
+    useEffect(() => {
+        if(id !== 0) {
+           dispatch(fetchRenderChat(id)) 
+        }
+    }, [user, id, dispatch])
     return (
         <>
             <section className={isStartWindow ? 'chat__messages messages' : "display-none"}>
@@ -71,13 +39,13 @@ export default function ChatMessages() {
                 </div>
                 <div className="messages__window-mes window-mes scroll-bar">
                     <MesDate />
-                    {list
-                        .map(message => message.userId === 1
+                    {id ? chat?.messages?.map(message => message?.userProfile?.id === user.id
                             ? <SelfMessage key={message.id} message={message} />
-                            : <AnotherMessage key={message.id} message={message} />)}
+                            : <AnotherMessage key={message.id} message={message} />) : "Повідомлень немає"}
+                        
                 </div>
                 <div className="messages__input-mes input-mes">
-                    <MessageSendForm onMessageSend={onMessageSend} />
+                    <MessageSendForm />
                 </div>
             </section>
         </>

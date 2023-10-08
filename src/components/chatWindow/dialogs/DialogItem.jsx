@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
 import { getStyleKebab } from "../../../extra/config/getStyleKebab";
-import { deleteStartWindow } from "../../../store/actions/messageAction";
+import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messageAction";
+import { getMessageTime } from "../../../extra/config/getTime";
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
@@ -16,15 +17,16 @@ export default function DialogItem({ chat, index }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type)
     const dispatch = useDispatch()
 
-    //!!!! i need all comments in this component!!!!!!!
+    const sentAt = getSentTime()
 
-    // const time = chat?.lastMessage?.sentAt?.split('+')[0]
-    // const date = new Date(time)
-    // const today = new Date().toLocaleDateString()
-    // let sentAt = date.getHours() + ':' + date.getMinutes()
-    // if (today !== date.toLocaleDateString()) {
-    //     sentAt = date.toLocaleDateString('uk-UA', {weekday: 'short',})
-    // }
+    function getSentTime() {
+        if (!chat.lastMessage) {
+            return
+        }
+        const messageTime = getMessageTime(chat.lastMessage.sentAt)
+        return messageTime
+    }
+
 
     function onContextClick(e) {
         const styleKebab = getStyleKebab(list, index, e)
@@ -33,6 +35,7 @@ export default function DialogItem({ chat, index }) {
     }
     function onChatClick() {
         dispatch(deleteStartWindow())
+        dispatch(setRenderChatId(chat.id))
     }
 
     return (
@@ -54,7 +57,7 @@ export default function DialogItem({ chat, index }) {
                 </div>
             </div>
             <div className="list__data">
-                {/* <span className='list__time text-inter-12-400'>{chat?.lastMessage?.sentAt ? sentAt : ''}</span> */}
+                <span className='list__time text-inter-12-400'>{chat?.lastMessage?.sentAt ? sentAt : ''}</span>
                 {/* <span className='list__new-count text-inter-12-400'>12</span> */}
             </div>
             {isOpen && idKebab === 'chat' + chat.id &&

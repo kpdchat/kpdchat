@@ -5,7 +5,7 @@ export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 
 export const selectUser = state => state.user.user
-export const selectUserError =  state => state.user.userError
+export const selectUserError = state => state.user.userError
 
 export const selectUi = state => state.ui
 export const selectOpenChat = state => state.ui.isOpenChat
@@ -18,6 +18,8 @@ export const selectJoinChat = state => state.chat.joinChat
 export const selectChat = state => state.chat.selectChat
 
 export const selectIsWindowStart = state => state.message.isStartWindow
+export const selectRenderChatId = state => state.message.chatId
+export const selectRenderChat = state => state.message.renderChat
 
 
 export const selectEditFolderForForm = createSelector(
@@ -73,3 +75,15 @@ export const selectFolderToDeleteFrom = createSelector(
     }
 )
 
+export const selectDataForMessages = createSelector(
+    selectUser,
+    selectRenderChatId,
+    selectRenderChat,
+    (user, id, chat) => {
+        return {
+            user,
+            id,
+            chat
+        }
+    }
+)

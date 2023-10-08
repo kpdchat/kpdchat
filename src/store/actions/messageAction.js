@@ -1,11 +1,35 @@
+import axios from "axios"
+
 export const ACTION_SET_START_WINDOW = 'ACTION_SET_START_WINDOW'
 export const ACTION_DELETE_START_WINDOW = 'ACTION_DELETE_START_WINDOW'
+export const ACTION_SET_RENDER_CHAT = 'ACTION_SET_RENDER_CHAT'
+export const ACTION_SET_RENDER_CHAT_ID = 'ACTION_SET_RENDER_CHAT_ID'
 
+
+export function fetchRenderChat(id) {
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(`https://kpdchat.onrender.com/api/chats?id=${id}`)
+            dispatch(setRenderChat(data))
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
+
+
+export function setRenderChat(chat) {
+    return { type: ACTION_SET_RENDER_CHAT, payload: chat }
+}
+
+export function setRenderChatId(id) {
+    return { type: ACTION_SET_RENDER_CHAT_ID, payload: id }
+}
 
 export function setStartWindow() {
-    return { type: ACTION_SET_START_WINDOW}
+    return { type: ACTION_SET_START_WINDOW }
 }
 
 export function deleteStartWindow() {
-    return { type: ACTION_DELETE_START_WINDOW}
+    return { type: ACTION_DELETE_START_WINDOW }
 }

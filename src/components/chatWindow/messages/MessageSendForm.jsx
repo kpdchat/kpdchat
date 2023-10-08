@@ -2,10 +2,14 @@ import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 
 
-export default function MessageSendForm({ onMessageSend }) {
+export default function MessageSendForm() {
     const [text, setText] = useState('')
     const { t } = useTranslation()
     const textareaRef = useRef()
+    //in seconds
+    // const timeSnap = Date.now()
+    // console.log(Math.round(timeSnap / 1000)
+    // );
 
     function onTextareaInput(e) {
         textareaRef.current.style.height = 'auto'
@@ -18,20 +22,21 @@ export default function MessageSendForm({ onMessageSend }) {
         if (!text) {
             return
         }
-        const message = {
-            id: Math.random(),
-            userId: 1,
-            userName: 'lola',
-            text,
-        }
-        onMessageSend(message)
+
         setText('')
         textareaRef.current.style.height = 'auto'
     }
 
     return (
         <form onSubmit={onFormSubmit}>
-            <textarea ref={textareaRef} rows="1" onInput={onTextareaInput} value={text} className='text-inter-16-400 scroll-bar' type="text" placeholder={t('global.text-message')} />
+            <textarea
+                ref={textareaRef}
+                rows="1"
+                onInput={onTextareaInput}
+                value={text}
+                className='text-inter-16-400 scroll-bar'
+                type="text"
+                placeholder={t('global.text-message')} />
             <button type='submit'></button>
         </form>
     )

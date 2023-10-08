@@ -31,6 +31,9 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        @include max-screen(940px) {
+            gap: 13px;
+        }
     }
 }
 
@@ -50,7 +53,7 @@
         color: $color-white;
 
         @include max-screen(940px) {
-            gap: 16px;
+            gap: 13px;
         }
     }
 
@@ -117,6 +120,9 @@
         //.folders__public-container
         border-top: 1px solid $color-light-white;
         padding: 8px 4px;
+        @include max-screen(940px) {
+            padding: 4px;
+        }
 
     }
 

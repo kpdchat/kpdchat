@@ -1,11 +1,13 @@
 import React from "react"
-import user_photo from '../../../../images/chat-window/user-photo.png'
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageSelfKebab from "../mes-kebab/MessageSelfKebab"
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
+import { getMessageTime } from "../../../../extra/config/getTime";
+
 
 export default function SelfMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
+    const sentAt = getMessageTime(message.sentAt)
 
     function onMessageKebabClick(e) {
         onKebabClick(e)
@@ -14,8 +16,13 @@ export default function SelfMessage({ message }) {
     return (
         <div className="window-mes__self self">
             <div className="self__title">
-                <h3 className='text-inter-18-600'>{message.userName}</h3>
-                <img className='chat-img' src={user_photo} alt="" />
+                <h3 className='text-inter-18-600'>
+                    {message.userProfile.nickname}
+                </h3>
+                <img
+                    className='chat-img'
+                    src={message.userProfile.profilePictureLink}
+                    alt="" />
             </div>
             <div className="self__message" >
                 <div className="self__kebab">
@@ -28,7 +35,7 @@ export default function SelfMessage({ message }) {
 
                 <div className="self__text">
                     <p className='text-inter-16-400'>{message.text}</p>
-                    <span className='text-inter-12-400'>12:28</span>
+                    <span className='text-inter-12-400'>{sentAt}</span>
 
                 </div>
             </div>
