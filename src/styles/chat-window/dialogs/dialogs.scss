@@ -64,7 +64,7 @@
 
         &:hover {
             border-radius: 8px;
-            background: var(--list-dialog-hover-back-color);
+            background: var(--color-lightGrey-violet);
         }
     }
 
@@ -146,5 +146,5 @@
 
 .active-chat {
     border-radius: 8px;
-    background: var(--list-dialog-hover-back-color);
+    background: var(--color-lightGrey-violet);
 }

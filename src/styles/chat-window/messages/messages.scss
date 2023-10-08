@@ -33,7 +33,7 @@
         // .messages__dialog-info
         white-space: nowrap;
         margin-left: 12px;
-        color: var(--messagess-info-color);
+        color: var(--color-darkGrey-white);
 
         p {
             margin-top: 4px;
@@ -115,7 +115,7 @@
 
         h3 {
             margin-left: 18px;
-            color: var(--messagess-info-color);
+            color: var(--color-darkGrey-white);
         }
     }
 
@@ -139,7 +139,7 @@
     &__text {
         // .another__text
         border-radius: 0 8px 8px 8px;
-        background: var(--messages-input-focus-back-color);
+        background: var(--backColor-white-grey);
         padding: 10px;
         min-width: 300px;
         display: flex;
@@ -151,12 +151,12 @@
         }
 
         .text-inter-16-400 {
-            color: var(--messagess-info-color);
+            color: var(--color-darkGrey-white);
         }
 
         span {
             text-align: right;
-            color: var(--messagess-info-color);
+            color: var(--color-darkGrey-white);
             margin-top: 3px;
         }
     }
@@ -169,7 +169,7 @@
         align-items: center;
         justify-content: flex-end;
         margin-bottom: 8px;
-        color: var(--messagess-info-color);
+        color: var(--color-darkGrey-white);
 
         img {
             margin-left: 18px;
@@ -228,11 +228,11 @@
             background: var(--color-lightGrey-grey);
             padding: 10px 15px;
             line-height: 21.6px;
-            color: var(--messagess-info-color);
+            color: var(--color-darkGrey-white);
 
             &:focus {
                 outline: var(--messages-input-focus-outline);
-                background-color: var(--messages-input-focus-back-color);
+                background-color: var(--backColor-white-grey);
             }
         }
 

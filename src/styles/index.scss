@@ -33,41 +33,51 @@ code {
     --color-white-grey: #272732;
     --color-white-black: #FFF;
     --color-lightGrey-grey: #EBEAEF;
+    --color-lightGrey-violet: #EBEAEF;
     --color-lavender-white: #38328A;
     --color-darkGrey-white: #1B1F23;
+    --color-lightDarkGrey-white: #5B5B66;
+    --color-violet-black: #EAE9FF;
+    --color-black-white: #151515;
+    --color-black-grey: #151515;
+    --backColor-white-grey: #FFF;
     --border-color-lavender-white: 1px solid #38328A;
     --boxShadow-color: 1px 1px 4px 0 #706C9F;
 
+    // registration.scss
+    --form-input-border-color: #3E3890;
+    --enter-description-color: #3E3890;
+    // copy-key.scss
+    --input-copy-border: 4px solid #3E3890;
+    // modal.scss
+    --border-focus: 2px solid #3E3890;
+    --loader-back-color: rgba(255, 255, 255, 0.5);
+    // authorization.scss
+    --divider-color: #5750A8;
+    --divider-span-color: #7C7C85;
     // windowChat.scss
     --chat-navigation-background: #38328A;
     --border-right: 1px solid #ABA8D4;
     // dialogs.scss
     --list-text-p-color: #5B5B66;
-    --list-dialog-hover-back-color: #EBEAEF;
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-light.png) 50% / cover no-repeat;
     --message-self-text-back-color: #38328A;
-    --messagess-info-color: #1B1F23;
     --messages-input-focus-outline: 1px solid #5750A8;
-    --messages-input-focus-back-color: #FFF;
     // folder-kebab.scss
-    --folder-kebab-color: #5B5B66;
     --folder-kebab-hover-color: #EAE9FF;
     // static-classes.scss
     --scroll-bar-back-color: #38328A;
-    // chat-modal.scss
-    --modal-chat-content-title-back-color: #FFF;
+    --inactive-button-color: rgba(21, 21, 21, 0.60);
+    --inactive-button-border: 2px solid transparent;
     // folder-modal.scss
     --modal-folder-search-borderBottom-color: 1px solid #8A8A98;
     --modal-folder-search-borderBottomFocus-color: 1px solid #272732;
-    --modal-form-icon-back-color: #EAE9FF;
-    --modal-icon-back-color: #FFF;
     --modal-icon-outline-color: 2px solid #38328A;
     --modal-form-chatCount-color: #38328A;
     // .settings-modal.scss
     --settings-user-input-color: #272732;
     --settings-user-borderBottom: 1px solid #272732;
-    --settings-avatars-back-color: #EBEAEF;
     --settings-buttons-color: #7C7C85;
     --settings-modal-exit-back-color: #38328A;
     --settings-modal-exit-boxShadow: 1px 1px 4px 0 #706C9F;
@@ -82,41 +92,51 @@ code {
     --color-white-grey: #FFF;
     --color-white-black: #1B1F23;
     --color-lightGrey-grey: rgba(91, 91, 102, 0.65);
+    --color-lightGrey-violet: rgba(171, 168, 212, 0.20);
     --color-lavender-white: #FFF;
     --color-darkGrey-white: #FFF;
+    --color-lightDarkGrey-white: #FFF;
+    --color-violet-black: #1B1F23;
+    --color-black-white: #FFF;
+    --color-black-grey: #BBB;
+    --backColor-white-grey: rgba(91, 91, 102, 0.65);
     --border-color-lavender-white: 1px solid #FFF;
     --boxShadow-color: 1px 1px 4px 0 #38328A;
 
+    // registration.scss
+    --form-input-border-color: #BBB;
+    --enter-description-color: #FFF44F;
+    // copy-key.scss
+    --input-copy-border: 2px solid #BBB;
+    // modal.scss
+    --border-focus: 2px solid #FFF;
+    --loader-back-color: rgba(255, 255, 255, 0.1);
+    // authorization.scss
+    --divider-color: #BBB;
+    --divider-span-color: #BBB;
     // windowChat.scss
     --chat-navigation-background: linear-gradient(190deg, #38328A -40.12%, #000 199.12%);
     --border-right: 1px solid #38328A;
     // dialogs.scss
     --list-text-p-color: #BBB;
-    --list-dialog-hover-back-color: rgba(171, 168, 212, 0.20);
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-dark.png) 50% / cover no-repeat;
     --message-self-text-back-color: rgba(56, 50, 138, 0.65);
-    --messagess-info-color: #FFF;
     --messages-input-focus-outline: 1px solid #FFF;
-    --messages-input-focus-back-color: rgba(91, 91, 102, 0.65);
     // folder-kebab.scss
-    --folder-kebab-color: #FFF;
     --folder-kebab-hover-color: rgba(171, 168, 212, 0.20);
     // static-classes.scss
     --scroll-bar-back-color: #FFF44F;
-    // chat-modal.scss
-    --modal-chat-content-title-back-color: #1B1F23;
+    --inactive-button-color: #FFF;
+    --inactive-button-border: 2px solid #38328A;
     // folder-modal.scss
     --modal-folder-search-borderBottom-color: 1px solid #272732;
     --modal-folder-search-borderBottomFocus-color: 1px solid #8A8A98;
-    --modal-form-icon-back-color: #1B1F23;
-    --modal-icon-back-color: rgba(91, 91, 102, 0.65);
     --modal-icon-outline-color: 2px solid #FFF;
     --modal-form-chatCount-color: #BBB;
     // .settings-modal.scss
     --settings-user-input-color: #BBB;
     --settings-user-borderBottom: 1px solid #BBB;
-    --settings-avatars-back-color: rgba(171, 168, 212, 0.20);
     --settings-buttons-color: #FFF;
     --settings-modal-exit-back-color: #1B1F23;
     --settings-modal-exit-boxShadow: 1px 1px 4px 0 #FFF;

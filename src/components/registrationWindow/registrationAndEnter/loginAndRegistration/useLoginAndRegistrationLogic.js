@@ -10,6 +10,7 @@ export default function useLoginAndRegistrationLogic() {
     const [modal, setModal] = useState(false);
     const uniKeyRef = useRef();
     const dispatch = useDispatch();
+    const {i18n} = useTranslation();
 
     // Validation Uniquekey
     function uniKeyValidate(value) {
@@ -48,7 +49,6 @@ export default function useLoginAndRegistrationLogic() {
     }
 
     // User Language
-    const {i18n} = useTranslation();
     const languageList = {
         'ua': 0,
         'en': 1

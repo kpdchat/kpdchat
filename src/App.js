@@ -3,15 +3,18 @@ import RegistrationWindow from './components/registrationWindow/RegistrationWind
 import WindowChat from './components/chatWindow/WindowChat';
 import {useDispatch} from 'react-redux';
 import {setWindowChatOpen} from './store/actions/uiActions';
+import useTheme from './extra/hooks/useTheme';
 
 export default function App() {
     const dispatch = useDispatch();
+    const {themeChange} = useTheme();
 
     useEffect(() => {
         const userInLocalStorage = localStorage.getItem('user');
         if (userInLocalStorage) {
             dispatch(setWindowChatOpen());
         }
+        document.documentElement.setAttribute('data-theme', themeChange);
         // eslint-disable-next-line
     }, [])
 

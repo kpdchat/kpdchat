@@ -122,7 +122,7 @@ export default function useSettingsModalLogic() {
             localization: locales[userData.localization].value
         }
 
-        dispatch(fetchUpdateUser(updateUser))
+        dispatch(fetchUpdateUser(updateUser));
         setChange(false);
     }
 

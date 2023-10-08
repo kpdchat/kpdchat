@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { MdOutlineTextsms, MdOutlineDarkMode, MdOutlineFolderShared, MdOutlineWbSunny } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,8 +26,7 @@ export default function ChatNavigation() {
     const listName = useSelector(selectListName);
     const { isModal, modalId } = useSelector(selectUi);
     const dispatch = useDispatch();
-    const [changeTheme, setChangeTheme] = useState(true);
-    const { setTheme } = useTheme();
+    const { themeChange, setThemeChange, onSubmitThemeToServer } = useTheme();
 
     function onPublicChatClick() {
         dispatch(setRenderListName('publicChats'));
@@ -41,16 +40,12 @@ export default function ChatNavigation() {
         e.preventDefault()
     }
 
-    function onChangeTheme() {
-        setChangeTheme(!changeTheme);
-    }
-
     function handleLightTheme() {
-        setTheme('light');
+        setThemeChange('light');
     }
 
     function handleDarkTheme() {
-        setTheme('dark');
+        setThemeChange('dark');
     }
 
     useEffect(() => {
@@ -98,8 +93,8 @@ export default function ChatNavigation() {
                 <div className='navigation__settings settings'>
                     <NavSettings />
                     <NavInfo />
-                    <div onClick={ onChangeTheme }>
-                        { changeTheme
+                    <div onClick={ onSubmitThemeToServer }>
+                        { themeChange === 'light'
                             ? <MdOutlineDarkMode size={ 35 } className='cursor-pointer' onClick={handleDarkTheme}/>
                             : <MdOutlineWbSunny size={ 35 } className='cursor-pointer' onClick={handleLightTheme}/>
                         }

@@ -205,7 +205,7 @@
     font-weight: 500;
     line-height: 140%;
     padding: 16px 0;
-    border-radius: 16px;
+    border-radius: 8px;
     border: none;
 }
 
@@ -239,11 +239,22 @@
 .close-registration-img {
     cursor: pointer;
     stroke-width: 0.1px;
-    stroke: #EAE9FF;
+    stroke: var(--color-violet-black);
     font-size: 24px;
 
     &:hover {
         stroke-width: 0;
         transform: scale(1.2);
     }
+}
+
+.active-button {
+    background-color: $color-violet;
+    cursor: pointer;
+}
+
+.inactive-button {
+    color: var(--inactive-button-color);
+    background-color: var(--color-violet-black);
+    border: var(--inactive-button-border);
 }
