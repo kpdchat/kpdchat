@@ -27,7 +27,7 @@
         // .chat__navigation
         height: 100vh;
         padding: 14vh 16px 7vh 16px;
-        background: $color-violet;
+        background: var(--chat-navigation-background);
         grid-column: 1 / 2;
 
         @media screen and (max-height: 790px) {
@@ -42,7 +42,8 @@
         grid-column: 2 / 3;
         display: flex;
         flex-direction: column;
-        border-right: 1px solid $color-border-light-gray;
+        border-right: var(--border-right);
+        background-color: var(--color-white-black);
         @media screen and (max-height: 790px) {
             min-height: 710px;
         }

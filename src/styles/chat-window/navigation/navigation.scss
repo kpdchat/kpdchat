@@ -6,14 +6,11 @@
 @import "./chat-modal.scss";
 @import "./warning-modal.scss";
 
-
-
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
         @content;
     }
 }
-
 
 .navigation {
     color: $color-light-white;
@@ -91,7 +88,6 @@
             }
         }
 
-
         .text-inter-16-400 {
             text-overflow: ellipsis;
             overflow: hidden;
@@ -141,24 +137,21 @@
         }
 
         .text-inter-16-400 {
-
             @include max-screen(940px) {
                 display: none;
             }
         }
 
-
         &_active {
             color: $color-yellow;
         }
     }
-
 }
 
 .add {
 
-    //add__item
     &__item {
+        // .add__item
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -171,7 +164,7 @@
         }
 
         &_chat-svg {
-            //.add__item_chat-svg
+            // .add__item_chat-svg
             margin-left: 3px;
 
             @include max-screen(940px) {

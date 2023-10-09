@@ -21,7 +21,6 @@ export function singleUserFetch(id) {
     }
 }
 
-
 export function fetchUser(id) {
     return async (dispatch, getState) => {
         const { user } = getState()

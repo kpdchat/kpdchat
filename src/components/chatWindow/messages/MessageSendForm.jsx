@@ -16,15 +16,16 @@ export default function MessageSendForm() {
     const isMember = user.chats.find(el => el.id === chat.id)
 
     function onTextareaInput(e) {
-        textareaRef.current.style.height = 'auto'
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px"
-        setText(e.target.value)
+        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px";
+        setText(e.target.value);
     }
 
     function onFormSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+
         if (!text) {
-            return
+            return;
         }
 
         const date = Math.round(Date.now() / 1000)

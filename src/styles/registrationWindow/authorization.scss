@@ -5,7 +5,7 @@
         text-align: center;
         border: 2px $color-violet solid;
         background-color: $color-violet;
-        border-radius: 16px;
+        border-radius: 8px;
 
         button {
             width: 100%;
@@ -14,11 +14,10 @@
             background-color: $color-violet;
             border: none;
             font-size: 20px;
-            border-radius: 16px;
+            border-radius: 8px;
             cursor: pointer;
 
             &:hover {
-                text-transform: uppercase;
                 font-weight: $f-weight-700;
                 background: linear-gradient(0deg, rgba(87, 80, 168, 0.20) 0%, rgba(87, 80, 168, 0.20) 100%), $color-violet;
             }
@@ -29,7 +28,7 @@
         // .authorization__divider
         display: flex;
         align-items: center;
-        color: $color-light-grey;
+        color: var(--divider-span-color);
         width: 100%;
 
         &::before,
@@ -38,7 +37,7 @@
             flex: 1;
             display: block;
             height: 1px;
-            background: $color-light-violet;
+            background: var(--divider-color);
         }
 
         span {
@@ -52,22 +51,20 @@
         width: 100%;
         text-align: center;
         border: 2px $color-light-violet solid;
-        border-radius: 16px;
+        border-radius: 8px;
 
         button {
             width: 100%;
             height: 60px;
-            color: $color-light-black;
-            background-color: $color-white;
+            color: var(--color-black-white);
+            background-color: var(--color-white-black);
             border: none;
             font-size: 20px;
-            border-radius: 16px;
+            border-radius: 8px;
             cursor: pointer;
 
             &:hover {
-                text-transform: uppercase;
                 font-weight: $f-weight-700;
-                background: rgba(87, 80, 168, 0.05);
             }
         }
     }

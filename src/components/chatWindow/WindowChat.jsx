@@ -29,7 +29,7 @@ export default function WindowChat() {
         }
     }, [user?.id, dispatch])
 
-    //set render mine chats only for first load
+    // set render mine chats only for first load
     useEffect(() => {
         if (serverUser?.id && renderCount < 1) {
             setRenderCount(1)
@@ -38,7 +38,7 @@ export default function WindowChat() {
         }
     }, [serverUser?.id, dispatch, renderCount, serverUser.chats])
 
-    //set localization 
+    // set localization
     useEffect(() => {
         i18n.changeLanguage(languageList[serverUser?.localization])
     }, [serverUser?.localization, i18n]);

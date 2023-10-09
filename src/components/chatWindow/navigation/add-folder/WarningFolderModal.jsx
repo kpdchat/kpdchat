@@ -3,13 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { setModalClose } from "../../../../store/actions/uiActions";
 
-
 export default function WarningFolderModal() {
-    const dispatch = useDispatch()
-    const { t } = useTranslation()
+    const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     function onCloseClick() {
-        dispatch(setModalClose())
+        dispatch(setModalClose());
     }
     return (
         <div className="modal-container warning">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ChatKebab from "./chat-kebab/ChatKebab";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from 'react-i18next';
-import { useKebabClick } from "../../../extra/hooks/useKebabClick"
+import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
 import { getStyleKebab } from "../../../extra/config/getStyleKebab";
 import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messageAction";
