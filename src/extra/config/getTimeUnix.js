@@ -1,4 +1,4 @@
-export function getMessageTime(timeUnix) {
+export function getTimeUnix(timeUnix) {
     const date = new Date(timeUnix * 1000)
     let minutes = date.getMinutes()
     if(minutes < 10) {

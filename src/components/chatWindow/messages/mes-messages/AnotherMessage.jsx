@@ -3,11 +3,12 @@ import { MdOutlineMoreVert } from "react-icons/md";
 import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
 import { MdOutlineHideImage } from "react-icons/md";
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
-import { getMessageTime } from "../../../../extra/config/getTime";
+import { getDateTine } from "../../../../extra/config/getDateTine";
 
 export default function AnotherMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
-    const sentAt = getMessageTime(message.sentAt)
+    const sentAt = getDateTine(message.sentAt)
+    
     function onMessageKebabClick(e) {
         onKebabClick(e)
     }

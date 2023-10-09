@@ -6,7 +6,7 @@ import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { selectRenderChatList, selectUi } from "../../../store/selectors";
 import { getStyleKebab } from "../../../extra/config/getStyleKebab";
 import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messageAction";
-import { getMessageTime } from "../../../extra/config/getTime";
+import { getTimeUnix } from "../../../extra/config/getTimeUnix.js";
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat'
@@ -23,7 +23,7 @@ export default function DialogItem({ chat, index }) {
         if (!chat.lastMessage) {
             return
         }
-        const messageTime = getMessageTime(chat.lastMessage.sentAt)
+        const messageTime = getTimeUnix(chat.lastMessage.sentAt)
         return messageTime
     }
 

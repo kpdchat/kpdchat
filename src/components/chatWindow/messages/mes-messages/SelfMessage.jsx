@@ -2,13 +2,12 @@ import React from "react"
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageSelfKebab from "../mes-kebab/MessageSelfKebab"
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
-import { getMessageTime } from "../../../../extra/config/getTime";
+import { getDateTine } from "../../../../extra/config/getDateTine";
 
 
 export default function SelfMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
-    const sentAt = getMessageTime(message.sentAt)
-
+    const sentAt = getDateTine(message.sentAt)
     function onMessageKebabClick(e) {
         onKebabClick(e)
     }

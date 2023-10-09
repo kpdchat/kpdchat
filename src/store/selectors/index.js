@@ -88,21 +88,45 @@ export const selectDataForMessages = createSelector(
     }
 )
 
-// export const selectFilterByDateMessageList = createSelector(
-//     selectUser,
-//     selectRenderChat,
-//     (user, chat) => {
-//         const sortMessages = chat.messages.sort((a, b) => {
-//             return new Date(b.date * 1000) - new Date(a.date * 1000);
-//         }).map()
-//         let messageWithDay = []
-//         for (let i = 0; i < sortMessages.length; i++) {
+export const selectFilterByDateMessageList = createSelector(
+    selectRenderChat,
+    (chat) => {
+        if (!chat?.messages?.length) {
+            return []
+        }
+        const sortMessages = chat?.messages?.sort((a, b) => {
+            return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
+        }).map(mes => mes = {
+            ...mes,
+            sentAt: new Date(mes.sentAt * 1000)
+        }).reduce((acc, curr, index, arr) => {
+            let currDate = new Date(curr.sentAt)
+            let nextDate = new Date(arr[index + 1]?.sentAt)
+            if (index === 0) {
+                acc.push({
+                    date: currDate.toDateString(),
+                })
+            }
+            if ((currDate.getUTCDate() < nextDate.getUTCDate() && currDate.getUTCMonth() === nextDate.getUTCMonth())
+                || (currDate.getUTCDate() > nextDate.getUTCDate() && currDate.getUTCMonth() !== nextDate.getUTCMonth())) {
+                acc.push(curr)
+                acc.push({
+                    date: nextDate.toDateString(),
+                })
 
-//             if()
-//         }
-//     }
-// )
-// "messages": [
+            } else {
+                acc.push(curr)
+            }
+            return acc
+        }, [])
+
+        return sortMessages
+    }
+)
+// [
+//     {
+//         "date": "Sat Oct 07 2023"
+//     },
 //     {
 //         "id": 4,
 //         "userProfile": {
@@ -111,7 +135,7 @@ export const selectDataForMessages = createSelector(
 //             "profilePictureLink": "https://www.tapeciarnia.pl/tapety/normalne/194360_bobr.jpg"
 //         },
 //         "text": "string",
-//         "sentAt": 1696696521,
+//         "sentAt": "2023-10-07T16:35:21.000Z",
 //         "repliedToMessage": null
 //     },
 //     {
@@ -122,7 +146,7 @@ export const selectDataForMessages = createSelector(
 //             "profilePictureLink": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
 //         },
 //         "text": "test",
-//         "sentAt": 1696771213,
+//         "sentAt": "2023-10-08T13:20:13.000Z",
 //         "repliedToMessage": null
 //     },
 //     {
@@ -133,7 +157,7 @@ export const selectDataForMessages = createSelector(
 //             "profilePictureLink": "https://images.unsplash.com/photo-1575425186775-b8de9a427e67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
 //         },
 //         "text": "ооооооо",
-//         "sentAt": 1696784616,
+//         "sentAt": "2023-10-08T17:03:36.000Z",
 //         "repliedToMessage": null
 //     },
 //     {
@@ -144,7 +168,7 @@ export const selectDataForMessages = createSelector(
 //             "profilePictureLink": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
 //         },
 //         "text": "hohoho",
-//         "sentAt": 1696785190,
+//         "sentAt": "2023-10-08T17:13:10.000Z",
 //         "repliedToMessage": null
 //     }
 // ]

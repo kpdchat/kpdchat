@@ -81,7 +81,7 @@
 
     &__start {
         height: 100%;
-        background: url(../../../images/chat-window/background-chat.png) 50% / cover no-repeat;
+        background: var(--window-message-background);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -110,6 +110,7 @@
         color: $color-light-grey;
         margin: 4px 0;
         align-self: center;
+        text-transform: capitalize;
     }
 
     &__self {

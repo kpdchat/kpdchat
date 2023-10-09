@@ -2,9 +2,10 @@ import React from "react";
 import MessageTitle from './MessageTitle'
 import MessageSearch from './MessageSearch'
 import MessageSendForm from './MessageSendForm'
-import MesDate from "./mes-messages/MesDate";
-import SelfMessage from "./mes-messages/SelfMessage";
-import AnotherMessage from "./mes-messages/AnotherMessage";
+// import MesDate from "./mes-messages/MesDate";
+// import SelfMessage from "./mes-messages/SelfMessage";
+// import AnotherMessage from "./mes-messages/AnotherMessage";
+import Messages from "./mes-messages/Messages";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDataForMessages, selectIsWindowStart } from "../../../store/selectors";
 import { useEffect } from "react";
@@ -39,10 +40,11 @@ export default function ChatMessages() {
                     <MessageSearch />
                 </div>
                 <div className="messages__window-mes window-mes scroll-bar">
-                    <MesDate />
-                    {id ? chat?.messages?.map(message => message?.userProfile?.id === user.id
+                    <Messages/>
+                    {/* <MesDate />
+                    {chat?.messages?.length ? chat?.messages?.map(message => message?.userProfile?.id === user.id
                             ? <SelfMessage key={message.id} message={message} />
-                            : <AnotherMessage key={message.id} message={message} />) : "Повідомлень немає"}
+                            : <AnotherMessage key={message.id} message={message} />) : <div> "Повідомлень немає"</div> } */}
                         
                 </div>
                 <div className="messages__input-mes input-mes">
