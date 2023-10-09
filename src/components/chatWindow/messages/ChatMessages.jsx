@@ -21,6 +21,7 @@ export default function ChatMessages() {
            dispatch(fetchRenderChat(id)) 
         }
     }, [user, id, dispatch])
+    
     return (
         <>
             <section className={isStartWindow ? 'chat__messages messages' : "display-none"}>

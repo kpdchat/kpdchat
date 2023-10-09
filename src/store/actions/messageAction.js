@@ -18,6 +18,17 @@ export function fetchRenderChat(id) {
 }
 
 
+export function fetchPostMessage(data) {
+    return async () => {
+        try {
+            await axios.post('https://kpdchat.onrender.com/api/messages', data)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+}
+
+
 export function setRenderChat(chat) {
     return { type: ACTION_SET_RENDER_CHAT, payload: chat }
 }

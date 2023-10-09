@@ -1,6 +1,7 @@
 import React from "react"
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
+import { MdOutlineHideImage } from "react-icons/md";
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
 import { getMessageTime } from "../../../../extra/config/getTime";
 
@@ -13,17 +14,23 @@ export default function AnotherMessage({ message }) {
     return (
         <div className="window-mes__another">
             <div className="another__title">
-                <img
+                {message?.userProfile && <img
                     className='chat-img'
-                    src={message.userProfile.profilePictureLink}
-                    alt="" />
+                    src={message?.userProfile?.profilePictureLink}
+                    alt="" />}
+                {!message?.userProfile && <div className="another__no-member">
+                    <MdOutlineHideImage size={20} />
+                </div>
+                }
                 <h3 className='text-inter-18-600'>
-                    {message.userProfile.nickname}
+                    {message?.userProfile?.nickname
+                        ? message?.userProfile?.nickname
+                        : "Інкогніто"}
                 </h3>
             </div>
             <div className="another__message">
                 <div className="another__text">
-                    <p className='text-inter-16-400'>{message.text}</p>
+                    <p className='text-inter-16-400'>{message?.text}</p>
                     <span className='time-mes text-inter-12-400'>{sentAt}</span>
                 </div>
                 <div className="another__kebab">

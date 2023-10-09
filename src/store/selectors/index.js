@@ -87,3 +87,64 @@ export const selectDataForMessages = createSelector(
         }
     }
 )
+
+// export const selectFilterByDateMessageList = createSelector(
+//     selectUser,
+//     selectRenderChat,
+//     (user, chat) => {
+//         const sortMessages = chat.messages.sort((a, b) => {
+//             return new Date(b.date * 1000) - new Date(a.date * 1000);
+//         }).map()
+//         let messageWithDay = []
+//         for (let i = 0; i < sortMessages.length; i++) {
+
+//             if()
+//         }
+//     }
+// )
+// "messages": [
+//     {
+//         "id": 4,
+//         "userProfile": {
+//             "id": 1,
+//             "nickname": "bobr",
+//             "profilePictureLink": "https://www.tapeciarnia.pl/tapety/normalne/194360_bobr.jpg"
+//         },
+//         "text": "string",
+//         "sentAt": 1696696521,
+//         "repliedToMessage": null
+//     },
+//     {
+//         "id": 6,
+//         "userProfile": {
+//             "id": 6,
+//             "nickname": "LolliPop7",
+//             "profilePictureLink": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+//         },
+//         "text": "test",
+//         "sentAt": 1696771213,
+//         "repliedToMessage": null
+//     },
+//     {
+//         "id": 10,
+//         "userProfile": {
+//             "id": 10,
+//             "nickname": "Olya",
+//             "profilePictureLink": "https://images.unsplash.com/photo-1575425186775-b8de9a427e67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+//         },
+//         "text": "ооооооо",
+//         "sentAt": 1696784616,
+//         "repliedToMessage": null
+//     },
+//     {
+//         "id": 11,
+//         "userProfile": {
+//             "id": 6,
+//             "nickname": "LolliPop7",
+//             "profilePictureLink": "https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+//         },
+//         "text": "hohoho",
+//         "sentAt": 1696785190,
+//         "repliedToMessage": null
+//     }
+// ]
