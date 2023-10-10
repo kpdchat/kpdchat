@@ -9,7 +9,8 @@ export default function ExitChat({ menuRef, style, chat }) {
     const dispatch = useDispatch()
     const { t } = useTranslation()
 
-    function onLeaveChatClick() {
+    function onLeaveChatClick(e) {
+        e.stopPropagation()
         dispatch(setChatToLeave(chat))
         dispatch(setModalOpen('leave chat'))
     }

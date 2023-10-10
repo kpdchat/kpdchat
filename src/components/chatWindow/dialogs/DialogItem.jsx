@@ -3,7 +3,7 @@ import ChatKebab from "./chat-kebab/ChatKebab";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from 'react-i18next';
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
-import { selectRenderChatList, selectUi } from "../../../store/selectors";
+import { selectDataForMessages, selectRenderChatList, selectUi } from "../../../store/selectors";
 import { getStyleKebab } from "../../../extra/config/getStyleKebab";
 import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messageAction";
 import { getTimeUnix } from "../../../extra/config/getTimeUnix.js";
@@ -13,17 +13,30 @@ export default function DialogItem({ chat, index }) {
     const [style, setStyle] = useState('')
     const { isActiveFolderKebab } = useSelector(selectUi)
     const list = useSelector(selectRenderChatList)
+    const { id } = useSelector(selectDataForMessages)
     const { t } = useTranslation()
     const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type)
     const dispatch = useDispatch()
 
-    const sentAt = getSentTime()
+    const dialogStyle = getDialogStyle()
 
+    function getDialogStyle() {
+        if (chat.id === id) {
+            return "open-chat list__dialog cursor-pointer"
+        } else if (isActiveFolderKebab && isOpen && idKebab === 'chat' + chat.id) {
+            return "active-chat-kebab list__dialog cursor-pointer"
+        } else {
+            return "list__dialog cursor-pointer"
+        }
+
+    }
+    const sentAt = getSentTime()
     function getSentTime() {
-        if (!chat.lastMessage) {
+        // if (!chat.messages.length) {
+        if (!chat.messages || !chat.messages.length) {
             return
         }
-        const messageTime = getTimeUnix(chat.lastMessage.sentAt)
+        const messageTime = getTimeUnix(chat.messages[0].sentAt)
         return messageTime
     }
 
@@ -33,15 +46,14 @@ export default function DialogItem({ chat, index }) {
         setStyle(styleKebab)
         onKebabClick()
     }
+
     function onChatClick() {
         dispatch(deleteStartWindow())
         dispatch(setRenderChatId(chat.id))
     }
 
     return (
-        <div className={isActiveFolderKebab && isOpen && idKebab === 'chat' + chat.id
-            ? "active-chat list__dialog cursor-pointer"
-            : "list__dialog cursor-pointer"}
+        <div className={dialogStyle}
             onContextMenu={onContextClick}
             onClick={onChatClick}>
             <div className="list__info">
@@ -50,14 +62,21 @@ export default function DialogItem({ chat, index }) {
                 <div className="list__text">
                     <h3 className='text-inter-18-600'>{chat.title}</h3>
                     <p className='text-inter-14-400'>
-                        {chat?.lastMessage?.text
-                            ? chat?.lastMessage?.text
-                            : t('global.empty-chat')}
+                        {!chat.messages || !chat.messages.length
+                            ? t('global.empty-chat')
+                            : chat?.messages[0]?.text}
+                        {/* {chat?.messages[0]?.text
+                            ? chat?.messages[0]?.text
+                            : t('global.empty-chat')} */}
                     </p>
                 </div>
             </div>
             <div className="list__data">
-                <span className='list__time text-inter-12-400'>{chat?.lastMessage?.sentAt ? sentAt : ''}</span>
+                {/* <span className='list__time text-inter-12-400'>
+                {chat?.messages[0]?.sentAt ? sentAt : ''}</span> */}
+                <span className='list__time text-inter-12-400'>
+                    {!chat.messages || !chat.messages.length ? '' : sentAt}</span>
+
                 {/* <span className='list__new-count text-inter-12-400'>12</span> */}
             </div>
             {isOpen && idKebab === 'chat' + chat.id &&

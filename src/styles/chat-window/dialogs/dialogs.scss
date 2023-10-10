@@ -48,6 +48,7 @@
         // .list__container
         display: flex;
         flex-direction: column;
+        gap: 4px;
     }
 
     &__dialog {
@@ -144,7 +145,18 @@
     }
 }
 
-.active-chat {
+.active-chat-kebab {
     border-radius: 8px;
     background: var(--color-lightGrey-violet);
+}
+
+//Kirill 
+.open-chat {
+    border-radius: 8px;
+    background: #EAE9FF;
+    //да ховер так должен быть с одинаковым бекграундом
+    &:hover {
+        border-radius: 8px;
+        background: #EAE9FF;
+    }
 }

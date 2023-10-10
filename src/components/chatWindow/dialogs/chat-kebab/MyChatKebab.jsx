@@ -22,12 +22,14 @@ export default function MyChatKebab({ menuRef, style, chat, setStyle }) {
         }
     })
 
-    function onAddFolderClick() {
+    function onAddFolderClick(e) {
+        e.stopPropagation()
         dispatch(setSelectChat(chat))
         setOpen(true)
     }
 
-    function onLeaveChatClick() {
+    function onLeaveChatClick(e) {
+        e.stopPropagation()
         dispatch(setChatToLeave(chat))
         dispatch(setModalOpen('leave chat'))
     }

@@ -12,7 +12,8 @@ export default function SelectFolder({ folder }) {
     const chat = useSelector(selectChat)
     const { loaderId, isActiveLoader } = useSelector(selectUi)
     
-    function onRemoveFolderClick() {
+    function onRemoveFolderClick(e) {
+        e.stopPropagation()
 
         if (isActiveLoader) {
             return

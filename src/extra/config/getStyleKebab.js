@@ -1,18 +1,18 @@
 export function getStyleKebab(list, index, e) {
     let left = e.pageX - 192;
-    
+
     if (left < 0) {
         left = 2;
     }
-    
+
     if (window.innerWidth > 1250 && left > 142) {
         left = 142;
     } else if (window.innerWidth < 1250 && left > 50) {
         left = 40;
     }
-    
+
     let top;
-    
+
     if (list.length >= 6 && list.length < (index + 2)) {
         top = '-10px';
     } else {
@@ -21,7 +21,7 @@ export function getStyleKebab(list, index, e) {
 
     const getTheme = document.documentElement.getAttribute('data-theme');
     let backColor;
-    
+
     if (getTheme === 'light') {
         backColor = '#FFF';
     } else {

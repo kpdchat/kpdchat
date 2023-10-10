@@ -56,6 +56,9 @@ export function setRenderList(list) {
     let sortList = list.sort((a, b) => {
         return (a.id - b.id)
     })
+    // let sortList = list.sort((a, b) => {
+    //     return (a?.message[0]?.sentAt - b?.message[0]?.sentAt)
+    // })
     return { type: ACTION_RENDER_CHAT_LIST, payload: sortList }
 }
 

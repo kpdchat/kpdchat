@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function MesDate({ date }) {
-    console.log(date);
+    // console.log(date);
     const event = new Date(date);
     const options = { weekday: 'long',  month: 'long', day: 'numeric' };
     const messageDate = event.toLocaleDateString('uk-UA', options)

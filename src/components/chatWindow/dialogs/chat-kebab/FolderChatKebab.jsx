@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { MdOutlineCreateNewFolder, MdArrowForward } from "react-icons/md";
-import { PiDoorOpen, PiTrashBold } from "react-icons/pi";
+// import { MdOutlineCreateNewFolder, MdArrowForward } from "react-icons/md";
+import { PiDoorOpenLight, PiTrashLight, PiArrowRightLight, PiFolderPlusLight } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { setSelectChat, setChatToLeave } from "../../../../store/actions/chatActions";
@@ -22,17 +22,20 @@ export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
         }
     })
 
-    function onAddFolderClick() {
+    function onAddFolderClick(e) {
+        e.stopPropagation()
         dispatch(setSelectChat(chat))
         setOpen(true)
     }
 
-    function onLeaveChatClick() {
+    function onLeaveChatClick(e) {
+        e.stopPropagation()
         dispatch(setChatToLeave(chat))
         dispatch(setModalOpen('leave chat'))
     }
 
-    function onDeleteFromFolderClick() {
+    function onDeleteFromFolderClick(e) {
+        e.stopPropagation()
         dispatch(setSelectChat(chat))
         dispatch(setModalOpen('delete-from-folder'))
     }
@@ -43,24 +46,24 @@ export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
                 className={open ? 'display-none' : "chat-kebab__row chat-kebab__row_folders cursor-pointer"}
                 onClick={onAddFolderClick}>
                 <div className="flex-container">
-                    <MdOutlineCreateNewFolder
-                        size={24} />
+                    <PiFolderPlusLight
+                        size={20} />
                     <p className="text-inter-16-400">
                         {t('chat-context-menu.addToFolder')}</p>
                 </div>
-                <MdArrowForward
-                    size={24} />
+                <PiArrowRightLight
+                    size={20} />
             </div>
             <div
                 className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
                 onClick={onLeaveChatClick}>
-                <PiDoorOpen size={24} />
+                <PiDoorOpenLight size={20} />
                 <p className="text-inter-16-400">{t('chat-context-menu.exitChat')}</p>
             </div>
             <div
                 className={open ? 'display-none' : "chat-kebab__row cursor-pointer"}
                 onClick={onDeleteFromFolderClick}>
-                <PiTrashBold size={24} />
+                <PiTrashLight size={20} />
                 <p className="text-inter-16-400">{t('chat-context-menu.deleteFromFolder')}</p>
             </div>
             {open && <KebabFolderList setOpen={setOpen} />}

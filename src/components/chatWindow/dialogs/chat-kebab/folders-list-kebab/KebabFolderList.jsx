@@ -1,5 +1,7 @@
 import React from "react";
-import { MdOutlineCreateNewFolder, MdArrowBack } from "react-icons/md";
+// import { MdOutlineCreateNewFolder, MdArrowBack } from "react-icons/md";
+import { PiFolderPlusLight, PiArrowLeftLight } from "react-icons/pi";
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFolderList, selectUser } from "../../../../../store/selectors";
 import { useTranslation } from "react-i18next";
@@ -14,18 +16,24 @@ export default function KebabFolderList({ setOpen }) {
     const user = useSelector(selectUser)
     const { t } = useTranslation()
 
-    function onAddFolderClick() {
+    function onAddFolderClick(e) {
+        e.stopPropagation()
+
         dispatch(setModalOpen('create-folder'))
     }
+    function onBackClick(e) {
+        e.stopPropagation()
 
+        setOpen(prev => !prev)
+    }
     return (
         <>
             <div className="chat-kebab__folders">
                 <div
                     className="chat-kebab__row cursor-pointer"
-                    onClick={() => setOpen(prev => !prev)}
+                    onClick={onBackClick}
                 >
-                    <MdArrowBack size={24} />
+                    <PiArrowLeftLight size={20} />
                     <p className="text-inter-16-400">{t('chat-context-menu.return')}</p>
                 </div>
                 <div>
@@ -41,7 +49,7 @@ export default function KebabFolderList({ setOpen }) {
                 <div
                     className="chat-kebab__row chat-kebab__row_violet cursor-pointer"
                     onClick={onAddFolderClick}>
-                    <MdOutlineCreateNewFolder size={24} />
+                    <PiFolderPlusLight size={20} />
                     <p className="text-inter-16-400">{t('chat-context-menu.newFolder')}</p>
                 </div>
             </div>
