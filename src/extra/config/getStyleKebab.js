@@ -5,10 +5,10 @@ export function getStyleKebab(list, index, e) {
         left = 2;
     }
 
-    if (window.innerWidth > 1250 && left > 142) {
-        left = 142;
-    } else if (window.innerWidth < 1250 && left > 50) {
-        left = 40;
+    if (window.innerWidth > 1250 && left > 132) {
+        left = 132;
+    } else if (window.innerWidth < 1250 && left > 40) {
+        left = 30;
     }
 
     let top;
@@ -40,7 +40,7 @@ export function getStyleKebab(list, index, e) {
         position: 'absolute',
         left: left + 'px',
         top: top,
-        width: '220px',
+        width: '230px',
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',

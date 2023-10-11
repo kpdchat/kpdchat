@@ -56,7 +56,7 @@ export default function MessageSendForm() {
                 className='text-inter-16-400 scroll-bar'
                 placeholder={t('global.text-message')} />
             <button
-                className='input-mes__button'
+                className='input-mes__button cursor-pointer'
                 type='submit'></button>
         </form>
     )
