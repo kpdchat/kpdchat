@@ -1,5 +1,5 @@
 import React from "react";
-import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { PiFolderSimplePlus } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { setModalOpen } from "../../../../store/actions/uiActions";
@@ -19,7 +19,7 @@ export default function AddFolder() {
     }
     return (
         <div className="add__item cursor-pointer" onClick={onAddFolderClick}>
-            <MdOutlineCreateNewFolder size={24} />
+            <PiFolderSimplePlus size={24} />
             <h2 className="text-inter-18-600">{t('navigation.folder')}</h2>
         </div>
     )

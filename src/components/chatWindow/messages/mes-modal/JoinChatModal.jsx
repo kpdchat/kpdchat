@@ -1,17 +1,17 @@
-import React from 'react';
-import {MdClose} from 'react-icons/md';
-import {useDispatch, useSelector} from 'react-redux';
-import {useTranslation} from 'react-i18next';
-import {setModalClose} from '../../../../store/actions/uiActions';
-import {selectJoinChat, selectUser} from '../../../../store/selectors';
-import {cleanChat, fetchJoinChat} from '../../../../store/actions/chatActions';
+import React from "react";
+import { MdClose } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { setModalClose } from "../../../../store/actions/uiActions";
+import { selectJoinChat, selectUser } from "../../../../store/selectors";
+import { cleanChat, fetchJoinChat } from "../../../../store/actions/chatActions";
 import JoinModalCounter from './JoinModalCounter';
 
 export default function JoinChatModal() {
     const user = useSelector(selectUser);
     const joinChat = useSelector(selectJoinChat);
     const dispatch = useDispatch();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const members = joinChat.members.length;
 
     function onCloseClick() {
@@ -21,8 +21,8 @@ export default function JoinChatModal() {
 
     function onJoinChatClick() {
         const data = {
-            'userId': user.id,
-            'chatId': joinChat.id
+            "userId": user.id,
+            "chatId": joinChat.id
         }
         dispatch(fetchJoinChat(data));
         dispatch(setModalClose());

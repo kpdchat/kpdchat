@@ -1,17 +1,26 @@
 import { createSelector } from 'reselect'
 
-export const selectUi = state => state.ui
+
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
+
 export const selectUser = state => state.user.user
-export const selectUserError =  state => state.user.userError
+export const selectUserError = state => state.user.userError
+
+export const selectUi = state => state.ui
 export const selectOpenChat = state => state.ui.isOpenChat
 export const selectLoader = state => state.ui.isActiveLoader
+
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
 export const selectLeaveChat = state => state.chat.leaveChat
 export const selectJoinChat = state => state.chat.joinChat
 export const selectChat = state => state.chat.selectChat
+
+export const selectIsWindowStart = state => state.message.isStartWindow
+export const selectRenderChatId = state => state.message.chatId
+export const selectRenderChat = state => state.message.renderChat
+
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
@@ -63,5 +72,54 @@ export const selectFolderToDeleteFrom = createSelector(
             "chatIds": publicChatsId
         }
         return updateFolder
+    }
+)
+
+export const selectDataForMessages = createSelector(
+    selectUser,
+    selectRenderChatId,
+    selectRenderChat,
+    (user, id, chat) => {
+        return {
+            user,
+            id,
+            chat
+        }
+    }
+)
+
+export const selectFilterByDateMessageList = createSelector(
+    selectRenderChat,
+    (chat) => {
+        if (!chat?.messages?.length) {
+            return []
+        }
+        const sortMessages = chat?.messages?.sort((a, b) => {
+            return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
+        }).map(mes => mes = {
+            ...mes,
+            sentAt: new Date(mes.sentAt * 1000)
+        }).reduce((acc, curr, index, arr) => {
+            let currDate = new Date(curr.sentAt)
+            let nextDate = new Date(arr[index + 1]?.sentAt)
+            if (index === 0) {
+                acc.push({
+                    date: currDate.toDateString(),
+                })
+            }
+            if ((currDate.getUTCDate() < nextDate.getUTCDate() && currDate.getUTCMonth() === nextDate.getUTCMonth())
+                || (currDate.getUTCDate() > nextDate.getUTCDate() && currDate.getUTCMonth() !== nextDate.getUTCMonth())) {
+                acc.push(curr)
+                acc.push({
+                    date: nextDate.toDateString(),
+                })
+
+            } else {
+                acc.push(curr)
+            }
+            return acc
+        }, [])
+
+        return sortMessages
     }
 )

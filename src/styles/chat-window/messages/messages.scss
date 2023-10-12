@@ -25,7 +25,10 @@
         padding: 12px;
 
         img {
-            object-fit: contain;
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 50%;
         }
     }
 
@@ -47,6 +50,7 @@
 
         input {
             min-width: 364px;
+
             @include max-screen(1250px) {
                 min-width: 200px;
             }
@@ -57,11 +61,7 @@
         // .messages__info
         margin-left: 12px;
         position: relative;
-
-        img {
-            width: 20px;
-            height: 20px;
-        }
+        color: $color-text-grey;
     }
 
     &__window-mes {
@@ -78,6 +78,25 @@
         border-top: var(--border-right);
         background-color: var(--color-white-black);
     }
+
+    &__start {
+        height: 100%;
+        background: var(--window-message-background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text-inter-16-400 {
+            width: 336px;
+            padding: 18px 0;
+            text-align: center;
+            border-radius: 8px;
+            background-color: rgba(124, 124, 133, 0.30);
+            line-height: 21.6px;
+            color: $color-text-grey; //Kirill 'Нажаль повідомлень ще немає('
+        }
+    }
+
 }
 
 .window-mes {
@@ -91,6 +110,7 @@
         color: $color-light-grey;
         margin: 4px 0;
         align-self: center;
+        text-transform: capitalize;
     }
 
     &__self {
@@ -112,9 +132,9 @@
         display: flex;
         align-items: center;
         margin-bottom: 8px;
+        gap: 18px;
 
         h3 {
-            margin-left: 18px;
             color: var(--color-darkGrey-white);
         }
     }
@@ -136,12 +156,16 @@
         align-self: center;
     }
 
+    &__kebab-icon {
+        color: $color-text-grey;
+    }
+
     &__text {
         // .another__text
         border-radius: 0 8px 8px 8px;
         background: var(--backColor-white-grey);
         padding: 10px;
-        min-width: 300px;
+        min-width: 150px;
         display: flex;
         flex-direction: column;
 
@@ -170,10 +194,7 @@
         justify-content: flex-end;
         margin-bottom: 8px;
         color: var(--color-darkGrey-white);
-
-        img {
-            margin-left: 18px;
-        }
+        gap: 18px;
     }
 
     &__message {
@@ -193,12 +214,16 @@
         align-self: center;
     }
 
+    &__kebab-icon {
+        color: $color-text-grey;
+    }
+
     &__text {
         // .self__text
         border-radius: 8px 0 8px 8px;
         background: var(--message-self-text-back-color);
         padding: 10px;
-        min-width: 300px;
+        min-width: 150px;
         display: flex;
         flex-direction: column;
 
@@ -214,10 +239,11 @@
     }
 }
 
-.input-mes {
 
-    form {
+.input-mes {
+    &__form {
         display: flex;
+        position: relative;
 
         .text-inter-16-400 {
             width: 100%;
@@ -236,19 +262,40 @@
             }
         }
 
-        button {
-            border: none;
-            margin-left: 16px;
-            margin-bottom: 7px;
-            border-radius: 8px;
-            width: 29px;
-            height: 29px;
-            align-self: flex-end;
-            background: $color-violet url("../../../images/chat-window/send.png") center no-repeat;
+    }
+
+    &__button {
+        border: none;
+        margin-left: 16px;
+        margin-bottom: 7px;
+        border-radius: 8px;
+        width: 29px;
+        height: 29px;
+        align-self: flex-end;
+        background: $color-violet url("../../../images/chat-window/send.png") center no-repeat;
         }
 
         .active-write-messages {
             background: #201C59 url("../../../images/chat-window/send.png") center no-repeat;
-        }
+    }
+
+}
+
+.no-member {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    .text-inter-18-600 {
+        border: none;
+        width: 100%;
+        height: 100%;
+        color: $color-light-white;
+        background-color: $color-violet;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        line-height: 24.3px;
     }
 }

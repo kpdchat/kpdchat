@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MdOutlineTextsms, MdOutlineFolderShared, } from 'react-icons/md';
+import { PiFolderUser, PiWechatLogo } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectListName, selectUi, selectUser } from '../../../store/selectors';
@@ -61,7 +61,7 @@ export default function ChatNavigation() {
                             <div
                                 onClick={ onMineChatsClick }
                                 className='folders__title cursor-pointer'>
-                                <MdOutlineFolderShared size={ 24 } />
+                                <PiFolderUser size={ 24 } />
                                 <h3 className='text-inter-16-400'>{ t('navigation.mine') }</h3>
                             </div>
                             <h3 className='text-inter-16-400 ml-5px'>{ user.chats.length }</h3>
@@ -74,7 +74,7 @@ export default function ChatNavigation() {
                             <div
                                 onClick={ onPublicChatClick }
                                 className='folders__title folders__title-public cursor-pointer'>
-                                <MdOutlineTextsms size={ 24 } />
+                                <PiWechatLogo size={ 24 } />
                                 <h3 className='text-inter-16-400'>{ t('navigation.public') }</h3>
                             </div>
                         </div>

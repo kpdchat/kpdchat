@@ -10,7 +10,9 @@ export default function UnSelectFolder({ folder }) {
     const chat = useSelector(selectChat)
     const { loaderId, isActiveLoader } = useSelector(selectUi)
 
-    function onAddFolderClick() {
+    function onAddFolderClick(e) {
+        e.stopPropagation()
+
         if(isActiveLoader) {
             return
         }

@@ -12,7 +12,7 @@ export default function ChatOutModal() {
     const chat = useSelector(selectLeaveChat);
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const outChatMembers = chat?.members?.length;
+    const outChatMembers = chat?.members?.length - 1;
 
     function onCloseClick() {
         dispatch(setModalClose());

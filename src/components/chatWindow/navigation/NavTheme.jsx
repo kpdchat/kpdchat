@@ -1,5 +1,5 @@
 import React from 'react';
-import {MdOutlineDarkMode, MdOutlineWbSunny} from 'react-icons/md';
+import { PiMoon,  PiSunDim} from "react-icons/pi";
 import useTheme from '../../../extra/hooks/useTheme';
 
 export default function NavTheme() {
@@ -13,14 +13,20 @@ export default function NavTheme() {
         setThemeChange('dark');
     }
 
-  return (
-      <>
-          <div onClick={ onSubmitThemeToServer }>
-              { themeChange === 'light'
-                  ? <MdOutlineDarkMode size={ 35 } className='cursor-pointer' onClick={handleDarkTheme}/>
-                  : <MdOutlineWbSunny size={ 35 } className='cursor-pointer' onClick={handleLightTheme}/>
-              }
-          </div>
-      </>
-  );
+    return (
+        <>
+            <div onClick={onSubmitThemeToServer}>
+                {themeChange === 'light'
+                    ? <PiMoon
+                        size={35}
+                        className='cursor-pointer'
+                        onClick={handleDarkTheme} />
+                    : <PiSunDim
+                        size={35}
+                        className='cursor-pointer'
+                        onClick={handleLightTheme} />
+                }
+            </div>
+        </>
+    );
 }

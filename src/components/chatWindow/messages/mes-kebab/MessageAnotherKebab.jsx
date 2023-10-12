@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react"
 import KebabWrapper from "../../../../extra/KebabWrapper";
-import { PiArrowUUpRight } from "react-icons/pi";
-import { MdOutlineFileCopy } from "react-icons/md";
+import { PiShareFat, PiCopy } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 
 export default function MesAnotherKebab({ message }) {
@@ -20,11 +19,11 @@ export default function MesAnotherKebab({ message }) {
         <KebabWrapper elRef={menuRef} >
             <div ref={menuRef} className="kebab-menu another-kebab">
                 <div className="another-kebab__row cursor-pointer" >
-                    <PiArrowUUpRight size={20} />
+                    <PiShareFat size={20} />
                     <p className="text-inter-16-400">{t('global.answer')}</p>
                 </div>
                 <div onClick={onCopyClick} className="another-kebab__row cursor-pointer">
-                    <MdOutlineFileCopy size={20} />
+                    <PiCopy size={20} />
                     <p className="text-inter-16-400">{t('global.copy')}</p>
                 </div>
             </div>

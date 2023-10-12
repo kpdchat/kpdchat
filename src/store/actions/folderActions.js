@@ -10,7 +10,7 @@ export function fetchCreateFolder(folder) {
         try {
             await axios.post('https://kpdchat.onrender.com/api/folders', folder)
         } catch (e) {
-            alert(e)
+            console.error(e)
         }
     }
 }
@@ -21,7 +21,7 @@ export function fetchDeleteFolder(folder) {
             await axios.delete("https://kpdchat.onrender.com/api/folders",
                 { data: { id: folder.id } })
         } catch (e) {
-            alert(e)
+            console.error(e)
         }
     }
 }
@@ -31,7 +31,7 @@ export function fetchUpdateFolder(folder) {
         try {
             await axios.put("https://kpdchat.onrender.com/api/folders", folder)
         } catch (e) {
-            alert(e)
+            console.error(e)
         }
     }
 }
@@ -42,7 +42,7 @@ export function fetchUpdateKebabFolder(folder) {
         try {
             await axios.put("https://kpdchat.onrender.com/api/folders", folder)
         } catch (e) {
-            alert(e)
+            console.error(e)
         }
         finally {
             setTimeout(() => {

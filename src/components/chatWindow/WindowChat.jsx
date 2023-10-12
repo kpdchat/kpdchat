@@ -10,6 +10,7 @@ import ChatNavigation from './navigation/ChatNavigation';
 import ChatDialogs from './dialogs/ChatDialogs';
 import ChatMessages from './messages/ChatMessages';
 import UserFetchError from './UserFetchError';
+import { setStartWindow } from '../../store/actions/messageAction';
 
 export default function WindowChat() {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ export default function WindowChat() {
     useEffect(() => {
         if (user?.id) {
             dispatch(singleUserFetch(user.id));
+            dispatch(setStartWindow())
         }
     }, [user?.id, dispatch])
 
