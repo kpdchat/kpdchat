@@ -3,7 +3,6 @@
         // .authorization__log-in
         width: 100%;
         text-align: center;
-        border: 2px $color-violet solid;
         background-color: $color-violet;
         border-radius: 8px;
 
@@ -16,10 +15,10 @@
             font-size: 20px;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
 
             &:hover {
-                font-weight: $f-weight-700;
-                background: linear-gradient(0deg, rgba(87, 80, 168, 0.20) 0%, rgba(87, 80, 168, 0.20) 100%), $color-violet;
+                background-color: var(--backColor-hover);
             }
         }
     }
@@ -28,7 +27,7 @@
         // .authorization__divider
         display: flex;
         align-items: center;
-        color: var(--divider-span-color);
+        color: var(--divider-color);
         width: 100%;
 
         &::before,
@@ -50,21 +49,21 @@
         // .authorization__sing-in
         width: 100%;
         text-align: center;
-        border: 2px $color-light-violet solid;
         border-radius: 8px;
 
         button {
             width: 100%;
             height: 60px;
-            color: var(--color-black-white);
-            background-color: var(--color-white-black);
+            color: #272732;
+            background: var(--sing-in-back-color);
             border: none;
             font-size: 20px;
             border-radius: 8px;
             cursor: pointer;
+            font-weight: 600;
 
             &:hover {
-                font-weight: $f-weight-700;
+                background: var(--sing-in-hover-back-color);
             }
         }
     }

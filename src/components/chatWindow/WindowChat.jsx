@@ -49,7 +49,7 @@ export default function WindowChat() {
                 <DotSpinner
                     size={120}
                     speed={0.9}
-                    color="#38328A"
+                    color= 'var(--color-lavender-white)'
                 />
                 <p className='text-inter-18-600'>{t('global.loading')}</p>
                 {userError && <UserFetchError />}

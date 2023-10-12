@@ -68,10 +68,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $color-grey;
+    background-color: var(--loader-chat-back-color);
 
     .text-inter-18-600 {
-        color: $color-violet;
+        color: var(--color-lavender-white);
         margin-top: 20px;
     }
 }

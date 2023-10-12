@@ -105,6 +105,10 @@
             background-color: $color-violet;
             margin-top: 16px;
             cursor: pointer;
+
+            &:hover {
+                background-color: var(--backColor-hover);
+            }
         }
 
         .submit-inactive {

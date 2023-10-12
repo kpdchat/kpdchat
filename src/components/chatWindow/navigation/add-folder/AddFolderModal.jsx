@@ -8,6 +8,7 @@ import { icons } from "../../../../extra/config/folder-icons";
 import { clearEditFolder, fetchCreateFolder, fetchUpdateFolder } from "../../../../store/actions/folderActions";
 import { selectUser, selectEditFolderForForm, selectUi } from "../../../../store/selectors";
 import { setLoaderHide, setLoaderShow, setModalClose } from "../../../../store/actions/uiActions";
+import AddFolderCounter from './AddFolderCounter';
 
 export default function AddFolderModal() {
     const [iconName, setIconName] = useState(icons.default);
@@ -182,7 +183,7 @@ export default function AddFolderModal() {
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} {selected}
+                            {t('addFolder.selected')} <AddFolderCounter selected={selected}/>
                         </div>
 
                         <input

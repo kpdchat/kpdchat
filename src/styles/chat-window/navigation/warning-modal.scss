@@ -21,6 +21,10 @@
             border: none;
             color: $color-white !important;
             line-height: 24.3px;
+
+            &:hover {
+                background: var(--backColor-hover);
+            }
         }
 
         .text-inter-16-400 {

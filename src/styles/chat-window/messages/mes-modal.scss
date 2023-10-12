@@ -40,6 +40,10 @@
             background-color: $color-violet;
             color: $color-white;
             border: none;
+
+            &:hover {
+                background-color: var(--backColor-hover);
+            }
         }
     }
 

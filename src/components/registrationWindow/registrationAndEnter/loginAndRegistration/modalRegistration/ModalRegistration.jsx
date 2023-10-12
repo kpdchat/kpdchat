@@ -16,14 +16,11 @@ export default function ModalRegistration({onClose, setUniKey}) {
     return (
         <>
             <div className='authorization__modal-content content'>
-                <div className='content__close'>
-                    <MdOutlineClose className='close-registration-img cursor-pointer' onClick={ onClose } />
-                </div>
-
                 <form onSubmit={ state.onFormSubmit }>
                     <div className='content__form modal-form'>
                         <div className='modal-form__title'>
                             { t('registration.modal-title') }
+                            <MdOutlineClose className='close-registration-img cursor-pointer' onClick={ onClose } />
                         </div>
 
                         <div className='modal-form__data'>
@@ -37,7 +34,8 @@ export default function ModalRegistration({onClose, setUniKey}) {
                             />
                         </div>
 
-                        { state.errors.nickname && <p className='modal-form__error-message'>{ t(state.errors.nickname) }</p> }
+                        { state.errors.nickname &&
+                            <p className='modal-form__error-message'>{ t(state.errors.nickname) }</p> }
 
                         <div className='modal-form__data'>
                         <textarea
@@ -52,7 +50,8 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         />
                         </div>
 
-                        { state.errors.profilePictureLink && <p className='modal-form__error-message'>{ t(state.errors.profilePictureLink) }</p> }
+                        { state.errors.profilePictureLink &&
+                            <p className='modal-form__error-message'>{ t(state.errors.profilePictureLink) }</p> }
                     </div>
 
                     <div className='content__text-or'>{ t('registration.divider-span') }</div>

@@ -1,14 +1,16 @@
-import React from "react"
+import React from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
-import incognitoLight from '../../../../images/chat-window/incognito-light.png'
-import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
+import incognitoLight from '../../../../images/chat-window/incognito-light.png';
+import incognitoDark from '../../../../images/chat-window/inkognito-dark.png';
+import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/getDateTine";
 import { useTranslation } from 'react-i18next';
 
 export default function AnotherMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
     const { t } = useTranslation();
+    const incognitoTheme = localStorage.getItem('theme');
 
     const sentAt = getDateTine(message.sentAt)
 
@@ -26,7 +28,7 @@ export default function AnotherMessage({ message }) {
                         alt="" />
                     : <img
                         className='chat-img'
-                        src={incognitoLight} //Kirill, i add another ing for dark theme to images/chat-window
+                        src={ incognitoTheme === 'light' ? incognitoLight : incognitoDark }
                         alt="" />}
 
                 <h3 className='text-inter-18-600'>

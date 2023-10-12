@@ -150,13 +150,12 @@
     background: var(--color-lightGrey-violet);
 }
 
-//Kirill 
 .open-chat {
     border-radius: 8px;
-    background: #EAE9FF;
-    //да ховер так должен быть с одинаковым бекграундом
+    background: var(--dialogs-open-chat-backColor);
+
     &:hover {
         border-radius: 8px;
-        background: #EAE9FF;
+        background: var(--dialogs-open-chat-backColor);
     }
 }
