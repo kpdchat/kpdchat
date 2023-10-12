@@ -1,5 +1,5 @@
 import React from "react"
-import { MdOutlineGroupAdd } from "react-icons/md";
+import { PiUserCirclePlus } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { setChatToJoin } from "../../../../store/actions/chatActions";
@@ -19,7 +19,7 @@ export default function JoinChat({ menuRef, style, chat }) {
             <div
                 className="chat-kebab__row cursor-pointer"
                 onClick={onJoinChatClick}>
-                <MdOutlineGroupAdd size={24} />
+                <PiUserCirclePlus size={24} />
                 <p className="text-inter-16-400">
                     {t('chat-context-menu.joinChat')}</p>
             </div>

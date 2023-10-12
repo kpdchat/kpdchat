@@ -11,6 +11,7 @@ export default function JoinChatModal() {
     const joinChat = useSelector(selectJoinChat);
     const dispatch = useDispatch();
     const { t } = useTranslation();
+
     function onCloseClick() {
         dispatch(setModalClose());
         dispatch(cleanChat());
@@ -35,18 +36,18 @@ export default function JoinChatModal() {
                         size={24}
                         onClick={onCloseClick} />
                 </div>
-                
+
                 <div className="flex-container">
-                    <img 
-                    src={joinChat.chatPictureLink}
-                    alt="chat-logo" />
+                    <img
+                        src={joinChat.chatPictureLink}
+                        alt="chat-logo" />
                     <div className="modal-chat__about">
-                    
-                    <p className="text-inter-18-600">{joinChat.title}</p>
-                    <p className="text-inter-14-400">{joinChat.members.length} {t('chat-context-menu.membersCount')} </p>
+
+                        <p className="text-inter-18-600">{joinChat.title}</p>
+                        <p className="text-inter-14-400">{joinChat.members.length} {t('chat-context-menu.membersCount')} </p>
+                    </div>
                 </div>
-                </div>
-                
+
                 <button
                     className="text-inter-18-600 cursor-pointer"
                     onClick={onJoinChatClick}>{t('chat-context-menu.joinChat')}</button>

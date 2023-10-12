@@ -16,7 +16,11 @@
         "text-message": "Write a message..",
         "loading": "Loading your profile..",
         "error": "Unfortunately, an error occurred. You will be redirected to the registration window",
-        "empty-chat": "No messages yet..."
+        "empty-chat": "No messages yet...",
+        "no-messages": "Unfortunately, there are no messages yet(",
+        "start-messages" : "Let's start communication!",
+        "join-start" : "Join and start chatting",
+        "incognito" : "Incognito"
     },
     "settingsUser": {
         "settings": "Profile settings",
@@ -59,7 +63,7 @@
         "exitChat": "Leave chat",
         "addToFolder": "Add to folder",
         "deleteFromFolder": "Delete from folder",
-        "joinChat": "Join",
+        "joinChat": "Join to chat",
         "cryMembers": "members will miss you",
         "leave": "Leave",
         "joinToChat": "Join to chat",

@@ -1,14 +1,16 @@
 import React from "react";
-import chat_logo from '../../../images/chat-window/chat_logo.png'
+import { useSelector } from "react-redux";
+import { selectDataForMessages } from "../../../store/selectors";
 
 export default function MessageTitle() {
-
+    const { chat } = useSelector(selectDataForMessages)
     return (
         <div className="messages__dialog-name">
-            <img src={chat_logo} alt="" />
+            <img src={chat?.chatPictureLink
+            } alt="" />
             <div className="messages__dialog-info">
-                <h3 className='text-inter-18-600'>Настолки у Харкові</h3>
-                <p className='text-inter-14-400'> 245 учасників</p>
+                <h3 className='text-inter-18-600'>{chat?.title}</h3>
+                <p className='text-inter-14-400'> {chat?.members?.length ? chat?.members?.length : 0} учасників</p>
             </div>
         </div>
     )

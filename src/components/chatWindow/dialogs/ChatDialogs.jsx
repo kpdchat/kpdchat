@@ -20,7 +20,6 @@ export default function ChatDialogs() {
     function onContextClick(e) {
         e.preventDefault()
     }
-
     if (filteredChats?.length === 0) {
         return (
             <section className='chat__dialogs dialogs no-select' >

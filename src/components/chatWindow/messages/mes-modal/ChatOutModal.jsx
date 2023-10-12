@@ -44,7 +44,7 @@ export default function ChatOutModal() {
                     <div className="modal-chat__about">
                         <p className="text-inter-18-600">{chat?.title}</p>
                         <p className="text-inter-14-400">
-                            {chat?.members?.length} {t('chat-context-menu.cryMembers')}
+                            {chat?.members?.length - 1} {t('chat-context-menu.cryMembers')}
                         </p>
                     </div>
                 </div>

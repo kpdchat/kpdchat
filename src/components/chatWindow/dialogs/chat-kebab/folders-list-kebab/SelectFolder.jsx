@@ -1,5 +1,5 @@
 import React from "react";
-import { MdDone } from "react-icons/md";
+import { PiCheck } from "react-icons/pi";
 import { useDispatch, useSelector } from 'react-redux';
 import { DotSpinner } from '@uiball/loaders'
 import { icons } from "../../../../../extra/config/folder-icons";
@@ -12,7 +12,8 @@ export default function SelectFolder({ folder }) {
     const chat = useSelector(selectChat)
     const { loaderId, isActiveLoader } = useSelector(selectUi)
     
-    function onRemoveFolderClick() {
+    function onRemoveFolderClick(e) {
+        e.stopPropagation()
 
         if (isActiveLoader) {
             return
@@ -48,7 +49,7 @@ export default function SelectFolder({ folder }) {
                 />
             </div>
 
-            <MdDone
+            <PiCheck
                 color="#5750A8"
                 size={24}
                 className={isActiveLoader && loaderId === folder.id ? 'display-none' : null} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { MdOutlineSettings } from "react-icons/md";
+import { PiGear } from "react-icons/pi";
 import { useDispatch } from "react-redux";
 import { setModalOpen } from "../../../store/actions/uiActions";
 
@@ -8,7 +8,9 @@ export default function NavSettings() {
 
     return (
         <>
-            <MdOutlineSettings size={36} className="cursor-pointer" onClick={() => dispatch(setModalOpen('settings'))} />
+            <PiGear size={36}
+                className="cursor-pointer"
+                onClick={() => dispatch(setModalOpen('settings'))} />
         </>
     )
 }
