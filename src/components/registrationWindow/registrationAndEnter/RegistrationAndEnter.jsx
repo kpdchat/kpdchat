@@ -3,6 +3,7 @@ import logo_kpd from '../../../images/registrationWindow/logo_kpd.png';
 import LanguageButton from './languageButton/LanguageButton';
 import LoginAndRegistration from './loginAndRegistration/LoginAndRegistration';
 import GettingUniqueKey from './gettingUniqueKey/GettingUniqueKey';
+import NavTheme from '../../chatWindow/navigation/NavTheme';
 
 export default function RegistrationAndEnter() {
     const [uniKey, setUniKey] = useState('');
@@ -26,6 +27,10 @@ export default function RegistrationAndEnter() {
                             : <LoginAndRegistration setUniKey={ setUniKey } />
                         }
                     </div>
+                </div>
+
+                <div className='registration__block-theme'>
+                    <NavTheme />
                 </div>
             </div>
         </div>

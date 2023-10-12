@@ -231,7 +231,7 @@
 
 .close-registration-img {
     stroke-width: 0.1px;
-    stroke: var(--color-violet-black);
+    stroke: var(--close-registration-color);
     font-size: 24px;
 
     &:hover {
@@ -243,10 +243,13 @@
 .active-button {
     background-color: $color-violet;
     cursor: pointer;
+
+    &:hover {
+        background-color: var(--backColor-hover);
+    }
 }
 
 .inactive-button {
     color: var(--inactive-button-color);
-    background-color: var(--color-violet-black);
-    border: var(--inactive-button-border);
+    background-color: var(--inactive-button-backColor);
 }

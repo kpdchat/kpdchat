@@ -102,10 +102,10 @@
         display: flex;
         align-items: center;
         gap: 7px;
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
 
         &:hover {
-            background: $background-active-lilac;
+            background: var(--folder-kebab-hover-color);
         }
     }
 }

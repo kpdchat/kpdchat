@@ -200,14 +200,27 @@
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 32px;
+                    gap: 24px;
                     z-index: 1;
                 }
             }
         }
+
+        &-theme {
+            // .registration__block-theme
+            position: absolute;
+            right: 64px;
+            bottom: 40px;
+            text-align: right;
+            background: #38328A;
+            border-radius: 8px;
+            padding: 3px;
+            color: #FFF;
+        }
     }
 
     &__container {
+        // .registration__container
         height: calc(100vh - 156px);
         display: flex;
         align-items: center;

@@ -104,6 +104,10 @@
         color: $color-white;
         border-radius: 8px;
         border: none;
+
+        &:hover {
+            background-color: var(--backColor-hover);
+        }
     }
 
     &__chat-container {
@@ -175,7 +179,7 @@
                     top: 0;
                     right: 0;
                     cursor: pointer;
-                    background: url(../../../images/chat-window/add-folder-icon.png) center no-repeat;
+                    background: var(--modal-folder-icon);
                 }
             }
         }

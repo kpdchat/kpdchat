@@ -93,7 +93,7 @@
             border-radius: 8px;
             background-color: rgba(124, 124, 133, 0.30);
             line-height: 21.6px;
-            color: $color-text-grey; //Kirill 'Нажаль повідомлень ще немає('
+            color: var(--color-lightDarkGrey-white);
         }
     }
 
@@ -265,6 +265,7 @@
     }
 
     &__button {
+        // .input-mes__button
         border: none;
         margin-left: 16px;
         margin-bottom: 7px;
@@ -273,12 +274,11 @@
         height: 29px;
         align-self: flex-end;
         background: $color-violet url("../../../images/chat-window/send.png") center no-repeat;
+
+        &:hover {
+            background: var(--backColor-hover) url("../../../images/chat-window/send.png") center no-repeat;
         }
-
-        .active-write-messages {
-            background: #201C59 url("../../../images/chat-window/send.png") center no-repeat;
     }
-
 }
 
 .no-member {
@@ -297,5 +297,9 @@
         text-align: center;
         border-radius: 8px;
         line-height: 24.3px;
+
+        &:hover {
+            background-color: var(--backColor-hover);
+        }
     }
 }

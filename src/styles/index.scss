@@ -46,6 +46,7 @@ code {
     --backColor-white-grey: #FFF;
     --border-color-lavender-white: 1px solid #38328A;
     --boxShadow-color: 1px 1px 4px 0 #706C9F;
+    --backColor-hover: #201C59;
 
     // registration.scss
     --form-input-border-color: #3E3890;
@@ -55,15 +56,19 @@ code {
     // modal.scss
     --border-focus: 2px solid #3E3890;
     --loader-back-color: rgba(255, 255, 255, 0.5);
+    --modal-authorization-backColor: #EAE9FF;
+    --modal-data-border: 2px solid transparent;;
     // authorization.scss
-    --divider-color: #5750A8;
-    --divider-span-color: #7C7C85;
+    --divider-color: #5B5B66;
+    --sing-in-back-color: rgba(234, 233, 255, 0.80);
+    --sing-in-hover-back-color: rgba(202, 201, 232, 0.80);
     // windowChat.scss
     --chat-navigation-background: #38328A;
     --border-right: 1px solid #ABA8D4;
     --loader-chat-back-color: #EBEAEF;
     // dialogs.scss
     --list-text-p-color: #5B5B66;
+    --dialogs-open-chat-backColor: #EAE9FF;
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-light.png) 50% / cover no-repeat;
     --message-self-text-back-color: #38328A;
@@ -73,12 +78,14 @@ code {
     // static-classes.scss
     --scroll-bar-back-color: #38328A;
     --inactive-button-color: rgba(21, 21, 21, 0.60);
-    --inactive-button-border: 2px solid transparent;
+    --inactive-button-backColor: #EAE9FF;
+    --close-registration-color: #EAE9FF;
     // folder-modal.scss
     --modal-folder-search-borderBottom-color: 1px solid #8A8A98;
     --modal-folder-search-borderBottomFocus-color: 1px solid #272732;
     --modal-icon-outline-color: 2px solid #38328A;
     --modal-form-chatCount-color: #38328A;
+    --modal-folder-icon: url(../images/chat-window/add-folder-icon-light.png) center no-repeat;
     // .settings-modal.scss
     --settings-user-input-color: #272732;
     --settings-user-borderBottom: 1px solid #272732;
@@ -96,7 +103,7 @@ code {
     --color-white-grey: #FFF;
     --color-white-black: #1B1F23;
     --color-lightGrey-grey: rgba(91, 91, 102, 0.65);
-    --color-lightGrey-violet: rgba(171, 168, 212, 0.20);
+    --color-lightGrey-violet: rgba(171, 168, 212, 0.10);
     --color-lavender-white: #FFF;
     --color-darkGrey-white: #FFF;
     --color-lightDarkGrey-white: #FFF;
@@ -106,6 +113,7 @@ code {
     --backColor-white-grey: rgba(91, 91, 102, 0.65);
     --border-color-lavender-white: 1px solid #FFF;
     --boxShadow-color: 1px 1px 4px 0 #38328A;
+    --backColor-hover: #5750A8;
 
     // registration.scss
     --form-input-border-color: #BBB;
@@ -115,15 +123,19 @@ code {
     // modal.scss
     --border-focus: 2px solid #FFF;
     --loader-back-color: rgba(255, 255, 255, 0.1);
+    --modal-authorization-backColor: #383B46;
+    --modal-data-border: 2px solid #BBB;
     // authorization.scss
     --divider-color: #BBB;
-    --divider-span-color: #BBB;
+    --sing-in-back-color: #A7A7C1;
+    --sing-in-hover-back-color: #DCDCED;
     // windowChat.scss
     --chat-navigation-background: linear-gradient(190deg, #38328A -40.12%, #000 199.12%);
     --border-right: 1px solid #38328A;
     --loader-chat-back-color: #1B1F23;
     // dialogs.scss
     --list-text-p-color: #BBB;
+    --dialogs-open-chat-backColor: rgba(171, 168, 212, 0.20);
     // messagess.scss
     --window-message-background: url(../images/chat-window/background-chat-dark.png) 50% / cover no-repeat;
     --message-self-text-back-color: rgba(56, 50, 138, 0.65);
@@ -132,13 +144,15 @@ code {
     --folder-kebab-hover-color: rgba(171, 168, 212, 0.20);
     // static-classes.scss
     --scroll-bar-back-color: #FFF44F;
-    --inactive-button-color: #FFF;
-    --inactive-button-border: 2px solid #38328A;
+    --inactive-button-color: #272732;
+    --inactive-button-backColor: #C0C0D3;
+    --close-registration-color: #5B5B66;
     // folder-modal.scss
-    --modal-folder-search-borderBottom-color: 1px solid #272732;
-    --modal-folder-search-borderBottomFocus-color: 1px solid #8A8A98;
+    --modal-folder-search-borderBottom-color: 1px solid #8A8A98;
+    --modal-folder-search-borderBottomFocus-color: 1px solid #FFF;
     --modal-icon-outline-color: 2px solid #FFF;
     --modal-form-chatCount-color: #BBB;
+    --modal-folder-icon: url(../images/chat-window/add-folder-icon-dark.png) center no-repeat;
     // .settings-modal.scss
     --settings-user-input-color: #BBB;
     --settings-user-borderBottom: 1px solid #BBB;
