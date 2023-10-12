@@ -5,12 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { setModalClose } from "../../../../store/actions/uiActions";
 import { selectLeaveChat, selectUser } from "../../../../store/selectors";
 import { cleanChat, fetchLeaveChat } from "../../../../store/actions/chatActions";
+import OutModalCounter from './OutModalCounter';
 
 export default function ChatOutModal() {
     const user = useSelector(selectUser);
     const chat = useSelector(selectLeaveChat);
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const outChatMembers = chat?.members?.length;
 
     function onCloseClick() {
         dispatch(setModalClose());
@@ -43,9 +45,7 @@ export default function ChatOutModal() {
                     alt="chat-logo"/>
                     <div className="modal-chat__about">
                         <p className="text-inter-18-600">{chat?.title}</p>
-                        <p className="text-inter-14-400">
-                            {chat?.members?.length} {t('chat-context-menu.cryMembers')}
-                        </p>
+                        <OutModalCounter outChatMembers={outChatMembers} />
                     </div>
                 </div>
 
