@@ -15,8 +15,8 @@ export default function AddChat() {
         <div
             className="add__item cursor-pointer" 
             onClick={onAddChatClick}>
-            <PiUserCirclePlus
-                size={24}/>
+            <PiUserCirclePlus size={24}/>
+                
             <h2 className="text-inter-18-600">
                 {t('navigation.chat')}</h2>
         </div>

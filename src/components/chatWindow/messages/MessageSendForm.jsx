@@ -7,13 +7,13 @@ import { fetchPostMessage } from '../../../store/actions/messageAction';
 
 
 export default function MessageSendForm() {
-    const { user, chat } = useSelector(selectDataForMessages)
-    const [text, setText] = useState('')
-    const { t } = useTranslation()
-    const textareaRef = useRef()
-    const dispatch = useDispatch()
+    const { user, chat } = useSelector(selectDataForMessages);
+    const [text, setText] = useState('');
+    const { t } = useTranslation();
+    const textareaRef = useRef();
+    const dispatch = useDispatch();
 
-    const isMember = user.chats.find(el => el.id === chat.id)
+    const isMember = user.chats.find(el => el.id === chat.id);
 
     function onTextareaInput(e) {
         textareaRef.current.style.height = 'auto';
@@ -28,7 +28,7 @@ export default function MessageSendForm() {
             return;
         }
 
-        const date = Math.round(Date.now() / 1000)
+        const date = Math.round(Date.now() / 1000);
 
         const data = {
             "chatId": chat.id,
@@ -36,10 +36,10 @@ export default function MessageSendForm() {
             "text": text,
             "sentAt": date,
         }
-        console.log(data);
-        dispatch(fetchPostMessage(data))
-        setText('')
-        textareaRef.current.style.height = 'auto'
+
+        dispatch(fetchPostMessage(data));
+        setText('');
+        textareaRef.current.style.height = 'auto';
     }
 
     return (

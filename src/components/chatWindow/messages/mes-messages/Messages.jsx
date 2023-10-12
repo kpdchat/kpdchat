@@ -1,21 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { selectDataForMessages, selectFilterByDateMessageList } from "../../../../store/selectors";
 import MesDate from "./MesDate";
 import SelfMessage from "./SelfMessage";
 import AnotherMessage from "./AnotherMessage";
-import { selectDataForMessages, selectFilterByDateMessageList } from "../../../../store/selectors";
+import NoMessages from "./NoMessages";
 
 export default function Messages() {
     const { user } = useSelector(selectDataForMessages)
     const sortChatList = useSelector(selectFilterByDateMessageList)
     const messageRef = useRef()
+    
     useEffect(() => {
         if (messageRef.current) {
             messageRef.current.scrollTop = messageRef.current.scrollHeight
         }
     }, [messageRef, sortChatList.length])
-    // console.log(user);
-    // console.log(sortChatList);
+
     return (
         <div
             ref={messageRef}
@@ -28,7 +29,7 @@ export default function Messages() {
                 } else {
                     return <AnotherMessage key={data.id} message={data} />
                 }
-            }) : null}
+            }) : <NoMessages/>}
         </div>
 
     )

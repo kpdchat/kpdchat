@@ -93,7 +93,7 @@
             border-radius: 8px;
             background-color: rgba(124, 124, 133, 0.30);
             line-height: 21.6px;
-            color: $color-text-grey;
+            color: $color-text-grey; //Kirill 'Нажаль повідомлень ще немає('
         }
     }
 
@@ -137,17 +137,6 @@
         h3 {
             color: var(--color-darkGrey-white);
         }
-    }
-
-    &__no-member {
-        width: 40px;
-        height: 40px;
-        background-color: $color-grey;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $color-light-grey;
     }
 
     &__message {

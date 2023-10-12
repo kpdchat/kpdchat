@@ -1,32 +1,38 @@
 import React from "react"
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
-import { MdOutlineHideImage } from "react-icons/md";
+import incognitoLight from '../../../../images/chat-window/incognito-light.png'
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick"
 import { getDateTine } from "../../../../extra/config/getDateTine";
+import { useTranslation } from 'react-i18next';
 
 export default function AnotherMessage({ message }) {
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
+    const { t } = useTranslation();
+
     const sentAt = getDateTine(message.sentAt)
-    
+
     function onMessageKebabClick(e) {
         onKebabClick(e)
     }
+    
     return (
         <div className="window-mes__another">
             <div className="another__title">
-                {message?.userProfile && <img
-                    className='chat-img'
-                    src={message?.userProfile?.profilePictureLink}
-                    alt="" />}
-                {!message?.userProfile && <div className="another__no-member">
-                    <MdOutlineHideImage size={20} />
-                </div>
-                }
+                {message?.userProfile
+                    ? <img
+                        className='chat-img'
+                        src={message?.userProfile?.profilePictureLink}
+                        alt="" />
+                    : <img
+                        className='chat-img'
+                        src={incognitoLight} //Kirill, i add another ing for dark theme to images/chat-window
+                        alt="" />}
+
                 <h3 className='text-inter-18-600'>
                     {message?.userProfile?.nickname
                         ? message?.userProfile?.nickname
-                        : "Інкогніто"}
+                        : t('global.incognito')}
                 </h3>
             </div>
             <div className="another__message">

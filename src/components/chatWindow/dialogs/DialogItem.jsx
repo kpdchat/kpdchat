@@ -9,16 +9,16 @@ import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messa
 import { getTimeUnix } from "../../../extra/config/getTimeUnix.js";
 
 export default function DialogItem({ chat, index }) {
-    const type = 'onContextChat'
-    const [style, setStyle] = useState('')
-    const { isActiveFolderKebab } = useSelector(selectUi)
-    const list = useSelector(selectRenderChatList)
-    const { id } = useSelector(selectDataForMessages)
-    const { t } = useTranslation()
-    const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type)
-    const dispatch = useDispatch()
+    const type = 'onContextChat';
+    const [style, setStyle] = useState('');
+    const { isActiveFolderKebab } = useSelector(selectUi);
+    const list = useSelector(selectRenderChatList);
+    const { id } = useSelector(selectDataForMessages);
+    const { t } = useTranslation();
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(chat.id, 'chat', type);
+    const dispatch = useDispatch();
 
-    const dialogStyle = getDialogStyle()
+    const dialogStyle = getDialogStyle();
 
     function getDialogStyle() {
         if (chat.id === id) {
@@ -30,7 +30,7 @@ export default function DialogItem({ chat, index }) {
         }
 
     }
-    const sentAt = getSentTime()
+    const sentAt = getSentTime();
     function getSentTime() {
         // if (!chat.messages.length) {
         if (!chat.messages || !chat.messages.length) {
@@ -42,14 +42,14 @@ export default function DialogItem({ chat, index }) {
 
 
     function onContextClick(e) {
-        const styleKebab = getStyleKebab(list, index, e)
-        setStyle(styleKebab)
-        onKebabClick()
+        const styleKebab = getStyleKebab(list, index, e);
+        setStyle(styleKebab);
+        onKebabClick();
     }
 
     function onChatClick() {
-        dispatch(deleteStartWindow())
-        dispatch(setRenderChatId(chat.id))
+        dispatch(deleteStartWindow());
+        dispatch(setRenderChatId(chat.id));
     }
 
     return (
