@@ -3,10 +3,10 @@ import {useTranslation} from 'react-i18next';
 import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage} from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
-import {mops} from '../../../../../extra/config/mops-icons';
+import {mops} from '../../../../../extra/config/vocabulary/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
 import {PiDoorOpen, PiTranslate} from 'react-icons/pi';
-import {locales} from '../../../../../extra/config/locales';
+import {locales} from '../../../../../extra/config/vocabulary/locales';
 
 export default function SettingsModal() {
     const state = useSettingsModalLogic();

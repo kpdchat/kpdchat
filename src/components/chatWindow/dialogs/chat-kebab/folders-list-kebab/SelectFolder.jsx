@@ -2,7 +2,7 @@ import React from "react";
 import { PiCheck } from "react-icons/pi";
 import { useDispatch, useSelector } from 'react-redux';
 import { DotSpinner } from '@uiball/loaders'
-import { icons } from "../../../../../extra/config/folder-icons";
+import { icons } from "../../../../../extra/config/vocabulary/folder-icons";
 import { selectChat, selectUi } from "../../../../../store/selectors";
 import { fetchUpdateKebabFolder } from "../../../../../store/actions/folderActions";
 
@@ -45,12 +45,12 @@ export default function SelectFolder({ folder }) {
                 <DotSpinner
                     size={20}
                     speed={0.9}
-                    color="#5750A8"
+                    color='var(--color-lavender-white)'
                 />
             </div>
 
             <PiCheck
-                color="#5750A8"
+                color='var(--color-lavender-white)'
                 size={24}
                 className={isActiveLoader && loaderId === folder.id ? 'display-none' : null} />
         </div>

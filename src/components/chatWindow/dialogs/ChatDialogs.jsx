@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { useTranslation } from 'react-i18next';
+import { PiMagnifyingGlass } from "react-icons/pi";
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
 import { useSelector } from "react-redux";
@@ -31,6 +32,9 @@ export default function ChatDialogs() {
                 </div>
                 <div className='dialogs__search'>
                     <form className='search-form'>
+                        <PiMagnifyingGlass
+                            size={24}
+                            className="search-form__svg" />
                         <input
                             className="text-inter-16-400"
                             placeholder={t('global.search')}
@@ -61,6 +65,9 @@ export default function ChatDialogs() {
             </div>
             <div className='dialogs__search'>
                 <form className='search-form'>
+                    <PiMagnifyingGlass
+                        size={24}
+                        className="search-form__svg" />
                     <input
                         className="text-inter-16-400"
                         placeholder={t('global.search')}

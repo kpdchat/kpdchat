@@ -53,7 +53,7 @@ export default function MessageSendForm() {
                 rows="1"
                 onInput={onTextareaInput}
                 value={text}
-                className='text-inter-16-400 scroll-bar'
+                className='text-inter-14-400 scroll-bar'
                 placeholder={t('global.text-message')} />
             <button
                 className='input-mes__button cursor-pointer'

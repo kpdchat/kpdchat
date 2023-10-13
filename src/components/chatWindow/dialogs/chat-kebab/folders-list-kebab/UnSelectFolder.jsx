@@ -1,5 +1,5 @@
 import React from "react";
-import { icons } from "../../../../../extra/config/folder-icons";
+import { icons } from "../../../../../extra/config/vocabulary/folder-icons";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectChat, selectUi } from "../../../../../store/selectors";
 import { fetchUpdateKebabFolder } from "../../../../../store/actions/folderActions";
@@ -39,7 +39,7 @@ export default function UnSelectFolder({ folder }) {
                 <DotSpinner
                     size={20}
                     speed={0.9}
-                    color="#5750A8"
+                    color='var(--color-lavender-white)'
                 />
             </div>
 

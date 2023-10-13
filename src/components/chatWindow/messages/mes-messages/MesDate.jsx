@@ -1,5 +1,5 @@
 import React from "react";
-import { locales } from "../../../../extra/config/date-locales";
+import { locales } from "../../../../extra/config/vocabulary/date-locales";
 export default function MesDate({ date }) {
     const locale = localStorage.getItem('i18nextLng')
     

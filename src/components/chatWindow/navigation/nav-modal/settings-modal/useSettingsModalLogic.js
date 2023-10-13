@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectLoader, selectUser} from '../../../../../store/selectors';
 import i18n from 'i18next';
 import {setLoaderHide, setLoaderShow, setModalClose, setWindowChatClose} from '../../../../../store/actions/uiActions';
-import {locales} from '../../../../../extra/config/locales';
-import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
+import {locales} from '../../../../../extra/config/vocabulary/locales';
+import {validateImageOnServer} from '../../../../../extra/config/functions/validateImageOnServer';
 import {fetchUpdateUser, setStopFetch} from '../../../../../store/actions/userActions';
 
 export default function useSettingsModalLogic() {

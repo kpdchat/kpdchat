@@ -1,5 +1,5 @@
 import React from "react";
-import { icons } from "../../../extra/config/folder-icons";
+import { icons } from "../../../extra/config/vocabulary/folder-icons";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { useSelector, useDispatch } from "react-redux";
 import { selectListName, selectUser } from "../../../store/selectors";

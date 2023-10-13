@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { validateImageOnServer } from "../../../../extra/config/validateImageOnServer";
+import { validateImageOnServer } from "../../../../extra/config/functions/validateImageOnServer";
 
 export default function useAddChatForm(chatPictureLink) {
     const [link, setLink] = useState('')

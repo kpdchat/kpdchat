@@ -69,12 +69,15 @@ code {
     // dialogs.scss
     --list-text-p-color: #5B5B66;
     --dialogs-open-chat-backColor: #EAE9FF;
-    // messagess.scss
+    // messages.scss
     --window-message-background: url(../images/chat-window/background-chat-light.png) 50% / cover no-repeat;
     --message-self-text-back-color: #38328A;
     --messages-input-focus-outline: 1px solid #5750A8;
+    --messages-data-color: #7C7C85;
     // folder-kebab.scss
     --folder-kebab-hover-color: #EAE9FF;
+    //chat-kebab.scss
+    --chat-kebab-hover-color: #EAE9FF;
     // static-classes.scss
     --scroll-bar-back-color: #38328A;
     --inactive-button-color: rgba(21, 21, 21, 0.60);
@@ -135,13 +138,16 @@ code {
     --loader-chat-back-color: #1B1F23;
     // dialogs.scss
     --list-text-p-color: #BBB;
-    --dialogs-open-chat-backColor: rgba(171, 168, 212, 0.20);
-    // messagess.scss
+    --dialogs-open-chat-backColor: #2D2B66;
+    // messages.scss
     --window-message-background: url(../images/chat-window/background-chat-dark.png) 50% / cover no-repeat;
     --message-self-text-back-color: rgba(56, 50, 138, 0.65);
-    --messages-input-focus-outline: 1px solid #FFF;
+    --messages-input-focus-outline: 1px solid #38328A;
+    --messages-data-color: #BBB;
     // folder-kebab.scss
     --folder-kebab-hover-color: rgba(171, 168, 212, 0.20);
+    //chat-kebab.scss
+    --chat-kebab-hover-color: rgba(56, 50, 138, 0.65);
     // static-classes.scss
     --scroll-bar-back-color: #FFF44F;
     --inactive-button-color: #272732;

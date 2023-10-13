@@ -32,7 +32,7 @@ export default function ChatOutModal() {
         <div className="modal-container modal-chat" >
             <div className="modal-chat__content">
                 <div className="modal-chat__header">
-                    <h3 className="text-inter-18-600">{t('chat-context-menu.exitChat')}</h3>
+                    <h3 className="text-inter-16-600">{t('chat-context-menu.exitChat')}</h3>
                     <MdClose
                         className="modal-chat__close close-img cursor-pointer"
                         size={24}
@@ -44,13 +44,13 @@ export default function ChatOutModal() {
                     src={chat.chatPictureLink} 
                     alt="chat-logo"/>
                     <div className="modal-chat__about">
-                        <p className="text-inter-18-600">{chat?.title}</p>
+                        <p className="text-inter-16-600">{chat?.title}</p>
                         <OutModalCounter outChatMembers={outChatMembers} />
                     </div>
                 </div>
 
                 <button
-                    className="text-inter-18-600 cursor-pointer"
+                    className="text-inter-16-600 cursor-pointer"
                     onClick={onLeaveClick} >{t('chat-context-menu.leave')}</button>
             </div>
         </div>

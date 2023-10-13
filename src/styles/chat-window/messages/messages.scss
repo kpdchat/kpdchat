@@ -48,7 +48,7 @@
         display: flex;
         align-items: center;
 
-        input {
+        form {
             min-width: 364px;
 
             @include max-screen(1250px) {
@@ -61,7 +61,7 @@
         // .messages__info
         margin-left: 12px;
         position: relative;
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
     }
 
     &__window-mes {
@@ -80,8 +80,27 @@
     }
 
     &__start {
+        // .messages__start
         height: 100%;
         background: var(--window-message-background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .text-inter-16-400 {
+            width: 336px;
+            padding: 18px 0;
+            text-align: center;
+            border-radius: 8px;
+            background-color: rgba(124, 124, 133, 0.30);
+            line-height: 21.6px;
+            color: var(--color-lightDarkGrey-white);
+        }
+    }
+
+    &__no-messages {
+        // .messages__no-messages
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -107,7 +126,7 @@
 
     &__data {
         // .window-mes__data
-        color: $color-light-grey;
+        color: var(--messages-data-color);
         margin: 4px 0;
         align-self: center;
         text-transform: capitalize;
@@ -157,7 +176,7 @@
     }
 
     &__kebab-icon {
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
     }
 
     &__text {
@@ -166,8 +185,13 @@
         background: var(--backColor-white-grey);
         padding: 10px;
         min-width: 150px;
+        max-width: 500px;
         display: flex;
         flex-direction: column;
+
+        @include max-screen(1250px) {
+            max-width: 400px;
+        }
 
         img {
             object-fit: contain;
@@ -176,6 +200,7 @@
 
         .text-inter-16-400 {
             color: var(--color-darkGrey-white);
+            overflow-wrap: break-word;
         }
 
         span {
@@ -215,7 +240,7 @@
     }
 
     &__kebab-icon {
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
     }
 
     &__text {
@@ -226,9 +251,15 @@
         min-width: 150px;
         display: flex;
         flex-direction: column;
+        max-width: 500px;
+
+        @include max-screen(1250px) {
+            max-width: 400px;
+        }
 
         .text-inter-16-400 {
             color: $color-white;
+            overflow-wrap: break-word;
         }
 
         .text-inter-12-400 {
@@ -245,7 +276,7 @@
         display: flex;
         position: relative;
 
-        .text-inter-16-400 {
+        .text-inter-14-400 {
             width: 100%;
             max-height: 80px;
             border: none;
