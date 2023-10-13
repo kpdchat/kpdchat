@@ -53,7 +53,7 @@
         justify-content: space-between;
         color: var(--color-white-grey);
 
-        .text-inter-18-600 {
+        .text-inter-16-600 {
             line-height: 24.3px;
         }
     }
@@ -79,10 +79,10 @@
         max-width: 350px;
 
         .text-inter-14-400 {
-            color: $color-text-grey;
+            color: var(--list-text-p-color);
         }
 
-        .text-inter-18-600 {
+        .text-inter-16-600{
             color: var(--color-white-grey);
         }
     }

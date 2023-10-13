@@ -39,7 +39,7 @@ export default function UnSelectFolder({ folder }) {
                 <DotSpinner
                     size={20}
                     speed={0.9}
-                    color="#5750A8"
+                    color='var(--color-lavender-white)'
                 />
             </div>
 

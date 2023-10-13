@@ -45,12 +45,12 @@ export default function SelectFolder({ folder }) {
                 <DotSpinner
                     size={20}
                     speed={0.9}
-                    color="#5750A8"
+                    color='var(--color-lavender-white)'
                 />
             </div>
 
             <PiCheck
-                color="#5750A8"
+                color='var(--color-lavender-white)'
                 size={24}
                 className={isActiveLoader && loaderId === folder.id ? 'display-none' : null} />
         </div>
