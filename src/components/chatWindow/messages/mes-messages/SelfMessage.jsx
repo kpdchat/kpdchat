@@ -2,7 +2,7 @@ import React from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageSelfKebab from "../mes-kebab/MessageSelfKebab";
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
-import { getDateTine } from "../../../../extra/config/getDateTine";
+import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 
 
 export default function SelfMessage({ message }) {

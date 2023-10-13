@@ -6,7 +6,7 @@ import LoadingOnSubmitForm from './LoadingOnSubmitForm';
 import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {selectLoader} from '../../../../../store/selectors';
-import {mops} from '../../../../../extra/config/mops-icons';
+import {mops} from '../../../../../extra/config/vocabulary/mops-icons';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});

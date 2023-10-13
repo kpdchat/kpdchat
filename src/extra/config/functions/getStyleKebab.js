@@ -13,7 +13,7 @@ export function getStyleKebab(list, index, e) {
 
     let top;
 
-    if (list.length >= 6 && list.length < (index + 2)) {
+    if (list.length >= 6 && list.length < (index + 4)) {
         top = '-10px';
     } else {
         top = '60px';

@@ -2,7 +2,7 @@ import {useRef, useState, useEffect} from 'react';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {setLoaderHide, setLoaderShow} from '../../../../../store/actions/uiActions';
-import {validateImageOnServer} from '../../../../../extra/config/validateImageOnServer';
+import {validateImageOnServer} from '../../../../../extra/config/functions/validateImageOnServer';
 
 export default function useModalRegistrationLogic({setUniKey}) {
     const [userValue, setUserValue] = useState({

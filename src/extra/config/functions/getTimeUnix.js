@@ -1,4 +1,4 @@
-import { locales } from "./date-locales"
+import { locales } from "../vocabulary/date-locales"
 
 export function getTimeUnix(timeUnix) {
     const locale = localStorage.getItem('i18nextLng')

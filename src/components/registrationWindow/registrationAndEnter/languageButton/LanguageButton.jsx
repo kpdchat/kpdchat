@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {locales} from '../../../../extra/config/locales';
+import {locales} from '../../../../extra/config/vocabulary/locales';
 
 export default function LanguageButton() {
     const {i18n} = useTranslation();

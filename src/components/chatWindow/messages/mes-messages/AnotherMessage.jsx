@@ -4,7 +4,7 @@ import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab"
 import incognitoLight from '../../../../images/chat-window/incognito-light.png';
 import incognitoDark from '../../../../images/chat-window/inkognito-dark.png';
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
-import { getDateTine } from "../../../../extra/config/getDateTine";
+import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useTranslation } from 'react-i18next';
 
 export default function AnotherMessage({ message }) {

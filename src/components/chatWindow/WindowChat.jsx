@@ -5,7 +5,7 @@ import { selectOpenChat, selectUser, selectUserError } from '../../store/selecto
 import { DotSpinner } from '@uiball/loaders'
 import { useTranslation } from 'react-i18next';
 import { setRenderList, setRenderListName } from '../../store/actions/chatActions';
-import { languageList } from '../../extra/config/language-list';
+import { languageList } from '../../extra/config/vocabulary/language-list';
 import ChatNavigation from './navigation/ChatNavigation';
 import ChatDialogs from './dialogs/ChatDialogs';
 import ChatMessages from './messages/ChatMessages';

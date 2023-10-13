@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from 'react-i18next';
 import { useKebabClick } from "../../../extra/hooks/useKebabClick";
 import { selectDataForMessages, selectRenderChatList, selectUi } from "../../../store/selectors";
-import { getStyleKebab } from "../../../extra/config/getStyleKebab";
+import { getStyleKebab } from "../../../extra/config/functions/getStyleKebab";
 import { deleteStartWindow, setRenderChatId } from "../../../store/actions/messageAction";
-import { getTimeUnix } from "../../../extra/config/getTimeUnix.js";
+import { getTimeUnix } from "../../../extra/config/functions/getTimeUnix";
 
 export default function DialogItem({ chat, index }) {
     const type = 'onContextChat';
@@ -32,8 +32,7 @@ export default function DialogItem({ chat, index }) {
     }
     const sentAt = getSentTime();
     function getSentTime() {
-        // if (!chat.messages.length) {
-        if (!chat.messages || !chat.messages.length) {
+        if (!chat.messages.length) {
             return
         }
         const messageTime = getTimeUnix(chat.messages[0].sentAt)
@@ -62,20 +61,15 @@ export default function DialogItem({ chat, index }) {
                 <div className="list__text">
                     <h3 className='text-inter-18-600'>{chat.title}</h3>
                     <p className='text-inter-14-400'>
-                        {!chat.messages || !chat.messages.length
-                            ? t('global.empty-chat')
-                            : chat?.messages[0]?.text}
-                        {/* {chat?.messages[0]?.text
+                        {chat?.messages[0]?.text
                             ? chat?.messages[0]?.text
-                            : t('global.empty-chat')} */}
+                            : t('global.empty-chat')}
                     </p>
                 </div>
             </div>
             <div className="list__data">
-                {/* <span className='list__time text-inter-12-400'>
-                {chat?.messages[0]?.sentAt ? sentAt : ''}</span> */}
                 <span className='list__time text-inter-12-400'>
-                    {!chat.messages || !chat.messages.length ? '' : sentAt}</span>
+                {chat?.messages[0]?.sentAt ? sentAt : ''}</span>
 
                 {/* <span className='list__new-count text-inter-12-400'>12</span> */}
             </div>
