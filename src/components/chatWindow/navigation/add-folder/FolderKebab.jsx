@@ -6,7 +6,7 @@ import { setModalOpen } from "../../../../store/actions/uiActions";
 import { setDeleteFolder, setEditFolder } from "../../../../store/actions/folderActions";
 import { useTranslation } from 'react-i18next';
 
-export default function FolderKebab({ folder }) {
+export default function FolderKebab({ folder, style }) {
     const { t } = useTranslation()
     const dispatch = useDispatch()
     const menuRef = useRef()
@@ -20,24 +20,29 @@ export default function FolderKebab({ folder }) {
         dispatch(setEditFolder(folder))
         dispatch(setModalOpen('edit-folder'))
     }
+    // console.log(style);
     return (
         <KebabWrapper elRef={menuRef} >
-            <div
-                ref={menuRef}
-                className="kebab-menu folder-kebab">
+            <div className="modal-kebab">
                 <div
-                    className="folder-kebab__row cursor-pointer"
-                    onClick={onEditClick}>
-                    <PiNotePencil size={24} />
-                    <p className="text-inter-16-400">{t('addFolder.editFolder')}</p>
-                </div>
-                <div
-                    className="folder-kebab__row cursor-pointer"
-                    onClick={onDeleteClick}>
-                    <PiTrash size={24} />
-                    <p className="text-inter-16-400">{t('addFolder.delete')}</p>
+                    ref={menuRef}
+                    className="folder-kebab"
+                    style={style}>
+                    <div
+                        className="folder-kebab__row cursor-pointer"
+                        onClick={onEditClick}>
+                        <PiNotePencil size={24} />
+                        <p className="text-inter-16-400">{t('addFolder.editFolder')}</p>
+                    </div>
+                    <div
+                        className="folder-kebab__row cursor-pointer"
+                        onClick={onDeleteClick}>
+                        <PiTrash size={24} />
+                        <p className="text-inter-16-400">{t('addFolder.delete')}</p>
+                    </div>
                 </div>
             </div>
+
         </KebabWrapper>
     )
 }
