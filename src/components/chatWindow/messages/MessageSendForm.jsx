@@ -17,14 +17,14 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px";
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 0.5 + "px";
         setText(e.target.value);
     }
 
     function onFormSubmit(e) {
         e.preventDefault();
 
-        if (!text) {
+        if (!text || !text.trim()) {
             return;
         }
 
@@ -42,16 +42,17 @@ export default function MessageSendForm() {
         textareaRef.current.style.height = 'auto';
     }
 
+
     return (
         <form
             onSubmit={onFormSubmit}
             className='input-mes__form'>
-            {!isMember && <NoMemberBtn/>}
+            {!isMember && <NoMemberBtn />}
 
             <textarea
                 ref={textareaRef}
                 rows="1"
-                onInput={onTextareaInput}
+                onChange={onTextareaInput}
                 value={text}
                 className='text-inter-14-400 scroll-bar'
                 placeholder={t('global.text-message')} />

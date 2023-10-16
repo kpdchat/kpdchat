@@ -18,7 +18,7 @@ export default function MesSelfKebab({ message }) {
 
     return (
         <KebabWrapper elRef={menuRef}>
-            <div ref={menuRef} className="kebab-menu self-kebab">
+            <div ref={menuRef} className="kebab-menu self-kebab no-select">
                 <div className="self-kebab__row cursor-pointer" >
                     <PiShareFat size={20} />
                     <p className="text-inter-16-400">{t('global.answer')}</p>

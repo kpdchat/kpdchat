@@ -15,7 +15,7 @@ export default function SelfMessage({ message }) {
 
     return (
         <div className="window-mes__self self">
-            <div className="self__title">
+            <div className="self__title no-select">
                 <h3 className='text-inter-18-600'>
                     {message.userProfile.nickname}
                 </h3>
@@ -35,7 +35,7 @@ export default function SelfMessage({ message }) {
 
                 <div className="self__text">
                     <p className='text-inter-16-400'>{message.text}</p>
-                    <span className='text-inter-12-400'>{sentAt}</span>
+                    <span className='text-inter-12-400 no-select'>{sentAt}</span>
 
                 </div>
             </div>

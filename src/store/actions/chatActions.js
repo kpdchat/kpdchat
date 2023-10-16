@@ -53,19 +53,7 @@ export function fetchLeaveChat(data) {
 }
 
 export function setRenderList(list) {
-    const sortArrByDate = list
-        .filter(el => el.messages && el.messages?.length)
-        .sort((a, b) => {
-            return new Date(b.messages[0].sentAt * 1000) - new Date(a.messages[0].sentAt * 1000)
-        })
-
-    const noLastMessageArr = list
-        .filter(el => !el.messages?.length).sort((a, b) => {
-            return a.id - b.id
-        })
-
-    let sortList = sortArrByDate.concat(noLastMessageArr)
-    return { type: ACTION_RENDER_CHAT_LIST, payload: sortList }
+    return { type: ACTION_RENDER_CHAT_LIST, payload: list }
 }
 
 export function setRenderListName(name) {

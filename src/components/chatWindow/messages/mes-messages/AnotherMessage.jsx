@@ -20,7 +20,7 @@ export default function AnotherMessage({ message }) {
     
     return (
         <div className="window-mes__another">
-            <div className="another__title">
+            <div className="another__title no-select">
                 {message?.userProfile
                     ? <img
                         className='chat-img'
@@ -40,7 +40,7 @@ export default function AnotherMessage({ message }) {
             <div className="another__message">
                 <div className="another__text">
                     <p className='text-inter-16-400'>{message?.text}</p>
-                    <span className='time-mes text-inter-12-400'>{sentAt}</span>
+                    <span className='time-mes text-inter-12-400 no-select'>{sentAt}</span>
                 </div>
                 <div className="another__kebab">
                     {isOpen && idKebab === 'message' + message.id && <MessageAnotherKebab message={message} />}

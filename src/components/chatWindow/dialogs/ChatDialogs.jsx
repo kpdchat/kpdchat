@@ -4,11 +4,11 @@ import { PiMagnifyingGlass } from "react-icons/pi";
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
 import { useSelector } from "react-redux";
-import { selectRenderChatList } from "../../../store/selectors";
+import { selectSortRenderList } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
 
 export default function ChatDialogs() {
-    const renderChatList = useSelector(selectRenderChatList)
+    const renderChatList = useSelector(selectSortRenderList)
     const [query, setQuery] = useState("")
     const { t } = useTranslation()
 

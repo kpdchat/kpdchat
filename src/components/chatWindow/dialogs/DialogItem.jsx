@@ -69,9 +69,10 @@ export default function DialogItem({ chat, index }) {
             </div>
             <div className="list__data">
                 <span className='list__time text-inter-12-400'>
-                {chat?.messages[0]?.sentAt ? sentAt : ''}</span>
+                    {chat?.messages[0]?.sentAt ? sentAt : ''}</span>
+                {( chat?.unseenMessageCount || chat?.unseenMessageCount > 0) 
+                && <span className='list__new-count text-inter-12-400'>{chat?.unseenMessageCount}</span>}
 
-                {/* <span className='list__new-count text-inter-12-400'>12</span> */}
             </div>
             {isOpen && idKebab === 'chat' + chat.id &&
                 <ChatKebab
