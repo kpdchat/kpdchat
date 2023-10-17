@@ -9,12 +9,11 @@ import NewMessages from "./NewMessages";
 import { fetchUpdateLastSeenMessage } from "../../../../store/actions/messageAction";
 
 export default function Messages() {
-    const { user } = useSelector(selectDataForMessages)
+    const { user, chat } = useSelector(selectDataForMessages)
     const sortChat = useSelector(selectFilterByDateMessageList)
     const messageRef = useRef()
     const newRef = useRef()
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         if (messageRef.current && newRef.current) {
@@ -25,19 +24,35 @@ export default function Messages() {
     }, [messageRef, sortChat.messages?.length, newRef])
 
     useEffect(() => {
-        if (sortChat.messages?.length) {
+        if (chat.messages?.length && chat?.messages[chat.messages?.length - 1]?.userProfile?.id !== user.id) {
             const data = {
                 "userId": user.id,
-                "chatId": sortChat.id,
-                "messageId": sortChat.messages[sortChat.messages?.length - 1].id
+                "chatId": chat.id,
+                "messageId": chat.messages[chat.messages?.length - 1].id
             }
             setTimeout(() => {
                 dispatch(fetchUpdateLastSeenMessage(data))
-            }, 5000)
+            }, 3000)
         }
         // eslint-disable-next-line
-    }, [sortChat.messages?.length, user.id, sortChat.id, sortChat.messages?.length, dispatch])
+    }, [chat?.messages?.length, user.id, sortChat.id, dispatch])
 
+
+    useEffect(() => {
+        if (chat.messages?.length - 1 && chat?.messages[chat.messages?.length - 1]?.userProfile?.id === user.id) {
+
+            const data = {
+                "userId": user.id,
+                "chatId": chat.id,
+                "messageId": chat.messages[chat.messages?.length - 1].id
+            }
+            console.log(chat.messages[chat.messages?.length - 1].id);
+            console.log(chat.messages[chat.messages?.length - 1]);
+
+            dispatch(fetchUpdateLastSeenMessage(data))
+        }
+        // eslint-disable-next-line
+    }, [dispatch, sortChat.id, chat?.messages?.length, user.id])
     return (
         <div
             ref={messageRef}
@@ -47,7 +62,7 @@ export default function Messages() {
                     return <MesDate key={data.date} date={data.date} />
                 }
                 else if (data.newMess) {
-                    return <NewMessages newRef={newRef} />
+                    return <NewMessages key={'new'} newRef={newRef} />
                 } else if (data?.userProfile?.id === user.id) {
                     return <SelfMessage key={data.id} message={data} />
                 } else {

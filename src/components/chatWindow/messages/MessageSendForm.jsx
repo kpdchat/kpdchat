@@ -3,8 +3,8 @@ import NoMemberBtn from './NoMemberBtn'
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDataForMessages } from '../../../store/selectors';
-import { fetchPostMessage } from '../../../store/actions/messageAction';
-
+import { fetchPostMessage} from '../../../store/actions/messageAction';
+// , updateRenderChat 
 
 export default function MessageSendForm() {
     const { user, chat } = useSelector(selectDataForMessages);
@@ -19,6 +19,14 @@ export default function MessageSendForm() {
         textareaRef.current.style.height = 'auto';
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0.5 + "px";
         setText(e.target.value);
+    }
+
+    function onEnterPress(e) {
+        if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
+            console.log('submit');
+            e.preventDefault();
+            onFormSubmit(e)
+        }
     }
 
     function onFormSubmit(e) {
@@ -38,6 +46,15 @@ export default function MessageSendForm() {
         }
 
         dispatch(fetchPostMessage(data));
+        // const message = {
+        //     "userProfile": {
+        //         "id": user.id,
+        //         "nickname": user.nickname,
+        //         "profilePictureLink": user.profilePictureLink,
+        //     },
+        //     "text": text
+        // }
+        // dispatch(updateRenderChat(message))
         setText('');
         textareaRef.current.style.height = 'auto';
     }
@@ -47,18 +64,22 @@ export default function MessageSendForm() {
         <form
             onSubmit={onFormSubmit}
             className='input-mes__form'>
-            {!isMember && <NoMemberBtn />}
 
+            {!isMember && <NoMemberBtn />}
+            
             <textarea
                 ref={textareaRef}
                 rows="1"
                 onChange={onTextareaInput}
+                onKeyDown={onEnterPress}
                 value={text}
                 className='text-inter-14-400 scroll-bar'
                 placeholder={t('global.text-message')} />
+
             <button
                 className='input-mes__button cursor-pointer'
-                type='submit'></button>
+                type='submit'
+                onClick={onFormSubmit}></button>
         </form>
     )
 }
