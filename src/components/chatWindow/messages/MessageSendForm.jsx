@@ -3,8 +3,7 @@ import NoMemberBtn from './NoMemberBtn'
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDataForMessages } from '../../../store/selectors';
-import { fetchPostMessage } from '../../../store/actions/messageAction';
-
+import { fetchPostMessage} from '../../../store/actions/messageAction';
 
 export default function MessageSendForm() {
     const { user, chat } = useSelector(selectDataForMessages);
@@ -17,14 +16,21 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 2 + "px";
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + "px";
         setText(e.target.value);
+    }
+
+    function onEnterPress(e) {
+        if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
+            e.preventDefault();
+            onFormSubmit(e)
+        }
     }
 
     function onFormSubmit(e) {
         e.preventDefault();
 
-        if (!text) {
+        if (!text || !text.trim()) {
             return;
         }
 
@@ -42,22 +48,27 @@ export default function MessageSendForm() {
         textareaRef.current.style.height = 'auto';
     }
 
+
     return (
         <form
             onSubmit={onFormSubmit}
             className='input-mes__form'>
-            {!isMember && <NoMemberBtn/>}
 
+            {!isMember && <NoMemberBtn />}
+            
             <textarea
                 ref={textareaRef}
                 rows="1"
-                onInput={onTextareaInput}
+                onChange={onTextareaInput}
+                onKeyDown={onEnterPress}
                 value={text}
                 className='text-inter-14-400 scroll-bar'
                 placeholder={t('global.text-message')} />
+
             <button
                 className='input-mes__button cursor-pointer'
-                type='submit'></button>
+                type='submit'
+                onClick={onFormSubmit}></button>
         </form>
     )
 }

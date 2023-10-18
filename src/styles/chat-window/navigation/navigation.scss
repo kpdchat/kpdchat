@@ -36,22 +36,46 @@
 }
 
 .folders {
+    position: relative;
+
     &__add {
         // .folders__add
         border-bottom: 1px solid $color-light-white;
+        margin-right: 4px;
     }
 
     &__container {
         // .folders__container
-        margin: 4px 0;
-        padding: 8px 4px;
+        margin: 12px 0;
+        padding: 0 4px 0 4px;
         display: flex;
         flex-direction: column;
         gap: 12px;
         color: $color-white;
+        max-height: 204px;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #EBEAEF26;
+            background-clip: content-box;
+            border: 4px solid transparent;
+            border-radius: 24px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #fff;
+            background-clip: content-box;
+            border: 4px solid transparent;
+            border-radius: 24px;
+        }
 
         @include max-screen(940px) {
             gap: 13px;
+            padding: 0;
         }
     }
 
@@ -60,7 +84,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
 
         @include max-screen(940px) {
             justify-content: center;
@@ -83,20 +106,22 @@
         gap: 8px;
         align-items: center;
 
-        svg {
-            @include max-screen(940px) {
-                transform: scale(1.3);
+        @include max-screen(940px) {
+            svg {
+                height: 32px;
+                width: 32px;
             }
         }
+
 
         .text-inter-16-400 {
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            width: 100px;
+            width: 92px;
 
             @include max-screen(1250px) {
-                width: 70px;
+                width: 60px;
             }
 
             @include max-screen(940px) {
@@ -116,6 +141,7 @@
     &__public-container {
         //.folders__public-container
         border-top: 1px solid $color-light-white;
+        margin-right: 4px;
         padding: 8px 4px;
 
         @include max-screen(940px) {
@@ -161,8 +187,11 @@
         width: 100px;
 
         @include max-screen(940px) {
-            width: 100%;
-            margin-left: 4px;
+            svg {
+                height: 34px;
+                width: 34px;
+            }
+
         }
 
         &:hover {
@@ -177,10 +206,5 @@
             }
         }
 
-        svg {
-            @include max-screen(940px) {
-                transform: scale(1.3);
-            }
-        }
     }
 }

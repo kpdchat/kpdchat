@@ -121,7 +121,7 @@
 .window-mes {
     display: flex;
     flex-direction: column;
-    padding: 12px 25px 12px 25px;
+    padding: 12px 25px 15px 25px;
     gap: 12px;
 
     &__data {
@@ -142,6 +142,35 @@
         // .window-mes__another
         align-self: flex-start;
         max-width: 630px;
+    }
+
+    &__new-mess {
+        padding: 10px 15px;
+        color: var(--messages-data-color);
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .text-inter-16-400 {
+            display: block;
+            padding: 0 20px;
+        }
+
+        &::before {
+            content: "";
+            flex: 1 1;
+            display: block;
+            height: 1px;
+            background: var(--messages-data-color);
+        }
+
+        &::after {
+            content: "";
+            flex: 1 1;
+            display: block;
+            height: 1px;
+            background: var(--messages-data-color);
+        }
     }
 }
 
@@ -188,6 +217,7 @@
         max-width: 500px;
         display: flex;
         flex-direction: column;
+        white-space: pre-wrap;
 
         @include max-screen(1250px) {
             max-width: 400px;
@@ -252,6 +282,7 @@
         display: flex;
         flex-direction: column;
         max-width: 500px;
+        white-space: pre-wrap;
 
         @include max-screen(1250px) {
             max-width: 400px;

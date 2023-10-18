@@ -28,6 +28,16 @@ export function fetchPostMessage(data) {
     }
 }
 
+export function fetchUpdateLastSeenMessage(data) {
+    return async () => {
+        try {
+            await axios.put('https://kpdchat.onrender.com/api/messages/last-seen-message', data)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+}
+
 
 export function setRenderChat(chat) {
     return { type: ACTION_SET_RENDER_CHAT, payload: chat }
