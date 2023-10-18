@@ -75,6 +75,39 @@ export const selectFolderToDeleteFrom = createSelector(
     }
 )
 
+export const selectSortRenderList = createSelector(
+    selectRenderChatList,
+    selectUser,
+    (list, user) => {
+        const sortArrByDate = list
+            .filter(el => el.messages && el.messages?.length)
+            .sort((a, b) => {
+                return new Date(b.messages[0].sentAt * 1000) - new Date(a.messages[0].sentAt * 1000)
+            }).map(chat => {
+                const status = user.chatStatuses.find(el => el.chatId === chat.id)
+                if (status) {
+                    let unseenMessageCount = status.unseenMessageCount
+                    if (chat.messages[0].userProfile.id === user.id) {
+                        unseenMessageCount = 0
+                    }
+                    chat = {
+                        ...chat,
+                        "unseenMessageCount": unseenMessageCount
+                    }
+                }
+                return chat
+            })
+
+        const noLastMessageArr = list
+            .filter(el => !el.messages?.length).sort((a, b) => {
+                return a.id - b.id
+            })
+
+        let sortList = sortArrByDate.concat(noLastMessageArr)
+        return sortList
+    }
+)
+
 export const selectDataForMessages = createSelector(
     selectUser,
     selectRenderChatId,
@@ -90,16 +123,31 @@ export const selectDataForMessages = createSelector(
 
 export const selectFilterByDateMessageList = createSelector(
     selectRenderChat,
-    (chat) => {
+    selectUser,
+    (chat, user) => {
         if (!chat?.messages?.length) {
             return []
         }
+        const status = user.chatStatuses.find(el => el.chatId === chat.id)
         const sortMessages = chat?.messages?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         }).map(mes => mes = {
             ...mes,
             sentAt: new Date(mes.sentAt * 1000)
-        }).reduce((acc, curr, index, arr) => {
+
+        })
+        .reduce((acc, curr, index, arr) => {
+            const newIndex = arr.length - status?.unseenMessageCount
+            if(arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
+                acc.push({
+                    newMess : curr
+                })
+            }
+            acc.push(curr)
+            return acc
+
+        },[])
+        .reduce((acc, curr, index, arr) => {
             let currDate = new Date(curr.sentAt)
             let nextDate = new Date(arr[index + 1]?.sentAt)
             if (index === 0) {
@@ -119,7 +167,14 @@ export const selectFilterByDateMessageList = createSelector(
             }
             return acc
         }, [])
+        
 
-        return sortMessages
+
+
+        return {
+            ...chat,
+            "messages" : sortMessages, 
+            "unseenMessageCount" : status?.unseenMessageCount
+        }
     }
 )

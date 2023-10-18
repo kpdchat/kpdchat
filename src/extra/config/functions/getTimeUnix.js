@@ -13,13 +13,13 @@ export function getTimeUnix(timeUnix) {
     let messageDate = date.toLocaleTimeString(locales[locale], { hour: "2-digit", minute: "2-digit" })
     const today = new Date()
     const diffDays = Math.floor((date - today) / (1000 * 60 * 60 * 24))
-
-    if (today.toLocaleDateString() !== date.toLocaleDateString()) {
-        messageDate = date.toLocaleDateString(locales[locale],
-            { weekday: 'short', })
-    } else if (diffDays > 6) {
+    
+    if (diffDays < -6) {
         messageDate = date.toLocaleDateString(locales[locale],
             { month: 'short', day: 'numeric' })
+    } else if (today.toLocaleDateString() !== date.toLocaleDateString()) {
+        messageDate = date.toLocaleDateString(locales[locale],
+            { weekday: 'short', })
     }
     return messageDate
 }

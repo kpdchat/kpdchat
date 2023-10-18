@@ -17,7 +17,6 @@ export function fetchRenderChat(id) {
     }
 }
 
-
 export function fetchPostMessage(data) {
     return async () => {
         try {
@@ -48,18 +47,29 @@ export function fetchDeleteUserTyping(data) {
     }
 }
 
+export function fetchUpdateLastSeenMessage(data) {
+    return async () => {
+        try {
+            await axios.put('https://kpdchat.onrender.com/api/messages/last-seen-message', data)
+        } catch (e) {
+            console.error(e)
+        }
+    }
+}
+
+
 export function setRenderChat(chat) {
-    return { type: ACTION_SET_RENDER_CHAT, payload: chat };
+    return { type: ACTION_SET_RENDER_CHAT, payload: chat }
 }
 
 export function setRenderChatId(id) {
-    return { type: ACTION_SET_RENDER_CHAT_ID, payload: id };
+    return { type: ACTION_SET_RENDER_CHAT_ID, payload: id }
 }
 
 export function setStartWindow() {
-    return { type: ACTION_SET_START_WINDOW };
+    return { type: ACTION_SET_START_WINDOW }
 }
 
 export function deleteStartWindow() {
-    return { type: ACTION_DELETE_START_WINDOW };
+    return { type: ACTION_DELETE_START_WINDOW }
 }

@@ -8,7 +8,7 @@ export default function MesDate({ date }) {
     const messageDate = event.toLocaleDateString(locales[locale], options)
 
     return (
-        <div className="window-mes__data text-inter-16-400">
+        <div className="window-mes__data text-inter-16-400 no-select">
             {messageDate}
         </div>
     )

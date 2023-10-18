@@ -61,7 +61,7 @@ export default function ChatNavigation() {
                             <div
                                 onClick={ onMineChatsClick }
                                 className='folders__title cursor-pointer'>
-                                <PiFolderUser size={ 24 } />
+                                <PiFolderUser size={ 24 } className='folder-icon'/>
                                 <h3 className='text-inter-16-400'>{ t('navigation.mine') }</h3>
                             </div>
                             <h3 className='text-inter-16-400 ml-5px'>{ user.chats.length }</h3>
