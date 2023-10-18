@@ -20,7 +20,6 @@ export default function FolderKebab({ folder, style }) {
         dispatch(setEditFolder(folder))
         dispatch(setModalOpen('edit-folder'))
     }
-    // console.log(style);
     return (
         <KebabWrapper elRef={menuRef} >
             <div className="modal-kebab">

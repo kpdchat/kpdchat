@@ -20,7 +20,8 @@
         "no-messages": "Нажаль повідомлень ще немає(",
         "start-messages" : "Почнемо спілкування!",
         "join-start" : "Приєднатися і почати спілкування",
-        "incognito" : "Інкогніто"
+        "incognito" : "Інкогніто",
+        "new-messages" : "Нові повідомлення"
 
     },
     "settingsUser": {

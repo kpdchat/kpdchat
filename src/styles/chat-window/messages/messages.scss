@@ -150,10 +150,12 @@
         display: flex;
         align-items: center;
         width: 100%;
+
         .text-inter-16-400 {
             display: block;
             padding: 0 20px;
         }
+
         &::before {
             content: "";
             flex: 1 1;
@@ -161,6 +163,7 @@
             height: 1px;
             background: var(--messages-data-color);
         }
+
         &::after {
             content: "";
             flex: 1 1;
@@ -280,9 +283,6 @@
         flex-direction: column;
         max-width: 500px;
         white-space: pre-wrap;
-        &_no-sent {
-            background: #5750A8;
-        }
 
         @include max-screen(1250px) {
             max-width: 400px;

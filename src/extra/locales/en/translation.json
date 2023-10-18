@@ -20,7 +20,8 @@
         "no-messages": "Unfortunately, there are no messages yet(",
         "start-messages" : "Let's start communication!",
         "join-start" : "Join and start chatting",
-        "incognito" : "Incognito"
+        "incognito" : "Incognito",
+        "new-messages" : "New messages"
     },
     "settingsUser": {
         "settings": "Profile settings",
