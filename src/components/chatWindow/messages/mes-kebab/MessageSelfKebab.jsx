@@ -3,12 +3,18 @@ import KebabWrapper from "../../../../extra/KebabWrapper"
 import { PiShareFat, PiCopy } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 
-export default function MesSelfKebab({ message }) {
+export default function MesSelfKebab({ message, style }) {
     const [copy, setCopy] = useState(false)
+    const [copyStyle, setCopyStyle] = useState({})
     const menuRef = useRef()
     const { t } = useTranslation()
 
     function onCopyClick() {
+        if (style.top) {
+            setCopyStyle({ top: '3px', })
+        } else {
+            setCopyStyle({ top: '100px', })
+        }
         setCopy(true)
         navigator.clipboard.writeText(message.text)
         setTimeout(() => {
@@ -18,7 +24,10 @@ export default function MesSelfKebab({ message }) {
 
     return (
         <KebabWrapper elRef={menuRef}>
-            <div ref={menuRef} className="kebab-menu self-kebab no-select">
+            <div
+                ref={menuRef}
+                style={style}
+                className="kebab-menu self-kebab no-select">
                 <div className="self-kebab__row cursor-pointer" >
                     <PiShareFat size={20} />
                     <p className="text-inter-16-400">{t('global.answer')}</p>
@@ -28,7 +37,7 @@ export default function MesSelfKebab({ message }) {
                     <p className="text-inter-16-400">{t('global.copy')}</p>
                 </div>
             </div>
-            {copy && <div className="self-kebab__copy">
+            {copy && <div style={copyStyle} className="self-kebab__copy">
                 <p className="text-inter-16-400">{t('global.copied-message')}</p>
             </div>}
         </KebabWrapper>

@@ -86,9 +86,13 @@ export const selectSortRenderList = createSelector(
             }).map(chat => {
                 const status = user.chatStatuses.find(el => el.chatId === chat.id)
                 if (status) {
+                    let unseenMessageCount = status.unseenMessageCount
+                    if (chat.messages[0].userProfile.id === user.id) {
+                        unseenMessageCount = 0
+                    }
                     chat = {
                         ...chat,
-                        "unseenMessageCount": status.unseenMessageCount
+                        "unseenMessageCount": unseenMessageCount
                     }
                 }
                 return chat
@@ -134,7 +138,7 @@ export const selectFilterByDateMessageList = createSelector(
         })
         .reduce((acc, curr, index, arr) => {
             const newIndex = arr.length - status?.unseenMessageCount
-            if(arr.indexOf(curr) === newIndex) {
+            if(arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
                 acc.push({
                     newMess : curr
                 })

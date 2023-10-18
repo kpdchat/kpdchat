@@ -41,6 +41,7 @@
     &__add {
         // .folders__add
         border-bottom: 1px solid $color-light-white;
+        margin-right: 4px;
     }
 
     &__container {
@@ -140,6 +141,7 @@
     &__public-container {
         //.folders__public-container
         border-top: 1px solid $color-light-white;
+        margin-right: 4px;
         padding: 8px 4px;
 
         @include max-screen(940px) {

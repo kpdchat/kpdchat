@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDataForMessages } from '../../../store/selectors';
 import { fetchPostMessage} from '../../../store/actions/messageAction';
-// , updateRenderChat 
 
 export default function MessageSendForm() {
     const { user, chat } = useSelector(selectDataForMessages);
@@ -17,7 +16,7 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         textareaRef.current.style.height = 'auto';
-        textareaRef.current.style.height = textareaRef.current.scrollHeight + 0.5 + "px";
+        textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + "px";
         setText(e.target.value);
     }
 
@@ -46,15 +45,6 @@ export default function MessageSendForm() {
         }
 
         dispatch(fetchPostMessage(data));
-        // const message = {
-        //     "userProfile": {
-        //         "id": user.id,
-        //         "nickname": user.nickname,
-        //         "profilePictureLink": user.profilePictureLink,
-        //     },
-        //     "text": text
-        // }
-        // dispatch(updateRenderChat(message))
         setText('');
         textareaRef.current.style.height = 'auto';
     }

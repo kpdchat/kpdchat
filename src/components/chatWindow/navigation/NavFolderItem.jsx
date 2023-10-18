@@ -22,9 +22,7 @@ export default function NavFolderItem({ folder }) {
     function onContextClick(e) {
         setHover({ ...hover, over: false })
         onKebabClick()
-        setStyle({
-            top: ` ${e.pageY + 7}px`,
-        })
+        setStyle({ top: ` ${e.pageY + 7}px`, })
     }
 
     function onFolderClick() {
@@ -33,9 +31,7 @@ export default function NavFolderItem({ folder }) {
 
     function onMouseOver(e) {
         setHover({ ...hover, over: true })
-        setStyle({
-            top: `${e.pageY + 7}px`,
-        })
+        setStyle({ top: `${e.pageY + 7}px`, })
     }
 
     useEffect(() => {

@@ -14,6 +14,7 @@ export default function Messages() {
     const messageRef = useRef()
     const newRef = useRef()
     const dispatch = useDispatch()
+    const isMember = user.chats.find(el => el.id === chat.id);
 
     useEffect(() => {
         if (messageRef.current && newRef.current) {
@@ -21,10 +22,10 @@ export default function Messages() {
         } else {
             messageRef.current.scrollTop = messageRef.current.scrollHeight
         }
-    }, [messageRef, sortChat.messages?.length, newRef])
+    }, [messageRef, chat.messages?.length, newRef])
 
     useEffect(() => {
-        if (chat.messages?.length && chat?.messages[chat.messages?.length - 1]?.userProfile?.id !== user.id) {
+        if (chat.messages?.length && isMember) {
             const data = {
                 "userId": user.id,
                 "chatId": chat.id,
@@ -37,22 +38,6 @@ export default function Messages() {
         // eslint-disable-next-line
     }, [chat?.messages?.length, user.id, sortChat.id, dispatch])
 
-
-    useEffect(() => {
-        if (chat.messages?.length - 1 && chat?.messages[chat.messages?.length - 1]?.userProfile?.id === user.id) {
-
-            const data = {
-                "userId": user.id,
-                "chatId": chat.id,
-                "messageId": chat.messages[chat.messages?.length - 1].id
-            }
-            console.log(chat.messages[chat.messages?.length - 1].id);
-            console.log(chat.messages[chat.messages?.length - 1]);
-
-            dispatch(fetchUpdateLastSeenMessage(data))
-        }
-        // eslint-disable-next-line
-    }, [dispatch, sortChat.id, chat?.messages?.length, user.id])
     return (
         <div
             ref={messageRef}

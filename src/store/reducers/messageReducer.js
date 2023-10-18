@@ -3,7 +3,6 @@ import {
     ACTION_SET_START_WINDOW,
     ACTION_SET_RENDER_CHAT,
     ACTION_SET_RENDER_CHAT_ID,
-    // ACTION_UPDATE_RENDER_CHAT,
 } from '../actions/messageAction'
 
 const initialState = {
@@ -32,18 +31,6 @@ export default function messageReducer(state = initialState, { type, payload }) 
                 renderChat: payload,
             }
         }
-        // case ACTION_UPDATE_RENDER_CHAT: {
-        //     return {
-        //         ...state,
-        //         renderChat: {
-        //             ...state.renderChat,
-        //             messages : [
-        //                 ...state.renderChat.messages,
-        //                 payload
-        //             ]
-        //         },
-        //     }
-        // }
         case ACTION_SET_RENDER_CHAT_ID: {
             return {
                 ...state,
