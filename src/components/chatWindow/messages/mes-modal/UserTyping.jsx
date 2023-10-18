@@ -4,14 +4,28 @@ import {useSelector} from 'react-redux';
 import {selectDataForMessages} from '../../../../store/selectors';
 
 export default function UserTyping() {
-    const {user} = useSelector(selectDataForMessages);
+    const {chat} = useSelector(selectDataForMessages);
     const {t} = useTranslation();
+
+    const nicknames = chat?.userTypingDtos.map( (el) => el.userProfile.nickname);
+
+    let displayText = '';
+
+    if (nicknames) {
+        if (nicknames.length <= 3) {
+            displayText = nicknames.join(', ');
+        } else {
+            const firstThreeNicknames = nicknames.slice(0, 3).join(', ');
+            const remainingCount = nicknames.length - 3;
+            displayText = `${firstThreeNicknames} и другие (${remainingCount})`;
+        }
+    }
 
     return (
         <>
             <div className='user-typing'>
                 <p className='text-inter-14-400'>
-                    { user.nickname } is typing
+                    { displayText } is typing
                 </p>
 
                 <div className='newtons-cradle'>

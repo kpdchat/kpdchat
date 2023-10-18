@@ -28,7 +28,8 @@
         "standartAvatars": "Standard images",
         "language": "Language",
         "exit": "Exit",
-        "save": "Save"
+        "save": "Save",
+        "exitSettingsText": "Changes will not be saved. Exit profile settings?"
     },
     "addFolder": {
         "error": "Required",
