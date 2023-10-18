@@ -22,7 +22,6 @@ export default function MessageSendForm() {
 
     function onEnterPress(e) {
         if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
-            console.log('submit');
             e.preventDefault();
             onFormSubmit(e)
         }
