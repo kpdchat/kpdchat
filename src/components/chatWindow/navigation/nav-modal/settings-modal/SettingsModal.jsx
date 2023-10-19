@@ -163,7 +163,7 @@ export default function SettingsModal() {
                             <div className='modal-exit__settings-content'>
                                 <div className='exit-info'>
                                     <p className='text-inter-16-600'>
-                                        Зміни не будуть збережені. Вийти з налаштувань профіля ?
+                                        { t('settingsUser.exitSettingsText') }
                                     </p>
                                 </div>
 
@@ -172,13 +172,13 @@ export default function SettingsModal() {
                                         onClick={ state.onCloseSettings }
                                         className='text-inter-18-600'
                                     >
-                                        Вийти
+                                        { t('settingsUser.exit') }
                                     </button>
                                     <button
                                         onClick={ state.onCloseModalExit }
                                         className='text-inter-18-600'
                                     >
-                                        Повернутися
+                                        { t('chat-context-menu.return') }
                                     </button>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@
     }
 }
 
-.modal-chat{
+.modal-chat {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,8 +82,14 @@
             color: var(--list-text-p-color);
         }
 
-        .text-inter-16-600{
+        .text-inter-16-600 {
             color: var(--color-white-grey);
         }
     }
+}
+
+.user-typing {
+    display: flex;
+    gap: 6px;
+    align-items: flex-end;
 }

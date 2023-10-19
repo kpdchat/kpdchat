@@ -1,8 +1,7 @@
 import {useState} from 'react';
-import axios from 'axios';
 import {useDispatch} from 'react-redux';
-import {setLoaderHide, setLoaderShow, setWindowChatOpen} from '../../../../store/actions/uiActions';
 import {useTranslation} from 'react-i18next';
+import {fetchUserGettingKey} from '../../../../store/actions/userActions';
 
 export default function useGettingUniqueKeyLogic({uniKey}) {
     const [copyActive, setCopyActive] = useState(false);
@@ -36,26 +35,7 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
     async function handleEnterChange(e) {
         e.preventDefault();
         if (copyActiveMessage === '') return;
-        try {
-            dispatch(setLoaderShow());
-            const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
-                uniqueKey: uniKey
-            });
-            const updateUser = {
-                id: data.id,
-                nickname: data.nickname,
-                profilePictureLink: data.profilePictureLink,
-                localization: userLanguage,
-                theme: data.theme
-            }
-            await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
-            localStorage.setItem('user', JSON.stringify(data));
-            dispatch(setWindowChatOpen());
-        } catch (e) {
-            console.log(e);
-        } finally {
-            dispatch(setLoaderHide());
-        }
+        dispatch(fetchUserGettingKey(uniKey, userLanguage));
     }
 
     return {
