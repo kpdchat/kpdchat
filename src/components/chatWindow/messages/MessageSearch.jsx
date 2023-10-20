@@ -11,14 +11,15 @@ export default function MessageSearch() {
     const { t } = useTranslation()
     return (
         <div className="messages__search">
-            <form className='search-form'>
-                <PiMagnifyingGlass
-                    size={24}
-                    className="search-form__svg" />
+            <div className="input-container">
                 <input
-                    className="text-inter-16-400"
-                    placeholder={t('global.search')}/>
-            </form>
+                    type="text"
+                    name="text"
+                    className="input text-inter-16-400"
+                    placeholder={t('global.search')} />
+                <PiMagnifyingGlass className="input-icon" />
+
+            </div>
             <div className="messages__info" >
                 <MdOutlineMoreVert
                     size={20}

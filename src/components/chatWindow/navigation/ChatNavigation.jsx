@@ -19,6 +19,7 @@ import DeleteFromFolderModal from './nav-modal/DeleteFromFolderModal';
 import SettingsModal from './nav-modal/settings-modal/SettingsModal';
 import NavInfoModal from './nav-modal/NavInfoModal';
 import NavTheme from './NavTheme';
+import { clearForm } from '../../../store/actions/messageAction';
 
 export default function ChatNavigation() {
     const { t } = useTranslation();
@@ -39,6 +40,10 @@ export default function ChatNavigation() {
         e.preventDefault()
     }
 
+    function onNavigationClick() {
+        dispatch(clearForm())
+    }
+
     useEffect(() => {
         if (listName === 'mineChats') {
             dispatch(setRenderList(user.chats));
@@ -49,7 +54,10 @@ export default function ChatNavigation() {
 
     return (
         <>
-            <section className='chat__navigation navigation no-select' onContextMenu={onContextClick}>
+            <section
+                className='chat__navigation navigation no-select'
+                onContextMenu={onContextClick}
+                onClick={onNavigationClick}>
                 <div className='navigation__folders folders'>
                     <div className='folders__add add'>
                         <AddChat />
@@ -57,25 +65,25 @@ export default function ChatNavigation() {
                     </div>
                     <div className='folders__container'>
                         <div
-                            className={ listName === 'mineChats' ? 'folders__folder folders__folder_active' : 'folders__folder' }>
+                            className={listName === 'mineChats' ? 'folders__folder folders__folder_active' : 'folders__folder'}>
                             <div
-                                onClick={ onMineChatsClick }
+                                onClick={onMineChatsClick}
                                 className='folders__title cursor-pointer'>
-                                <PiFolderUser size={ 24 } className='folder-icon'/>
-                                <h3 className='text-inter-16-400'>{ t('navigation.mine') }</h3>
+                                <PiFolderUser size={24} className='folder-icon' />
+                                <h3 className='text-inter-16-400'>{t('navigation.mine')}</h3>
                             </div>
-                            <h3 className='text-inter-16-400 ml-5px'>{ user.chats.length }</h3>
+                            <h3 className='text-inter-16-400 ml-5px'>{user.chats.length}</h3>
                         </div>
-                        { user?.folders?.map(folder => <NavFolderItem key={ folder.id } folder={ folder } />) }
+                        {user?.folders?.map(folder => <NavFolderItem key={folder.id} folder={folder} />)}
                     </div>
                     <div className='folders__public-container'>
                         <div
-                            className={ listName === 'publicChats' ? 'folders__public folders__public_active' : 'folders__public' }>
+                            className={listName === 'publicChats' ? 'folders__public folders__public_active' : 'folders__public'}>
                             <div
-                                onClick={ onPublicChatClick }
+                                onClick={onPublicChatClick}
                                 className='folders__title folders__title-public cursor-pointer'>
-                                <PiWechatLogo size={ 24 } />
-                                <h3 className='text-inter-16-400'>{ t('navigation.public') }</h3>
+                                <PiWechatLogo size={24} />
+                                <h3 className='text-inter-16-400'>{t('navigation.public')}</h3>
                             </div>
                         </div>
                     </div>

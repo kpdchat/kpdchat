@@ -52,7 +52,7 @@ export default function AnotherMessage({ message }) {
             <div className="another__message">
                 <div className="another__text">
                     <p className='text-inter-16-400'>{message?.text}</p>
-                    <span className='time-mes text-inter-12-400 no-select'>{sentAt}</span>
+                    <span className='time-mes text-inter-12-400 no-select'>{message.isEdited ? 'ред.  ' + sentAt : sentAt}</span>
                 </div>
                 <div className="another__kebab">
                     {isOpen && idKebab === 'message' + message.id && <MessageAnotherKebab style={style} message={message} />}

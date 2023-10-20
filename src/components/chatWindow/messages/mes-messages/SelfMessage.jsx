@@ -19,7 +19,7 @@ export default function SelfMessage({ message }) {
     useEffect(() => {
         if (chat?.messages[chat.messages.length - 1].id === message.id) {
             setStyle({
-                top: '-85px'
+                top: '-155px'
             })
         } else {
             setStyle({})
@@ -47,7 +47,7 @@ export default function SelfMessage({ message }) {
 
                 <div className="self__text">
                     <p className='text-inter-16-400'>{message.text}</p>
-                    <span className='text-inter-12-400 no-select'>{sentAt}</span>
+                    <span className='text-inter-12-400 no-select'>{message.isEdited ? 'ред.  ' + sentAt : sentAt}</span>
 
                 </div>
             </div>
