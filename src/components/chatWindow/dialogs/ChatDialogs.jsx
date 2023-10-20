@@ -3,14 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectSortRenderList } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
+import { clearForm } from "../../../store/actions/messageAction";
 
 export default function ChatDialogs() {
     const renderChatList = useSelector(selectSortRenderList)
     const [query, setQuery] = useState("")
     const { t } = useTranslation()
+    const dispatch = useDispatch()
 
     const filteredChats = useMemo(() => {
         return renderChatList?.filter(chat => {
@@ -21,9 +23,15 @@ export default function ChatDialogs() {
     function onContextClick(e) {
         e.preventDefault()
     }
+    function onDialogsClick() {
+        console.log('click');
+        dispatch(clearForm())
+    }
     if (filteredChats?.length === 0) {
         return (
-            <section className='chat__dialogs dialogs no-select' >
+            <section
+                className='chat__dialogs dialogs no-select'
+                onClick={onDialogsClick} >
                 <div
                     className='dialogs__logo'
                     onContextMenu={onContextClick}>
@@ -56,7 +64,9 @@ export default function ChatDialogs() {
     }
 
     return (
-        <section className='chat__dialogs dialogs no-select' >
+        <section 
+        className='chat__dialogs dialogs no-select' 
+        onClick={onDialogsClick}>
             <div
                 className='dialogs__logo'
                 onContextMenu={onContextClick}>
