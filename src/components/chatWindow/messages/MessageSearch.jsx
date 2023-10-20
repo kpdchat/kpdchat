@@ -12,10 +12,13 @@ export default function MessageSearch() {
     return (
         <div className="messages__search">
             <div className="input-container">
-                <input type="text" name="text" className="input text-inter-16-400" placeholder={t('global.search')} />
-                <PiMagnifyingGlass
-                    // size={24}
-                    className="input-icon" />
+                <input
+                    type="text"
+                    name="text"
+                    className="input text-inter-16-400"
+                    placeholder={t('global.search')} />
+                <PiMagnifyingGlass className="input-icon" />
+
             </div>
             <div className="messages__info" >
                 <MdOutlineMoreVert
