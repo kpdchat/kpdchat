@@ -16,7 +16,7 @@ export default function UserTyping() {
         if (nicknames.length <= 3) {
             displayText = nicknames.join(', ');
         } else {
-            displayText = `${ firstThreeNicknames } ${ t('chat-context-menu.others') } (${ nicknames.length - 3 })`;
+            displayText = `${ firstThreeNicknames } ${ t('chat-context-menu.others') } `;
         }
     }
 
