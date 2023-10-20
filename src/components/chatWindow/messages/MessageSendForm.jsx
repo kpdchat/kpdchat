@@ -12,6 +12,7 @@ export default function MessageSendForm() {
     const editMessage = useSelector(selectEditMessage)
     const clearForm = useSelector(selectClearForm)
     const [isTyping, setIsTyping] = useState(false)
+
     const [text, setText] = useState('');
     const { t } = useTranslation();
     const textareaRef = useRef();
@@ -108,13 +109,16 @@ export default function MessageSendForm() {
         if (editMessage.id) {
             setText(editMessage.text)
             if (!isTyping) {
+                console.log('typeng');
                 dispatch(fetchPostUserTyping(userTypingData));
                 setIsTyping(true)
             }
             editMessage.text.length > 100 ? textareaRef.current.style.height = '60px' : textareaRef.current.style.height = 'auto';
         }
         // eslint-disable-next-line
-    }, [editMessage.id, editMessage.text, dispatch, isTyping])
+    }, [editMessage.id, editMessage.text, dispatch])
+    ///i need it
+    // }, [editMessage.id, editMessage.text, dispatch, isTyping])
 
     useEffect(() => {
         if (clearForm) {

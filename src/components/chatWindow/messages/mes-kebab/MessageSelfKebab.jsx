@@ -2,13 +2,13 @@ import React, { useRef, useState } from "react"
 import KebabWrapper from "../../../../extra/KebabWrapper"
 import { PiShareFat, PiCopy, PiTrash, PiNotePencil } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from '../../../../store/selectors/index'
-import { fetchDeleteMessage, setEditMessage } from "../../../../store/actions/messageAction";
+import { useDispatch } from "react-redux";
+// import { selectUser } from '../../../../store/selectors/index'
+import { setEditMessage } from "../../../../store/actions/messageAction";
 import { setKebabClose } from "../../../../store/actions/uiActions";
 
 export default function MesSelfKebab({ message, style }) {
-    const user = useSelector(selectUser)
+    // const user = useSelector(selectUser)
     const [copy, setCopy] = useState(false)
     const [copyStyle, setCopyStyle] = useState({})
     const dispatch = useDispatch()
@@ -16,11 +16,13 @@ export default function MesSelfKebab({ message, style }) {
     const { t } = useTranslation()
 
     function onDeleteClick() {
-        const data = {
-            "messageId": message.id,
-            "userId": user.id
-        }
-        dispatch(fetchDeleteMessage(data))
+        //это мне нада
+
+        // const data = {
+        //     "messageId": message.id,
+        //     "userId": user.id
+        // }
+        // dispatch(fetchDeleteMessage(data))
         // dispatch(fetchDeleteMessage(message.id, user.id))
     }
 

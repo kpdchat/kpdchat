@@ -24,7 +24,6 @@ export default function ChatDialogs() {
         e.preventDefault()
     }
     function onDialogsClick() {
-        console.log('click');
         dispatch(clearForm())
     }
     if (filteredChats?.length === 0) {

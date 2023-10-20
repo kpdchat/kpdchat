@@ -1,5 +1,6 @@
 @import "./mes-kebab.scss";
 @import "./mes-modal.scss";
+@import './messages-search.scss';
 
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
@@ -47,14 +48,6 @@
         // .messages__search
         display: flex;
         align-items: center;
-
-        form {
-            min-width: 364px;
-
-            @include max-screen(1250px) {
-                min-width: 200px;
-            }
-        }
     }
 
     &__info {
@@ -346,9 +339,12 @@
 
 .no-member {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 2;
+    padding: 20px 24px;
 
     .text-inter-18-600 {
         border: none;
