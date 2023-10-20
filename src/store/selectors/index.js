@@ -20,6 +20,10 @@ export const selectChat = state => state.chat.selectChat
 export const selectIsWindowStart = state => state.message.isStartWindow
 export const selectRenderChatId = state => state.message.chatId
 export const selectRenderChat = state => state.message.renderChat
+export const selectEditMessage = state => state.message.editMessage
+export const selectClearForm = state => state.message.clearForm
+
+
 
 
 export const selectEditFolderForForm = createSelector(

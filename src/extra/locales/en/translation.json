@@ -21,7 +21,9 @@
         "start-messages" : "Let's start communication!",
         "join-start" : "Join and start chatting",
         "incognito" : "Incognito",
-        "new-messages" : "New messages"
+        "new-messages" : "New messages",
+        "delete" : "Delete",
+        "edit" : "Edit"
     },
     "settingsUser": {
         "settings": "Profile settings",

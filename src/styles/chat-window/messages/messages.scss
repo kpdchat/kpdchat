@@ -1,5 +1,6 @@
 @import "./mes-kebab.scss";
 @import "./mes-modal.scss";
+@import './messages-search.scss';
 
 @mixin max-screen($res) {
     @media screen and (max-width: $res) {
@@ -47,14 +48,6 @@
         // .messages__search
         display: flex;
         align-items: center;
-
-        form {
-            min-width: 364px;
-
-            @include max-screen(1250px) {
-                min-width: 200px;
-            }
-        }
     }
 
     &__info {
@@ -74,7 +67,6 @@
     &__input-mes {
         // .messages__input-mes
         width: 100%;
-        padding: 20px 24px;
         border-top: var(--border-right);
         background-color: var(--color-white-black);
     }
@@ -306,6 +298,7 @@
     &__form {
         display: flex;
         position: relative;
+        padding: 20px 24px;
 
         .text-inter-14-400 {
             width: 100%;
@@ -345,9 +338,12 @@
 
 .no-member {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 2;
+    padding: 20px 24px;
 
     .text-inter-18-600 {
         border: none;
@@ -363,5 +359,35 @@
         &:hover {
             background-color: var(--backColor-hover);
         }
+    }
+}
+
+.edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: linear-gradient(90deg, rgba(171, 168, 212, 0.25) -2.18%, rgba(255, 255, 255, 0.25) 129.16%), #FFF;
+
+    svg {
+        min-height: 24px;
+        min-width: 24px;
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .text-inter-18-600 {
+            line-height: 24.3px;
+            color: #272732;
+            margin-bottom: 4px;
+        }
+
+        .text-inter-16-400 {
+            line-height: 21.6px;
+        }
+
     }
 }
