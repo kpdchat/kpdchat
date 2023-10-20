@@ -5,8 +5,8 @@ import { selectDataForMessages } from '../../../../store/selectors';
 import { DotWave } from '@uiball/loaders';
 
 export default function UserTyping() {
-    const {user, chat} = useSelector(selectDataForMessages);
-    const {t} = useTranslation();
+    const { user, chat } = useSelector(selectDataForMessages);
+    const { t } = useTranslation();
     const nicknames = chat?.userTypingDtos?.filter(el => el.userProfile.id !== user.id).map((el) => el.userProfile.nickname);
     let displayText = '';
 

@@ -5,12 +5,14 @@ import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useSelector } from "react-redux";
 import { selectDataForMessages } from "../../../../store/selectors";
+import {useTranslation} from 'react-i18next';
 
 export default function SelfMessage({ message }) {
-    const { chat } = useSelector(selectDataForMessages)
-    const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message')
-    const [style, setStyle] = useState({})
-    const sentAt = getDateTine(message.sentAt)
+    const { chat } = useSelector(selectDataForMessages);
+    const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message');
+    const [style, setStyle] = useState({});
+    const sentAt = getDateTine(message.sentAt);
+    const { t } = useTranslation();
 
     function onMessageKebabClick(e) {
         onKebabClick(e)
@@ -47,7 +49,7 @@ export default function SelfMessage({ message }) {
 
                 <div className="self__text">
                     <p className='text-inter-16-400'>{message.text}</p>
-                    <span className='text-inter-12-400 no-select'>{message.isEdited ? 'ред.  ' + sentAt : sentAt}</span>
+                    <span className='text-inter-12-400 no-select'>{message.isEdited ? t('global.editMess') + sentAt : sentAt}</span>
 
                 </div>
             </div>

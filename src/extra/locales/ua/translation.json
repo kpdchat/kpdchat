@@ -23,9 +23,8 @@
         "incognito" : "Інкогніто",
         "new-messages" : "Нові повідомлення",
         "delete" : "Видалити",
-        "edit" : "Редагувати"
-
-
+        "edit" : "Редагувати",
+        "editMess" : "ред.  "
     },
     "settingsUser": {
         "settings": "Налаштування профілю",
@@ -85,7 +84,9 @@
         "delete-from-folder-text": "Ви точно хочете видалити цей чат з папки?",
         "others": "та інші",
         "typing": "набирає повідомлення",
-        "typings": "набирають повідомлення"
+        "typings": "набирають повідомлення",
+        "userTyping": "пише",
+        "userTypings": "користувачі пишуть"
     },
     "infoAbout": {
         "title": "Особливості KPD Chat",
