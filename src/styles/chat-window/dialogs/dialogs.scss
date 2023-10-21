@@ -120,7 +120,7 @@
         align-self: end;
         text-align: center;
         min-width: 30px;
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
     }
 
     &__new-count {
