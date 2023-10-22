@@ -4,7 +4,7 @@ import MessageSelfKebab from "../mes-kebab/MessageSelfKebab";
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useSelector } from "react-redux";
-import { selectDataForMessages } from "../../../../store/selectors";
+import {selectDataForMessages} from '../../../../store/selectors';
 import {useTranslation} from 'react-i18next';
 
 export default function SelfMessage({ message }) {
@@ -14,8 +14,18 @@ export default function SelfMessage({ message }) {
     const sentAt = getDateTine(message.sentAt);
     const { t } = useTranslation();
 
+    function getText() {
+        if (message?.repliedToMessage?.text?.length > 30) {
+            return message?.repliedToMessage?.text.slice(0, 30) + '...';
+        }
+        return message?.repliedToMessage?.text;
+    }
+
+    const text = getText();
+    const nickname = message?.repliedToMessage?.userProfile?.nickname;
+
     function onMessageKebabClick(e) {
-        onKebabClick(e)
+        onKebabClick(e);
     }
 
     useEffect(() => {
@@ -24,9 +34,10 @@ export default function SelfMessage({ message }) {
                 top: '-155px'
             })
         } else {
-            setStyle({})
+            setStyle({});
         }
     }, [chat.messages, message.id])
+
     return (
         <div className="window-mes__self self">
             <div className="self__title no-select">
@@ -48,9 +59,22 @@ export default function SelfMessage({ message }) {
                 </div>
 
                 <div className="self__text">
-                    <p className='text-inter-16-400'>{message.text}</p>
-                    <span className='text-inter-12-400 no-select'>{message.isEdited ? t('global.editMess') + sentAt : sentAt}</span>
-
+                    { message.repliedToMessage &&
+                        <div className='self__reply-message reply'>
+                            <div className='reply__img'></div>
+                            <div className='reply__info'>
+                                <div className='text-inter-18-600'>{ nickname }</div>
+                                <div className='text-inter-16-400'>{ text }</div>
+                            </div>
+                        </div>
+                    }
+                    <p className='text-inter-16-400 self__text_space'>{message.text}</p>
+                    <span className='text-inter-12-400 no-select'>
+                        {message.isEdited
+                            ? t('global.editMess') + sentAt
+                            : sentAt
+                        }
+                    </span>
                 </div>
             </div>
         </div>

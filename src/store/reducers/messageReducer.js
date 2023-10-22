@@ -6,15 +6,16 @@ import {
     ACTION_SET_MESSAGE_TO_UPDATE,
     ACTION_CLEAR_MESSAGE_TO_UPDATE,
     ACTION_CLEAR_FORM,
-    ACTION_STOP_CLEAR_FORM,
+    ACTION_STOP_CLEAR_FORM, ACTION_SET_MESSAGE_TO_REPLY, ACTION_CLEAR_MESSAGE_TO_REPLY
 } from '../actions/messageAction'
 
 const initialState = {
     isStartWindow: false,
     renderChat: {},
     chatId: 0,
-    editMessage : {},
-    clearForm : false,
+    editMessage: {},
+    clearForm: false,
+    replyMessage: {}
 }
 
 export default function messageReducer(state = initialState, { type, payload }) {
@@ -53,12 +54,14 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 editMessage: {},
+                clearForm: true,
             }
         }
         case ACTION_CLEAR_FORM: {
             return {
                 ...state,
                 clearForm: true,
+                replyMessage: {}
             }
         }
         case ACTION_STOP_CLEAR_FORM: {
@@ -66,6 +69,18 @@ export default function messageReducer(state = initialState, { type, payload }) 
                 ...state,
                 clearForm: false,
                 editMessage : {},
+            }
+        }
+        case ACTION_SET_MESSAGE_TO_REPLY: {
+            return {
+                ...state,
+                replyMessage: payload,
+            }
+        }
+        case ACTION_CLEAR_MESSAGE_TO_REPLY: {
+            return {
+                ...state,
+                replyMessage: {},
             }
         }
         default: return state

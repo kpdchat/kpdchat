@@ -1,13 +1,22 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState } from "react";
 import KebabWrapper from "../../../../extra/KebabWrapper";
 import { PiShareFat, PiCopy } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
+import {setReplyMessage} from '../../../../store/actions/messageAction';
+import {setKebabClose} from '../../../../store/actions/uiActions';
+import {useDispatch} from 'react-redux';
 
 export default function MesAnotherKebab({ message, style }) {
-    const [copy, setCopy] = useState(false)
-    const [copyStyle, setCopyStyle] = useState({})
-    const menuRef = useRef()
-    const { t } = useTranslation()
+    const [copy, setCopy] = useState(false);
+    const [copyStyle, setCopyStyle] = useState({});
+    const menuRef = useRef();
+    const dispatch = useDispatch();
+    const { t } = useTranslation();
+
+    function onReplyClick() {
+        dispatch(setReplyMessage(message));
+        dispatch(setKebabClose());
+    }
 
     function onCopyClick() {
         if (style.top) {
@@ -27,7 +36,7 @@ export default function MesAnotherKebab({ message, style }) {
             ref={menuRef} 
             style={style}
             className="kebab-menu another-kebab no-select">
-                <div className="another-kebab__row cursor-pointer" >
+                <div onClick={onReplyClick} className="another-kebab__row cursor-pointer" >
                     <PiShareFat size={20} />
                     <p className="text-inter-16-400">{t('global.answer')}</p>
                 </div>

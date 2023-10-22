@@ -74,6 +74,7 @@ code {
     --message-self-text-back-color: #38328A;
     --messages-input-focus-outline: 1px solid #5750A8;
     --messages-data-color: #7C7C85;
+    --messages-edit-reply-back-color: linear-gradient(90deg, #E9E8F9 -19.24%, #F9F9FC 91.08%), #FFF;
     // folder-kebab.scss
     --folder-kebab-hover-color: #EAE9FF;
     //chat-kebab.scss
@@ -144,6 +145,7 @@ code {
     --message-self-text-back-color: rgba(56, 50, 138, 0.65);
     --messages-input-focus-outline: 1px solid #38328A;
     --messages-data-color: #BBB;
+    --messages-edit-reply-back-color: linear-gradient(90deg, #464750 -18.19%, #1B1F23 66.34%), #1B1F23;;
     // folder-kebab.scss
     --folder-kebab-hover-color: rgba(171, 168, 212, 0.20);
     //chat-kebab.scss
