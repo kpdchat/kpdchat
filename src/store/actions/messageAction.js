@@ -8,6 +8,8 @@ export const ACTION_SET_MESSAGE_TO_UPDATE = 'ACTION_SET_MESSAGE_TO_UPDATE';
 export const ACTION_CLEAR_MESSAGE_TO_UPDATE = 'ACTION_CLEAR_MESSAGE_TO_UPDATE';
 export const ACTION_CLEAR_FORM = 'ACTION_CLEAR_FORM';
 export const ACTION_STOP_CLEAR_FORM = 'ACTION_STOP_CLEAR_FORM';
+export const ACTION_SET_MESSAGE_TO_REPLY = 'ACTION_SET_MESSAGE_TO_REPLY';
+export const ACTION_CLEAR_MESSAGE_TO_REPLY = 'ACTION_CLEAR_MESSAGE_TO_REPLY';
 
 
 
@@ -135,4 +137,12 @@ export function setStartWindow() {
 
 export function deleteStartWindow() {
     return { type: ACTION_DELETE_START_WINDOW }
+}
+
+export function setReplyMessage(message) {
+    return { type: ACTION_SET_MESSAGE_TO_REPLY, payload: message }
+}
+
+export function clearReplyMessage() {
+    return { type: ACTION_CLEAR_MESSAGE_TO_REPLY }
 }

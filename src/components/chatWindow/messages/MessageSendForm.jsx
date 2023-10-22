@@ -2,17 +2,18 @@ import React, { useState, useRef } from 'react';
 import NoMemberBtn from './NoMemberBtn';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectClearForm, selectDataForMessages, selectEditMessage } from '../../../store/selectors';
-import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm, fetchUpdateMessage } from '../../../store/actions/messageAction';
+import {selectClearForm, selectDataForMessages, selectEditMessage, selectReplyMessage} from '../../../store/selectors';
+import {fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm, fetchUpdateMessage, clearForm} from '../../../store/actions/messageAction';
 import FormEditMessage from './mes-messages/FormEditMessage';
 import { useEffect } from 'react';
+import FormReplyMessage from './mes-messages/FormReplyMessage';
 
 export default function MessageSendForm() {
     const { user, chat } = useSelector(selectDataForMessages);
-    const editMessage = useSelector(selectEditMessage)
-    const clearForm = useSelector(selectClearForm)
-    const [isTyping, setIsTyping] = useState(false)
-
+    const editMessage = useSelector(selectEditMessage);
+    const replyMessage = useSelector(selectReplyMessage);
+    const isClearForm = useSelector(selectClearForm);
+    const [isTyping, setIsTyping] = useState(false);
     const [text, setText] = useState('');
     const { t } = useTranslation();
     const textareaRef = useRef();
@@ -20,6 +21,7 @@ export default function MessageSendForm() {
 
     const isMember = user.chats.find(el => el.id === chat.id);
 
+    // User Typing Data
     const userTypingData = {
         'userId': user.id,
         'chatId': chat.id
@@ -36,14 +38,14 @@ export default function MessageSendForm() {
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
         setText(value);
 
+        // Send or Delete data UserTyping
         if (!text) {
-            setIsTyping(true)
+            setIsTyping(true);
             dispatch(fetchPostUserTyping(userTypingData));
         } else if (value.trim() === '') {
-            setIsTyping(false)
+            setIsTyping(false);
             dispatch(fetchDeleteUserTyping(userTypingDeleteData));
         }
-
     }
 
     function onEnterPress(e) {
@@ -59,6 +61,7 @@ export default function MessageSendForm() {
         if (!text || !text.trim()) {
             return;
         }
+
         const date = Math.round(Date.now() / 1000);
 
         const data = {
@@ -67,14 +70,15 @@ export default function MessageSendForm() {
             'text': text,
             'sentAt': date
         }
+
         if (editMessage.id) {
             const editData = {
                 "messageId": editMessage.id,
                 "userId": user.id,
                 "text": text
             }
-            dispatch(fetchUpdateMessage(editData))
-            return
+            dispatch(fetchUpdateMessage(editData));
+            return;
         }
 
         if (text.length > 2000) {
@@ -82,6 +86,7 @@ export default function MessageSendForm() {
                 ...data,
                 'text': text.slice(0, 1999),
             }
+
             dispatch(fetchPostMessage(firstMesData));
 
             const secondMesData = {
@@ -89,14 +94,24 @@ export default function MessageSendForm() {
                 'text': text.slice(1999,),
                 'sentAt': Math.round(Date.now() / 1000),
             }
+
             dispatch(fetchPostMessage(secondMesData));
             textareaRef.current.style.height = 'auto';
             dispatch(fetchDeleteUserTyping(userTypingDeleteData));
-            setIsTyping(false)
+            setIsTyping(false);
             setText('');
             return
         }
 
+        if (replyMessage.id) {
+            const replyData = {
+                ...data,
+                "repliedToMessageId": replyMessage.id
+            }
+            dispatch(fetchPostMessage(replyData));
+            dispatch(clearForm());
+            return;
+        }
 
         dispatch(fetchPostMessage(data));
         setText('');
@@ -121,7 +136,7 @@ export default function MessageSendForm() {
     // }, [editMessage.id, editMessage.text, dispatch, isTyping])
 
     useEffect(() => {
-        if (clearForm) {
+        if (isClearForm) {
             if (isTyping) {
                 setIsTyping(false)
                 dispatch(fetchDeleteUserTyping(userTypingDeleteData));
@@ -131,11 +146,12 @@ export default function MessageSendForm() {
             dispatch(stopClearForm())
         }
         // eslint-disable-next-line
-    }, [clearForm, isTyping, dispatch])
+    }, [isClearForm, isTyping, dispatch])
 
     return (
         <>
             {editMessage?.id && <FormEditMessage editMessage={editMessage} />}
+            {replyMessage?.id && <FormReplyMessage replyMessage={replyMessage}/> }
             <form
                 onSubmit={onFormSubmit}
                 className='input-mes__form'>
