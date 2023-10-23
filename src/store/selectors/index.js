@@ -141,45 +141,58 @@ export const selectFilterByDateMessageList = createSelector(
             sentAt: new Date(mes.sentAt * 1000)
 
         })
-        .reduce((acc, curr, index, arr) => {
-            const newIndex = arr.length - status?.unseenMessageCount
-            if(arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
-                acc.push({
-                    newMess : curr
-                })
-            }
-            acc.push(curr)
-            return acc
-
-        },[])
-        .reduce((acc, curr, index, arr) => {
-            let currDate = new Date(curr.sentAt)
-            let nextDate = new Date(arr[index + 1]?.sentAt)
-            if (index === 0) {
-                acc.push({
-                    date: currDate.toDateString(),
-                })
-            }
-            if ((currDate.getUTCDate() < nextDate.getUTCDate() && currDate.getUTCMonth() === nextDate.getUTCMonth())
-                || (currDate.getUTCDate() > nextDate.getUTCDate() && currDate.getUTCMonth() !== nextDate.getUTCMonth())) {
+            .reduce((acc, curr, index, arr) => {
+                const newIndex = arr.length - status?.unseenMessageCount
+                if (arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
+                    acc.push({
+                        newMess: curr
+                    })
+                }
                 acc.push(curr)
-                acc.push({
-                    date: nextDate.toDateString(),
-                })
+                return acc
 
-            } else {
-                acc.push(curr)
-            }
-            return acc
-        }, [])
-        
+            }, [])
+            .reduce((acc, curr, index, arr) => {
+                let currDate = new Date(curr.sentAt)
+                let nextDate = new Date(arr[index + 1]?.sentAt)
+                if (index === 0) {
+                    acc.push({
+                        date: currDate.toDateString(),
+                    })
+                }
+                if ((currDate.getUTCDate() < nextDate.getUTCDate() && currDate.getUTCMonth() === nextDate.getUTCMonth())
+                    || (currDate.getUTCDate() > nextDate.getUTCDate() && currDate.getUTCMonth() !== nextDate.getUTCMonth())) {
+                    acc.push(curr)
+                    acc.push({
+                        date: nextDate.toDateString(),
+                    })
+
+                } else {
+                    acc.push(curr)
+                }
+                return acc
+            }, [])
+
 
 
 
         return {
             ...chat,
-            "messages" : sortMessages, 
-            "unseenMessageCount" : status?.unseenMessageCount
+            "messages": sortMessages,
+            "unseenMessageCount": status?.unseenMessageCount
+        }
+    }
+)
+
+export const selectDataForMessageForm = createSelector(
+    selectClearForm,
+    selectEditMessage,
+    selectReplyMessage,
+    (isClearForm, editMessage, replyMessage) => {
+        return {
+            isClearForm,
+            editMessage,
+            replyMessage,
         }
     }
 )

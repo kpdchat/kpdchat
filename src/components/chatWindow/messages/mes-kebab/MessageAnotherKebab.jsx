@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import KebabWrapper from "../../../../extra/KebabWrapper";
 import { PiShareFat, PiCopy } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
-import {setReplyMessage} from '../../../../store/actions/messageAction';
+import {setReplyMessage, clearEditMessage} from '../../../../store/actions/messageAction';
 import {setKebabClose} from '../../../../store/actions/uiActions';
 import {useDispatch} from 'react-redux';
 
@@ -14,6 +14,7 @@ export default function MesAnotherKebab({ message, style }) {
     const { t } = useTranslation();
 
     function onReplyClick() {
+        dispatch(clearEditMessage())
         dispatch(setReplyMessage(message));
         dispatch(setKebabClose());
     }

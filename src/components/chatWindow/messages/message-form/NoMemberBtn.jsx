@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectDataForMessages } from '../../../store/selectors';
-import { fetchJoinChat } from "../../../store/actions/chatActions";
+import { selectDataForMessages } from '../../../../store/selectors';
+import { fetchJoinChat } from "../../../../store/actions/chatActions";
 import { useTranslation } from 'react-i18next';
 
 export default function NoMemberBtn() {

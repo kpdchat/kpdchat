@@ -365,6 +365,8 @@
 
 
 .input-mes {
+    display: flex;
+    flex-direction: column;
     &__form {
         display: flex;
         position: relative;
@@ -404,6 +406,12 @@
             background: var(--backColor-hover) url("../../../images/chat-window/send.png") center no-repeat;
         }
     }
+
+    &__error {
+        margin-top: -15px;
+        padding: 0 0 10px 24px;
+        color: #FE6262;
+    }
 }
 
 .no-member {
@@ -440,14 +448,14 @@
     background: var(--messages-edit-reply-back-color);
 
     svg {
-        min-height: 24px;
-        min-width: 24px;
+        min-height: 23px;
+        min-width: 23px;
+        align-self: center;
     }
 
     &__info {
         // .edit-reply__info
         display: flex;
-        align-items: center;
         gap: 12px;
 
         .text-inter-18-600 {

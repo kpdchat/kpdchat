@@ -24,7 +24,7 @@ export default function FormEditMessage({ editMessage }) {
         <div className='input-mes__edit-reply edit-reply'>
             <div className='edit-reply__info'>
                 <PiNotePencil
-                    size={ 24 }
+                    size={ 23 }
                     color='var(--color-lavender-white)'
                 />
                 <div className='edit-reply__text'>
