@@ -87,7 +87,7 @@ export default function MessageSendForm() {
             dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             setIsTyping(false);
             setText('');
-            return
+            return;
         }
 
         if (replyMessage.id) {
@@ -105,6 +105,7 @@ export default function MessageSendForm() {
     useEffect(() => {
         if (editMessage.id) {
             setText(editMessage.text)
+            setError('')
             if (!isTyping) {
                 dispatch(fetchPostUserTyping(userTypingData));
                 setIsTyping(true)

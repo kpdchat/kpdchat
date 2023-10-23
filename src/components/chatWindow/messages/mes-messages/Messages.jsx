@@ -24,19 +24,19 @@ export default function Messages() {
         }
     }, [messageRef, chat.messages?.length, newRef])
 
-    useEffect(() => {
-        if (chat.messages?.length && isMember) {
-            const data = {
-                "userId": user.id,
-                "chatId": chat.id,
-                "messageId": chat.messages[chat.messages?.length - 1].id
-            }
-            setTimeout(() => {
-                dispatch(fetchUpdateLastSeenMessage(data))
-            }, 3000)
-        }
-        // eslint-disable-next-line
-    }, [chat?.messages?.length, user.id, sortChat.id, dispatch])
+    // useEffect(() => {
+    //     if (chat.messages?.length && isMember) {
+    //         const data = {
+    //             "userId": user.id,
+    //             "chatId": chat.id,
+    //             "messageId": chat.messages[chat.messages?.length - 1].id
+    //         }
+    //         setTimeout(() => {
+    //             dispatch(fetchUpdateLastSeenMessage(data))
+    //         }, 3000)
+    //     }
+    //     // eslint-disable-next-line
+    // }, [chat?.messages?.length, user.id, sortChat.id, dispatch])
 
     return (
         <div

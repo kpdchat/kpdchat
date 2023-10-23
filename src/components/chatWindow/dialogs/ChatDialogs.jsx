@@ -87,7 +87,7 @@ export default function ChatDialogs() {
             </div>
             <div className='dialogs__list list scroll-bar' onContextMenu={onContextClick}>
                 <div className="list__container ">
-                    {filteredChats?.map(chat => <DialogItem chat={chat} index={renderChatList.indexOf(chat)} key={chat.id} />)}
+                    {filteredChats?.map(chat => <DialogItem dialog={chat} index={renderChatList.indexOf(chat)} key={chat.id} />)}
                 </div>
             </div>
             <span></span>

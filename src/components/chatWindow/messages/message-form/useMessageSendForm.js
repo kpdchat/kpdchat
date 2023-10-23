@@ -46,6 +46,7 @@ export default function useMessageSendForm(setError) {
             dispatch(fetchPostMessage(secondMesData));
         }, 1000)
     }
+    
     function replyToMessage(data, replyMessage) {
         const replyData = {
             ...data,
