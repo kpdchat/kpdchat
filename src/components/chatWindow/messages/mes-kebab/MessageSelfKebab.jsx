@@ -42,7 +42,7 @@ export default function MesSelfKebab({ message, style }) {
         if (style.top) {
             setCopyStyle({ top: '5px', });
         } else {
-            setCopyStyle({ top: '100px', });
+            setCopyStyle({ top: '171px', });
         }
         setCopy(true);
         navigator.clipboard.writeText(message.text);

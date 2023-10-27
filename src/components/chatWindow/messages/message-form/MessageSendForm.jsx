@@ -59,9 +59,10 @@ export default function MessageSendForm() {
         e.preventDefault();
 
         if (!text || !text.trim()) {
-            setError('Не можна надсилати пусте повідомлення')
+            setError(t('global.error-empty-mes'))
             return;
         }
+        
         if (error) {
             return
         }

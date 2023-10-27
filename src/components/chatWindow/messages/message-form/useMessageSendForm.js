@@ -8,12 +8,12 @@ export default function useMessageSendForm(setError) {
 
     function textValidation(text) {
         if (!text || !text.trim()) {
-            setError('Не можна надсилати пусте повідомлення')
+            setError(t('global.error-empty-mes'))
             return
         }
 
         if (text.length > 4000) {
-            setError(`Максимум 4000 символів, у Вас ${text.length}`)
+            setError(t('global.error-long-mes') + text.length)
             return
         }
         setError('')

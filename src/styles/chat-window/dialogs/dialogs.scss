@@ -121,7 +121,6 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
-            // margin-top: 8px;
             color: var(--list-text-p-color);
 
             @include max-screen(1250px) {
