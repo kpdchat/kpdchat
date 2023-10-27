@@ -1,21 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import NoMemberBtn from './NoMemberBtn';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import {selectClearForm, selectDataForMessages, selectEditMessage, selectReplyMessage} from '../../../store/selectors';
-import {fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm, fetchUpdateMessage, clearForm} from '../../../store/actions/messageAction';
-import FormEditMessage from './mes-messages/FormEditMessage';
-import { useEffect } from 'react';
-import FormReplyMessage from './mes-messages/FormReplyMessage';
+import { selectDataForMessageForm, selectDataForMessages } from '../../../../store/selectors';
+import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm } from '../../../../store/actions/messageAction';
+import FormEditMessage from './FormEditMessage';
+import FormReplyMessage from './FormReplyMessage';
+import useMessageSendForm from './useMessageSendForm';
+
 
 export default function MessageSendForm() {
     const { user, chat } = useSelector(selectDataForMessages);
-    const editMessage = useSelector(selectEditMessage);
-    const replyMessage = useSelector(selectReplyMessage);
-    const isClearForm = useSelector(selectClearForm);
+    const { isClearForm, editMessage, replyMessage } = useSelector(selectDataForMessageForm);
     const [isTyping, setIsTyping] = useState(false);
     const [text, setText] = useState('');
-    const { t } = useTranslation();
+    const [error, setError] = useState('')
+    const { textValidation, updateMessage, postLongMessage, replyToMessage, t, } = useMessageSendForm(setError)
     const textareaRef = useRef();
     const dispatch = useDispatch();
 
@@ -33,11 +32,11 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         const value = e.target.value;
-
         textareaRef.current.style.height = 'auto';
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
-        setText(value);
 
+        textValidation(value)
+        setText(value);
         // Send or Delete data UserTyping
         if (!text) {
             setIsTyping(true);
@@ -48,6 +47,7 @@ export default function MessageSendForm() {
         }
     }
 
+    //submit on enter
     function onEnterPress(e) {
         if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
             e.preventDefault();
@@ -59,8 +59,14 @@ export default function MessageSendForm() {
         e.preventDefault();
 
         if (!text || !text.trim()) {
+            setError(t('global.error-empty-mes'))
             return;
         }
+        
+        if (error) {
+            return
+        }
+        setError('')
 
         const date = Math.round(Date.now() / 1000);
 
@@ -72,44 +78,21 @@ export default function MessageSendForm() {
         }
 
         if (editMessage.id) {
-            const editData = {
-                "messageId": editMessage.id,
-                "userId": user.id,
-                "text": text
-            }
-            dispatch(fetchUpdateMessage(editData));
+            updateMessage(editMessage, user, text)
             return;
         }
 
         if (text.length > 2000) {
-            const firstMesData = {
-                ...data,
-                'text': text.slice(0, 1999),
-            }
-
-            dispatch(fetchPostMessage(firstMesData));
-
-            const secondMesData = {
-                ...data,
-                'text': text.slice(1999,),
-                'sentAt': Math.round(Date.now() / 1000),
-            }
-
-            dispatch(fetchPostMessage(secondMesData));
+            postLongMessage(text, data)
             textareaRef.current.style.height = 'auto';
             dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             setIsTyping(false);
             setText('');
-            return
+            return;
         }
 
         if (replyMessage.id) {
-            const replyData = {
-                ...data,
-                "repliedToMessageId": replyMessage.id
-            }
-            dispatch(fetchPostMessage(replyData));
-            dispatch(clearForm());
+            replyToMessage(data, replyMessage)
             return;
         }
 
@@ -123,8 +106,8 @@ export default function MessageSendForm() {
     useEffect(() => {
         if (editMessage.id) {
             setText(editMessage.text)
+            setError('')
             if (!isTyping) {
-                console.log('typeng');
                 dispatch(fetchPostUserTyping(userTypingData));
                 setIsTyping(true)
             }
@@ -132,8 +115,6 @@ export default function MessageSendForm() {
         }
         // eslint-disable-next-line
     }, [editMessage.id, editMessage.text, dispatch])
-    ///i need it
-    // }, [editMessage.id, editMessage.text, dispatch, isTyping])
 
     useEffect(() => {
         if (isClearForm) {
@@ -141,7 +122,7 @@ export default function MessageSendForm() {
                 setIsTyping(false)
                 dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             }
-
+            setError('')
             setText('')
             dispatch(stopClearForm())
         }
@@ -149,9 +130,9 @@ export default function MessageSendForm() {
     }, [isClearForm, isTyping, dispatch])
 
     return (
-        <>
+        <div className='messages__input-mes input-mes'>
             {editMessage?.id && <FormEditMessage editMessage={editMessage} />}
-            {replyMessage?.id && <FormReplyMessage replyMessage={replyMessage}/> }
+            {replyMessage?.id && <FormReplyMessage replyMessage={replyMessage} />}
             <form
                 onSubmit={onFormSubmit}
                 className='input-mes__form'>
@@ -160,7 +141,6 @@ export default function MessageSendForm() {
 
                 <textarea
                     ref={textareaRef}
-                    maxLength='4000'
                     rows='1'
                     onChange={onTextareaInput}
                     onKeyDown={onEnterPress}
@@ -174,8 +154,12 @@ export default function MessageSendForm() {
                     type='submit'
                     onClick={onFormSubmit}>
                 </button>
+
             </form>
-        </>
+            {error && <div className='input-mes__error text-inter-12-400'>
+                {error}</div>}
+
+        </div>
 
     )
 }

@@ -1,0 +1,106 @@
+.input-mes {
+    display: flex;
+    flex-direction: column;
+    &__form {
+        display: flex;
+        position: relative;
+        padding: 20px 24px;
+
+        .text-inter-14-400 {
+            width: 100%;
+            max-height: 80px;
+            border: none;
+            resize: none;
+            border-radius: 8px;
+            background: var(--color-lightGrey-grey);
+            padding: 10px 15px;
+            line-height: 21.6px;
+            color: var(--color-darkGrey-white);
+
+            &:focus {
+                outline: var(--messages-input-focus-outline);
+                background-color: var(--backColor-white-grey);
+            }
+        }
+
+    }
+
+    &__button {
+        // .input-mes__button
+        border: none;
+        margin-left: 16px;
+        margin-bottom: 7px;
+        border-radius: 8px;
+        width: 29px;
+        height: 29px;
+        align-self: flex-end;
+        background: $color-violet url("../../../images/chat-window/send.png") center no-repeat;
+
+        &:hover {
+            background: var(--backColor-hover) url("../../../images/chat-window/send.png") center no-repeat;
+        }
+    }
+
+    &__error {
+        margin-top: -15px;
+        padding: 0 0 10px 24px;
+        color: #FE6262;
+    }
+}
+
+.no-member {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    padding: 20px 24px;
+
+    .text-inter-18-600 {
+        border: none;
+        width: 100%;
+        height: 100%;
+        color: $color-light-white;
+        background-color: $color-violet;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        line-height: 24.3px;
+
+        &:hover {
+            background-color: var(--backColor-hover);
+        }
+    }
+}
+
+.edit-reply {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: var(--messages-edit-reply-back-color);
+
+    svg {
+        min-height: 23px;
+        min-width: 23px;
+        align-self: center;
+    }
+
+    &__info {
+        // .edit-reply__info
+        display: flex;
+        gap: 12px;
+
+        .text-inter-18-600 {
+            line-height: 24.3px;
+            color: var(--color-white-grey);
+            margin-bottom: 4px;
+        }
+
+        .text-inter-16-400 {
+            line-height: 21.6px;
+            color: var(--color-white-grey);
+        }
+    }
+}

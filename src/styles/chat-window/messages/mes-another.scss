@@ -1,0 +1,101 @@
+.another {
+    &__title {
+        // .another__title
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        gap: 18px;
+
+        h3 {
+            color: var(--color-darkGrey-white);
+        }
+    }
+
+    &__message {
+        // .another__message
+        display: flex;
+
+        img {
+            object-fit: contain;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &__kebab {
+        // .another__kebab
+        position: relative;
+        align-self: center;
+    }
+
+    &__kebab-icon {
+        color: var(--color-lightDarkGrey-white);
+    }
+
+    &__text {
+        // .another__text
+        border-radius: 0 8px 8px 8px;
+        background: var(--backColor-white-grey);
+        padding: 10px;
+        min-width: 150px;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+
+        @include max-screen(1250px) {
+            max-width: 400px;
+        }
+
+        img {
+            object-fit: contain;
+            max-width: 275px;
+        }
+
+        .text-inter-16-400 {
+            color: var(--color-darkGrey-white);
+            overflow-wrap: break-word;
+        }
+
+        span {
+            text-align: right;
+            color: var(--color-darkGrey-white);
+            margin-top: 3px;
+        }
+
+        &_space {
+            // .another__text_space
+            white-space: pre-wrap;
+        }
+    }
+
+    &__reply-message {
+        // .another__reply-message
+        display: flex;
+        margin-bottom: 12px;
+
+        .another__reply {
+
+            &__img {
+                // .another__reply__img
+                background-color: var(--color-lavender-white);
+                width: 4px;
+                height: 44px;
+            }
+
+            &__info {
+                // .another__reply__info
+                margin-left: 10px;
+
+                .text-inter-18-600 {
+                    color: var(--color-white-grey);
+                    line-height: 135%;
+                }
+
+                .text-inter-16-400 {
+                    color: var(--color-white-grey);
+                    line-height: 135%;
+                }
+            }
+        }
+    }
+}

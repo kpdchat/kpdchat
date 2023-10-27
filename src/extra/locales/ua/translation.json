@@ -24,7 +24,9 @@
         "new-messages" : "Нові повідомлення",
         "delete" : "Видалити",
         "edit" : "Редагувати",
-        "editMess" : "ред.  "
+        "editMess" : "ред.  ",
+        "error-empty-mes": "Не можна надсилати пусте повідомлення",
+        "error-long-mes": "Максимум 4000 символів, у Вас "
     },
     "settingsUser": {
         "settings": "Налаштування профілю",
@@ -47,7 +49,7 @@
         "chats2": "чатів",
         "create": "Створити",
         "createFolder": "Створити папку",
-        "editFolder": "Редагувати папку",
+        "editFolder": "Редагувати",
         "delete": "Видалити",
         "deleteFolderTitle": "Видалити папку",
         "deleteFolder": "Ви остаточно хочете видалити дану папку?",
@@ -85,8 +87,8 @@
         "others": "та інші",
         "typing": "набирає повідомлення",
         "typings": "набирають повідомлення",
-        "userTyping": "пише",
-        "userTypings": "користувачі пишуть"
+        "userTyping": "пише..",
+        "userTypings": "користувачі пишуть.."
     },
     "infoAbout": {
         "title": "Особливості KPD Chat",

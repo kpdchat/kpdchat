@@ -24,7 +24,9 @@
         "new-messages" : "New messages",
         "delete" : "Delete",
         "edit" : "Edit",
-        "editMess" : "edit  "
+        "editMess" : "edit  ",
+        "error-empty-mes": "An empty message cannot be sent",
+        "error-long-mes": "Maximum 4000 symbols, you have "
     },
     "settingsUser": {
         "settings": "Profile settings",
@@ -47,7 +49,7 @@
         "chats1": "chats",
         "chats2": "chats",
         "createFolder": "Create folder",
-        "editFolder": "Edit folder",
+        "editFolder": "Edit",
         "delete": "Delete",
         "deleteFolderTitle": "Delete folder",
         "deleteFolder": "Are you sure you want to delete this folder?",
@@ -84,8 +86,8 @@
         "others": "and others",
         "typing": "typing a message",
         "typings": "typings a message",
-        "userTyping": "writes",
-        "userTypings": "users write"
+        "userTyping": "writes..",
+        "userTypings": "users write.."
     },
     "infoAbout": {
         "title": "Features of KPD Chat",

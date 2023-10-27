@@ -1,20 +1,17 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectDataForMessages, selectFilterByDateMessageList } from "../../../../store/selectors";
 import MesDate from "./MesDate";
 import SelfMessage from "./SelfMessage";
 import AnotherMessage from "./AnotherMessage";
 import NoMessages from "./NoMessages";
 import NewMessages from "./NewMessages";
-import { fetchUpdateLastSeenMessage } from "../../../../store/actions/messageAction";
 
 export default function Messages() {
     const { user, chat } = useSelector(selectDataForMessages)
     const sortChat = useSelector(selectFilterByDateMessageList)
     const messageRef = useRef()
     const newRef = useRef()
-    const dispatch = useDispatch()
-    const isMember = user.chats.find(el => el.id === chat.id);
 
     useEffect(() => {
         if (messageRef.current && newRef.current) {
@@ -23,20 +20,6 @@ export default function Messages() {
             messageRef.current.scrollTop = messageRef.current.scrollHeight
         }
     }, [messageRef, chat.messages?.length, newRef])
-
-    useEffect(() => {
-        if (chat.messages?.length && isMember) {
-            const data = {
-                "userId": user.id,
-                "chatId": chat.id,
-                "messageId": chat.messages[chat.messages?.length - 1].id
-            }
-            setTimeout(() => {
-                dispatch(fetchUpdateLastSeenMessage(data))
-            }, 3000)
-        }
-        // eslint-disable-next-line
-    }, [chat?.messages?.length, user.id, sortChat.id, dispatch])
 
     return (
         <div

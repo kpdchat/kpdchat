@@ -55,12 +55,23 @@
         // .list__dialog
         width: 365px;
         display: flex;
-        justify-content: space-between;
+        gap: 12px;
         padding: 12px 10px 12px 12px;
         position: relative;
 
+        img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 50%;
+            align-self: center;
+        }
+
         @include max-screen(1250px) {
             width: 263px;
+            gap: 10px;
+            padding: 10px;
+
         }
 
         &:hover {
@@ -72,54 +83,55 @@
     &__info {
         // .list__info
         display: flex;
+        flex-direction: column;
+        gap: 7px;
+        width: 278px;
 
-        img {
-            width: 52px;
-            height: 52px;
-            object-fit: cover;
-            border-radius: 50%;
-            align-self: center;
+        @include max-screen(1250px) {
+            max-width: 180px;
         }
     }
 
-    &__text {
-        // .list__text
-        max-width: 260px;
-        padding: 0 10px;
-
-        @include max-screen(1250px) {
-            max-width: 155px;
-        }
+    &__title {
+        // .list__title
+        display: flex;
+        justify-content: space-between;
 
         h3 {
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
             color: var(--color-white-grey);
-        }
 
-        p {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-top: 8px;
-            color: var(--list-text-p-color);
+            @include max-screen(1250px) {
+                max-width: 125px;
+            }
         }
     }
 
     &__data {
         // .list__data
         display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         gap: 10px 0;
+
+        .text-inter-14-400 {
+            max-width: 230px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            color: var(--list-text-p-color);
+
+            @include max-screen(1250px) {
+                max-width: 140px;
+            }
+        }
     }
 
     &__time {
         // .list__time
-        align-self: end;
-        text-align: center;
-        min-width: 30px;
+        align-self: center;
         color: var(--color-lightDarkGrey-white);
     }
 

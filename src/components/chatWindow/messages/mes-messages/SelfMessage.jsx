@@ -29,7 +29,7 @@ export default function SelfMessage({ message }) {
     }
 
     useEffect(() => {
-        if (chat?.messages[chat.messages.length - 1].id === message.id) {
+        if (chat?.messages[chat.messages.length - 1].id === message.id && chat.messages.length > 2) {
             setStyle({
                 top: '-155px'
             })

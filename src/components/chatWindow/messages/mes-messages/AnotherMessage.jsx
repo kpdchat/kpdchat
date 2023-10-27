@@ -8,6 +8,7 @@ import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useTranslation } from 'react-i18next';
 import { useSelector } from "react-redux";
 import { selectDataForMessages } from "../../../../store/selectors";
+import IncognitoKebab from "../mes-kebab/IncognitoKebab";
 
 export default function AnotherMessage({ message }) {
     const { chat } = useSelector(selectDataForMessages);
@@ -33,30 +34,34 @@ export default function AnotherMessage({ message }) {
     const nickname = message?.repliedToMessage?.userProfile?.nickname;
 
     useEffect(() => {
-        if (chat?.messages[chat.messages.length - 1].id === message.id) {
+        if (chat?.messages[chat.messages.length - 1].id === message.id && message?.userProfile) {
             setStyle({
                 top: '-85px'
+            })
+        } else if (chat?.messages[chat.messages.length - 1].id === message.id && !message?.userProfile) {
+            setStyle({
+                top: '-37px'
             })
         } else {
             setStyle({});
         }
-    }, [chat.messages, message.id])
+    }, [chat.messages, message.id, message?.userProfile])
 
     return (
         <div className='window-mes__another'>
             <div className='another__title no-select'>
-                { message?.userProfile
+                {message?.userProfile
                     ? <img
                         className='chat-img'
-                        src={ message?.userProfile?.profilePictureLink }
+                        src={message?.userProfile?.profilePictureLink}
                         alt='' />
                     : <img
                         className='chat-img'
-                        src={ incognitoTheme === 'light' ? incognitoLight : incognitoDark }
+                        src={incognitoTheme === 'light' ? incognitoLight : incognitoDark}
                         alt='' />
                 }
                 <h3 className='text-inter-18-600'>
-                    { message?.userProfile?.nickname
+                    {message?.userProfile?.nickname
                         ? message?.userProfile?.nickname
                         : t('global.incognito')
                     }
@@ -65,36 +70,38 @@ export default function AnotherMessage({ message }) {
             <div className='another__message'>
                 <div className='another__text'>
 
-                    { message.repliedToMessage &&
+                    {message.repliedToMessage &&
                         <div className='another__reply-message another__reply'>
                             <div className='another__reply__img'></div>
                             <div className='another__reply__info'>
-                                <div className='text-inter-18-600'>{ nickname }</div>
-                                <div className='text-inter-16-400'>{ text }</div>
+                                <div className='text-inter-18-600'>{nickname}</div>
+                                <div className='text-inter-16-400'>{text}</div>
                             </div>
                         </div>
                     }
 
                     <p className='text-inter-16-400 another__text_space'>
-                        { message?.text }
+                        {message?.text}
                     </p>
 
                     <span className='time-mes text-inter-12-400 no-select'>
-                        { message.isEdited
+                        {message.isEdited
                             ? t('global.editMess') + sentAt
                             : sentAt
                         }
                     </span>
                 </div>
                 <div className='another__kebab'>
-                    { isOpen && idKebab === 'message' + message.id &&
-                        <MessageAnotherKebab style={ style } message={ message } />
+                    {isOpen && idKebab === 'message' + message.id && message?.userProfile &&
+                        <MessageAnotherKebab style={style} message={message} />
                     }
-
+                    {isOpen && idKebab === 'message' + message.id && !message?.userProfile &&
+                        <IncognitoKebab style={style} message={message} />
+                    }
                     <MdOutlineMoreVert
                         className='another__kebab-icon cursor-pointer'
-                        size={ 20 }
-                        onMouseDown={ onMessageKebabClick } />
+                        size={20}
+                        onMouseDown={onMessageKebabClick} />
                 </div>
             </div>
         </div>

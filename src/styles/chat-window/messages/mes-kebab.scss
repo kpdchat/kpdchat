@@ -42,7 +42,25 @@
         z-index: 3;
 
         @include max-screen(1390px) {
-            left: -163px;
+            left: -147px;
+        }
+    }
+    
+    &__copy-incognito {
+        // .another-kebab__copy
+        background: $background-active-lilac;
+        box-shadow: 1px 1px 4px 0 $color-shadow-grey;
+        width: 150px;
+        padding: 5px;
+        color: $color-text-grey;
+        border-radius: 8px;
+        position: absolute;
+        top: 63px;
+        left: 18px;
+        z-index: 3;
+
+        @include max-screen(1390px) {
+            left: -147px;
         }
     }
 }
@@ -91,7 +109,7 @@
 }
 
 .title-kebab {
-    width: 243px;
+    width: 182px;
     top: -17px;
     right: 22px;
 
