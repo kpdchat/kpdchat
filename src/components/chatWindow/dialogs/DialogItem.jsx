@@ -18,7 +18,7 @@ export default function DialogItem({ dialog, index }) {
     const { t } = useTranslation();
     const { isOpen, idKebab, onKebabClick } = useKebabClick(dialog.id, 'chat', type);
     const dispatch = useDispatch();
-
+    const isMember = user.chats.find(el => el.id === chat.id);
     const dialogStyle = getDialogStyle();
     const sentAt = getSentTime();
     const messagesDisplay = getDisplay();
@@ -48,14 +48,18 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onChatClick() {
-        const data = {
-            "userId": user.id,
-            "chatId": id,
-            "messageId": chat.messages[chat.messages?.length - 1].id
+        if (id && chat.messages?.length && isMember) {
+            const data = {
+                "userId": user.id,
+                "chatId": id,
+                "messageId": chat.messages[chat.messages?.length - 1].id
+            }
+            dispatch(fetchUpdateLastSeenMessage(data))
         }
+
         dispatch(deleteStartWindow());
         dispatch(setRenderChatId(dialog.id));
-        dispatch(fetchUpdateLastSeenMessage(data))
+
     }
 
     function getDisplay() {
