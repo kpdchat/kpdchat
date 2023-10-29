@@ -13,7 +13,7 @@ export default function MessageSendForm() {
     const { isClearForm, editMessage, replyMessage } = useSelector(selectDataForMessageForm);
     const [isTyping, setIsTyping] = useState(false);
     const [text, setText] = useState('');
-    const [error, setError] = useState('')
+    const [error, setError] = useState(false)
     const { textValidation, updateMessage, postLongMessage, replyToMessage, t, } = useMessageSendForm(setError)
     const textareaRef = useRef();
     const dispatch = useDispatch();
@@ -59,14 +59,14 @@ export default function MessageSendForm() {
         e.preventDefault();
 
         if (!text || !text.trim()) {
-            setError(t('global.error-empty-mes'))
+            setError(true)
             return;
         }
         
         if (error) {
             return
         }
-        setError('')
+        setError(false)
 
         const date = Math.round(Date.now() / 1000);
 
@@ -106,7 +106,7 @@ export default function MessageSendForm() {
     useEffect(() => {
         if (editMessage.id) {
             setText(editMessage.text)
-            setError('')
+            setError(false)
             if (!isTyping) {
                 dispatch(fetchPostUserTyping(userTypingData));
                 setIsTyping(true)
@@ -122,7 +122,7 @@ export default function MessageSendForm() {
                 setIsTyping(false)
                 dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             }
-            setError('')
+            setError(true)
             setText('')
             dispatch(stopClearForm())
         }
@@ -145,20 +145,16 @@ export default function MessageSendForm() {
                     onChange={onTextareaInput}
                     onKeyDown={onEnterPress}
                     value={text}
-                    className='text-inter-14-400 scroll-bar'
+                    className='text-inter-16-400 scroll-bar'
                     placeholder={t('global.text-message')}
                 />
 
                 <button
-                    className='input-mes__button cursor-pointer'
+                    className={error ? 'input-mes__button-disabled' : 'input-mes__button-active cursor-pointer'}
                     type='submit'
                     onClick={onFormSubmit}>
                 </button>
-
             </form>
-            {error && <div className='input-mes__error text-inter-12-400'>
-                {error}</div>}
-
         </div>
 
     )

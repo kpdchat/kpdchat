@@ -8,15 +8,15 @@ export default function useMessageSendForm(setError) {
 
     function textValidation(text) {
         if (!text || !text.trim()) {
-            setError(t('global.error-empty-mes'))
+            setError(true)
             return
         }
 
         if (text.length > 4000) {
-            setError(t('global.error-long-mes') + text.length)
+            setError(true)
             return
         }
-        setError('')
+        setError(false)
     }
 
     function updateMessage(editMessage, user, text) {
