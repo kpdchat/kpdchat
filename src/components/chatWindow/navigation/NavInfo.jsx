@@ -9,7 +9,7 @@ export default function NavInfo () {
     return (
         <>
             <PiInfo 
-            size={36} 
+            size={35} 
             className="cursor-pointer" 
             onClick={() => dispatch(setModalOpen('info'))} />
         </>

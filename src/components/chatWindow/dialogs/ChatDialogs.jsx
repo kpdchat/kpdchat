@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectSortRenderList } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
 import { clearForm } from "../../../store/actions/messageAction";
+import { setKebabClose } from "../../../store/actions/uiActions";
 
 export default function ChatDialogs() {
     const renderChatList = useSelector(selectSortRenderList)
@@ -26,6 +27,13 @@ export default function ChatDialogs() {
     function onDialogsClick() {
         dispatch(clearForm())
     }
+
+    useEffect(() => {
+        if (renderChatList?.length === 0) {
+            dispatch(setKebabClose())
+        }
+    }, [renderChatList?.length, dispatch])
+    
     if (filteredChats?.length === 0) {
         return (
             <section
@@ -63,9 +71,9 @@ export default function ChatDialogs() {
     }
 
     return (
-        <section 
-        className='chat__dialogs dialogs no-select' 
-        onClick={onDialogsClick}>
+        <section
+            className='chat__dialogs dialogs no-select'
+            onClick={onDialogsClick}>
             <div
                 className='dialogs__logo'
                 onContextMenu={onContextClick}>

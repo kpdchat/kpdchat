@@ -15,7 +15,9 @@ export default function JoinChat({ menuRef, style, chat }) {
     }
 
     return (
-        <div ref={menuRef} style={style}>
+        <div ref={menuRef}
+            style={style}
+            className="chat-kebab">
             <div
                 className="chat-kebab__row cursor-pointer"
                 onClick={onJoinChatClick}>

@@ -40,7 +40,9 @@ export default function FolderChatKebab({ menuRef, style, chat, setStyle }) {
     }
 
     return (
-        <div ref={menuRef} style={style}>
+        <div ref={menuRef}
+            style={style}
+            className="chat-kebab">
             <div
                 className={open ? 'display-none' : "chat-kebab__row chat-kebab__row_folders cursor-pointer"}
                 onClick={onAddFolderClick}>
