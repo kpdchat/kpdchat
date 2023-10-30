@@ -37,8 +37,8 @@ export default function UserTyping() {
             </p>
 
             <DotWave
-                size={ 16 }
-                speed={ 0.7 }
+                size={ 13 }
+                speed={ 1.6 }
                 color='var(--color-darkGrey-white)'
             />
         </div>

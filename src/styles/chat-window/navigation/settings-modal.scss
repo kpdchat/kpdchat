@@ -48,7 +48,7 @@
                 padding: 26px;
                 border-radius: 8px;
                 text-align: center;
-                box-shadow: var(--settings-modal-exit-boxShadow);
+                box-shadow: var(--boxShadow-color);
 
                 .exit-info {
                     color: $color-white;
@@ -117,7 +117,7 @@
             padding: 8px 22px;
             border-radius: 8px;
             border: 2px solid transparent;
-            background-color: $color-background-light-grey;
+            background-color: var(--submit-inactive-back-color);
             margin-top: 16px;
         }
     }

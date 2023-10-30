@@ -43,6 +43,7 @@ code {
     --color-violet-black: #EAE9FF;
     --color-black-white: #151515;
     --color-black-grey: #151515;
+    --color-blue-yelow: #3E3890;
     --backColor-white-grey: #FFF;
     --border-color-lavender-white: 1px solid #38328A;
     --boxShadow-color: 1px 1px 4px 0 #706C9F;
@@ -50,7 +51,6 @@ code {
 
     // registration.scss
     --form-input-border-color: #3E3890;
-    --enter-description-color: #3E3890;
     // copy-key.scss
     --input-copy-border: 4px solid #3E3890;
     // modal.scss
@@ -77,7 +77,7 @@ code {
     --messages-edit-reply-back-color: linear-gradient(90deg, #E9E8F9 -19.24%, #F9F9FC 91.08%), #FFF;
     // folder-kebab.scss
     --folder-kebab-hover-color: #EAE9FF;
-    //chat-kebab.scss
+    // chat-kebab.scss
     --chat-kebab-hover-color: #EAE9FF;
     // static-classes.scss
     --scroll-bar-back-color: #38328A;
@@ -90,15 +90,19 @@ code {
     --modal-icon-outline-color: 2px solid #38328A;
     --modal-form-chatCount-color: #38328A;
     --modal-folder-icon: url(../images/chat-window/add-folder-icon-light.png) center no-repeat;
-    // .settings-modal.scss
+    // settings-modal.scss
     --settings-user-input-color: #272732;
     --settings-user-borderBottom: 1px solid #272732;
     --settings-buttons-color: #7C7C85;
     --settings-modal-exit-back-color: #38328A;
-    --settings-modal-exit-boxShadow: 1px 1px 4px 0 #706C9F;
     --settings-modal-exit-buttons-backHover-color: #FFF;
+    --submit-inactive-back-color: #92929A;
     // chat-kebab.scss
     --kebab-row-color: #5750A8;
+    // chat-modal.scss
+    --back-color-img: #EBEAEF;
+    // mes-kebab.scss
+    --self-copy-boxShadow: 1px 1px 4px 0 #BDBAE0;
 }
 
 // dark theme styles
@@ -114,14 +118,14 @@ code {
     --color-violet-black: #1B1F23;
     --color-black-white: #FFF;
     --color-black-grey: #BBB;
+    --color-blue-yelow: #FFF44F;
     --backColor-white-grey: rgba(91, 91, 102, 0.65);
     --border-color-lavender-white: 1px solid #FFF;
-    --boxShadow-color: 1px 1px 4px 0 #38328A;
+    --boxShadow-color: 2px 2px 5px 0 #08080C;
     --backColor-hover: #5750A8;
 
     // registration.scss
     --form-input-border-color: #BBB;
-    --enter-description-color: #FFF44F;
     // copy-key.scss
     --input-copy-border: 2px solid #BBB;
     // modal.scss
@@ -166,8 +170,12 @@ code {
     --settings-user-borderBottom: 1px solid #BBB;
     --settings-buttons-color: #FFF;
     --settings-modal-exit-back-color: #1B1F23;
-    --settings-modal-exit-boxShadow: 1px 1px 4px 0 #FFF;
     --settings-modal-exit-buttons-backHover-color: rgba(171, 168, 212, 0.20);
+    --submit-inactive-back-color: #44454E;
     // chat-kebab.scss
     --kebab-row-color: #FFF;
+    // chat-modal.scss
+    --back-color-img: #44454E;
+    // mes-kebab.scss
+    --self-copy-boxShadow: 2px 2px 5px 0 #08080C;
 }

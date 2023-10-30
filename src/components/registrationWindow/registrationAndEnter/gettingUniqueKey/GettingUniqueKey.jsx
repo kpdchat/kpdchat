@@ -5,8 +5,8 @@ import {useTranslation} from 'react-i18next';
 import {useSelector} from 'react-redux';
 import {selectLoader} from '../../../../store/selectors';
 
-export default function GettingUniqueKey({uniKey}) {
-    const state = useGettingUniqueKeyLogic({uniKey});
+export default function GettingUniqueKey({uniKey, setUniKey}) {
+    const state = useGettingUniqueKeyLogic({uniKey, setUniKey});
     const isLoader = useSelector(selectLoader);
     const {t} = useTranslation();
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {setLoaderHide, setLoaderShow} from './uiActions';
 
 export const ACTION_SET_START_WINDOW = 'ACTION_SET_START_WINDOW';
 export const ACTION_DELETE_START_WINDOW = 'ACTION_DELETE_START_WINDOW';
@@ -10,8 +11,6 @@ export const ACTION_CLEAR_FORM = 'ACTION_CLEAR_FORM';
 export const ACTION_STOP_CLEAR_FORM = 'ACTION_STOP_CLEAR_FORM';
 export const ACTION_SET_MESSAGE_TO_REPLY = 'ACTION_SET_MESSAGE_TO_REPLY';
 export const ACTION_CLEAR_MESSAGE_TO_REPLY = 'ACTION_CLEAR_MESSAGE_TO_REPLY';
-
-
 
 export function fetchRenderChat(id) {
     return async (dispatch) => {
@@ -25,11 +24,14 @@ export function fetchRenderChat(id) {
 }
 
 export function fetchPostMessage(data) {
-    return async () => {
+    return async (dispatch) => {
         try {
+            dispatch(setLoaderShow());
             await axios.post('https://kpdchat.onrender.com/api/messages', data)
         } catch (e) {
             console.error(e);
+        } finally {
+            dispatch(setLoaderHide());
         }
     }
 }
@@ -77,13 +79,15 @@ export function fetchDeleteMessage(message) {
 
 export function fetchUpdateMessage(message) {
     return async (dispatch) => {
+        dispatch(setLoaderShow());
         try {
             await axios.put('https://kpdchat.onrender.com/api/messages/update', message)
         } catch (e) {
             console.error(e);
         }
         finally{
-            dispatch(clearForm())
+            dispatch(clearForm());
+            dispatch(setLoaderHide());
         }
     }
 }

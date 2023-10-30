@@ -56,7 +56,6 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 editMessage: {},
-                clearForm: true,
             }
         }
         case ACTION_CLEAR_FORM: {

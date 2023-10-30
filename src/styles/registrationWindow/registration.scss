@@ -126,7 +126,6 @@
                             outline: none;
                             box-shadow: none;
                             border-radius: 8px;
-
                         }
 
                         &::placeholder {
@@ -179,7 +178,7 @@
 
                         &__description {
                             // .enter__description
-                            color: var(--enter-description-color);
+                            color: var(--color-blue-yelow);
                             line-height: 140%;
                             letter-spacing: 0.36px;
                             margin-bottom: 16px;
@@ -214,7 +213,7 @@
             text-align: right;
             background: #38328A;
             border-radius: 8px;
-            padding: 3px;
+            padding: 1px;
             color: #FFF;
         }
     }
