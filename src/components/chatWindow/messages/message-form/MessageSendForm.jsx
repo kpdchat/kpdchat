@@ -13,6 +13,7 @@ export default function MessageSendForm() {
     const { isClearForm, editMessage, replyMessage } = useSelector(selectDataForMessageForm);
     const [isTyping, setIsTyping] = useState(false);
     const [text, setText] = useState('');
+    const [previousText, setPreviousText] = useState('');
     const [error, setError] = useState('')
     const { textValidation, updateMessage, postLongMessage, replyToMessage, t, } = useMessageSendForm(setError)
     const textareaRef = useRef();
@@ -49,7 +50,7 @@ export default function MessageSendForm() {
         }
     }
 
-    //submit on enter
+    // Submit on enter
     function onEnterPress(e) {
         if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
             e.preventDefault();
@@ -131,6 +132,42 @@ export default function MessageSendForm() {
         }
         // eslint-disable-next-line
     }, [isClearForm, isTyping, dispatch])
+
+    // Clear UserTyping after 3 sec.
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (text !== previousText) {
+                console.log('text', text)
+                console.log('previousText', previousText)
+
+                setIsTyping(true);
+                setPreviousText(text);
+                dispatch(fetchPostUserTyping(userTypingData));
+            } else {
+                if (isTyping) {
+                    setIsTyping(false);
+                    dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+                }
+            }
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [text, previousText, isTyping, dispatch]);
+
+    // Delete UserTyping after close window browser
+    useEffect( () => {
+        const handleUnload = () => {
+            if (text) {
+                dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+            }
+        }
+
+        window.addEventListener('beforeunload', handleUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleUnload);
+        };
+    }, [text, dispatch]);
 
     return (
         <div className='messages__input-mes input-mes'>
