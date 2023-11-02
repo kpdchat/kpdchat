@@ -100,7 +100,7 @@ export default function useLoginAndRegistrationLogic() {
     useEffect(() => {
         uniKeyRef.current.style.height = 'auto';
         uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 5 + 'px';
-        if (uniKey === '') {
+        if (!uniKey) {
             uniKeyRef.current.style.height = 'auto';
         }
     }, [uniKey]);
