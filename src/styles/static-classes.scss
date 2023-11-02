@@ -149,6 +149,18 @@
     }
 }
 
+.select-text {
+    &::-moz-selection {
+        background-color: #ffee38;
+        color: #191919
+    }
+
+    &::selection {
+        background-color: #ffee38;
+        color: #191919
+    }
+}
+
 .modal-container {
     position: fixed;
     width: 100vw;

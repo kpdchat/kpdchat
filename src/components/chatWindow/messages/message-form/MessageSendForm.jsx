@@ -32,7 +32,9 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         const value = e.target.value;
-        textareaRef.current.style.height = 'auto';
+        if(!text) {
+            textareaRef.current.style.height = '42px';
+        }
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
 
         textValidation(value)
@@ -98,7 +100,7 @@ export default function MessageSendForm() {
 
         dispatch(fetchPostMessage(data));
         setText('');
-        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = '42px';
         dispatch(fetchDeleteUserTyping(userTypingDeleteData));
         setIsTyping(false)
     }
