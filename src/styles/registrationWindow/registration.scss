@@ -19,7 +19,8 @@
                     margin: 40px 80px 0 0;
 
                     .active {
-                        width: 40px;
+                        width: 39px;
+                        height: 39px;
                         padding: 8px;
                         color: $color-white;
                         background-color: $color-violet;
@@ -28,7 +29,8 @@
                     }
 
                     .default {
-                        width: 40px;
+                        width: 39px;
+                        height: 39px;
                         padding: 8px;
                         color: var(--color-lightDarkGrey-white);
                         background-color: var(--color-white-black);

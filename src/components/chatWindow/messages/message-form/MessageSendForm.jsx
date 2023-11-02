@@ -133,38 +133,15 @@ export default function MessageSendForm() {
         // eslint-disable-next-line
     }, [isClearForm, isTyping, dispatch])
 
-    // Clear UserTyping after 3 sec.
+    // Show UserTyping
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (text !== previousText) {
-                setIsTyping(true);
-                setPreviousText(text);
-                dispatch(fetchPostUserTyping(userTypingData));
-            } else if(isTyping) {
-                    setIsTyping(false);
-                    dispatch(fetchDeleteUserTyping(userTypingDeleteData));
-            }
-        }, 2000);
-
-        return () => clearInterval(interval);
+        if (text !== previousText) {
+            setIsTyping(true);
+            setPreviousText(text);
+            dispatch(fetchPostUserTyping(userTypingData));
+        }
         // eslint-disable-next-line
     }, [text, previousText, isTyping, dispatch]);
-
-    // Delete UserTyping after close window browser/browser tab
-    useEffect( () => {
-        const handleUnload = () => {
-            if (text) {
-                dispatch(fetchDeleteUserTyping(userTypingDeleteData));
-            }
-        }
-
-        window.addEventListener('beforeunload', handleUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleUnload);
-        };
-        // eslint-disable-next-line
-    }, [text, dispatch]);
 
     return (
         <div className='messages__input-mes input-mes'>

@@ -33,7 +33,7 @@ export function fetchPostMessage(data) {
         } finally {
             setTimeout(() => {
                 dispatch(setLoaderHide());
-            }, 1000);
+            }, 800);
         }
     }
 }
@@ -90,12 +90,12 @@ export function fetchUpdateMessage(message) {
             dispatch(clearForm());
             setTimeout(() => {
                 dispatch(setLoaderHide());
-            }, 1000);
+            }, 800);
         }
     }
 }
 
-//это мне нада
+// это мне нада (Лиза, удаление сообщений)
 
 // export function fetchDeleteMessage(messageId, userId) {
 

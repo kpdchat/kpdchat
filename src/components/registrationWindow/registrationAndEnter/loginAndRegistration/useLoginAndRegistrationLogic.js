@@ -89,6 +89,14 @@ export default function useLoginAndRegistrationLogic() {
         }
     }
 
+    // Enter in Chat when you press 'ENTER'
+    function onEnterPress(e) {
+        if (e.keyCode === 13 && !e.shiftKey && !e.ctrlKey) {
+            e.preventDefault();
+            void onUniqueKeySubmit(e);
+        }
+    }
+
     useEffect(() => {
         uniKeyRef.current.style.height = 'auto';
         uniKeyRef.current.style.height = uniKeyRef.current.scrollHeight + 5 + 'px';
@@ -106,5 +114,6 @@ export default function useLoginAndRegistrationLogic() {
         onChangeUniqueKey,
         onUniqueKeySubmit,
         resetUnikey,
+        onEnterPress,
     }
 }
