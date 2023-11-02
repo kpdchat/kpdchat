@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 import {fetchUserGettingKey} from '../../../../store/actions/userActions';
 
-export default function useGettingUniqueKeyLogic({uniKey}) {
+export default function useGettingUniqueKeyLogic({uniKey, setUniKey}) {
     const [copyActive, setCopyActive] = useState(false);
     const [copyActiveMessage, setCopyActiveMessage] = useState('');
     const dispatch = useDispatch();
@@ -35,7 +35,7 @@ export default function useGettingUniqueKeyLogic({uniKey}) {
     async function handleEnterChange(e) {
         e.preventDefault();
         if (copyActiveMessage === '') return;
-        dispatch(fetchUserGettingKey(uniKey, userLanguage));
+        dispatch(fetchUserGettingKey(uniKey, setUniKey, userLanguage));
     }
 
     return {

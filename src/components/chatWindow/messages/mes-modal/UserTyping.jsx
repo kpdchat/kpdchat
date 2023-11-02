@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { selectDataForMessages } from '../../../../store/selectors';
-import { DotWave } from '@uiball/loaders';
+import UserTypingDotsUI from '../../../../extra/UserTypingDotsUI';
 
 export default function UserTyping() {
     const { user, chat } = useSelector(selectDataForMessages);
@@ -36,11 +36,7 @@ export default function UserTyping() {
                 { displayText } { nicknameCount }
             </p>
 
-            <DotWave
-                size={ 16 }
-                speed={ 0.7 }
-                color='var(--color-darkGrey-white)'
-            />
+            <UserTypingDotsUI />
         </div>
     );
 }

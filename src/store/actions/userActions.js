@@ -43,7 +43,7 @@ export function fetchUser(id) {
     }
 }
 
-export function fetchUserGettingKey(uniKey, userLanguage) {
+export function fetchUserGettingKey(uniKey, setUniKey, userLanguage) {
     return async (dispatch) => {
         try {
             dispatch(setLoaderShow());
@@ -64,6 +64,7 @@ export function fetchUserGettingKey(uniKey, userLanguage) {
             console.log(e);
         } finally {
             dispatch(setLoaderHide());
+            setUniKey('');
         }
     }
 }

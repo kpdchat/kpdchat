@@ -23,6 +23,7 @@ export default function LoginAndRegistration({setUniKey}) {
                     value={ state.uniKey }
                     onChange={ state.onChangeUniqueKey }
                     onBlur={ state.onChangeUniqueKey }
+                    onKeyDown={ state.onEnterPress }
                     name='uniKey'
                     required
                     rows='1'

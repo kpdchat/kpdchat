@@ -30,15 +30,16 @@
 
     &__copy {
         // .another-kebab__copy
-        background: $background-active-lilac;
-        box-shadow: 1px 1px 4px 0 $color-shadow-grey;
+        background: var(--color-violet-black);
+        box-shadow: var(--self-copy-boxShadow);
         width: 150px;
         padding: 5px;
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
         border-radius: 8px;
         position: absolute;
         top: 100px;
         left: 18px;
+        text-align: center;
         z-index: 3;
 
         @include max-screen(1390px) {
@@ -48,11 +49,12 @@
     
     &__copy-incognito {
         // .another-kebab__copy
-        background: $background-active-lilac;
-        box-shadow: 1px 1px 4px 0 $color-shadow-grey;
+        background: var(--color-violet-black);
+        box-shadow: var(--self-copy-boxShadow);
+        color: var(--color-lightDarkGrey-white);
+        text-align: center;
         width: 150px;
         padding: 5px;
-        color: $color-text-grey;
         border-radius: 8px;
         position: absolute;
         top: 63px;
@@ -91,15 +93,16 @@
 
     &__copy {
         // .self-kebab__copy
-        background: $background-active-lilac;
-        box-shadow: 1px 1px 4px 0px $color-shadow-grey;
+        background: var(--color-violet-black);
+        box-shadow: var(--self-copy-boxShadow);
         width: 150px;
         padding: 5px;
-        color: $color-text-grey;
+        color: var(--color-lightDarkGrey-white);
         border-radius: 8px;
         position: absolute;
         top: 171px;
         right: 18px;
+        text-align: center;
         z-index: 3;
 
         @include max-screen(1390px) {
