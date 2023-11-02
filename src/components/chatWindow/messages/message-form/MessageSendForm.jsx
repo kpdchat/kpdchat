@@ -137,24 +137,20 @@ export default function MessageSendForm() {
     useEffect(() => {
         const interval = setInterval(() => {
             if (text !== previousText) {
-                console.log('text', text)
-                console.log('previousText', previousText)
-
                 setIsTyping(true);
                 setPreviousText(text);
                 dispatch(fetchPostUserTyping(userTypingData));
-            } else {
-                if (isTyping) {
+            } else if(isTyping) {
                     setIsTyping(false);
                     dispatch(fetchDeleteUserTyping(userTypingDeleteData));
-                }
             }
-        }, 3000);
+        }, 2000);
 
         return () => clearInterval(interval);
+        // eslint-disable-next-line
     }, [text, previousText, isTyping, dispatch]);
 
-    // Delete UserTyping after close window browser
+    // Delete UserTyping after close window browser/browser tab
     useEffect( () => {
         const handleUnload = () => {
             if (text) {
@@ -167,6 +163,7 @@ export default function MessageSendForm() {
         return () => {
             window.removeEventListener('beforeunload', handleUnload);
         };
+        // eslint-disable-next-line
     }, [text, dispatch]);
 
     return (

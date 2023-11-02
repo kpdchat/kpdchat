@@ -31,7 +31,9 @@ export function fetchPostMessage(data) {
         } catch (e) {
             console.error(e);
         } finally {
-            dispatch(setLoaderHide());
+            setTimeout(() => {
+                dispatch(setLoaderHide());
+            }, 1000);
         }
     }
 }
@@ -55,7 +57,6 @@ export function fetchDeleteUserTyping(data) {
         }
     }
 }
-
 
 export function fetchUpdateLastSeenMessage(data) {
     return async () => {
@@ -87,7 +88,9 @@ export function fetchUpdateMessage(message) {
         }
         finally{
             dispatch(clearForm());
-            dispatch(setLoaderHide());
+            setTimeout(() => {
+                dispatch(setLoaderHide());
+            }, 1000);
         }
     }
 }
@@ -109,7 +112,6 @@ export function fetchUpdateMessage(message) {
 //         }
 //     }
 // }
-
 
 export function setRenderChat(chat) {
     return { type: ACTION_SET_RENDER_CHAT, payload: chat }

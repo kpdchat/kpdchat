@@ -101,31 +101,22 @@
                     border: 1px solid var(--form-input-border-color);
                     border-radius: 8px;
                     position: relative;
-                    background-color: var(--form-input-border-color);
 
                     textarea {
                         resize: none;
                         max-height: 80px;
                         border-radius: 8px;
                         background-color: var(--color-white-black);
-
-                        &:valid,
-                        &:invalid {
-                            font-family: $font-inter;
-                            border: 2px solid transparent;
-                            outline: none;
-                            font-size: 16px;
-                            width: 100%;
-                            border-radius: 8px;
-                            padding: 16px 28px;
-                            color: var(--color-darkGrey-white);
-                        }
+                        font-family: $font-inter;
+                        border: 2px solid transparent;
+                        font-size: 16px;
+                        padding: 16px 28px;
+                        color: var(--color-darkGrey-white);
 
                         &:focus {
                             border: 2px solid var(--form-input-border-color);
                             outline: none;
-                            box-shadow: none;
-                            border-radius: 8px;
+                            border-radius: 6px;
                         }
 
                         &::placeholder {
