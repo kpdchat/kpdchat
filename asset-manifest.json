@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kpdchat/static/css/main.b8a23caf.css",
+    "main.css": "/kpdchat/static/css/main.64f319f5.css",
     "main.js": "/kpdchat/static/js/main.d0f90be6.js",
     "static/media/background-chat-light.png": "/kpdchat/static/media/background-chat-light.8a1a49ff1a2414c5c957.png",
     "static/media/background-chat-dark.png": "/kpdchat/static/media/background-chat-dark.0132b4a314b1cc17318d.png",
@@ -10,11 +10,11 @@
     "static/media/logo.svg": "/kpdchat/static/media/logo.e3f75335f96332ff28f3f1ae8cbe1363.svg",
     "static/media/search.svg": "/kpdchat/static/media/search.cc323634c24079c685aa.svg",
     "index.html": "/kpdchat/index.html",
-    "main.b8a23caf.css.map": "/kpdchat/static/css/main.b8a23caf.css.map",
+    "main.64f319f5.css.map": "/kpdchat/static/css/main.64f319f5.css.map",
     "main.d0f90be6.js.map": "/kpdchat/static/js/main.d0f90be6.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8a23caf.css",
+    "static/css/main.64f319f5.css",
     "static/js/main.d0f90be6.js"
   ]
 }
