@@ -100,7 +100,6 @@
                     width: 100%;
                     display: flex;
                     flex-direction: column;
-                    border: 1px solid var(--form-input-border-color);
                     border-radius: 8px;
                     position: relative;
 
@@ -110,15 +109,15 @@
                         border-radius: 8px;
                         background-color: var(--color-white-black);
                         font-family: $font-inter;
-                        border: 2px solid transparent;
+                        border: 1px solid var(--form-input-border-color);
                         font-size: 16px;
-                        padding: 16px 28px;
+                        padding: 17px 29px;
                         color: var(--color-darkGrey-white);
 
                         &:focus {
                             border: 2px solid var(--form-input-border-color);
                             outline: none;
-                            border-radius: 6px;
+                            padding: 16px 28px;
                         }
 
                         &::placeholder {
