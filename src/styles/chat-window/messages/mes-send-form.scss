@@ -25,7 +25,6 @@
                 background-color: var(--backColor-white-grey);
             }
         }
-
     }
 
     &__button-active {
@@ -90,6 +89,7 @@
     padding: 12px 24px;
     background: var(--messages-edit-reply-back-color);
     width: 100%;
+    color: var(--color-white-grey);
 
     svg {
         min-height: 23px;
@@ -103,6 +103,7 @@
     &__info {
         // .edit-reply__info
         display: flex;
+        align-items: center;
         gap: 12px;
 
 
@@ -123,7 +124,19 @@
 
         .text-inter-16-400 {
             line-height: 21.6px;
-            color: var(--color-white-grey);
         }
+    }
+}
+
+.loading-sendmess {
+    display: flex;
+    justify-content: center;
+    margin-left: 16px;
+    margin-bottom: 7px;
+
+    &__content {
+        // .loading-sendmess__content
+        display: flex;
+        align-items: center;
     }
 }

@@ -162,7 +162,7 @@ export default function SettingsModal() {
                         <div className='modal-exit__settings'>
                             <div className='modal-exit__settings-content'>
                                 <div className='exit-info'>
-                                    <p className='text-inter-16-600'>
+                                    <p className='text-inter-18-400'>
                                         { t('settingsUser.exitSettingsText') }
                                     </p>
                                 </div>
@@ -170,13 +170,13 @@ export default function SettingsModal() {
                                 <div className='exit-buttons'>
                                     <button
                                         onClick={ state.onCloseSettings }
-                                        className='text-inter-18-600'
+                                        className='exit-buttons__exit text-inter-18-600 cursor-pointer'
                                     >
                                         { t('settingsUser.exit') }
                                     </button>
                                     <button
                                         onClick={ state.onCloseModalExit }
-                                        className='text-inter-18-600'
+                                        className='exit-buttons__return text-inter-18-600 cursor-pointer'
                                     >
                                         { t('chat-context-menu.return') }
                                     </button>

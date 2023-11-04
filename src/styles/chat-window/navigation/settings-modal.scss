@@ -44,33 +44,52 @@
             &-content {
                 // .modal-exit__settings-content
                 width: 480px;
-                background-color: var(--settings-modal-exit-back-color);
-                padding: 26px;
+                background-color: var(--color-white-black);
+                padding: 24px;
                 border-radius: 8px;
                 text-align: center;
-                box-shadow: var(--settings-modal-exit-boxShadow);
+                box-shadow: var(--modal-exit-boxShadow);
 
                 .exit-info {
-                    color: $color-white;
+                    color: var(--color-white-grey);
+
+                    .text-inter-18-400 {
+                        line-height: 140%;
+                    }
                 }
 
                 .exit-buttons {
                     display: flex;
                     gap: 10px;
+                    margin-top: 24px;
 
-                    button {
+                    &__exit {
+                        // .exit-buttons__exit
                         width: 210px;
-                        color: var(--color-lavender-white);
-                        line-height: 110%;
-                        padding: 8px 22px;
+                        color: #272732;
+                        line-height: 135%;
+                        padding: 10px;
                         border-radius: 8px;
-                        border: 2px $color-white solid;
-                        background-color: var(--color-white-black);
-                        margin-top: 16px;
-                        cursor: pointer;
+                        border: 0 solid transparent;
+                        background-color: var(--modal-exit-backColor);
 
                         &:hover {
-                            background-color: var(--settings-modal-exit-buttons-backHover-color);
+                            background-color: var(--modal-exit-hover);
+                        }
+                    }
+
+                    &__return {
+                        // .exit-buttons__return
+                        width: 210px;
+                        color: #FFF;
+                        line-height: 135%;
+                        padding: 10px;
+                        border-radius: 8px;
+                        border: 0 solid transparent;
+                        background-color: #38328A;
+
+                        &:hover {
+                            background-color: var(--backColor-hover);
                         }
                     }
                 }
@@ -117,7 +136,7 @@
             padding: 8px 22px;
             border-radius: 8px;
             border: 2px solid transparent;
-            background-color: $color-background-light-grey;
+            background-color: var(--submit-inactive-back-color);
             margin-top: 16px;
         }
     }

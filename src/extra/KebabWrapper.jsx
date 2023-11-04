@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { setKebabClose } from "../store/actions/uiActions";
 
 export default function KebabWrapper({ elRef, children }) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
     useEffect(() => {
         let handler = (e) => {
             if (!elRef.current?.contains(e.target)) {

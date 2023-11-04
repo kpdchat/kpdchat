@@ -1,6 +1,6 @@
 import React from 'react';
 import { PiArrowUpLeftBold } from 'react-icons/pi';
-import { MdClose } from 'react-icons/md';
+import { MdOutlineClose } from 'react-icons/md';
 import { useDispatch } from 'react-redux';
 import { clearReplyMessage } from '../../../../store/actions/messageAction';
 
@@ -28,14 +28,12 @@ export default function FormReplyMessage({ replyMessage }) {
                     size={ 24 }
                     color='var(--color-lavender-white)'
                 />
-                <div className='edit-reply__text'>
-                    <h2 className='text-inter-18-600'>{ nickname }</h2>
-                    <p className='text-inter-16-400'>{ text }</p>
-                </div>
+                <h2 className='text-inter-18-600'>{ nickname }:</h2>
+                <p className='text-inter-16-400'>{ text }</p>
             </div>
 
-            <MdClose
-                className='cursor-pointer'
+            <MdOutlineClose
+                className='close-img cursor-pointer'
                 size={ 24 }
                 onClick={ onCloseClick }
             />
