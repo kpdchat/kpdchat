@@ -30,13 +30,20 @@
         background: var(--chat-navigation-background);
         grid-column: 1 / 2;
 
-        @media screen and (max-height: 790px) {
-            padding: 20px 16px 10px 16px;
+        @media screen and (max-height: 1000px) {
+            padding: 70px 16px 50px 16px;
         }
 
-        @media screen and (max-height: 550px) {
-            min-height: 550px;
+        @media screen and (max-height: 800px) {
+            padding: 30px 16px 20px 16px;
         }
+
+        @media screen and (max-height: 600px) {
+            padding: 20px 16px 10px 16px;
+            min-height: 600px;
+        }
+
+
     }
 
     &__dialogs {
@@ -48,8 +55,8 @@
         border-right: var(--border-right);
         background-color: var(--color-white-black);
 
-        @media screen and (max-height: 550px) {
-            min-height: 550px;
+        @media screen and (max-height: 600px) {
+            min-height: 600px;
         }
     }
 
@@ -61,9 +68,8 @@
         flex-direction: column;
         overflow-y: hidden;
 
-        @media screen and (max-height: 550px) {
-            min-height: 550px;
-            // overflow-y: scroll
+        @media screen and (max-height: 600px) {
+            min-height: 600px;
         }
     }
 }

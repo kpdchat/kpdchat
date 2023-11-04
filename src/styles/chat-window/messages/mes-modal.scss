@@ -1,22 +1,3 @@
-.copy {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &__content {
-        // .copy__content
-        background-color: $color-white;
-        border-radius: 8px;
-        box-shadow: 1px 2px 6px 0 $color-shadow-grey;
-        padding: 36px;
-        width: 365px;
-
-        p {
-            text-align: center;
-        }
-    }
-}
-
 .modal-chat {
     display: flex;
     align-items: center;
@@ -88,6 +69,27 @@
     }
 }
 
+.modal-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        // .modal-copy__content
+        background-color: var(--color-white-black);
+        opacity: 0.9;
+        border-radius: 8px;
+        box-shadow: var(--boxShadow-color);
+        padding: 20px;
+        width: 380px;
+
+        .text-inter-16-600 {
+            color: var(--list-text-p-color);
+            text-align: center;
+        }
+    }
+}
+
 .user-typing {
     display: flex;
     gap: 6px;
@@ -131,6 +133,7 @@
     }
 
     @keyframes jump {
+
         0%,
         100% {
             transform: translateY(0px);

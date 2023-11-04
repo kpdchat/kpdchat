@@ -127,6 +127,7 @@ export default function MessageSendForm() {
                 setIsTyping(false);
                 dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             }
+            textareaRef.current.style.height = '42px';
             setError(true)
             setText('')
             dispatch(stopClearForm())
@@ -167,7 +168,7 @@ export default function MessageSendForm() {
                 { isLoader
                     ? <LoadingSendMess />
                     : <button
-                        className='input-mes__button cursor-pointer'
+                        className={error ? 'input-mes__button-disabled' : 'input-mes__button-active cursor-pointer'}
                         type='submit'
                         onClick={ onFormSubmit }>
                     </button>

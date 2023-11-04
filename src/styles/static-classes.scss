@@ -168,6 +168,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    background: rgba(91, 91, 102, 0.20);
     backdrop-filter: blur(6px);
     z-index: 3;
 }
