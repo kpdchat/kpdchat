@@ -34,7 +34,9 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         const value = e.target.value;
-        textareaRef.current.style.height = 'auto';
+        if(!text) {
+            textareaRef.current.style.height = '42px';
+        }
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
 
         textValidation(value)
@@ -62,15 +64,14 @@ export default function MessageSendForm() {
         e.preventDefault();
 
         if (!text || !text.trim()) {
-            setError(t('global.error-empty-mes'));
+            setError(true)
             return;
         }
 
         if (error) {
             return;
         }
-
-        setError('');
+        setError(false)
 
         const date = Math.round(Date.now() / 1000);
 
@@ -102,15 +103,15 @@ export default function MessageSendForm() {
 
         dispatch(fetchPostMessage(data));
         setText('');
-        textareaRef.current.style.height = 'auto';
+        textareaRef.current.style.height = '42px';
         dispatch(fetchDeleteUserTyping(userTypingDeleteData));
         setIsTyping(false);
     }
 
     useEffect(() => {
         if (editMessage.id) {
-            setText(editMessage.text);
-            setError('');
+            setText(editMessage.text)
+            setError(false)
             if (!isTyping) {
                 dispatch(fetchPostUserTyping(userTypingData));
                 setIsTyping(true);
@@ -126,9 +127,10 @@ export default function MessageSendForm() {
                 setIsTyping(false);
                 dispatch(fetchDeleteUserTyping(userTypingDeleteData));
             }
-            setError('');
-            setText('');
-            dispatch(stopClearForm());
+            textareaRef.current.style.height = '42px';
+            setError(true)
+            setText('')
+            dispatch(stopClearForm())
         }
         // eslint-disable-next-line
     }, [isClearForm, isTyping, dispatch])
@@ -159,20 +161,19 @@ export default function MessageSendForm() {
                     onChange={ onTextareaInput }
                     onKeyDown={ onEnterPress }
                     value={ text }
-                    className='text-inter-14-400 scroll-bar'
+                    className='text-inter-16-400 scroll-bar'
                     placeholder={ t('global.text-message') }
                 />
 
                 { isLoader
                     ? <LoadingSendMess />
                     : <button
-                        className='input-mes__button cursor-pointer'
+                        className={error ? 'input-mes__button-disabled' : 'input-mes__button-active cursor-pointer'}
                         type='submit'
                         onClick={ onFormSubmit }>
                     </button>
                 }
             </form>
-            { error && <div className='input-mes__error text-inter-12-400'>{ error }</div> }
         </div>
     )
 }

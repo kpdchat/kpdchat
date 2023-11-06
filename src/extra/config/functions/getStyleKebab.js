@@ -37,17 +37,9 @@ export function getStyleKebab(list, index, e) {
     }
 
     return {
-        position: 'absolute',
         left: left + 'px',
         top: top,
-        width: '230px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        zIndex: '2',
         backgroundColor: backColor,
         boxShadow: boxShadowChange,
-        borderRadius: '8px',
-        padding: '8px',
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import ChatKebab from './chat-kebab/ChatKebab';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,7 @@ import UserTypingDialogs from './UserTypingDialogs';
 
 export default function DialogItem({ dialog, index }) {
     const type = 'onContextChat';
-    const [style, setStyle] = useState('');
+    const [style, setStyle] = useState({});
     const { isActiveFolderKebab } = useSelector(selectUi);
     const list = useSelector(selectRenderChatList);
     const { id, user, chat } = useSelector(selectDataForMessages);
@@ -80,7 +80,7 @@ export default function DialogItem({ dialog, index }) {
         return t('global.empty-chat')
     }
 
-
+    
 
     return (
         <div className={dialogStyle}

@@ -1,16 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import KebabWrapper from "../../../../extra/KebabWrapper";
 import { PiShareFat, PiCopy, PiTrash, PiNotePencil } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux";
 // import { selectUser } from '../../../../store/selectors/index';
-import {clearEditMessage, clearReplyMessage, setEditMessage, setReplyMessage} from '../../../../store/actions/messageAction';
-import { setKebabClose } from "../../../../store/actions/uiActions";
+import { clearEditMessage, clearReplyMessage, setEditMessage, setReplyMessage } from '../../../../store/actions/messageAction';
+import { setKebabClose, setModalClose, setModalOpen } from "../../../../store/actions/uiActions";
 
 export default function MesSelfKebab({ message, style }) {
     // const user = useSelector(selectUser);
-    const [copy, setCopy] = useState(false);
-    const [copyStyle, setCopyStyle] = useState({});
     const dispatch = useDispatch();
     const menuRef = useRef();
     const { t } = useTranslation();
@@ -39,44 +37,45 @@ export default function MesSelfKebab({ message, style }) {
     }
 
     function onCopyClick() {
-        if (style.top) {
-            setCopyStyle({ top: '5px', });
-        } else {
-            setCopyStyle({ top: '171px', });
-        }
-        setCopy(true);
+        dispatch(setModalOpen('copy-modal'))
         navigator.clipboard.writeText(message.text);
+        dispatch(setKebabClose());
         setTimeout(() => {
-            setCopy(false)
-        }, 2000)
+            dispatch(setModalClose())
+        }, 1000)
     }
 
     return (
-        <KebabWrapper elRef={ menuRef }>
+        <KebabWrapper elRef={menuRef}>
             <div
-                ref={ menuRef }
-                style={ style }
+                ref={menuRef}
+                style={style}
                 className='kebab-menu self-kebab no-select'>
-                <div onClick={ onReplyClick } className='self-kebab__row cursor-pointer'>
-                    <PiShareFat size={ 20 } />
-                    <p className='text-inter-16-400'>{ t('global.answer') }</p>
+                <div
+                    onClick={onReplyClick}
+                    className='self-kebab__row cursor-pointer'>
+                    <PiShareFat size={20} />
+                    <p className='text-inter-16-400'>{t('global.answer')}</p>
                 </div>
-                <div onClick={ onDeleteClick } className='self-kebab__row cursor-pointer'>
-                    <PiTrash size={ 20 } />
-                    <p className='text-inter-16-400'>{ t('global.delete') }</p>
+                <div
+                    onClick={onDeleteClick}
+                    className='self-kebab__row cursor-pointer'>
+                    <PiTrash size={20} />
+                    <p className='text-inter-16-400'>{t('global.delete')}</p>
                 </div>
-                <div onClick={ onEditClick } className='self-kebab__row cursor-pointer'>
-                    <PiNotePencil size={ 20 } />
-                    <p className='text-inter-16-400'>{ t('global.edit') }</p>
+                <div
+                    onClick={onEditClick}
+                    className='self-kebab__row cursor-pointer'>
+                    <PiNotePencil size={20} />
+                    <p className='text-inter-16-400'>{t('global.edit')}</p>
                 </div>
-                <div onClick={ onCopyClick } className='self-kebab__row cursor-pointer'>
-                    <PiCopy size={ 20 } />
-                    <p className='text-inter-16-400'>{ t('global.copy') }</p>
+                <div
+                    onClick={onCopyClick}
+                    className='self-kebab__row cursor-pointer'>
+                    <PiCopy size={20} />
+                    <p className='text-inter-16-400'>{t('global.copy')}</p>
                 </div>
             </div>
-            { copy && <div style={ copyStyle } className='self-kebab__copy'>
-                <p className='text-inter-16-400'>{ t('global.copied-message') }</p>
-            </div> }
         </KebabWrapper>
     )
 }

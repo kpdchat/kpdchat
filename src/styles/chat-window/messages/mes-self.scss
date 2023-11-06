@@ -40,6 +40,8 @@
         flex-direction: column;
         max-width: 500px;
 
+        
+
         @include max-screen(1250px) {
             max-width: 400px;
         }
@@ -47,6 +49,7 @@
         .text-inter-16-400 {
             color: $color-white;
             overflow-wrap: break-word;
+            
         }
 
         .text-inter-12-400 {

@@ -8,7 +8,7 @@ export default function NavSettings() {
 
     return (
         <>
-            <PiGear size={36}
+            <PiGear size={35}
                 className="cursor-pointer"
                 onClick={() => dispatch(setModalOpen('settings'))} />
         </>
