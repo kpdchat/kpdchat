@@ -6,7 +6,7 @@ import DialogItem from './DialogItem'
 import { useDispatch, useSelector } from "react-redux";
 import { selectSortRenderList } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
-import { clearForm } from "../../../store/actions/messageAction";
+import { clearForm, clearInputSearch, stopSearch } from '../../../store/actions/messageAction';
 import { setKebabClose } from "../../../store/actions/uiActions";
 
 export default function ChatDialogs() {
@@ -25,7 +25,9 @@ export default function ChatDialogs() {
         e.preventDefault()
     }
     function onDialogsClick() {
-        dispatch(clearForm())
+        dispatch(clearForm());
+        dispatch(stopSearch);
+        dispatch(clearInputSearch());
     }
 
     useEffect(() => {

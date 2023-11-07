@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectDataForMessages, selectFilterByDateMessageList } from "../../../../store/selectors";
+import {selectDataForMessages, selectFilterByDateMessageList, selectIsSearch} from '../../../../store/selectors';
 import MesDate from "./MesDate";
 import SelfMessage from "./SelfMessage";
 import AnotherMessage from "./AnotherMessage";
@@ -9,6 +9,7 @@ import NewMessages from "./NewMessages";
 
 export default function Messages() {
     const { user, chat } = useSelector(selectDataForMessages);
+    const isSearch = useSelector(selectIsSearch);
     const sortChat = useSelector(selectFilterByDateMessageList);
     const messageRef = useRef();
     const newRef = useRef();
@@ -16,14 +17,10 @@ export default function Messages() {
     useEffect(() => {
         if (messageRef.current && newRef.current) {
             messageRef.current.scrollTo(0, newRef.current.offsetTop - 200);
-        } else {
+        } else if (!isSearch){
             messageRef.current.scrollTop = messageRef.current.scrollHeight;
         }
-    }, [messageRef, chat.messages?.length, newRef])
-
-    // console.log(sortChat)
-
-    // const sortMess = sortChat.messages?.length ===
+    }, [messageRef, chat.messages?.length, newRef, isSearch])
 
     return (
         <div

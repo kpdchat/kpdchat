@@ -16,7 +16,8 @@ export const ACTION_CLEAR_MESSAGE_TO_DELETE = 'ACTION_CLEAR_MESSAGE_TO_DELETE';
 export const ACTION_SET_RENDER_MESSAGES = 'ACTION_SET_RENDER_MESSAGES';
 export const ACTION_CLEAR_INPUT_SEARCH = 'ACTION_CLEAR_INPUT_SEARCH';
 export const ACTION_STOP_CLEAR_INPUT_SEARCH = 'ACTION_STOP_CLEAR_INPUT_SEARCH';
-
+export const ACTION_SET_SEARCH = 'ACTION_SET_SEARCH';
+export const ACTION_STOP_SEARCH = 'ACTION_STOP_SEARCH';
 
 export function fetchRenderChat(id) {
     return async (dispatch) => {
@@ -105,8 +106,8 @@ export function fetchMessagesSearch(info) {
     return async (dispatch) => {
         try {
             const {data} = await axios.get(`https://kpdchat.onrender.com/api/messages/search?chatId=${info.chatId}&text=${info.text}`)
-            dispatch(setRenderMessages(data))
-            console.log(data)
+            dispatch(setRenderMessages(data));
+            dispatch(setSearchTrue());
         } catch (e) {
             console.error(e);
         }
@@ -171,4 +172,11 @@ export function stopClearInputSearch() {
 
 export function setRenderMessages(messages) {
     return { type: ACTION_SET_RENDER_MESSAGES, payload: messages }
+}
+
+export function setSearchTrue() {
+    return { type: ACTION_SET_SEARCH }
+}
+export function stopSearch() {
+    return { type: ACTION_STOP_SEARCH }
 }

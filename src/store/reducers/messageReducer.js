@@ -11,10 +11,11 @@ import {
     ACTION_CLEAR_MESSAGE_TO_REPLY,
     ACTION_SET_MESSAGE_TO_DELETE,
     ACTION_CLEAR_MESSAGE_TO_DELETE,
-
     ACTION_SET_RENDER_MESSAGES,
     ACTION_CLEAR_INPUT_SEARCH,
-    ACTION_STOP_CLEAR_INPUT_SEARCH
+    ACTION_STOP_CLEAR_INPUT_SEARCH,
+    ACTION_SET_SEARCH,
+    ACTION_STOP_SEARCH,
 } from '../actions/messageAction'
 
 const initialState = {
@@ -25,8 +26,9 @@ const initialState = {
     clearForm: false,
     replyMessage: {},
     deleteMessage: {},
-    renderMessages: {},
+    renderMessages: [],
     clearInputSearch: false,
+    isSearch: false,
 }
 
 export default function messageReducer(state = initialState, { type, payload }) {
@@ -90,6 +92,18 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 clearInputSearch: false
+            }
+        }
+        case ACTION_SET_SEARCH: {
+            return {
+                ...state,
+                isSearch: true,
+            }
+        }
+        case ACTION_STOP_SEARCH: {
+            return {
+                ...state,
+                isSearch: false,
             }
         }
         case ACTION_STOP_CLEAR_FORM: {

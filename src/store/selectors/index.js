@@ -24,6 +24,8 @@ export const selectClearForm = state => state.message.clearForm
 export const selectReplyMessage = state => state.message.replyMessage
 export const selectDeleteMessage = state => state.message.deleteMessage
 export const selectClearSearch = state => state.message.clearInputSearch
+export const selectRenderMessages = state => state.message.renderMessages
+export const selectIsSearch = state => state.message.isSearch
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
@@ -127,12 +129,20 @@ export const selectDataForMessages = createSelector(
 export const selectFilterByDateMessageList = createSelector(
     selectRenderChat,
     selectUser,
-    (chat, user) => {
-        if (!chat?.messages?.length) {
+    selectRenderMessages,
+    selectIsSearch,
+    (chat, user, searchList, isSearch) => {
+        if (!chat?.messages?.length || (!searchList?.length && isSearch)) {
             return []
         }
+        let list;
+        if (searchList?.length && isSearch) {
+            list = searchList
+        } else {
+            list = chat?.messages
+        }
         const status = user.chatStatuses.find(el => el.chatId === chat.id)
-        const sortMessages = chat?.messages?.sort((a, b) => {
+        const sortMessages = list?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
             .filter(el => !el.isHidden)
