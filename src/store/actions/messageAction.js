@@ -13,6 +13,9 @@ export const ACTION_SET_MESSAGE_TO_REPLY = 'ACTION_SET_MESSAGE_TO_REPLY';
 export const ACTION_CLEAR_MESSAGE_TO_REPLY = 'ACTION_CLEAR_MESSAGE_TO_REPLY';
 export const ACTION_SET_MESSAGE_TO_DELETE = 'ACTION_SET_MESSAGE_TO_DELETE';
 export const ACTION_CLEAR_MESSAGE_TO_DELETE = 'ACTION_CLEAR_MESSAGE_TO_DELETE';
+export const ACTION_SET_RENDER_MESSAGES = 'ACTION_SET_RENDER_MESSAGES';
+export const ACTION_CLEAR_INPUT_SEARCH = 'ACTION_CLEAR_INPUT_SEARCH';
+export const ACTION_STOP_CLEAR_INPUT_SEARCH = 'ACTION_STOP_CLEAR_INPUT_SEARCH';
 
 
 export function fetchRenderChat(id) {
@@ -98,23 +101,17 @@ export function fetchUpdateMessage(message) {
     }
 }
 
-// это мне нада (Лиза, удаление сообщений)
-
-// export function fetchDeleteMessage(messageId, userId) {
-
-//     return async () => {
-//         try {
-//             await axios.delete('https://kpdchat.onrender.com/api/messages/delete', {
-//                 data: {
-//                     "messageId": messageId,
-//                     "userId": userId
-//                 }
-//             })
-//         } catch (e) {
-//             console.error(e);
-//         }
-//     }
-// }
+export function fetchMessagesSearch(info) {
+    return async (dispatch) => {
+        try {
+            const {data} = await axios.get(`https://kpdchat.onrender.com/api/messages/search?chatId=${info.chatId}&text=${info.text}`)
+            dispatch(setRenderMessages(data))
+            console.log(data)
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
 
 export function setRenderChat(chat) {
     return { type: ACTION_SET_RENDER_CHAT, payload: chat }
@@ -162,4 +159,16 @@ export function setDeleteMessage(message) {
 
 export function clearDeleteMessage() {
     return { type: ACTION_CLEAR_MESSAGE_TO_DELETE }
+}
+
+export function clearInputSearch() {
+    return { type: ACTION_CLEAR_INPUT_SEARCH }
+}
+
+export function stopClearInputSearch() {
+    return { type: ACTION_STOP_CLEAR_INPUT_SEARCH }
+}
+
+export function setRenderMessages(messages) {
+    return { type: ACTION_SET_RENDER_MESSAGES, payload: messages }
 }

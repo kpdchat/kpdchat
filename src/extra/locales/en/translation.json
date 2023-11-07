@@ -7,6 +7,7 @@
     },
     "global": {
         "search": "Search..",
+        "searchLength": "3 symbols or more",
         "copy": "Copy",
         "leave-chat": "Leave the chat",
         "exit-text": "Are you sure you want to exit this chat?",
@@ -17,7 +18,7 @@
         "loading": "Loading your profile..",
         "error": "Unfortunately, an error occurred. You will be redirected to the registration window",
         "empty-chat": "No messages yet...",
-        "no-messages": "Unfortunately, there are no messages yet(",
+        "no-messages": "Sorry, no messages(",
         "start-messages" : "Let's start communication!",
         "join-start" : "Join and start chatting",
         "incognito" : "Incognito",

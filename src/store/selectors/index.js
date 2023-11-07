@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 
-
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 
@@ -24,10 +23,7 @@ export const selectEditMessage = state => state.message.editMessage
 export const selectClearForm = state => state.message.clearForm
 export const selectReplyMessage = state => state.message.replyMessage
 export const selectDeleteMessage = state => state.message.deleteMessage
-
-
-
-
+export const selectClearSearch = state => state.message.clearInputSearch
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,

@@ -1,17 +1,17 @@
 import React from 'react';
-import {MdOutlineClose} from 'react-icons/md';
+import { MdOutlineClose } from 'react-icons/md';
 import useModalRegistrationLogic from './useModalRegistrationLogic';
 import MopsAvatars from './MopsAvatars';
 import LoadingOnSubmitForm from './LoadingOnSubmitForm';
-import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
-import {selectLoader} from '../../../../../store/selectors';
-import {mops} from '../../../../../extra/config/vocabulary/mops-icons';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectLoader } from '../../../../../store/selectors';
+import { mops } from '../../../../../extra/config/vocabulary/mops-icons';
 
 export default function ModalRegistration({onClose, setUniKey}) {
     const state = useModalRegistrationLogic({setUniKey});
     const isLoader = useSelector(selectLoader);
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -35,8 +35,8 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         </div>
 
                         { state.errors.nickname &&
-                            <p className='modal-form__error-message'>{ t(state.errors.nickname) }</p> }
-
+                            <p className='modal-form__error-message'>{ t(state.errors.nickname) }</p>
+                        }
                         <div className='modal-form__data'>
                         <textarea
                             maxLength='2000'
