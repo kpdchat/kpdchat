@@ -20,6 +20,7 @@ import SettingsModal from './nav-modal/settings-modal/SettingsModal';
 import NavInfoModal from './nav-modal/NavInfoModal';
 import NavTheme from './NavTheme';
 import CopyModal from '../messages/mes-modal/CopyModal';
+import DeleteMessageModal from '../messages/mes-modal/DeleteMessageModal';
 import { clearForm } from '../../../store/actions/messageAction';
 
 export default function ChatNavigation() {
@@ -107,6 +108,8 @@ export default function ChatNavigation() {
             {isModal && modalId === 'create-folder' && <AddFolderModal />}
             {isModal && modalId === 'info' && <NavInfoModal />}
             {isModal && modalId === 'copy-modal' && <CopyModal />}
+            {isModal && modalId === 'delete-message' && <DeleteMessageModal />}
+
         </>
     )
 }

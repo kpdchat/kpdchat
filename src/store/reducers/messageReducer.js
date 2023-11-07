@@ -9,6 +9,8 @@ import {
     ACTION_STOP_CLEAR_FORM, 
     ACTION_SET_MESSAGE_TO_REPLY, 
     ACTION_CLEAR_MESSAGE_TO_REPLY,
+    ACTION_SET_MESSAGE_TO_DELETE,
+    ACTION_CLEAR_MESSAGE_TO_DELETE
 } from '../actions/messageAction'
 
 const initialState = {
@@ -17,7 +19,8 @@ const initialState = {
     chatId: 0,
     editMessage: {},
     clearForm: false,
-    replyMessage: {}
+    replyMessage: {},
+    deleteMessage: {},
 }
 
 export default function messageReducer(state = initialState, { type, payload }) {
@@ -82,6 +85,18 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 replyMessage: {},
+            }
+        }
+        case ACTION_SET_MESSAGE_TO_DELETE: {
+            return {
+                ...state,
+                deleteMessage: payload,
+            }
+        }
+        case ACTION_CLEAR_MESSAGE_TO_DELETE: {
+            return {
+                ...state,
+                deleteMessage: {},
             }
         }
         default: return state

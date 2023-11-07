@@ -4,8 +4,8 @@ import MessageSelfKebab from "../mes-kebab/MessageSelfKebab";
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useSelector } from "react-redux";
-import {selectDataForMessages} from '../../../../store/selectors';
-import {useTranslation} from 'react-i18next';
+import { selectDataForMessages } from '../../../../store/selectors';
+import { useTranslation } from 'react-i18next';
 
 export default function SelfMessage({ message }) {
     const { chat } = useSelector(selectDataForMessages);
@@ -15,6 +15,9 @@ export default function SelfMessage({ message }) {
     const { t } = useTranslation();
 
     function getText() {
+        if (message?.repliedToMessage?.isHidden) {
+            return "Видалене повідомлення"
+        }
         if (message?.repliedToMessage?.text?.length > 30) {
             return message?.repliedToMessage?.text.slice(0, 30) + '...';
         }
@@ -22,7 +25,13 @@ export default function SelfMessage({ message }) {
     }
 
     const text = getText();
-    const nickname = message?.repliedToMessage?.userProfile?.nickname;
+    const nickname = getNickname()
+    function getNickname() {
+        if (message?.repliedToMessage?.isHidden) {
+            return ''
+        }
+        return message?.repliedToMessage?.userProfile?.nickname;
+    }
 
     function onMessageKebabClick(e) {
         onKebabClick(e);
@@ -59,12 +68,12 @@ export default function SelfMessage({ message }) {
                 </div>
 
                 <div className="self__text">
-                    { message.repliedToMessage &&
+                    {message.repliedToMessage &&
                         <div className='self__reply-message reply'>
                             <div className='reply__img'></div>
                             <div className='reply__info'>
-                                <div className='text-inter-18-600'>{ nickname }</div>
-                                <div className='text-inter-16-400'>{ text }</div>
+                               {nickname && <div className='text-inter-18-600'>{nickname}</div>} 
+                                <div className='text-inter-16-400'>{text}</div>
                             </div>
                         </div>
                     }

@@ -263,6 +263,7 @@
 .close-img {
     stroke-width: 0.1px;
     stroke: var(--color-white-black);
+    transition: all .5s;
 
     &:hover {
         stroke-width: 0;

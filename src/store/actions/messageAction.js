@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {setLoaderHide, setLoaderShow} from './uiActions';
+import { setLoaderHide, setLoaderShow } from './uiActions';
 
 export const ACTION_SET_START_WINDOW = 'ACTION_SET_START_WINDOW';
 export const ACTION_DELETE_START_WINDOW = 'ACTION_DELETE_START_WINDOW';
@@ -11,6 +11,9 @@ export const ACTION_CLEAR_FORM = 'ACTION_CLEAR_FORM';
 export const ACTION_STOP_CLEAR_FORM = 'ACTION_STOP_CLEAR_FORM';
 export const ACTION_SET_MESSAGE_TO_REPLY = 'ACTION_SET_MESSAGE_TO_REPLY';
 export const ACTION_CLEAR_MESSAGE_TO_REPLY = 'ACTION_CLEAR_MESSAGE_TO_REPLY';
+export const ACTION_SET_MESSAGE_TO_DELETE = 'ACTION_SET_MESSAGE_TO_DELETE';
+export const ACTION_CLEAR_MESSAGE_TO_DELETE = 'ACTION_CLEAR_MESSAGE_TO_DELETE';
+
 
 export function fetchRenderChat(id) {
     return async (dispatch) => {
@@ -86,7 +89,7 @@ export function fetchUpdateMessage(message) {
         } catch (e) {
             console.error(e);
         }
-        finally{
+        finally {
             dispatch(clearForm());
             setTimeout(() => {
                 dispatch(setLoaderHide());
@@ -151,4 +154,12 @@ export function setReplyMessage(message) {
 
 export function clearReplyMessage() {
     return { type: ACTION_CLEAR_MESSAGE_TO_REPLY }
+}
+
+export function setDeleteMessage(message) {
+    return { type: ACTION_SET_MESSAGE_TO_DELETE, payload: message }
+}
+
+export function clearDeleteMessage() {
+    return { type: ACTION_CLEAR_MESSAGE_TO_DELETE }
 }

@@ -3,12 +3,10 @@ import KebabWrapper from "../../../../extra/KebabWrapper";
 import { PiShareFat, PiCopy, PiTrash, PiNotePencil } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from "react-redux";
-// import { selectUser } from '../../../../store/selectors/index';
-import { clearEditMessage, clearReplyMessage, setEditMessage, setReplyMessage } from '../../../../store/actions/messageAction';
+import { clearEditMessage, clearReplyMessage, setDeleteMessage, setEditMessage, setReplyMessage } from '../../../../store/actions/messageAction';
 import { setKebabClose, setModalClose, setModalOpen } from "../../../../store/actions/uiActions";
 
 export default function MesSelfKebab({ message, style }) {
-    // const user = useSelector(selectUser);
     const dispatch = useDispatch();
     const menuRef = useRef();
     const { t } = useTranslation();
@@ -20,14 +18,9 @@ export default function MesSelfKebab({ message, style }) {
     }
 
     function onDeleteClick() {
-        //это мне нада
-
-        // const data = {
-        //     "messageId": message.id,
-        //     "userId": user.id
-        // }
-        // dispatch(fetchDeleteMessage(data));
-        // dispatch(fetchDeleteMessage(message.id, user.id));
+        dispatch(setDeleteMessage(message));
+        dispatch(setModalOpen('delete-message'));
+        dispatch(setKebabClose());
     }
 
     function onEditClick() {
@@ -37,7 +30,7 @@ export default function MesSelfKebab({ message, style }) {
     }
 
     function onCopyClick() {
-        dispatch(setModalOpen('copy-modal'))
+        dispatch(setModalOpen('copy-modal'));
         navigator.clipboard.writeText(message.text);
         dispatch(setKebabClose());
         setTimeout(() => {
