@@ -1,37 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineMoreVert } from "react-icons/md";
 import MessageAnotherKebab from "../mes-kebab/MessageAnotherKebab";
+import IncognitoKebab from "../mes-kebab/IncognitoKebab";
 import incognitoLight from '../../../../images/chat-window/incognito-light.png';
 import incognitoDark from '../../../../images/chat-window/inkognito-dark.png';
 import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/functions/getDateTine";
-import { useTranslation } from 'react-i18next';
 import { useSelector } from "react-redux";
 import { selectDataForMessages } from "../../../../store/selectors";
-import IncognitoKebab from "../mes-kebab/IncognitoKebab";
+import { useShowRepliedMessages } from "./useShowRepliedMessages";
+
 
 export default function AnotherMessage({ message }) {
-    const { chat } = useSelector(selectDataForMessages);
+    const { chat, user } = useSelector(selectDataForMessages);
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message');
+    const { text, nickname, t } = useShowRepliedMessages(message, user)
     const [style, setStyle] = useState({});
-    const { t } = useTranslation();
     const incognitoTheme = localStorage.getItem('theme');
-
     const sentAt = getDateTine(message.sentAt);
-
+   
     function onMessageKebabClick(e) {
         onKebabClick(e);
     }
-
-    function getText() {
-        if (message?.repliedToMessage?.text?.length > 30) {
-            return message?.repliedToMessage?.text.slice(0, 30) + '...';
-        }
-        return message?.repliedToMessage?.text;
-    }
-
-    const text = getText();
-    const nickname = message?.repliedToMessage?.userProfile?.nickname;
 
     useEffect(() => {
         if (chat?.messages[chat.messages.length - 1].id === message.id && message?.userProfile) {

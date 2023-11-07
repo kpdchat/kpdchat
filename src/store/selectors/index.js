@@ -23,6 +23,8 @@ export const selectRenderChat = state => state.message.renderChat
 export const selectEditMessage = state => state.message.editMessage
 export const selectClearForm = state => state.message.clearForm
 export const selectReplyMessage = state => state.message.replyMessage
+export const selectDeleteMessage = state => state.message.deleteMessage
+
 
 
 
@@ -136,11 +138,13 @@ export const selectFilterByDateMessageList = createSelector(
         const status = user.chatStatuses.find(el => el.chatId === chat.id)
         const sortMessages = chat?.messages?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
-        }).map(mes => mes = {
-            ...mes,
-            sentAt: new Date(mes.sentAt * 1000)
-
         })
+            .filter(el => !el.isHidden)
+            .map(mes => mes = {
+                ...mes,
+                sentAt: new Date(mes.sentAt * 1000)
+
+            })
             .reduce((acc, curr, index, arr) => {
                 const newIndex = arr.length - status?.unseenMessageCount
                 if (arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {

@@ -26,7 +26,12 @@
         "edit" : "Edit",
         "editMess" : "edit  ",
         "error-empty-mes": "An empty message cannot be sent",
-        "error-long-mes": "Maximum 4000 symbols, you have "
+        "error-long-mes": "Maximum 4000 symbols, you have ",
+        "deleted-message": "Message deleted",
+        "delete-message": "Delete message",
+        "want-delete": "Would you like to delete a message...",
+        "forMe": "For me",
+        "forAll": "For all"
     },
     "settingsUser": {
         "settings": "Profile settings",
