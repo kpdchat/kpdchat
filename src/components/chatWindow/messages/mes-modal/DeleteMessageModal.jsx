@@ -5,6 +5,7 @@ import { DotSpinner } from '@uiball/loaders';
 import { setLoaderHide, setLoaderShow, setModalClose } from "../../../../store/actions/uiActions";
 import { clearDeleteMessage, fetchDeleteMessage } from "../../../../store/actions/messageAction";
 import { selectDeleteMessage, selectUi, selectUser } from "../../../../store/selectors";
+import { useTranslation } from 'react-i18next';
 
 
 export default function DeleteMessageModal() {
@@ -12,8 +13,7 @@ export default function DeleteMessageModal() {
     const { isActiveLoader } = useSelector(selectUi)
     const user = useSelector(selectUser)
     const dispatch = useDispatch()
-
-    console.log(deleteMessage);
+    const { t } = useTranslation();
 
     function onCloseClick() {
         dispatch(setModalClose())
@@ -26,7 +26,7 @@ export default function DeleteMessageModal() {
             "isHidden": false
         }
         dispatch(fetchDeleteMessage(data))
-       setLoader()
+        setLoader()
     }
 
     function onForAllDeleteClick() {
@@ -52,22 +52,22 @@ export default function DeleteMessageModal() {
             <div className="modal-delete-message__content">
                 <div className="modal-delete-message__header">
                     <h3 className="text-inter-18-600">
-                        Видалити повідомлення</h3>
+                    {t("global.delete-message")}</h3>
                     <MdClose size={24}
                         className='close-img cursor-pointer'
                         onClick={onCloseClick} />
                 </div>
                 <p className='text-inter-18-400'>
-                    Ви бажаєте видалити повідомлення...</p>
+                {t("global.want-delete")}</p>
                 <div className="modal-delete-message__buttons">
                     <button
                         className='text-inter-18-600 cursor-pointer'
                         onClick={onForMeDeleteClick}>
-                        Для себе </button>
+                        {t("global.forMe")} </button>
                     <button
                         className='text-inter-18-600 cursor-pointer'
                         onClick={onForAllDeleteClick}>
-                        Для всіх </button>
+                        {t("global.forAll")}</button>
                 </div>
             </div>
             <div className={isActiveLoader ? "loading" : "display-none"} >

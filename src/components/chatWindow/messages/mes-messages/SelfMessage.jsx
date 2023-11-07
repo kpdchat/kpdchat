@@ -5,33 +5,14 @@ import { useKebabClick } from "../../../../extra/hooks/useKebabClick";
 import { getDateTine } from "../../../../extra/config/functions/getDateTine";
 import { useSelector } from "react-redux";
 import { selectDataForMessages } from '../../../../store/selectors';
-import { useTranslation } from 'react-i18next';
+import { useShowRepliedMessages } from "./useShowRepliedMessages";
 
 export default function SelfMessage({ message }) {
-    const { chat } = useSelector(selectDataForMessages);
+    const { chat, user } = useSelector(selectDataForMessages);
+    const { text, nickname, t } = useShowRepliedMessages(message, user)
     const { isOpen, idKebab, onKebabClick } = useKebabClick(message.id, 'message');
     const [style, setStyle] = useState({});
     const sentAt = getDateTine(message.sentAt);
-    const { t } = useTranslation();
-
-    function getText() {
-        if (message?.repliedToMessage?.isHidden) {
-            return "Видалене повідомлення"
-        }
-        if (message?.repliedToMessage?.text?.length > 30) {
-            return message?.repliedToMessage?.text.slice(0, 30) + '...';
-        }
-        return message?.repliedToMessage?.text;
-    }
-
-    const text = getText();
-    const nickname = getNickname()
-    function getNickname() {
-        if (message?.repliedToMessage?.isHidden) {
-            return ''
-        }
-        return message?.repliedToMessage?.userProfile?.nickname;
-    }
 
     function onMessageKebabClick(e) {
         onKebabClick(e);
@@ -46,6 +27,10 @@ export default function SelfMessage({ message }) {
             setStyle({});
         }
     }, [chat.messages, message.id])
+
+    if (message.isDeleted) {
+        return (<></>)
+    }
 
     return (
         <div className="window-mes__self self">
@@ -72,7 +57,7 @@ export default function SelfMessage({ message }) {
                         <div className='self__reply-message reply'>
                             <div className='reply__img'></div>
                             <div className='reply__info'>
-                               {nickname && <div className='text-inter-18-600'>{nickname}</div>} 
+                                {nickname && <div className='text-inter-18-600'>{nickname}</div>}
                                 <div className='text-inter-16-400'>{text}</div>
                             </div>
                         </div>

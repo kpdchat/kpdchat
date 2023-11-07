@@ -138,7 +138,8 @@ export const selectFilterByDateMessageList = createSelector(
         const status = user.chatStatuses.find(el => el.chatId === chat.id)
         const sortMessages = chat?.messages?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
-        }).filter(el => !el.isHidden)
+        })
+            .filter(el => !el.isHidden)
             .map(mes => mes = {
                 ...mes,
                 sentAt: new Date(mes.sentAt * 1000)
