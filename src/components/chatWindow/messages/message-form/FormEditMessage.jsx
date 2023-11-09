@@ -33,7 +33,7 @@ export default function FormEditMessage({ editMessage }) {
             </div>
 
             <MdClose
-                className='cursor-pointer'
+                className='close-img cursor-pointer'
                 size={ 24 }
                 onClick={ onCloseClick }
             />

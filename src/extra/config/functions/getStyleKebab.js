@@ -31,9 +31,9 @@ export function getStyleKebab(list, index, e) {
     let boxShadowChange;
 
     if (getTheme === 'light') {
-        boxShadowChange = '1px 1px 4px 0px #BDBAE0';
+        boxShadowChange = '1px 1px 4px 0 #706C9F';
     } else {
-        boxShadowChange = '1px 1px 4px 0px #38328A';
+        boxShadowChange = '2px 2px 5px 0 #08080C';
     }
 
     return {

@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import ChatKebab from './chat-kebab/ChatKebab';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -59,7 +59,6 @@ export default function DialogItem({ dialog, index }) {
 
         dispatch(deleteStartWindow());
         dispatch(setRenderChatId(dialog.id));
-
     }
 
     function getDisplay() {
@@ -79,8 +78,6 @@ export default function DialogItem({ dialog, index }) {
 
         return t('global.empty-chat')
     }
-
-    
 
     return (
         <div className={dialogStyle}

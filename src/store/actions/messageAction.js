@@ -45,9 +45,13 @@ export function fetchPostMessage(data) {
     }
 }
 
-export function fetchPostUserTyping(data) {
+export function fetchPostUserTyping(userId, chatId) {
     return async () => {
         try {
+            const data = {
+                'userId': userId,
+                'chatId': chatId
+            }
             await axios.post('https://kpdchat.onrender.com/api/user-typing', data)
         } catch (e) {
             console.error(e);
@@ -55,9 +59,12 @@ export function fetchPostUserTyping(data) {
     }
 }
 
-export function fetchDeleteUserTyping(data) {
+export function fetchDeleteUserTyping(userId) {
     return async () => {
         try {
+            const data = {
+                'userId': userId
+            }
             await axios.delete('https://kpdchat.onrender.com/api/user-typing', { data: data })
         } catch (e) {
             console.error(e);

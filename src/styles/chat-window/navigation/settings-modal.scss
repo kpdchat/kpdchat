@@ -63,33 +63,30 @@
                     gap: 10px;
                     margin-top: 24px;
 
-                    &__exit {
-                        // .exit-buttons__exit
+                    button {
                         width: 210px;
-                        color: #272732;
                         line-height: 135%;
                         padding: 10px;
                         border-radius: 8px;
                         border: 0 solid transparent;
-                        background-color: var(--modal-exit-backColor);
+                        transition: all .5s;
 
-                        &:hover {
-                            background-color: var(--modal-exit-hover);
+                        &:first-child {
+                            color: #272732;
+                            background-color: var(--modal-exit-backColor);
+
+                            &:hover {
+                                background-color: var(--modal-exit-hover);
+                            }
                         }
-                    }
 
-                    &__return {
-                        // .exit-buttons__return
-                        width: 210px;
-                        color: #FFF;
-                        line-height: 135%;
-                        padding: 10px;
-                        border-radius: 8px;
-                        border: 0 solid transparent;
-                        background-color: #38328A;
+                        &:nth-child(2) {
+                            color: #FFF;
+                            background-color: #38328A;
 
-                        &:hover {
-                            background-color: var(--backColor-hover);
+                            &:hover {
+                                background-color: var(--backColor-hover);
+                            }
                         }
                     }
                 }
@@ -124,6 +121,7 @@
             background-color: $color-violet;
             margin-top: 16px;
             cursor: pointer;
+            transition: all .5s;
 
             &:hover {
                 background-color: var(--backColor-hover);
@@ -230,7 +228,10 @@
         .images {
             display: flex;
             justify-content: space-between;
-            margin-top: 16px;
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
 
             .img {
                 .dogs-img {
@@ -247,6 +248,12 @@
                     border: 4px solid $color-blue;
                 }
             }
+        }
+
+        .visibility {
+            margin-top: 16px;
+            opacity: 1;
+            height: auto;
         }
     }
 
@@ -315,6 +322,7 @@
             border-radius: 8px;
             color: var(--settings-buttons-color);
             background-color: inherit;
+            transition: all .5s;
         }
 
         .active {

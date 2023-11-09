@@ -21,6 +21,7 @@
             background-color: $color-violet;
             color: $color-white;
             border: none;
+            transition: all .5s;
 
             &:hover {
                 background-color: var(--backColor-hover);
@@ -136,6 +137,7 @@
             &:nth-child(2) {
                 color: #FFF;
                 background-color: #38328A;
+
                 &:hover {
                     background-color: var(--backColor-hover);
                 }

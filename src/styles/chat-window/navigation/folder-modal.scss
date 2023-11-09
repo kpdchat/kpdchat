@@ -54,6 +54,8 @@
         border: 1px solid transparent;
         background: var(--color-lightGrey-grey);
         color: var(--color-white-grey);
+        outline: 1px solid transparent;
+        transition: all .5s;
 
         &:focus-visible {
             outline: 1px solid $color-border-light-gray;
@@ -104,6 +106,7 @@
         color: $color-white;
         border-radius: 8px;
         border: none;
+        transition: all .5s;
 
         &:hover {
             background-color: var(--backColor-hover);
@@ -133,6 +136,7 @@
 
     &__chat {
         // .form__chat
+        transition: all .5s;
 
         &:hover {
             background-color: rgba(171, 168, 212, 0.20);
@@ -169,17 +173,23 @@
             -moz-appearance: none;
             -webkit-appearance: none;
 
+            &::before {
+                content: '';
+                display: block;
+                width: 52px;
+                height: 66px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                cursor: pointer;
+                background: var(--modal-folder-icon);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
             &:checked {
                 &::before {
-                    content: '';
-                    display: block;
-                    width: 52px;
-                    height: 66px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    cursor: pointer;
-                    background: var(--modal-folder-icon);
+                    opacity: 1;
                 }
             }
         }
@@ -201,6 +211,8 @@
     align-items: center;
     border-radius: 8px;
     background: var(--backColor-white-grey);
+    outline: 2px solid transparent;
+    transition: all .5s;
 
     &:hover {
         outline: var(--modal-icon-outline-color);

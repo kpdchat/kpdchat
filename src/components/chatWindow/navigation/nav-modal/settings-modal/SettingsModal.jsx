@@ -80,7 +80,7 @@ export default function SettingsModal() {
                             }
                         </div>
 
-                        <div className={ state.showImg ? 'images' : 'display-none' }>
+                        <div className={ state.showImg ? 'images visibility' : 'images' }>
                             { mops.map(el => <MopsAvatars
                                 src={ el.src }
                                 alt={ el.alt }
@@ -170,13 +170,13 @@ export default function SettingsModal() {
                                 <div className='exit-buttons'>
                                     <button
                                         onClick={ state.onCloseSettings }
-                                        className='exit-buttons__exit text-inter-18-600 cursor-pointer'
+                                        className='text-inter-18-600 cursor-pointer'
                                     >
                                         { t('settingsUser.exit') }
                                     </button>
                                     <button
                                         onClick={ state.onCloseModalExit }
-                                        className='exit-buttons__return text-inter-18-600 cursor-pointer'
+                                        className='text-inter-18-600 cursor-pointer'
                                     >
                                         { t('chat-context-menu.return') }
                                     </button>

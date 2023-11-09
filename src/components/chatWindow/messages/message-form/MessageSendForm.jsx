@@ -14,23 +14,13 @@ export default function MessageSendForm() {
     const [isTyping, setIsTyping] = useState(false);
     const [text, setText] = useState('');
     const [previousText, setPreviousText] = useState('');
-    const [error, setError] = useState('')
+    const [error, setError] = useState(false)
     const { textValidation, updateMessage, postLongMessage, replyToMessage, t, } = useMessageSendForm(setError)
     const textareaRef = useRef();
     const dispatch = useDispatch();
     const isLoader = useSelector(selectLoader);
 
     const isMember = user.chats.find(el => el.id === chat.id);
-
-    // User Typing Data
-    const userTypingData = {
-        'userId': user.id,
-        'chatId': chat.id
-    }
-
-    const userTypingDeleteData = {
-        'userId': user.id
-    }
 
     function onTextareaInput(e) {
         const value = e.target.value;
@@ -45,10 +35,10 @@ export default function MessageSendForm() {
         // Send or Delete data UserTyping
         if (!text) {
             setIsTyping(true);
-            dispatch(fetchPostUserTyping(userTypingData));
+            dispatch(fetchPostUserTyping(user.id, chat.id));
         } else if (value.trim() === '') {
             setIsTyping(false);
-            dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+            dispatch(fetchDeleteUserTyping(user.id));
         }
     }
 
@@ -64,14 +54,14 @@ export default function MessageSendForm() {
         e.preventDefault();
 
         if (!text || !text.trim()) {
-            setError(true)
+            setError(true);
             return;
         }
 
         if (error) {
             return;
         }
-        setError(false)
+        setError(false);
 
         const date = Math.round(Date.now() / 1000);
 
@@ -90,9 +80,10 @@ export default function MessageSendForm() {
         if (text.length > 2000) {
             postLongMessage(text, data)
             textareaRef.current.style.height = 'auto';
-            dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+            dispatch(fetchDeleteUserTyping(user.id));
             setIsTyping(false);
             setText('');
+            setError(true);
             return;
         }
 
@@ -104,8 +95,9 @@ export default function MessageSendForm() {
         dispatch(fetchPostMessage(data));
         setText('');
         textareaRef.current.style.height = '42px';
-        dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+        dispatch(fetchDeleteUserTyping(user.id));
         setIsTyping(false);
+        setError(true);
     }
 
     useEffect(() => {
@@ -113,7 +105,7 @@ export default function MessageSendForm() {
             setText(editMessage.text)
             setError(false)
             if (!isTyping) {
-                dispatch(fetchPostUserTyping(userTypingData));
+                dispatch(fetchPostUserTyping(user.id, chat.id));
                 setIsTyping(true);
             }
             editMessage.text.length > 100 ? textareaRef.current.style.height = '60px' : textareaRef.current.style.height = 'auto';
@@ -125,7 +117,7 @@ export default function MessageSendForm() {
         if (isClearForm) {
             if (isTyping) {
                 setIsTyping(false);
-                dispatch(fetchDeleteUserTyping(userTypingDeleteData));
+                dispatch(fetchDeleteUserTyping(user.id));
             }
             textareaRef.current.style.height = '42px';
             setError(true)
@@ -140,7 +132,7 @@ export default function MessageSendForm() {
         if (text !== previousText) {
             setIsTyping(true);
             setPreviousText(text);
-            dispatch(fetchPostUserTyping(userTypingData));
+            dispatch(fetchPostUserTyping(user.id, chat.id));
         }
         // eslint-disable-next-line
     }, [text, previousText, isTyping, dispatch]);
