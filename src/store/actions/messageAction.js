@@ -13,7 +13,8 @@ export const ACTION_SET_MESSAGE_TO_REPLY = 'ACTION_SET_MESSAGE_TO_REPLY';
 export const ACTION_CLEAR_MESSAGE_TO_REPLY = 'ACTION_CLEAR_MESSAGE_TO_REPLY';
 export const ACTION_SET_MESSAGE_TO_DELETE = 'ACTION_SET_MESSAGE_TO_DELETE';
 export const ACTION_CLEAR_MESSAGE_TO_DELETE = 'ACTION_CLEAR_MESSAGE_TO_DELETE';
-
+export const ACTION_SET_UNSEEN_COUNT = 'ACTION_SET_UNSEEN_COUNT'
+export const ACTION_SET_CHAT_LENGTH = 'ACTION_SET_CHAT_LENGTH'
 
 export function fetchRenderChat(id) {
     return async (dispatch) => {
@@ -52,6 +53,7 @@ export function fetchPostUserTyping(data) {
 }
 
 export function fetchDeleteUserTyping(data) {
+
     return async () => {
         try {
             await axios.delete('https://kpdchat.onrender.com/api/user-typing', { data: data })
@@ -98,23 +100,6 @@ export function fetchUpdateMessage(message) {
     }
 }
 
-// это мне нада (Лиза, удаление сообщений)
-
-// export function fetchDeleteMessage(messageId, userId) {
-
-//     return async () => {
-//         try {
-//             await axios.delete('https://kpdchat.onrender.com/api/messages/delete', {
-//                 data: {
-//                     "messageId": messageId,
-//                     "userId": userId
-//                 }
-//             })
-//         } catch (e) {
-//             console.error(e);
-//         }
-//     }
-// }
 
 export function setRenderChat(chat) {
     return { type: ACTION_SET_RENDER_CHAT, payload: chat }
@@ -162,4 +147,12 @@ export function setDeleteMessage(message) {
 
 export function clearDeleteMessage() {
     return { type: ACTION_CLEAR_MESSAGE_TO_DELETE }
+}
+
+export function setUnSeenCount(count) {
+    return { type: ACTION_SET_UNSEEN_COUNT, payload: count }
+}
+
+export function setLength(length) {
+    return { type: ACTION_SET_CHAT_LENGTH, payload: length }
 }
