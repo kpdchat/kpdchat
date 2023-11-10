@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { fetchPostMessage, fetchUpdateMessage, clearForm } from '../../../../store/actions/messageAction';
+import { fetchPostMessage, fetchUpdateMessage, clearForm, setUnSeenCount } from '../../../../store/actions/messageAction';
 
 export default function useMessageSendForm(setError) {
     const dispatch = useDispatch();
@@ -44,6 +44,7 @@ export default function useMessageSendForm(setError) {
                 'sentAt': Math.round(Date.now() / 1000),
             }
             dispatch(fetchPostMessage(secondMesData));
+            dispatch(setUnSeenCount(0))
         }, 1000)
     }
     
@@ -52,6 +53,7 @@ export default function useMessageSendForm(setError) {
             ...data,
             "repliedToMessageId": replyMessage.id
         }
+        dispatch(setUnSeenCount(0))
         dispatch(fetchPostMessage(replyData));
         dispatch(clearForm());
     }

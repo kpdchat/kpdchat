@@ -10,17 +10,21 @@ import {
     ACTION_SET_MESSAGE_TO_REPLY, 
     ACTION_CLEAR_MESSAGE_TO_REPLY,
     ACTION_SET_MESSAGE_TO_DELETE,
-    ACTION_CLEAR_MESSAGE_TO_DELETE
+    ACTION_CLEAR_MESSAGE_TO_DELETE,
+    ACTION_SET_UNSEEN_COUNT,
+    ACTION_SET_CHAT_LENGTH
 } from '../actions/messageAction'
 
 const initialState = {
     isStartWindow: false,
     renderChat: {},
+    chatLength: 0,
     chatId: 0,
     editMessage: {},
     clearForm: false,
     replyMessage: {},
     deleteMessage: {},
+    unSeenCount: 0,
 }
 
 export default function messageReducer(state = initialState, { type, payload }) {
@@ -97,6 +101,18 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 deleteMessage: {},
+            }
+        }
+        case ACTION_SET_UNSEEN_COUNT: {
+            return {
+                ...state,
+                unSeenCount: payload,
+            }
+        }
+        case ACTION_SET_CHAT_LENGTH: {
+            return {
+                ...state,
+                chatLength: payload,
             }
         }
         default: return state

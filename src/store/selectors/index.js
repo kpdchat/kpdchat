@@ -24,10 +24,8 @@ export const selectEditMessage = state => state.message.editMessage
 export const selectClearForm = state => state.message.clearForm
 export const selectReplyMessage = state => state.message.replyMessage
 export const selectDeleteMessage = state => state.message.deleteMessage
-
-
-
-
+export const selectUnSeenCount = state => state.message.unSeenCount
+export const selectChatLength = state => state.message.chatLength
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
@@ -119,11 +117,13 @@ export const selectDataForMessages = createSelector(
     selectUser,
     selectRenderChatId,
     selectRenderChat,
-    (user, id, chat) => {
+    selectChatLength,
+    (user, id, chat, messLength) => {
         return {
             user,
             id,
-            chat
+            chat,
+            messLength
         }
     }
 )
@@ -131,11 +131,11 @@ export const selectDataForMessages = createSelector(
 export const selectFilterByDateMessageList = createSelector(
     selectRenderChat,
     selectUser,
-    (chat, user) => {
+    selectUnSeenCount,
+    (chat, user, count) => {
         if (!chat?.messages?.length) {
             return []
         }
-        const status = user.chatStatuses.find(el => el.chatId === chat.id)
         const sortMessages = chat?.messages?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
@@ -146,8 +146,9 @@ export const selectFilterByDateMessageList = createSelector(
 
             })
             .reduce((acc, curr, index, arr) => {
-                const newIndex = arr.length - status?.unseenMessageCount
-                if (arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
+                const newIndex = arr.length - count
+                if (arr.indexOf(curr) === newIndex) {
+
                     acc.push({
                         newMess: curr
                     })
@@ -177,13 +178,10 @@ export const selectFilterByDateMessageList = createSelector(
                 return acc
             }, [])
 
-
-
-
         return {
             ...chat,
             "messages": sortMessages,
-            "unseenMessageCount": status?.unseenMessageCount
+            "unseenMessageCount": count
         }
     }
 )

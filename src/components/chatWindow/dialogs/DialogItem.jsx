@@ -1,11 +1,11 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import ChatKebab from './chat-kebab/ChatKebab';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { useKebabClick } from '../../../extra/hooks/useKebabClick';
 import { selectDataForMessages, selectRenderChatList, selectUi } from '../../../store/selectors';
 import { getStyleKebab } from '../../../extra/config/functions/getStyleKebab';
-import { deleteStartWindow, setRenderChatId, fetchUpdateLastSeenMessage } from '../../../store/actions/messageAction';
+import { deleteStartWindow, setRenderChatId, setUnSeenCount, setLength } from '../../../store/actions/messageAction';
 import { getTimeUnix } from '../../../extra/config/functions/getTimeUnix';
 import UserTypingDialogs from './UserTypingDialogs';
 
@@ -14,11 +14,10 @@ export default function DialogItem({ dialog, index }) {
     const [style, setStyle] = useState({});
     const { isActiveFolderKebab } = useSelector(selectUi);
     const list = useSelector(selectRenderChatList);
-    const { id, user, chat } = useSelector(selectDataForMessages);
+    const { id, user } = useSelector(selectDataForMessages);
     const { t } = useTranslation();
     const { isOpen, idKebab, onKebabClick } = useKebabClick(dialog.id, 'chat', type);
     const dispatch = useDispatch();
-    const isMember = user.chats.find(el => el.id === chat.id);
     const dialogStyle = getDialogStyle();
     const sentAt = getSentTime();
     const messagesDisplay = getDisplay();
@@ -48,18 +47,10 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onChatClick() {
-        if (id && chat.messages?.length && isMember) {
-            const data = {
-                "userId": user.id,
-                "chatId": id,
-                "messageId": chat.messages[chat.messages?.length - 1].id
-            }
-            dispatch(fetchUpdateLastSeenMessage(data))
-        }
-
+        dispatch(setUnSeenCount(dialog.unseenMessageCount))
+        dispatch(setLength(0))
         dispatch(deleteStartWindow());
         dispatch(setRenderChatId(dialog.id));
-
     }
 
     function getDisplay() {
@@ -80,7 +71,7 @@ export default function DialogItem({ dialog, index }) {
         return t('global.empty-chat')
     }
 
-    
+
 
     return (
         <div className={dialogStyle}

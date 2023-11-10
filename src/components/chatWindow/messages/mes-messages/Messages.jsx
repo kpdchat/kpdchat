@@ -1,26 +1,71 @@
-import React, { useRef, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectDataForMessages, selectFilterByDateMessageList } from "../../../../store/selectors";
+import React, { useRef, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectDataForMessages, selectFilterByDateMessageList, selectUnSeenCount } from "../../../../store/selectors";
 import MesDate from "./MesDate";
 import SelfMessage from "./SelfMessage";
 import AnotherMessage from "./AnotherMessage";
 import NoMessages from "./NoMessages";
 import NewMessages from "./NewMessages";
+import { fetchUpdateLastSeenMessage, setLength, setUnSeenCount } from "../../../../store/actions/messageAction";
 
 export default function Messages() {
-    const { user, chat } = useSelector(selectDataForMessages)
+    const { user, chat, messLength } = useSelector(selectDataForMessages)
     const sortChat = useSelector(selectFilterByDateMessageList)
+    const unseenCount = useSelector(selectUnSeenCount)
+    const [count, setCount] = useState(0)
+    const [scroll, setScroll] = useState(0)
+    const isMember = user?.chats?.find(el => el.id === chat.id);
+    const dispatch = useDispatch()
     const messageRef = useRef()
     const newRef = useRef()
 
+    
     useEffect(() => {
-        if (messageRef.current && newRef.current) {
+        setCount(unseenCount)
+        setScroll(chat.id)
+        // eslint-disable-next-line
+    }, [chat.id])
+
+    useEffect(() => {
+        if (count >= 0 && isMember && chat.messages?.length) {
+
+            const data = {
+                "userId": user.id,
+                "chatId": chat.id,
+                "messageId": chat.messages[chat.messages?.length - (count + 1)]?.id
+            }
+            dispatch(fetchUpdateLastSeenMessage(data))
+
+            setTimeout(() => {
+                setCount(prev => prev - 1)
+            }, 1500)
+
+        } else if (count < 0 && isMember && chat.messages?.length) {
+            const data = {
+                "userId": user.id,
+                "chatId": chat.id,
+                "messageId": chat.messages[chat.messages?.length - 1]?.id
+            }
+            dispatch(fetchUpdateLastSeenMessage(data))
+        }
+        // eslint-disable-next-line
+    }, [user.id, chat.id, chat.messages?.length, dispatch, count])
+
+    useEffect(() => {
+        if (messageRef.current && newRef.current && scroll !== chat.id) {
             messageRef.current.scrollTo(0, newRef.current.offsetTop - 200)
         } else {
             messageRef.current.scrollTop = messageRef.current.scrollHeight
         }
+        if (chat.messages?.length !== messLength) {
+            dispatch(setLength(chat.messages?.length))
+        }
+        if (unseenCount && messLength && chat.messages?.length > messLength) {
+            const newCount = unseenCount + (chat.messages?.length - messLength)
+            dispatch(setUnSeenCount(newCount))
+        }
+        // eslint-disable-next-line
     }, [messageRef, chat.messages?.length, newRef])
-
     return (
         <div
             ref={messageRef}

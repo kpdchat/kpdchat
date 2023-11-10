@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import NoMemberBtn from './NoMemberBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDataForMessageForm, selectDataForMessages, selectLoader } from '../../../../store/selectors';
-import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm } from '../../../../store/actions/messageAction';
+import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm, setUnSeenCount } from '../../../../store/actions/messageAction';
 import FormEditMessage from './FormEditMessage';
 import FormReplyMessage from './FormReplyMessage';
 import useMessageSendForm from './useMessageSendForm';
@@ -34,7 +34,7 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         const value = e.target.value;
-        if(!text) {
+        if (!text) {
             textareaRef.current.style.height = '42px';
         }
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
@@ -100,12 +100,13 @@ export default function MessageSendForm() {
             replyToMessage(data, replyMessage);
             return;
         }
-
+        dispatch(setUnSeenCount(0))
         dispatch(fetchPostMessage(data));
         setText('');
         textareaRef.current.style.height = '42px';
         dispatch(fetchDeleteUserTyping(userTypingDeleteData));
         setIsTyping(false);
+        setError(true)
     }
 
     useEffect(() => {
@@ -137,7 +138,8 @@ export default function MessageSendForm() {
 
     // Show UserTyping
     useEffect(() => {
-        if (text !== previousText) {
+        if (((text.length - previousText.length) > 5)
+            || (text.length - previousText.length) < -5) {
             setIsTyping(true);
             setPreviousText(text);
             dispatch(fetchPostUserTyping(userTypingData));
@@ -147,30 +149,30 @@ export default function MessageSendForm() {
 
     return (
         <div className='messages__input-mes input-mes'>
-            { editMessage?.id && <FormEditMessage editMessage={ editMessage } /> }
-            { replyMessage?.id && <FormReplyMessage replyMessage={ replyMessage } /> }
+            {editMessage?.id && <FormEditMessage editMessage={editMessage} />}
+            {replyMessage?.id && <FormReplyMessage replyMessage={replyMessage} />}
             <form
-                onSubmit={ onFormSubmit }
+                onSubmit={onFormSubmit}
                 className='input-mes__form'>
 
-                { !isMember && <NoMemberBtn /> }
+                {!isMember && <NoMemberBtn />}
 
                 <textarea
-                    ref={ textareaRef }
+                    ref={textareaRef}
                     rows='1'
-                    onChange={ onTextareaInput }
-                    onKeyDown={ onEnterPress }
-                    value={ text }
+                    onChange={onTextareaInput}
+                    onKeyDown={onEnterPress}
+                    value={text}
                     className='text-inter-16-400 scroll-bar'
-                    placeholder={ t('global.text-message') }
+                    placeholder={t('global.text-message')}
                 />
 
-                { isLoader
+                {isLoader
                     ? <LoadingSendMess />
                     : <button
                         className={error ? 'input-mes__button-disabled' : 'input-mes__button-active cursor-pointer'}
                         type='submit'
-                        onClick={ onFormSubmit }>
+                        onClick={onFormSubmit}>
                     </button>
                 }
             </form>
