@@ -21,7 +21,7 @@ import NavInfoModal from './nav-modal/NavInfoModal';
 import NavTheme from './NavTheme';
 import CopyModal from '../messages/mes-modal/CopyModal';
 import DeleteMessageModal from '../messages/mes-modal/DeleteMessageModal';
-import { clearForm } from '../../../store/actions/messageAction';
+import {clearForm, clearInputSearch, stopSearch} from '../../../store/actions/messageAction';
 
 export default function ChatNavigation() {
     const { t } = useTranslation();
@@ -39,11 +39,13 @@ export default function ChatNavigation() {
     }
 
     function onContextClick(e) {
-        e.preventDefault()
+        e.preventDefault();
     }
 
     function onNavigationClick() {
-        dispatch(clearForm())
+        dispatch(clearForm());
+        dispatch(stopSearch);
+        dispatch(clearInputSearch());
     }
 
     useEffect(() => {
@@ -89,7 +91,6 @@ export default function ChatNavigation() {
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div className='navigation__settings settings'>
                     <NavSettings />
@@ -109,7 +110,6 @@ export default function ChatNavigation() {
             {isModal && modalId === 'info' && <NavInfoModal />}
             {isModal && modalId === 'copy-modal' && <CopyModal />}
             {isModal && modalId === 'delete-message' && <DeleteMessageModal />}
-
         </>
     )
 }

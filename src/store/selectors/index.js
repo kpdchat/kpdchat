@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect'
 
-
 export const selectEditFolder = state => state.folder.editFolder
 export const selectDeleteFolder = state => state.folder.deleteFolder
 
@@ -10,6 +9,7 @@ export const selectUserError = state => state.user.userError
 export const selectUi = state => state.ui
 export const selectOpenChat = state => state.ui.isOpenChat
 export const selectLoader = state => state.ui.isActiveLoader
+export const selectMessagesLoader = state => state.ui.isActiveMessagesLoader
 
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName
@@ -26,6 +26,9 @@ export const selectReplyMessage = state => state.message.replyMessage
 export const selectDeleteMessage = state => state.message.deleteMessage
 export const selectUnSeenCount = state => state.message.unSeenCount
 export const selectChatLength = state => state.message.chatLength
+export const selectClearSearch = state => state.message.clearInputSearch
+export const selectRenderMessages = state => state.message.renderMessages
+export const selectIsSearch = state => state.message.isSearch
 
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
@@ -131,12 +134,20 @@ export const selectDataForMessages = createSelector(
 export const selectFilterByDateMessageList = createSelector(
     selectRenderChat,
     selectUser,
+    selectRenderMessages,
+    selectIsSearch,
     selectUnSeenCount,
-    (chat, user, count) => {
-        if (!chat?.messages?.length) {
+    (chat, user, searchList, isSearch, count) => {
+        if (!chat?.messages?.length || (!searchList?.length && isSearch)) {
             return []
         }
-        const sortMessages = chat?.messages?.sort((a, b) => {
+        let list;
+        if (searchList?.length && isSearch) {
+            list = searchList
+        } else {
+            list = chat?.messages
+        }
+        const sortMessages = list?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
             .filter(el => !el.isHidden)

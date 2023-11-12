@@ -1,16 +1,16 @@
 import React from 'react';
-import {useTranslation} from 'react-i18next';
-import {MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage} from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
+import { MdOutlineClose, MdArrowDropDown, MdArrowDropUp, MdOutlineHideImage } from 'react-icons/md';
 import LoadingOnSubmitSettings from './LoadingOnSubmitSettings';
 import useSettingsModalLogic from './useSettingsModalLogic';
-import {mops} from '../../../../../extra/config/vocabulary/mops-icons';
+import { mops } from '../../../../../extra/config/vocabulary/mops-icons';
 import MopsAvatars from '../../../../registrationWindow/registrationAndEnter/loginAndRegistration/modalRegistration/MopsAvatars';
-import {PiDoorOpen, PiTranslate} from 'react-icons/pi';
-import {locales} from '../../../../../extra/config/vocabulary/locales';
+import { PiDoorOpen, PiTranslate } from 'react-icons/pi';
+import { locales } from '../../../../../extra/config/vocabulary/locales';
 
 export default function SettingsModal() {
     const state = useSettingsModalLogic();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div className='settings__container modal-container no-select'>
@@ -80,7 +80,7 @@ export default function SettingsModal() {
                             }
                         </div>
 
-                        <div className={ state.showImg ? 'images' : 'display-none' }>
+                        <div className={ state.showImg ? 'images visibility' : 'images' }>
                             { mops.map(el => <MopsAvatars
                                 src={ el.src }
                                 alt={ el.alt }
@@ -170,13 +170,13 @@ export default function SettingsModal() {
                                 <div className='exit-buttons'>
                                     <button
                                         onClick={ state.onCloseSettings }
-                                        className='exit-buttons__exit text-inter-18-600 cursor-pointer'
+                                        className='text-inter-18-600 cursor-pointer'
                                     >
                                         { t('settingsUser.exit') }
                                     </button>
                                     <button
                                         onClick={ state.onCloseModalExit }
-                                        className='exit-buttons__return text-inter-18-600 cursor-pointer'
+                                        className='text-inter-18-600 cursor-pointer'
                                     >
                                         { t('chat-context-menu.return') }
                                     </button>

@@ -71,8 +71,6 @@ export default function DialogItem({ dialog, index }) {
         return t('global.empty-chat')
     }
 
-
-
     return (
         <div className={dialogStyle}
             onContextMenu={onContextClick}

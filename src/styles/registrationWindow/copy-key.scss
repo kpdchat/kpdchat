@@ -25,8 +25,15 @@
         }
 
         .copy-message {
+            height: 16px;
+            opacity: 0;
             margin: -26px 0 -26px;
             color: var(--color-blue-yelow);
+            transition: all .5s;
+        }
+
+        .show {
+            opacity: 1;
         }
 
         .loading-enterchat-container {

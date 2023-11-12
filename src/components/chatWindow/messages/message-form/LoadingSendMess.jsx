@@ -5,7 +5,7 @@ export default function LoadingSendMess() {
   return (
       <div className='loading-sendmess'>
           <div className='loading-sendmess__content'>
-              <DotSpinner size={ 28 } speed={ 0.6 } color='#38328A' />
+              <DotSpinner size={ 35 } speed={ 0.6 } color='#38328A' />
           </div>
       </div>
   );

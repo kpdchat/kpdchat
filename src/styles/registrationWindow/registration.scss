@@ -26,6 +26,7 @@
                         background-color: $color-violet;
                         border-radius: 8px;
                         border: 0 solid;
+                        transition: all .5s;
                     }
 
                     .default {
@@ -37,6 +38,7 @@
                         border-radius: 8px;
                         border: 0 solid;
                         cursor: pointer;
+                        transition: all .5s;
                     }
                 }
             }
