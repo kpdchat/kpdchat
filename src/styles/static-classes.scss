@@ -287,6 +287,7 @@
 .active-button {
     background-color: $color-violet;
     cursor: pointer;
+    transition: all .5s;
 
     &:hover {
         background-color: var(--backColor-hover);

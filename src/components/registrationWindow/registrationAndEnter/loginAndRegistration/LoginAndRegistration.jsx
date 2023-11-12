@@ -2,14 +2,14 @@ import React from 'react';
 import useLoginAndRegistrationLogic from './useLoginAndRegistrationLogic';
 import ModalRegistration from './modalRegistration/ModalRegistration';
 import LoadingOnSubmitKey from './LoadingOnSubmitKey';
-import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
-import {selectLoader} from '../../../../store/selectors';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectLoader } from '../../../../store/selectors';
 
 export default function LoginAndRegistration({setUniKey}) {
     const state = useLoginAndRegistrationLogic();
     const isLoader = useSelector(selectLoader);
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -37,25 +37,24 @@ export default function LoginAndRegistration({setUniKey}) {
             <div className='form__authorization authorization mt-24px'>
                 <div className='authorization__log-in'>
                     <button
-                        className='text-inter-18-500'
+                        className='text-inter-18-500 cursor-pointer'
                         onClick={ state.onUniqueKeySubmit }
                     >
                         { t('registration.button-sign-in') }
                     </button>
-                </div>
 
-                <div className='authorization__divider'>
-                    <span>{ t('registration.divider-span') }</span>
-                </div>
+                    <div className='divider'>
+                        <span>{ t('registration.divider-span') }</span>
+                    </div>
 
-                <div className='authorization__sing-in'>
                     <button
-                        className='text-inter-18-500'
+                        className='text-inter-18-500 cursor-pointer'
                         onClick={ () => state.setModal(true) }
                     >
                         { t('registration.button-sing-up') }
                     </button>
                 </div>
+
                 { state.modal && <ModalRegistration setUniKey={ setUniKey } onClose={ state.resetUnikey } /> }
             </div>
         </>

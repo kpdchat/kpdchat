@@ -9,6 +9,7 @@ export const selectUserError = state => state.user.userError
 export const selectUi = state => state.ui
 export const selectOpenChat = state => state.ui.isOpenChat
 export const selectLoader = state => state.ui.isActiveLoader
+export const selectMessagesLoader = state => state.ui.isActiveMessagesLoader
 
 export const selectRenderChatList = state => state.chat.renderList
 export const selectListName = state => state.chat.listName

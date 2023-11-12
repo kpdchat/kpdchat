@@ -1,14 +1,14 @@
 import React from 'react';
 import useGettingUniqueKeyLogic from './useGettingUniqueKeyLogic';
 import LoadingOnEnterChat from './LoadingOnEnterChat';
-import {useTranslation} from 'react-i18next';
-import {useSelector} from 'react-redux';
-import {selectLoader} from '../../../../store/selectors';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { selectLoader } from '../../../../store/selectors';
 
 export default function GettingUniqueKey({uniKey, setUniKey}) {
     const state = useGettingUniqueKeyLogic({uniKey, setUniKey});
     const isLoader = useSelector(selectLoader);
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <>
@@ -31,7 +31,8 @@ export default function GettingUniqueKey({uniKey, setUniKey}) {
                             />
                             { isLoader && <LoadingOnEnterChat /> }
                         </div>
-                        { state.copyActiveMessage && <p className='copy-message'>{ t(state.copyActiveMessage) }</p> }
+
+                        <p className={ `copy-message ${state.copyActiveMessage ? 'show' : ''}` }>{ t(state.copyActiveMessage) }</p>
 
                         <div className='copy-key__form-buttons buttons-copy'>
                             <div className='buttons-copy__copy'>

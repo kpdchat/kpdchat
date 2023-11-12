@@ -4,25 +4,40 @@
         width: 100%;
         text-align: center;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
 
         button {
             width: 100%;
             height: 60px;
-            color: $color-white;
-            background-color: $color-violet;
             border: none;
             font-size: 20px;
             border-radius: 8px;
-            cursor: pointer;
             font-weight: 600;
+            transition: all .5s;
 
-            &:hover {
-                background-color: var(--backColor-hover);
+            &:first-child {
+                color: $color-white;
+                background-color: $color-violet;
+
+                &:hover {
+                    background-color: var(--backColor-hover);
+                }
+            }
+
+            &:nth-child(3) {
+                color: #272732;
+                background: var(--sing-in-back-color);
+
+                &:hover {
+                    background: var(--sing-in-hover-back-color);
+                }
             }
         }
     }
 
-    &__divider {
+    .divider {
         // .authorization__divider
         display: flex;
         align-items: center;
@@ -41,29 +56,6 @@
         span {
             flex-basis: 100px;
             text-align: center;
-        }
-    }
-
-    &__sing-in {
-        // .authorization__sing-in
-        width: 100%;
-        text-align: center;
-        border-radius: 8px;
-
-        button {
-            width: 100%;
-            height: 60px;
-            color: #272732;
-            background: var(--sing-in-back-color);
-            border: none;
-            font-size: 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-
-            &:hover {
-                background: var(--sing-in-hover-back-color);
-            }
         }
     }
 }

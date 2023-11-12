@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import NoMemberBtn from './NoMemberBtn';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDataForMessageForm, selectDataForMessages, selectLoader } from '../../../../store/selectors';
+import { selectDataForMessageForm, selectDataForMessages, selectMessagesLoader } from '../../../../store/selectors';
 import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm } from '../../../../store/actions/messageAction';
 import FormEditMessage from './FormEditMessage';
 import FormReplyMessage from './FormReplyMessage';
@@ -18,7 +18,7 @@ export default function MessageSendForm() {
     const { textValidation, updateMessage, postLongMessage, replyToMessage, t, } = useMessageSendForm(setError)
     const textareaRef = useRef();
     const dispatch = useDispatch();
-    const isLoader = useSelector(selectLoader);
+    const isLoaderMessages = useSelector(selectMessagesLoader);
 
     const isMember = user.chats.find(el => el.id === chat.id);
 
@@ -157,7 +157,7 @@ export default function MessageSendForm() {
                     placeholder={ t('global.text-message') }
                 />
 
-                { isLoader
+                { isLoaderMessages
                     ? <LoadingSendMess />
                     : <button
                         className={error ? 'input-mes__button-disabled' : 'input-mes__button-active cursor-pointer'}

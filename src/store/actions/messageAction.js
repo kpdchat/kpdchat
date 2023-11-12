@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setLoaderHide, setLoaderShow } from './uiActions';
+import { setLoaderMessagesHide, setLoaderMessagesShow } from './uiActions';
 
 export const ACTION_SET_START_WINDOW = 'ACTION_SET_START_WINDOW';
 export const ACTION_DELETE_START_WINDOW = 'ACTION_DELETE_START_WINDOW';
@@ -33,13 +33,13 @@ export function fetchRenderChat(id) {
 export function fetchPostMessage(data) {
     return async (dispatch) => {
         try {
-            dispatch(setLoaderShow());
+            dispatch(setLoaderMessagesShow());
             await axios.post('https://kpdchat.onrender.com/api/messages', data)
         } catch (e) {
             console.error(e);
         } finally {
             setTimeout(() => {
-                dispatch(setLoaderHide());
+                dispatch(setLoaderMessagesHide());
             }, 800);
         }
     }
@@ -94,7 +94,7 @@ export function fetchDeleteMessage(message) {
 
 export function fetchUpdateMessage(message) {
     return async (dispatch) => {
-        dispatch(setLoaderShow());
+        dispatch(setLoaderMessagesShow());
         try {
             await axios.put('https://kpdchat.onrender.com/api/messages/update', message)
         } catch (e) {
@@ -103,7 +103,7 @@ export function fetchUpdateMessage(message) {
         finally {
             dispatch(clearForm());
             setTimeout(() => {
-                dispatch(setLoaderHide());
+                dispatch(setLoaderMessagesHide());
             }, 800);
         }
     }
@@ -184,6 +184,7 @@ export function setRenderMessages(messages) {
 export function setSearchTrue() {
     return { type: ACTION_SET_SEARCH }
 }
+
 export function stopSearch() {
     return { type: ACTION_STOP_SEARCH }
 }

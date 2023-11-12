@@ -9,8 +9,11 @@ import { selectClearSearch, selectDataForMessages } from '../../../store/selecto
 import { fetchMessagesSearch, stopClearInputSearch, stopSearch } from '../../../store/actions/messageAction';
 
 export default function MessageSearch() {
-    const [textSearch, setTextSearch] = useState('');
-    const [textSearchError, setTextSearchError] = useState('');
+    const [text, setText] = useState({
+        textSearch: '',
+        prevTextSearch: ''
+    });
+
     const isClearSearch = useSelector(selectClearSearch);
     const dispatch = useDispatch();
     const { chat } = useSelector(selectDataForMessages);
@@ -21,47 +24,34 @@ export default function MessageSearch() {
     // Data for Submit to Server
     const searchData = {
         chatId: chat.id,
-        text: textSearch
-    }
-
-    // Validation Search Input
-    function searchValidate(value) {
-        if (!value) {
-            setTextSearchError('');
-        } else if (value.length < 3) {
-            setTextSearchError('global.searchLength');
-        } else {
-            setTextSearchError('');
-        }
+        text: text.textSearch
     }
 
     // Change Text in InputSearch
     function onChangeTextSearch(e) {
         const value = e.target.value;
-        setTextSearch(value);
-        searchValidate(value);
+        setText({...text, textSearch: value});
     }
 
     // Submit messages for Search
     function onSearchSubmit(e) {
         e.preventDefault();
-        if (textSearch.length >= 3) {
-            dispatch(fetchMessagesSearch(searchData));
-        }
+        setText({...text, prevTextSearch: text.textSearch});
+        dispatch(fetchMessagesSearch(searchData));
     }
 
     useEffect(() => {
         if (isClearSearch) {
-            setTextSearch('');
+            setText({...text, textSearch: ''});
             dispatch(stopClearInputSearch());
         }
-    }, [isClearSearch, dispatch]);
+    }, [isClearSearch, dispatch, text]);
 
     useEffect(() => {
-        if (!textSearch || textSearch.length < 3) {
-            dispatch(stopSearch())
+        if (!text.textSearch || text.prevTextSearch.length > text.textSearch.length) {
+            dispatch(stopSearch());
         }
-    }, [dispatch, textSearch])
+    }, [dispatch, text.prevTextSearch.length, text.textSearch])
 
     return (
         <div className='messages__search'>
@@ -71,17 +61,13 @@ export default function MessageSearch() {
                         type='text'
                         name='text'
                         autoComplete='off'
-                        value={ textSearch }
+                        value={ text.textSearch }
                         onChange={ onChangeTextSearch }
                         onBlur={ onChangeTextSearch }
                         className='input text-inter-16-400'
                         placeholder={ t('global.search') } />
                     <PiMagnifyingGlass className='input-icon' />
                 </form>
-
-                { textSearchError &&
-                    <p className='search__error-message'>{ t(textSearchError) }</p>
-                }
             </div>
 
             <div className='messages__info'>
