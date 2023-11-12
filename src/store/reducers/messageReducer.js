@@ -16,11 +16,14 @@ import {
     ACTION_STOP_CLEAR_INPUT_SEARCH,
     ACTION_SET_SEARCH,
     ACTION_STOP_SEARCH,
+    ACTION_SET_UNSEEN_COUNT,
+    ACTION_SET_CHAT_LENGTH
 } from '../actions/messageAction'
 
 const initialState = {
     isStartWindow: false,
     renderChat: {},
+    chatLength: 0,
     chatId: 0,
     editMessage: {},
     clearForm: false,
@@ -29,6 +32,7 @@ const initialState = {
     renderMessages: [],
     clearInputSearch: false,
     isSearch: false,
+    unSeenCount: 0,
 }
 
 export default function messageReducer(state = initialState, { type, payload }) {
@@ -135,6 +139,18 @@ export default function messageReducer(state = initialState, { type, payload }) 
             return {
                 ...state,
                 deleteMessage: {},
+            }
+        }
+        case ACTION_SET_UNSEEN_COUNT: {
+            return {
+                ...state,
+                unSeenCount: payload,
+            }
+        }
+        case ACTION_SET_CHAT_LENGTH: {
+            return {
+                ...state,
+                chatLength: payload,
             }
         }
         default: return state

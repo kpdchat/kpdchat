@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import NoMemberBtn from './NoMemberBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDataForMessageForm, selectDataForMessages, selectMessagesLoader } from '../../../../store/selectors';
-import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm } from '../../../../store/actions/messageAction';
+import { fetchPostMessage, fetchDeleteUserTyping, fetchPostUserTyping, stopClearForm, setUnSeenCount } from '../../../../store/actions/messageAction';
 import FormEditMessage from './FormEditMessage';
 import FormReplyMessage from './FormReplyMessage';
 import useMessageSendForm from './useMessageSendForm';
@@ -24,7 +24,7 @@ export default function MessageSendForm() {
 
     function onTextareaInput(e) {
         const value = e.target.value;
-        if(!text) {
+        if (!text) {
             textareaRef.current.style.height = '42px';
         }
         textareaRef.current.style.height = textareaRef.current.scrollHeight + 0 + 'px';
@@ -91,7 +91,7 @@ export default function MessageSendForm() {
             replyToMessage(data, replyMessage);
             return;
         }
-
+        dispatch(setUnSeenCount(0))
         dispatch(fetchPostMessage(data));
         setText('');
         textareaRef.current.style.height = '42px';
@@ -129,7 +129,8 @@ export default function MessageSendForm() {
 
     // Show UserTyping
     useEffect(() => {
-        if (text !== previousText) {
+        if (((text.length - previousText.length) > 5)
+            || (text.length - previousText.length) < -5) {
             setIsTyping(true);
             setPreviousText(text);
             dispatch(fetchPostUserTyping(user.id, chat.id));

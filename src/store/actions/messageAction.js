@@ -18,6 +18,8 @@ export const ACTION_CLEAR_INPUT_SEARCH = 'ACTION_CLEAR_INPUT_SEARCH';
 export const ACTION_STOP_CLEAR_INPUT_SEARCH = 'ACTION_STOP_CLEAR_INPUT_SEARCH';
 export const ACTION_SET_SEARCH = 'ACTION_SET_SEARCH';
 export const ACTION_STOP_SEARCH = 'ACTION_STOP_SEARCH';
+export const ACTION_SET_UNSEEN_COUNT = 'ACTION_SET_UNSEEN_COUNT'
+export const ACTION_SET_CHAT_LENGTH = 'ACTION_SET_CHAT_LENGTH'
 
 export function fetchRenderChat(id) {
     return async (dispatch) => {
@@ -187,4 +189,12 @@ export function setSearchTrue() {
 
 export function stopSearch() {
     return { type: ACTION_STOP_SEARCH }
+}
+
+export function setUnSeenCount(count) {
+    return { type: ACTION_SET_UNSEEN_COUNT, payload: count }
+}
+
+export function setLength(length) {
+    return { type: ACTION_SET_CHAT_LENGTH, payload: length }
 }

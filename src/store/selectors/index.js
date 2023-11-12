@@ -24,6 +24,8 @@ export const selectEditMessage = state => state.message.editMessage
 export const selectClearForm = state => state.message.clearForm
 export const selectReplyMessage = state => state.message.replyMessage
 export const selectDeleteMessage = state => state.message.deleteMessage
+export const selectUnSeenCount = state => state.message.unSeenCount
+export const selectChatLength = state => state.message.chatLength
 export const selectClearSearch = state => state.message.clearInputSearch
 export const selectRenderMessages = state => state.message.renderMessages
 export const selectIsSearch = state => state.message.isSearch
@@ -118,11 +120,13 @@ export const selectDataForMessages = createSelector(
     selectUser,
     selectRenderChatId,
     selectRenderChat,
-    (user, id, chat) => {
+    selectChatLength,
+    (user, id, chat, messLength) => {
         return {
             user,
             id,
-            chat
+            chat,
+            messLength
         }
     }
 )
@@ -132,7 +136,8 @@ export const selectFilterByDateMessageList = createSelector(
     selectUser,
     selectRenderMessages,
     selectIsSearch,
-    (chat, user, searchList, isSearch) => {
+    selectUnSeenCount,
+    (chat, user, searchList, isSearch, count) => {
         if (!chat?.messages?.length || (!searchList?.length && isSearch)) {
             return []
         }
@@ -142,7 +147,6 @@ export const selectFilterByDateMessageList = createSelector(
         } else {
             list = chat?.messages
         }
-        const status = user.chatStatuses.find(el => el.chatId === chat.id)
         const sortMessages = list?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
@@ -153,8 +157,9 @@ export const selectFilterByDateMessageList = createSelector(
 
             })
             .reduce((acc, curr, index, arr) => {
-                const newIndex = arr.length - status?.unseenMessageCount
-                if (arr.indexOf(curr) === newIndex && arr[arr.length - 1].userProfile.id !== user.id) {
+                const newIndex = arr.length - count
+                if (arr.indexOf(curr) === newIndex) {
+
                     acc.push({
                         newMess: curr
                     })
@@ -184,13 +189,10 @@ export const selectFilterByDateMessageList = createSelector(
                 return acc
             }, [])
 
-
-
-
         return {
             ...chat,
             "messages": sortMessages,
-            "unseenMessageCount": status?.unseenMessageCount
+            "unseenMessageCount": count
         }
     }
 )
