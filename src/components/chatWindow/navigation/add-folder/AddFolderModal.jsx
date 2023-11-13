@@ -95,7 +95,7 @@ export default function AddFolderModal() {
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
                     <h3 className="text-inter-18-600">
-                        {editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}
+                        {editFolder.id ? t('addFolder.editFolderModal') : t('addFolder.createFolder')}
                     </h3>
                     <MdOutlineClose
                         className="close-img cursor-pointer"
@@ -189,7 +189,7 @@ export default function AddFolderModal() {
                         <input
                             type="submit"
                             className="text-inter-16-600 cursor-pointer"
-                            value={t('addFolder.create')} />
+                            value={editFolder.id ? t('addFolder.editFolder') : t('addFolder.create')} />
                     </form>
                     <div className={isActiveLoader ? "loading" : "display-none"} >
                         <DotSpinner
