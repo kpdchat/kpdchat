@@ -19,14 +19,14 @@ export default function SelectFolder({ folder }) {
             return
         }
 
-        const publicChatsId = folder.publicChats
+        const chatIds = folder.chats
             .map(el => el.id)
             .filter(el => el !== chat.id)
         const updateFolder = {
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "chatIds": publicChatsId
+            "chatIds": chatIds
         }
 
         dispatch(fetchUpdateKebabFolder(updateFolder))

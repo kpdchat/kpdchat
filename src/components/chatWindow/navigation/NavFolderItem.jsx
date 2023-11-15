@@ -36,9 +36,9 @@ export default function NavFolderItem({ folder }) {
 
     useEffect(() => {
         if (listName === 'folder' + folder.id) {
-            dispatch(setRenderList(folder.publicChats))
+            dispatch(setRenderList(folder.chats))
         }
-    }, [listName, user, dispatch, folder.id, folder.publicChats])
+    }, [listName, user, dispatch, folder.id, folder.chats])
 
     useEffect(() => {
         if (window.innerWidth < 941) {
@@ -67,7 +67,7 @@ export default function NavFolderItem({ folder }) {
             </div>
             <h3
                 className='text-inter-16-400 ml-5px'>
-                {folder.publicChats.length}
+                {folder.chats.length}
             </h3>
             {isOpen && idKebab === 'folder' + folder.id && <FolderKebab folder={folder} style={style} />}
         </div >

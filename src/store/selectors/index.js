@@ -33,7 +33,7 @@ export const selectIsSearch = state => state.message.isSearch
 export const selectEditFolderForForm = createSelector(
     selectEditFolder,
     (editFolder) => {
-        const chatIds = editFolder?.publicChats?.reduce((list, chat) => {
+        const chatIds = editFolder?.chats?.reduce((list, chat) => {
             list.push('' + chat.id)
             return list
         }, [])
@@ -51,7 +51,7 @@ export const selectFolderList = createSelector(
     selectChat,
     (user, chat) => {
         const folderList = user.folders.reduce((list, folder) => {
-            if (folder.publicChats.find(publicChat => publicChat.id === chat.id)) {
+            if (folder.chats.find(publicChat => publicChat.id === chat.id)) {
                 list.push(folder.id)
             }
             return list
@@ -69,7 +69,7 @@ export const selectFolderToDeleteFrom = createSelector(
         const folder = user.folders.find(folder => {
             return folder.id === Number(folderId)
         })
-        const publicChatsId = folder.publicChats
+        const chatIds = folder.chats
             .map(el => el.id)
             .filter(el => el !== chat.id)
 
@@ -77,7 +77,7 @@ export const selectFolderToDeleteFrom = createSelector(
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "chatIds": publicChatsId
+            "chatIds": chatIds
         }
         return updateFolder
     }

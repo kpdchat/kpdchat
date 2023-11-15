@@ -13,7 +13,7 @@ export default function ChatKebab({ chat, style, setStyle }) {
     const listName = useSelector(selectListName)
     const menuRef = useRef()
     let kebab
-    if (listName === 'publicChats') {
+    if (listName === 'chats') {
         if (chat.members.find(member => member.id === user.id)) {
             kebab = <ExitChat menuRef={menuRef} style={style} chat={chat} />
         } else {
@@ -25,7 +25,7 @@ export default function ChatKebab({ chat, style, setStyle }) {
         <KebabWrapper elRef={menuRef} >
             {listName.substr(0,6)  === 'folder' && <FolderChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
             {listName=== 'mineChats' && <MyChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />}
-            {listName === 'publicChats' && kebab}
+            {listName === 'chats' && kebab}
         </KebabWrapper>
     )
 }
