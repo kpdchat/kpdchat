@@ -63,7 +63,9 @@ export default function DialogItem({ dialog, index }) {
         if (dialog?.messages[0]?.text) {
             return (
                 <>
-                    <span className='text-inter-14-500'>{dialog?.messages[0]?.userProfile?.nickname}</span>  : {dialog?.messages[0]?.text}
+                    <span className='text-inter-14-500'>{dialog?.messages[0]?.userProfile?.nickname
+                        ? dialog?.messages[0]?.userProfile?.nickname
+                        : 'Incognito'}</span>  : {dialog?.messages[0]?.text}
                 </>
             )
         }

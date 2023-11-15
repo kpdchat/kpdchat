@@ -9,7 +9,8 @@ export default function NoMemberBtn() {
     const { t } = useTranslation();
     const dispatch = useDispatch()
 
-    function onJoinClick() {
+    function onJoinClick(e) {
+        e.stopPropagation()
         const data = {
             "userId": user.id,
             "chatId": chat.id
