@@ -11,7 +11,7 @@ export default function SelectFolder({ folder }) {
     const dispatch = useDispatch()
     const chat = useSelector(selectChat)
     const { loaderId, isActiveLoader } = useSelector(selectUi)
-    
+
     function onRemoveFolderClick(e) {
         e.stopPropagation()
 
@@ -26,7 +26,7 @@ export default function SelectFolder({ folder }) {
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "chatIds": chatIds
+            chatIds
         }
 
         dispatch(fetchUpdateKebabFolder(updateFolder))

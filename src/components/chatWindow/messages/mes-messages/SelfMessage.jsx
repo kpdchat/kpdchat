@@ -19,18 +19,15 @@ export default function SelfMessage({ message }) {
     }
 
     useEffect(() => {
-        if (chat?.messages[chat.messages.length - 1].id === message.id && chat.messages.length > 2) {
+        const isMember = user.chats.find(el => el.id === chat.id);
+        if (chat?.messages[chat.messages.length - 1].id === message.id && chat.messages.length > 3 && isMember) {
             setStyle({
                 top: '-155px'
             })
         } else {
             setStyle({});
         }
-    }, [chat.messages, message.id])
-
-    if (message.isDeleted) {
-        return (<></>)
-    }
+    }, [chat.messages, message.id, chat.id, user.chats])
 
     return (
         <div className="window-mes__self self">

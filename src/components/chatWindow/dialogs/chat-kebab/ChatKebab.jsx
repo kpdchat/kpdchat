@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { selectListName, selectUser } from "../../../../store/selectors";
 import MyChatKebab from "./MyChatKebab";
 import FolderChatKebab from "./FolderChatKebab";
-import ExitChat from "./ExitChat";
 import JoinChat from "./JoinChat";
 
 
@@ -15,7 +14,7 @@ export default function ChatKebab({ chat, style, setStyle }) {
     let kebab
     if (listName === 'chats') {
         if (chat.members.find(member => member.id === user.id)) {
-            kebab = <ExitChat menuRef={menuRef} style={style} chat={chat} />
+            kebab = <MyChatKebab menuRef={menuRef} setStyle={setStyle} style={style} chat={chat} />
         } else {
             kebab = <JoinChat menuRef={menuRef} style={style} chat={chat} />
         }

@@ -16,12 +16,12 @@ export default function UnSelectFolder({ folder }) {
         if(isActiveLoader) {
             return
         }
-        const chatIds = folder.chats.map(chat => chat.id)
+        const chatsId = folder.chats.map(chat => chat.id)
         const updateFolder = {
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "chatIds": [...chatIds, chat.id]
+            "chatIds": [...chatsId, chat.id]
         }
         dispatch(fetchUpdateKebabFolder(updateFolder))
     }

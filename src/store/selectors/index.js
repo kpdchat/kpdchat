@@ -69,7 +69,7 @@ export const selectFolderToDeleteFrom = createSelector(
         const folder = user.folders.find(folder => {
             return folder.id === Number(folderId)
         })
-        const chatIds = folder.chats
+        const chatsId = folder.chats
             .map(el => el.id)
             .filter(el => el !== chat.id)
 
@@ -77,7 +77,7 @@ export const selectFolderToDeleteFrom = createSelector(
             "id": folder.id,
             "title": folder.title,
             "iconTag": folder.iconTag,
-            "chatIds": chatIds
+            "chatIds": chatsId
         }
         return updateFolder
     }
@@ -95,7 +95,7 @@ export const selectSortRenderList = createSelector(
                 const status = user.chatStatuses.find(el => el.chatId === chat.id)
                 if (status) {
                     let unseenMessageCount = status.unseenMessageCount
-                    if (chat.messages[0].userProfile.id === user.id) {
+                    if (chat.messages[0].userProfile?.id === user.id) {
                         unseenMessageCount = 0
                     }
                     chat = {
@@ -150,7 +150,7 @@ export const selectFilterByDateMessageList = createSelector(
         const sortMessages = list?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
-            .filter(el => !el.isHidden)
+            .filter(el => !el.isHidden || !(el?.userProfile?.id === user.id && el?.isDeleted))
             .map(mes => mes = {
                 ...mes,
                 sentAt: new Date(mes.sentAt * 1000)

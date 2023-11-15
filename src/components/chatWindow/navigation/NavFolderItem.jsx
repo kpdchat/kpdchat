@@ -6,7 +6,6 @@ import { selectListName, selectUser } from "../../../store/selectors";
 import { setRenderList, setRenderListName } from "../../../store/actions/chatActions";
 import FolderKebab from "./add-folder/FolderKebab";
 
-
 export default function NavFolderItem({ folder }) {
     const type = 'onContext'
     const { isOpen, idKebab, onKebabClick } = useKebabClick(folder.id, 'folder', type)
@@ -48,6 +47,7 @@ export default function NavFolderItem({ folder }) {
         }
         // eslint-disable-next-line
     }, [window.innerWidth])
+
     return (
         <div
             className={listName === 'folder' + folder.id ? 'folders__folder folders__folder_active' : 'folders__folder'}>

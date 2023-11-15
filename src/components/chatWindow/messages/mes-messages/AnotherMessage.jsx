@@ -18,24 +18,26 @@ export default function AnotherMessage({ message }) {
     const [style, setStyle] = useState({});
     const incognitoTheme = localStorage.getItem('theme');
     const sentAt = getDateTine(message.sentAt);
-   
+
     function onMessageKebabClick(e) {
         onKebabClick(e);
     }
 
     useEffect(() => {
-        if (chat?.messages[chat.messages.length - 1].id === message.id && message?.userProfile) {
-            setStyle({
-                top: '-85px'
-            })
-        } else if (chat?.messages[chat.messages.length - 1].id === message.id && !message?.userProfile) {
+        const isMember = user.chats.find(el => el.id === chat.id);
+        if (chat?.messages[chat.messages.length - 1].id === message.id && (!message?.userProfile || !isMember)) {
             setStyle({
                 top: '-37px'
+            })
+        } else if (chat?.messages[chat.messages.length - 1].id === message.id && message?.userProfile) {
+            setStyle({
+                top: '-85px'
             })
         } else {
             setStyle({});
         }
-    }, [chat.messages, message.id, message?.userProfile])
+
+    }, [chat.messages, message.id, message?.userProfile, chat.id, user.chats])
 
     return (
         <div className='window-mes__another'>
@@ -51,10 +53,8 @@ export default function AnotherMessage({ message }) {
                         alt='' />
                 }
                 <h3 className='text-inter-18-600'>
-                    {message?.userProfile?.nickname
-                        ? message?.userProfile?.nickname
-                        : t('global.incognito')
-                    }
+                    {message?.userProfile?.nickname}
+
                 </h3>
             </div>
             <div className='another__message'>
