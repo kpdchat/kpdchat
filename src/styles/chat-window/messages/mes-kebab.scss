@@ -10,7 +10,7 @@
     left: 18px;
     background-color: var(--color-white-black);
 
-    @include max-screen(1390px) {
+    @include max-screen(1024px) {
         left: -147px;
     }
 
@@ -43,7 +43,7 @@
         left: 18px;
         z-index: 3;
 
-        @include max-screen(1390px) {
+        @include max-screen(1024px) {
             left: -147px;
         }
     }
@@ -55,7 +55,7 @@
     right: 18px;
     background-color: var(--color-white-black);
 
-    @include max-screen(1390px) {
+    @include max-screen(1024px) {
         left: 18px;
     }
 
