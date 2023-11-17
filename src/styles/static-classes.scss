@@ -204,7 +204,7 @@
     position: relative;
     color: $color-yellow;
 
-    @include max-screen(940px) {
+    @include max-screen(1024px) {
         justify-content: center;
     }
 }

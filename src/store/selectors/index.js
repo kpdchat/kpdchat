@@ -150,8 +150,7 @@ export const selectFilterByDateMessageList = createSelector(
         const sortMessages = list?.sort((a, b) => {
             return new Date(a.sentAt * 1000) - new Date(b.sentAt * 1000);
         })
-            .filter(el => !el.isHidden)
-            .filter(el => !(el?.userProfile?.id === user.id && el?.isDeleted))
+            .filter(el => !el.isHidden && !(el?.userProfile?.id === user.id && el?.isDeleted))
             .map(mes => mes = {
                 ...mes,
                 sentAt: new Date(mes.sentAt * 1000)

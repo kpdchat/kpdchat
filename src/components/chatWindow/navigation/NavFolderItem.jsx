@@ -40,7 +40,7 @@ export default function NavFolderItem({ folder }) {
     }, [listName, user, dispatch, folder.id, folder.chats])
 
     useEffect(() => {
-        if (window.innerWidth < 941) {
+        if (window.innerWidth < 1025) {
             setHover({ ...hover, width: true })
         } else {
             setHover({ ...hover, width: false })

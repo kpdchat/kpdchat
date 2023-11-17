@@ -17,7 +17,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 11px 4% 11px 2%;
+        padding: 11px 24px 11px 24px;
         border-bottom: var(--border-right);
         background-color: var(--color-white-black);
     }
@@ -118,7 +118,6 @@
     flex-direction: column;
     padding: 12px 25px 15px 25px;
     gap: 12px;
-    min-width: 500px;
 
     &__data {
         // .window-mes__data
@@ -131,13 +130,13 @@
     &__self {
         // .window-mes__self
         align-self: end;
-        max-width: 630px;
+        max-width: 70%;
     }
 
     &__another {
         // .window-mes__another
         align-self: flex-start;
-        max-width: 630px;
+        max-width: 70%;
     }
 
     &__new-mess {
