@@ -51,6 +51,21 @@
         gap: 4px;
     }
 
+    &__flex {
+        // .list__flex
+        padding-right: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__empty-img {
+        //.list__empty-img
+        height: clamp(260px, calc(100dvh - 160px), 500px);
+        object-fit: contain;
+    }
+
     &__dialog {
         // .list__dialog
         width: 365px;
@@ -149,13 +164,7 @@
         justify-content: center;
     }
 
-    &__flex {
-        // .list__flex
-        padding-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    
 }
 
 .active-chat-kebab {

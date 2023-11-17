@@ -35,42 +35,6 @@ export default function ChatDialogs() {
             dispatch(setKebabClose())
         }
     }, [renderChatList?.length, dispatch])
-    
-    if (filteredChats?.length === 0) {
-        return (
-            <section
-                className='chat__dialogs dialogs no-select'
-                onClick={onDialogsClick} >
-                <div
-                    className='dialogs__logo'
-                    onContextMenu={onContextClick}>
-                    <Logo />
-                    <h1><span>kpd</span>Chat</h1>
-                </div>
-                <div className='dialogs__search'>
-                    <form className='search-form'>
-                        <PiMagnifyingGlass
-                            size={24}
-                            className="search-form__svg" />
-                        <input
-                            className="text-inter-16-400"
-                            placeholder={t('global.search')}
-                            value={query}
-                            onChange={e => setQuery(e.target.value)}
-                        />
-                    </form>
-                </div>
-                <div
-                    className='dialogs__list list list__flex'
-                    onContextMenu={onContextClick}>
-                    <div className="list__container">
-                        <img src={emptyChats} alt="chats are empty" />
-                    </div>
-                </div>
-                <span></span>
-            </section>
-        )
-    }
 
     return (
         <section
@@ -96,10 +60,41 @@ export default function ChatDialogs() {
                 </form>
             </div>
             <div className='dialogs__list list scroll-bar' onContextMenu={onContextClick}>
-                <div className="list__container ">
-                    {filteredChats?.map(chat => <DialogItem dialog={chat} index={renderChatList.indexOf(chat)} key={chat.id} />)}
-                </div>
-            </div>
+                {/* <div className="list__container ">
+                    {filteredChats?.length
+                        ? filteredChats?.map(chat =>
+                            <DialogItem
+                                dialog={chat}
+                                index={renderChatList.indexOf(chat)}
+                                key={chat.id} />)
+                        : <div className="list__flex">
+                            <img
+                                className="list__empty-img"
+                                src={emptyChats}
+                                alt="chats are empty" />
+                        </div>
+                    }
+
+                </div> */}
+                <>
+                
+                </>
+                {filteredChats?.length
+                    ? <div className="list__container ">
+                            {filteredChats?.map(chat =>
+                            <DialogItem
+                                dialog={chat}
+                                index={renderChatList.indexOf(chat)}
+                                key={chat.id} />)}
+                            </div>
+                        : <div className="list__flex">
+                            <img
+                                className="list__empty-img"
+                                src={emptyChats}
+                                alt="chats are empty" />
+                        </div>
+                    }
+                    </div>
             <span></span>
         </section>
     )
