@@ -60,25 +60,6 @@ export default function ChatDialogs() {
                 </form>
             </div>
             <div className='dialogs__list list scroll-bar' onContextMenu={onContextClick}>
-                {/* <div className="list__container ">
-                    {filteredChats?.length
-                        ? filteredChats?.map(chat =>
-                            <DialogItem
-                                dialog={chat}
-                                index={renderChatList.indexOf(chat)}
-                                key={chat.id} />)
-                        : <div className="list__flex">
-                            <img
-                                className="list__empty-img"
-                                src={emptyChats}
-                                alt="chats are empty" />
-                        </div>
-                    }
-
-                </div> */}
-                <>
-                
-                </>
                 {filteredChats?.length
                     ? <div className="list__container ">
                             {filteredChats?.map(chat =>
