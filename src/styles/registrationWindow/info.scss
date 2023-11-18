@@ -28,8 +28,7 @@
 
                 &__title {
                     // .content__title
-                    //font-size: 24px; origin
-                    font-size: 1.25dvw;
+                    font-size: clamp(18px, 2dvw, 24px);
                     font-weight: $f-weight-300;
                     letter-spacing: 3.6px;
                     color: $color-white;
@@ -47,7 +46,7 @@
                     gap: 8px;
                     line-height: 140%;
                     font-weight: $f-weight-500;
-                    font-size: 0.94dvw;
+                    font-size: clamp(12px, 1dvw, 18px);
                 }
 
                 &__img {
@@ -71,8 +70,7 @@
 
                             &__title {
                                 // .feature__title
-                                //font-size: 18px;
-                                font-size: 0.94dvw;
+                                font-size: clamp(12px, 1dvw, 18px);
                                 line-height: 140%;
                                 font-family: $font-lexend;
                                 font-weight: $f-weight-800;
@@ -81,7 +79,7 @@
 
                             &__description {
                                 // .feature__description
-                                font-size: 0.94dvw;
+                                font-size: clamp(12px, 1dvw, 18px);
                                 font-weight: $f-weight-500;
                                 line-height: 140%;
                                 margin-left: 14px;
