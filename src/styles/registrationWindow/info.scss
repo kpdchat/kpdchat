@@ -52,7 +52,7 @@
                 &__img {
                     // .content__img
                     img {
-                        width: 27dvw;
+                        width: clamp( 256px, 27dvw, 700px);
                     }
                 }
 

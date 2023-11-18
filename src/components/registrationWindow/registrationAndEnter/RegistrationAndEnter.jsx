@@ -8,12 +8,13 @@ import SliderInfo from './SliderInfo';
 
 export default function RegistrationAndEnter() {
     const [uniKey, setUniKey] = useState('');
+    const [showInfo, setShowInfo] = useState(false);
 
     return (
         <div className='registration'>
-            <SliderInfo />
+            <SliderInfo showInfo={showInfo} setShowInfo={setShowInfo}/>
 
-            <div className='registration__block'>
+            <div className={ `${ showInfo ? 'display-none' : 'registration__block' }` }>
                 <div className='registration__block-language language'>
                     <LanguageButton />
                 </div>

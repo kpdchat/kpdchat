@@ -250,6 +250,11 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
+
+    @include max-screen(500px) {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 .no-select {

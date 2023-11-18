@@ -1,10 +1,20 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 .authorization__modal-content {
-    width: 580px;
+    width: clamp(580px, 30dvw, 680px);
     position: absolute;
     border-radius: 8px;
     background-color: var(--modal-authorization-backColor);
     padding: 24px;
     margin-top: -264px;
+
+    @include max-screen(940px) {
+        width: clamp( 4dvw, 99dvw, 680px);
+    }
 
     .content {
 
@@ -23,6 +33,10 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+
+                    @include max-screen(940px) {
+                        margin-bottom: 16px;
+                    }
                 }
 
                 &__data {
@@ -36,7 +50,7 @@
                         padding: 16px 28px;
                         color: var(--color-black-white);
                         font-family: $font-inter;
-                        font-size: 18px;
+                        font-size: clamp(14px, 4dvw, 18px);
                         font-weight: $f-weight-500;
                         line-height: 140%;
                         border: var(--modal-data-border);
@@ -69,6 +83,11 @@
                     text-align: center;
                 }
             }
+
+            .text-inter-16-400 {
+                line-height: 140%;
+                font-size: clamp(12px, 3dvw, 16px);
+            }
         }
 
         &__text-or {
@@ -87,6 +106,15 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+
+            @include max-screen(940px) {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            @include max-screen(500px) {
+                justify-content: center;
+            }
 
             .img {
                 .dogs-img {
@@ -112,7 +140,7 @@
             margin-bottom: 16px;
 
             button {
-                width: 100%;
+                width: clamp( 4dvw, 99dvw, 100%);
                 color: $color-white;
                 font-family: $font-inter;
                 font-size: 18px;
@@ -123,6 +151,10 @@
                 border-radius: 8px;
                 cursor: pointer;
                 transition: all .5s;
+
+                @include max-screen(341px) {
+                    padding: 8px 0;
+                }
 
                 &:hover {
                     background-color: var(--backColor-hover);

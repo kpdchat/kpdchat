@@ -76,7 +76,7 @@
             }
         }
 
-        @include max-screen(768px) {
+        @include max-screen(940px) {
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -115,7 +115,7 @@
             display: flex;
             justify-content: flex-end;
 
-            @include max-screen(768px) {
+            @include max-screen(940px) {
                 display: none;
             }
         }
@@ -128,7 +128,7 @@
             align-items: center;
             padding: 0 10px;
 
-            @include max-screen(768px) {
+            @include max-screen(940px) {
                 margin-top: -80px;
             }
 
@@ -294,7 +294,7 @@
             padding: 1px 2px;
             color: #FFF;
 
-            @include max-screen(768px) {
+            @include max-screen(940px) {
                 display: none;
             }
         }
@@ -310,7 +310,7 @@
 }
 
 .language {
-    @include max-screen(768px) {
+    @include max-screen(940px) {
         display: none;
     }
 
@@ -318,7 +318,7 @@
         // .language-buttons
         margin: 40px 3dvw 0 0;
 
-        @include max-screen(768px) {
+        @include max-screen(940px) {
             margin: 0;
         }
 
@@ -332,7 +332,7 @@
             border: 0 solid;
             transition: all .5s;
 
-            @include max-screen(768px) {
+            @include max-screen(940px) {
                 background-color: #FFF;
                 color: #2D2B66;
             }
@@ -349,7 +349,7 @@
             cursor: pointer;
             transition: all .5s;
 
-            @include max-screen(768px) {
+            @include max-screen(940px) {
                 color: #FFF;
                 background-color: #2D2B66;
             }

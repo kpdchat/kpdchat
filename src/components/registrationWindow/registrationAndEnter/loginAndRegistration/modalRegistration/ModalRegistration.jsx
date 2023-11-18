@@ -35,7 +35,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         </div>
 
                         { state.errors.nickname &&
-                            <p className='modal-form__error-message'>{ t(state.errors.nickname) }</p>
+                            <p className='text-inter-16-400 modal-form__error-message'>{ t(state.errors.nickname) }</p>
                         }
                         <div className='modal-form__data'>
                         <textarea
@@ -51,7 +51,7 @@ export default function ModalRegistration({onClose, setUniKey}) {
                         </div>
 
                         { state.errors.profilePictureLink &&
-                            <p className='modal-form__error-message'>{ t(state.errors.profilePictureLink) }</p> }
+                            <p className='text-inter-16-400 modal-form__error-message'>{ t(state.errors.profilePictureLink) }</p> }
                     </div>
 
                     <div className='content__text-or'>{ t('registration.divider-span') }</div>
