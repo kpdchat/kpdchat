@@ -29,6 +29,7 @@
     }
 
     &__kebab-icon {
+        // .another__kebab-icon
         color: var(--color-lightDarkGrey-white);
     }
 
@@ -41,10 +42,6 @@
         max-width: 500px;
         display: flex;
         flex-direction: column;
-
-        @include max-screen(1250px) {
-            max-width: 400px;
-        }
 
         img {
             object-fit: contain;

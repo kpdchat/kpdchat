@@ -19,9 +19,6 @@ export default function AddFolderModal() {
     const { isActiveLoader } = useSelector(selectUi);
     const editFolder = useSelector(selectEditFolderForForm);
     const user = useSelector(selectUser);
-    const chats = user.chats.sort(((a, b) => {
-        return (a.id - b.id);
-    }))
     const { t } = useTranslation();
 
     const {
@@ -36,10 +33,10 @@ export default function AddFolderModal() {
     let selected = getSelected();
 
     function getSelected() {
-        if(typeof checked === 'string') {
+        if (typeof checked === 'string') {
             return 1;
         }
-        if(!checked) {
+        if (!checked) {
             return 0;
         }
         return checked?.length;
@@ -47,17 +44,23 @@ export default function AddFolderModal() {
 
     //search-logic
     const filteredChats = useMemo(() => {
-        return chats.filter(chat => {
+        return user.chats.sort(((a, b) => {
+            return (a.id - b.id);
+        })).filter(chat => {
             return chat.title.toLowerCase().includes(query.toLowerCase());
         })
-    }, [query, chats])
+    }, [query, user.chats])
 
     //form submit
     function onFormSubmit(data) {
-        
         if (!data.chatIds) {
             data.chatIds = [];
         }
+
+        if (user.chats.length < 2 && data.chatIds) {
+            data.chatIds = [Number(data.chatIds)]
+        }
+
         if (editFolder.id) {
             const updateFolder = {
                 "id": editFolder.id,
@@ -69,11 +72,12 @@ export default function AddFolderModal() {
         } else {
             const folder = {
                 userId: user.id,
-                ...data
+                ...data, 
+                "chatIds": data.chatIds.map(id => Number(id))
             }
             dispatch(fetchCreateFolder(folder));
         }
-        
+
         dispatch(setLoaderShow());
         setTimeout(() => {
             dispatch(setLoaderHide());
@@ -95,7 +99,7 @@ export default function AddFolderModal() {
             <div className="folder-modal__content">
                 <div className="folder-modal__header">
                     <h3 className="text-inter-18-600">
-                        {editFolder.id ? t('addFolder.editFolder') : t('addFolder.createFolder')}
+                        {editFolder.id ? t('addFolder.editFolderModal') : t('addFolder.createFolder')}
                     </h3>
                     <MdOutlineClose
                         className="close-img cursor-pointer"
@@ -183,13 +187,13 @@ export default function AddFolderModal() {
                         </div>
 
                         <div className="form__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} <AddFolderCounter selected={selected}/>
+                            {t('addFolder.selected')} <AddFolderCounter selected={selected} />
                         </div>
 
                         <input
                             type="submit"
                             className="text-inter-16-600 cursor-pointer"
-                            value={t('addFolder.create')} />
+                            value={editFolder.id ? t('addFolder.editFolder') : t('addFolder.create')} />
                     </form>
                     <div className={isActiveLoader ? "loading" : "display-none"} >
                         <DotSpinner

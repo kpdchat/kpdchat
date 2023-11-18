@@ -6,7 +6,6 @@ import { selectListName, selectUser } from "../../../store/selectors";
 import { setRenderList, setRenderListName } from "../../../store/actions/chatActions";
 import FolderKebab from "./add-folder/FolderKebab";
 
-
 export default function NavFolderItem({ folder }) {
     const type = 'onContext'
     const { isOpen, idKebab, onKebabClick } = useKebabClick(folder.id, 'folder', type)
@@ -36,18 +35,19 @@ export default function NavFolderItem({ folder }) {
 
     useEffect(() => {
         if (listName === 'folder' + folder.id) {
-            dispatch(setRenderList(folder.publicChats))
+            dispatch(setRenderList(folder.chats))
         }
-    }, [listName, user, dispatch, folder.id, folder.publicChats])
+    }, [listName, user, dispatch, folder.id, folder.chats])
 
     useEffect(() => {
-        if (window.innerWidth < 941) {
+        if (window.innerWidth < 1025) {
             setHover({ ...hover, width: true })
         } else {
             setHover({ ...hover, width: false })
         }
         // eslint-disable-next-line
     }, [window.innerWidth])
+
     return (
         <div
             className={listName === 'folder' + folder.id ? 'folders__folder folders__folder_active' : 'folders__folder'}>
@@ -67,7 +67,7 @@ export default function NavFolderItem({ folder }) {
             </div>
             <h3
                 className='text-inter-16-400 ml-5px'>
-                {folder.publicChats.length}
+                {folder.chats.length}
             </h3>
             {isOpen && idKebab === 'folder' + folder.id && <FolderKebab folder={folder} style={style} />}
         </div >

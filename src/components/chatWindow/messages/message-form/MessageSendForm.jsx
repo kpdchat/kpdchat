@@ -40,6 +40,10 @@ export default function MessageSendForm() {
             setIsTyping(false);
             dispatch(fetchDeleteUserTyping(user.id));
         }
+        if ((editMessage?.id && text.length > 2000) || (replyMessage?.id && text.length > 2000)) {
+            setError(true)
+        }
+        
     }
 
     // Submit on enter

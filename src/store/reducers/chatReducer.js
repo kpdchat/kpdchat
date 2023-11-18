@@ -9,7 +9,6 @@ import {
 } from '../actions/chatActions'
 
 const initialState = {
-    publicChats: [],
     renderList: [],
     listName: '',
     joinChat: {},

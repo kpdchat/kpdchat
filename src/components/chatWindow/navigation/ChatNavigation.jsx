@@ -3,7 +3,7 @@ import { PiFolderUser, PiWechatLogo } from "react-icons/pi";
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectListName, selectUi, selectUser } from '../../../store/selectors';
-import { fetchPublicChats, setRenderList, setRenderListName } from '../../../store/actions/chatActions';
+import { fetchChats, setRenderList, setRenderListName } from '../../../store/actions/chatActions';
 import NavFolderItem from './NavFolderItem';
 import AddChatModal from "./add-chat/AddChatModal";
 import JoinChatModal from "../messages/mes-modal/JoinChatModal";
@@ -31,7 +31,7 @@ export default function ChatNavigation() {
     const dispatch = useDispatch();
 
     function onPublicChatClick() {
-        dispatch(setRenderListName('publicChats'));
+        dispatch(setRenderListName('chats'));
     }
 
     function onMineChatsClick() {
@@ -51,8 +51,8 @@ export default function ChatNavigation() {
     useEffect(() => {
         if (listName === 'mineChats') {
             dispatch(setRenderList(user.chats));
-        } else if (listName === 'publicChats') {
-            dispatch(fetchPublicChats());
+        } else if (listName === 'chats') {
+            dispatch(fetchChats());
         }
     }, [listName, user, dispatch])
 
@@ -82,7 +82,7 @@ export default function ChatNavigation() {
                     </div>
                     <div className='folders__public-container'>
                         <div
-                            className={listName === 'publicChats' ? 'folders__public folders__public_active' : 'folders__public'}>
+                            className={listName === 'chats' ? 'folders__public folders__public_active' : 'folders__public'}>
                             <div
                                 onClick={onPublicChatClick}
                                 className='folders__title folders__title-public cursor-pointer'>

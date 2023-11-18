@@ -9,7 +9,7 @@ export const ACTION_SET_RENDER_LIST_NAME = 'ACTION_SET_RENDER_LIST_NAME'
 
 
 
-export function fetchPublicChats() {
+export function fetchChats() {
     return async (dispatch) => {
         try {
             const { data } = await axios.get('https://kpdchat.onrender.com/api/chats/all')
