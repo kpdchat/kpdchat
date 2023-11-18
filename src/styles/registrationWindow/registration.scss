@@ -1,9 +1,113 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 .registration {
     width: 65%;
     display: flex;
     flex-direction: column;
     gap: 100px;
     background-color: var(--color-white-black);
+
+    @include max-screen(940px) {
+        width: 100%;
+    }
+
+    .block-info {
+        // .registration__block-info
+        width: 100%;
+        height: 20px;
+        background-color: #2D2B66;
+        display: none;
+
+        .info-block__settings {
+            width: 100dvw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5px 0 5px;
+
+            .info-settings {
+
+                &__content {
+                    // .info-settings__content
+                    display: none;
+
+                    &.visibleinfo-settins {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        transition: ease .5s ease-out;
+                        row-gap: 20px;
+                    }
+
+                    .info-content {
+
+                        &__title {
+                            // .info-content__title
+                            text-align: center;
+                            padding-top: 20px;
+                            color: #FFF;
+                            font-size: 24px;
+                        }
+
+                        &__description {
+                            // .info-content__description
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            color: #FFF;
+                            font-size: 18px;
+                            padding: 0 10px 0 10px;
+                            gap: 10px;
+                        }
+                    }
+                }
+
+                &__buttons {
+                    // .info-settings__buttons
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: space-around;
+                    margin-top: 100px;
+                }
+            }
+        }
+
+        @include max-screen(768px) {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        &.visibleInfo {
+            animation: slideDown 0.5s ease-out;
+            height: 100dvh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .info-show {
+            display: flex;
+            color: #FFF;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    }
 
     &__block {
         // .registration__block
@@ -13,34 +117,8 @@
             display: flex;
             justify-content: flex-end;
 
-            .language {
-                &-buttons {
-                    // .language-buttons
-                    margin: 40px 80px 0 0;
-
-                    .active {
-                        width: 39px;
-                        height: 39px;
-                        padding: 8px;
-                        color: $color-white;
-                        background-color: $color-violet;
-                        border-radius: 8px;
-                        border: 0 solid;
-                        transition: all .5s;
-                    }
-
-                    .default {
-                        width: 39px;
-                        height: 39px;
-                        padding: 8px;
-                        color: var(--color-lightDarkGrey-white);
-                        background-color: var(--color-white-black);
-                        border-radius: 8px;
-                        border: 0 solid;
-                        cursor: pointer;
-                        transition: all .5s;
-                    }
-                }
+            @include max-screen(768px) {
+                display: none;
             }
         }
 
@@ -50,6 +128,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 0 10px;
+
+            @include max-screen(768px) {
+                margin-top: -80px;
+            }
 
             .form {
                 &__logo-chat {
@@ -147,6 +230,7 @@
 
                 &__uniKey-error {
                     // .form__uniKey-error
+                    text-align: center;
                     color: #FE6262;
                     padding-top: 5px;
                 }
@@ -202,13 +286,17 @@
         &-theme {
             // .registration__block-theme
             position: absolute;
-            right: 64px;
+            right: 3dvw;
             bottom: 40px;
             text-align: right;
             background: #38328A;
             border-radius: 8px;
             padding: 1px 2px;
             color: #FFF;
+
+            @include max-screen(768px) {
+                display: none;
+            }
         }
     }
 
@@ -219,4 +307,62 @@
         align-items: center;
         justify-content: center;
     }
+}
+
+.language {
+    @include max-screen(768px) {
+        display: none;
+    }
+
+    &-buttons {
+        // .language-buttons
+        margin: 40px 3dvw 0 0;
+
+        @include max-screen(768px) {
+            margin: 0;
+        }
+
+        .active {
+            width: 39px;
+            height: 39px;
+            padding: 8px;
+            color: $color-white;
+            background-color: $color-violet;
+            border-radius: 8px;
+            border: 0 solid;
+            transition: all .5s;
+
+            @include max-screen(768px) {
+                background-color: #FFF;
+                color: #2D2B66;
+            }
+        }
+
+        .default {
+            width: 39px;
+            height: 39px;
+            padding: 8px;
+            color: var(--color-lightDarkGrey-white);
+            background-color: var(--color-white-black);
+            border-radius: 8px;
+            border: 0 solid;
+            cursor: pointer;
+            transition: all .5s;
+
+            @include max-screen(768px) {
+                color: #FFF;
+                background-color: #2D2B66;
+            }
+        }
+    }
+}
+
+.language-settings,
+.theme-settings {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
 }
