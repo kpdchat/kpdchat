@@ -251,9 +251,9 @@
     border-radius: 50%;
     object-fit: cover;
 
-    @include max-screen(500px) {
-        width: 50px;
-        height: 50px;
+    @include max-screen(503px) {
+        width: 60px;
+        height: 60px;
     }
 }
 

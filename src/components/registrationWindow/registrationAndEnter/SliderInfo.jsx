@@ -39,7 +39,7 @@ export default function SliderInfo({ showInfo, setShowInfo }) {
                     </div>
                 </div>
             </div>
-            <div className='info-show' onClick={ onShowInfo }>
+            <div className='info-show cursor-pointer' onClick={ onShowInfo }>
                 { showInfo
                     ? <MdOutlineKeyboardDoubleArrowUp size='24'  />
                     : <MdOutlineKeyboardDoubleArrowDown size='24' />
