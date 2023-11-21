@@ -50,7 +50,10 @@
         color: $color-white;
         max-height: calc(100vh - 450px);
         overflow-x: hidden;
-        min-height: 100px;
+
+        @media screen and (max-height: 530px) {
+            max-height: 80px;
+        }
 
         &::-webkit-scrollbar {
             width: 10px;

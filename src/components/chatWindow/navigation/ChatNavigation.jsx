@@ -8,7 +8,6 @@ import NavFolderItem from './NavFolderItem';
 import AddChatModal from "./add-chat/AddChatModal";
 import JoinChatModal from "../messages/mes-modal/JoinChatModal";
 import ChatOutModal from "../messages/mes-modal/ChatOutModal";
-import WarningFolderModal from "./add-folder/WarningFolderModal";
 import NavSettings from './NavSettings';
 import NavInfo from './NavInfo';
 import AddChat from './add-chat/AddChat';
@@ -101,7 +100,6 @@ export default function ChatNavigation() {
                 {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
                 {isModal && modalId === 'leave chat' && <ChatOutModal />}
                 {isModal && modalId === 'join-chat' && <JoinChatModal />}
-                {isModal && modalId === 'not-create-folder' && <WarningFolderModal />}
             </section>
             {isModal && modalId === 'edit-folder' && <AddFolderModal />}
             {isModal && modalId === 'settings' && <SettingsModal />}
