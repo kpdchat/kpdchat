@@ -15,6 +15,14 @@
         width: 100%;
     }
 
+    &__block-hiden {
+        display: block;
+
+        @include max-screen(940px) {
+            display: none;
+        }
+    }
+
     .block-info {
         // .registration__block-info
         width: 100%;
@@ -50,8 +58,24 @@
 
                         &__title {
                             // .info-content__title
+                            display: flex;
+                            flex-direction: row-reverse;
+                            align-items: center;
                             padding-top: 20px;
                             font-size: 24px;
+                            gap: 12px;
+                            font-family: $font-lexend;
+                            line-height: 140%;
+                            letter-spacing: 1.2px;
+
+
+                            h2 {
+                                font-weight: $f-weight-300;
+
+                                span {
+                                    font-weight: $f-weight-800;
+                                }
+                            }
                         }
 
                         &__description {
@@ -61,6 +85,7 @@
                             font-size: 18px;
                             padding: 0 10px 0 10px;
                             gap: 10px;
+                            font-weight: 500;
                         }
                     }
                 }
@@ -100,10 +125,13 @@
         }
 
         .info-show {
+            width: 100%;
+            height: 30px;
             display: flex;
             color: #FFF;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
+            background: #38328A;
         }
     }
 
@@ -140,28 +168,19 @@
                     align-items: center;
                     gap: 12px;
                     font-family: $font-lexend;
-                    font-size: clamp(20px, 1.25dvw, 24px);
+                    font-size: clamp(20px, 1.25dvw, 30px);
+                    font-style: normal;
+                    line-height: 140%;
+                    letter-spacing: 1.2px;
+                    color: var(--color-white-grey);
+                    font-weight: $f-weight-300;
 
-                    h2 {
-                        font-weight: $f-weight-300;
-                        color: var(--color-white-grey);
-                        font-family: $font-lexend;
-                        font-style: normal;
-                        line-height: 140%;
-                        letter-spacing: 1.2px;
-
-                        span {
-                            color: var(--color-white-grey);
-                            font-family: $font-lexend;
-                            font-style: normal;
-                            line-height: 140%;
-                            letter-spacing: 1.2px;
-                            font-weight: $f-weight-800;
-                        }
+                    span {
+                        font-weight: $f-weight-800;
                     }
 
                     img {
-                        width: clamp(80px, 80px, 4dvw);
+                        width: clamp(80px, 4dvw, 4dvw);
                     }
                 }
 
@@ -287,7 +306,7 @@
             // .registration__block-theme
             position: absolute;
             right: 3dvw;
-            bottom: 40px;
+            bottom: 3dvh;
             text-align: right;
             background: #38328A;
             border-radius: 8px;

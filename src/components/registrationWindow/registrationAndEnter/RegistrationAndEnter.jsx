@@ -14,7 +14,7 @@ export default function RegistrationAndEnter() {
         <div className='registration'>
             <SliderInfo showInfo={showInfo} setShowInfo={setShowInfo}/>
 
-            <div className={ `${ showInfo ? 'display-none' : 'registration__block' }` }>
+            <div className={ `${ showInfo ? 'registration__block-hiden' : 'registration__block' }` }>
                 <div className='registration__block-language language'>
                     <LanguageButton />
                 </div>

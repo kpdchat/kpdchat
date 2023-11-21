@@ -3,6 +3,7 @@ import LanguageButton from './languageButton/LanguageButton';
 import NavTheme from '../../chatWindow/navigation/NavTheme';
 import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
+import logo_kpd from '../../../images/registrationWindow/logo_kpd.png';
 
 export default function SliderInfo({ showInfo, setShowInfo }) {
     const { t } = useTranslation();
@@ -16,7 +17,8 @@ export default function SliderInfo({ showInfo, setShowInfo }) {
             <div className={ `${ showInfo ? 'info-block__settings info-settings' : 'display-none' } ` }>
                 <div className={ `info-settings__content info-content ${ showInfo ? 'visibleinfo-settins' : '' }` }>
                     <div className='info-content__title'>
-                        <h1>KPDCHAT</h1>
+                        <h2><span>KPD</span>CHAT</h2>
+                        <img src={ logo_kpd } alt='logo KPD Chat' />
                     </div>
                     <div className='info-content__description text-inter-18-400'>
                         <p>{ t('info.welcome-text-p1') }</p>
@@ -26,19 +28,21 @@ export default function SliderInfo({ showInfo, setShowInfo }) {
 
                 <div className='info-settings__buttons'>
                     <div className='language-settings'>
-                        Змінити мову
+                        { t('global.changeLanguage') }
                         <LanguageButton />
                     </div>
                     <div className='theme-settings'>
-                        Змінити тему
-                        <NavTheme />
+                        { t('global.changeTheme') }
+                        <div className='theme-settings-backColor'>
+                            <NavTheme />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className='info-show'>
+            <div className='info-show' onClick={ onShowInfo }>
                 { showInfo
-                    ? <MdOutlineKeyboardDoubleArrowUp size='24' onClick={ onShowInfo } />
-                    : <MdOutlineKeyboardDoubleArrowDown size='24' onClick={ onShowInfo } />
+                    ? <MdOutlineKeyboardDoubleArrowUp size='24'  />
+                    : <MdOutlineKeyboardDoubleArrowDown size='24' />
                 }
             </div>
         </div>

@@ -32,7 +32,9 @@
         "delete-message": "Delete message",
         "want-delete": "Would you like to delete a message...",
         "forMe": "For me",
-        "forAll": "For all"
+        "forAll": "For all",
+        "changeLanguage": "Language",
+        "changeTheme": "Theme"
     },
     "settingsUser": {
         "settings": "Profile settings",
