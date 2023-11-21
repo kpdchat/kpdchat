@@ -3,7 +3,7 @@ import puzzle_img from '../../../images/registrationWindow/puzzles_img.png';
 import {useTranslation} from 'react-i18next';
 
 export default function Info() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div className='info'>

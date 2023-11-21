@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import logo_kpd from '../../../images/registrationWindow/logo_kpd.png';
 import LanguageButton from './languageButton/LanguageButton';
 import LoginAndRegistration from './loginAndRegistration/LoginAndRegistration';
 import GettingUniqueKey from './gettingUniqueKey/GettingUniqueKey';
 import NavTheme from '../../chatWindow/navigation/NavTheme';
+import SliderInfo from './SliderInfo';
 
 export default function RegistrationAndEnter() {
     const [uniKey, setUniKey] = useState('');
+    const [showInfo, setShowInfo] = useState(false);
 
     return (
         <div className='registration'>
-            <div className='registration__block'>
+            <SliderInfo showInfo={showInfo} setShowInfo={setShowInfo}/>
+
+            <div className={ `${ showInfo ? 'registration__block-hiden' : 'registration__block' }` }>
                 <div className='registration__block-language language'>
                     <LanguageButton />
                 </div>

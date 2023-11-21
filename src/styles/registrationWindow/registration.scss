@@ -1,9 +1,139 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 .registration {
     width: 65%;
     display: flex;
     flex-direction: column;
     gap: 100px;
     background-color: var(--color-white-black);
+
+    @include max-screen(940px) {
+        width: 100%;
+    }
+
+    &__block-hiden {
+        display: block;
+
+        @include max-screen(940px) {
+            display: none;
+        }
+    }
+
+    .block-info {
+        // .registration__block-info
+        width: 100%;
+        height: 20px;
+        background: var(--chat-navigation-background);
+        display: none;
+
+        .info-block__settings {
+            width: 100dvw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5px 0 5px;
+
+            .info-settings {
+
+                &__content {
+                    // .info-settings__content
+                    display: none;
+
+                    &.visibleinfo-settins {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        transition: ease .5s ease-out;
+                        row-gap: 20px;
+                        color: #FFF;
+                        text-align: center;
+                    }
+
+                    .info-content {
+
+                        &__title {
+                            // .info-content__title
+                            display: flex;
+                            flex-direction: row-reverse;
+                            align-items: center;
+                            padding-top: 20px;
+                            font-size: 24px;
+                            gap: 12px;
+                            font-family: $font-lexend;
+                            line-height: 140%;
+                            letter-spacing: 1.2px;
+
+
+                            h2 {
+                                font-weight: $f-weight-300;
+
+                                span {
+                                    font-weight: $f-weight-800;
+                                }
+                            }
+                        }
+
+                        &__description {
+                            // .info-content__description
+                            display: flex;
+                            flex-direction: column;
+                            font-size: 18px;
+                            padding: 0 10px 0 10px;
+                            gap: 10px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+
+                &__buttons {
+                    // .info-settings__buttons
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    justify-content: space-around;
+                    margin-top: 100px;
+                }
+            }
+        }
+
+        @include max-screen(940px) {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        &.visibleInfo {
+            animation: slideDown 0.5s ease-out;
+            height: 100dvh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .info-show {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            color: #FFF;
+            justify-content: center;
+            align-items: center;
+            background: #38328A;
+        }
+    }
 
     &__block {
         // .registration__block
@@ -13,43 +143,22 @@
             display: flex;
             justify-content: flex-end;
 
-            .language {
-                &-buttons {
-                    // .language-buttons
-                    margin: 40px 80px 0 0;
-
-                    .active {
-                        width: 39px;
-                        height: 39px;
-                        padding: 8px;
-                        color: $color-white;
-                        background-color: $color-violet;
-                        border-radius: 8px;
-                        border: 0 solid;
-                        transition: all .5s;
-                    }
-
-                    .default {
-                        width: 39px;
-                        height: 39px;
-                        padding: 8px;
-                        color: var(--color-lightDarkGrey-white);
-                        background-color: var(--color-white-black);
-                        border-radius: 8px;
-                        border: 0 solid;
-                        cursor: pointer;
-                        transition: all .5s;
-                    }
-                }
+            @include max-screen(940px) {
+                display: none;
             }
         }
 
         &-form {
             // .registration__block-form
-            width: 480px;
+            width: clamp(480px, 25dvw, 680px);
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 0 10px;
+
+            @include max-screen(940px) {
+                margin-top: -80px;
+            }
 
             .form {
                 &__logo-chat {
@@ -59,26 +168,19 @@
                     align-items: center;
                     gap: 12px;
                     font-family: $font-lexend;
-                    font-size: 20px;
+                    font-size: clamp(20px, 1.25dvw, 30px);
+                    font-style: normal;
+                    line-height: 140%;
+                    letter-spacing: 1.2px;
+                    color: var(--color-white-grey);
+                    font-weight: $f-weight-300;
 
-                    h2 {
-                        font-weight: $f-weight-300;
-                        color: var(--color-white-grey);
-                        font-family: $font-lexend;
-                        font-size: 24px;
-                        font-style: normal;
-                        line-height: 140%;
-                        letter-spacing: 1.2px;
+                    span {
+                        font-weight: $f-weight-800;
+                    }
 
-                        span {
-                            color: var(--color-white-grey);
-                            font-family: $font-lexend;
-                            font-size: 24px;
-                            font-style: normal;
-                            line-height: 140%;
-                            letter-spacing: 1.2px;
-                            font-weight: $f-weight-800;
-                        }
+                    img {
+                        width: clamp(80px, 4dvw, 4dvw);
                     }
                 }
 
@@ -147,6 +249,7 @@
 
                 &__uniKey-error {
                     // .form__uniKey-error
+                    text-align: center;
                     color: #FE6262;
                     padding-top: 5px;
                 }
@@ -202,13 +305,17 @@
         &-theme {
             // .registration__block-theme
             position: absolute;
-            right: 64px;
-            bottom: 40px;
+            right: 3dvw;
+            bottom: 3dvh;
             text-align: right;
             background: #38328A;
             border-radius: 8px;
             padding: 1px 2px;
             color: #FFF;
+
+            @include max-screen(940px) {
+                display: none;
+            }
         }
     }
 
@@ -219,4 +326,62 @@
         align-items: center;
         justify-content: center;
     }
+}
+
+.language {
+    @include max-screen(940px) {
+        display: none;
+    }
+
+    &-buttons {
+        // .language-buttons
+        margin: 40px 3dvw 0 0;
+
+        @include max-screen(940px) {
+            margin: 0;
+        }
+
+        .active {
+            width: 39px;
+            height: 39px;
+            padding: 8px;
+            color: $color-white;
+            background-color: $color-violet;
+            border-radius: 8px;
+            border: 0 solid;
+            transition: all .5s;
+
+            @include max-screen(940px) {
+                background-color: #FFF;
+                color: #2D2B66;
+            }
+        }
+
+        .default {
+            width: 39px;
+            height: 39px;
+            padding: 8px;
+            color: var(--color-lightDarkGrey-white);
+            background-color: var(--color-white-black);
+            border-radius: 8px;
+            border: 0 solid;
+            cursor: pointer;
+            transition: all .5s;
+
+            @include max-screen(940px) {
+                color: #FFF;
+                background-color: #2D2B66;
+            }
+        }
+    }
+}
+
+.language-settings,
+.theme-settings {
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
 }

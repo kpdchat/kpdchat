@@ -1,3 +1,9 @@
+@mixin max-screen($res) {
+    @media screen and (max-width: $res) {
+        @content;
+    }
+}
+
 .info {
     background-color: $color-violet;
     width: 35.42%;
@@ -5,6 +11,10 @@
     padding: 2dvh 4dvw;
     display: flex;
     align-items: center;
+
+    @include max-screen(940px) {
+        display: none;
+    }
 
     &__block {
         // .info__block
@@ -18,7 +28,7 @@
 
                 &__title {
                     // .content__title
-                    font-size: 24px;
+                    font-size: clamp(18px, 2dvw, 24px);
                     font-weight: $f-weight-300;
                     letter-spacing: 3.6px;
                     color: $color-white;
@@ -36,12 +46,13 @@
                     gap: 8px;
                     line-height: 140%;
                     font-weight: $f-weight-500;
+                    font-size: clamp(12px, 1dvw, 18px);
                 }
 
                 &__img {
                     // .content__img
                     img {
-                        width: 100%;
+                        width: clamp( 256px, 27dvw, 700px);
                     }
                 }
 
@@ -59,7 +70,7 @@
 
                             &__title {
                                 // .feature__title
-                                font-size: 18px;
+                                font-size: clamp(12px, 1dvw, 18px);
                                 line-height: 140%;
                                 font-family: $font-lexend;
                                 font-weight: $f-weight-800;
@@ -68,6 +79,7 @@
 
                             &__description {
                                 // .feature__description
+                                font-size: clamp(12px, 1dvw, 18px);
                                 font-weight: $f-weight-500;
                                 line-height: 140%;
                                 margin-left: 14px;

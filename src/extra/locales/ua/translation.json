@@ -32,7 +32,9 @@
         "delete-message": "Видалити повідомлення",
         "want-delete": "Ви бажаєте видалити повідомлення...",
         "forMe": "Для себе",
-        "forAll": "Для всіх"
+        "forAll": "Для всіх",
+        "changeLanguage": "Мова",
+        "changeTheme": "Тема"
     },
     "settingsUser": {
         "settings": "Налаштування профілю",
