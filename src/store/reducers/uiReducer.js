@@ -11,6 +11,8 @@ import {
     ACTION_HIDE_KEBAB_LOADER,
     ACTION_SHOW_MESSAGES_LOADER,
     ACTION_HIDE_MESSAGES_LOADER,
+    ACTION_OPEN_MESSAGES,
+    ACTION_CLOSE_MESSAGES
 } from '../actions/uiActions'
 
 const initialState = {
@@ -23,6 +25,7 @@ const initialState = {
     isActiveLoader: false,
     isActiveMessagesLoader: false,
     loaderId: 0,
+    isOpenMessage: false,
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -108,6 +111,18 @@ export default function uiReducer(state = initialState, { type, payload }) {
             return {
                 ...state,
                 isActiveMessagesLoader: false,
+            }
+        }
+        case ACTION_OPEN_MESSAGES: {
+            return {
+                ...state,
+                isOpenMessage: true,
+            }
+        }
+        case ACTION_CLOSE_MESSAGES: {
+            return {
+                ...state,
+                isOpenMessage: false,
             }
         }
         

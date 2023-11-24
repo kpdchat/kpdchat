@@ -4,13 +4,14 @@ import { PiMagnifyingGlass } from "react-icons/pi";
 import { ReactComponent as Logo } from '../../../images/chat-window/logo.svg'
 import DialogItem from './DialogItem'
 import { useDispatch, useSelector } from "react-redux";
-import { selectSortRenderList } from "../../../store/selectors";
+import { selectSortRenderList, selectUi } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
 import { clearForm, clearInputSearch, stopSearch } from '../../../store/actions/messageAction';
 import { setKebabClose } from "../../../store/actions/uiActions";
 
 export default function ChatDialogs() {
     const renderChatList = useSelector(selectSortRenderList)
+    const { isOpenMessage } = useSelector(selectUi)
     const [query, setQuery] = useState("")
     const { t } = useTranslation()
     const dispatch = useDispatch()
@@ -38,7 +39,7 @@ export default function ChatDialogs() {
 
     return (
         <section
-            className='chat__dialogs dialogs no-select'
+            className={`chat__dialogs dialogs no-select ${isOpenMessage && 'display-none'}`}
             onClick={onDialogsClick}>
             <div
                 className='dialogs__logo'
@@ -62,20 +63,20 @@ export default function ChatDialogs() {
             <div className='dialogs__list list scroll-bar' onContextMenu={onContextClick}>
                 {filteredChats?.length
                     ? <div className="list__container ">
-                            {filteredChats?.map(chat =>
+                        {filteredChats?.map(chat =>
                             <DialogItem
                                 dialog={chat}
                                 index={renderChatList.indexOf(chat)}
                                 key={chat.id} />)}
-                            </div>
-                        : <div className="list__flex">
-                            <img
-                                className="list__empty-img"
-                                src={emptyChats}
-                                alt="chats are empty" />
-                        </div>
-                    }
                     </div>
+                    : <div className="list__flex">
+                        <img
+                            className="list__empty-img"
+                            src={emptyChats}
+                            alt="chats are empty" />
+                    </div>
+                }
+            </div>
             <span></span>
         </section>
     )

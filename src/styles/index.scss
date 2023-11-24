@@ -27,6 +27,10 @@ code {
     display: block;
 }
 
+.display-flex {
+    display: flex;
+}
+
 // light theme styles
 [data-theme = 'light'] {
     // static variables styles

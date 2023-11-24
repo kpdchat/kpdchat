@@ -8,6 +8,7 @@ import { getStyleKebab } from '../../../extra/config/functions/getStyleKebab';
 import { deleteStartWindow, setRenderChatId, setUnSeenCount, setLength } from '../../../store/actions/messageAction';
 import { getTimeUnix } from '../../../extra/config/functions/getTimeUnix';
 import UserTypingDialogs from './UserTypingDialogs';
+import { setOpenMessage } from '../../../store/actions/uiActions';
 
 export default function DialogItem({ dialog, index }) {
     const type = 'onContextChat';
@@ -51,6 +52,9 @@ export default function DialogItem({ dialog, index }) {
         dispatch(setLength(0))
         dispatch(deleteStartWindow());
         dispatch(setRenderChatId(dialog.id));
+        if (window.innerWidth <= 780) {
+            dispatch(setOpenMessage())
+        }
     }
 
     function getDisplay() {

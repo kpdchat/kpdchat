@@ -10,6 +10,8 @@ export const ACTION_SHOW_KEBAB_LOADER = 'ACTION_SHOW_KEBAB_LOADER';
 export const ACTION_HIDE_KEBAB_LOADER = 'ACTION_HIDE_LOADER';
 export const ACTION_SHOW_MESSAGES_LOADER = 'ACTION_SHOW_MESSAGES_LOADER';
 export const ACTION_HIDE_MESSAGES_LOADER = 'ACTION_HIDE_MESSAGES_LOADER';
+export const ACTION_OPEN_MESSAGES = 'ACTION_OPEN_MESSAGES'
+export const ACTION_CLOSE_MESSAGES = 'ACTION_CLOSE_MESSAGES'
 
 export function setKebabClose() {
     return {type: ACTION_CLOSE_KEBAB};
@@ -58,4 +60,13 @@ export function setLoaderKebabShow(id) {
 export function setLoaderKebabHide() {
     return {type: ACTION_HIDE_KEBAB_LOADER};
 }
+
+export function setOpenMessage() {
+    return {type: ACTION_OPEN_MESSAGES};
+}
+
+export function setCloseMessage() {
+    return {type: ACTION_CLOSE_MESSAGES};
+}
+
 
