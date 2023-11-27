@@ -29,6 +29,9 @@ export default function ChatMessages() {
         if(!isMobile && !isOpenMessage && !isStartWindow) {
             return 'chat__messages messages'
         }
+        if(isStartWindow) {
+            return 'display-none'
+        }
     }
 
     useEffect(() => {

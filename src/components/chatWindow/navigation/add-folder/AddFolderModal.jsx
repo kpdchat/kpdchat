@@ -96,7 +96,7 @@ export default function AddFolderModal() {
 
     return (
         <div className="modal-container folder-modal no-select">
-            <div className="folder-modal__content">
+            <div className="modal-container__content">
                 <div className="folder-modal__header">
                     <h3 className="text-inter-18-600">
                         {editFolder.id ? t('addFolder.editFolderModal') : t('addFolder.createFolder')}

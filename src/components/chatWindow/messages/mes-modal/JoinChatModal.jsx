@@ -30,7 +30,7 @@ export default function JoinChatModal() {
 
     return (
         <div className='modal-container modal-chat'>
-            <div className='modal-chat__content'>
+            <div className='modal-container__content modal-chat__content'>
                 <div className='modal-chat__header'>
                     <h3 className='text-inter-16-600'>{ t('chat-context-menu.joinToChat') }</h3>
                     <MdClose

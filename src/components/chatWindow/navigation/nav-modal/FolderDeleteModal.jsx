@@ -23,7 +23,7 @@ export default function FolderDeleteModal() {
 
     return (
         <div className="modal-container folder-modal">
-            <div className="folder-delete__content">
+            <div className="modal-container__content folder-delete__content">
                 <div className="folder-delete__header">
                     <h3 className="text-inter-18-600">
                         {t('addFolder.deleteFolderTitle')}</h3>

@@ -6,9 +6,17 @@
     }
 }
 
+@mixin min-screen($res) {
+    @media screen and (min-width: $res) {
+        @content;
+    }
+}
+
 .dialogs {
     padding: 0 0 0 10px;
-
+    @include max-screen(503px) {
+        padding: 0;
+    }
     &__logo {
         // .dialog__logo
         display: flex;
@@ -16,7 +24,7 @@
         justify-content: center;
         padding: 20px 0 16px 0;
         color: var(--color-white-grey);
-
+        
         h1 {
             font-family: $font-lexend;
             font-weight: 300;
@@ -24,10 +32,29 @@
             line-height: 33.6px;
             letter-spacing: 1.2px;
             margin-left: 12px;
+            text-transform: uppercase;
 
             span {
-                text-transform: uppercase;
                 font-weight: 800;
+            }
+        }
+        @include max-screen(503px) {
+            .chat-logo {
+                display: none;
+            }
+            h1 {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            padding: 14px 28px;
+            border-bottom: 1px solid  #EBEAEF;
+            justify-content: space-between;
+
+        }
+
+        @include min-screen(504px) {
+            .dialogs__burger, .dialogs__search-btn {
+                display: none;
             }
         }
     }
@@ -35,6 +62,10 @@
     &__search {
         // .dialog__search
         padding-right: 10px;
+        @include max-screen(503px) {
+            display: none;
+            margin-top: 14px;
+        }
     }
 }
 
@@ -43,12 +74,18 @@
     padding-top: 4px;
     overflow-x: hidden;
     flex: 1 1 auto;
+    @include max-screen(503px) {
+        margin-top: 10px;
+    }
 
     &__container {
         // .list__container
         display: flex;
         flex-direction: column;
         gap: 4px;
+        @include max-screen(503px) {
+            padding: 0 8px;
+        }
     }
 
     &__flex {
@@ -106,6 +143,10 @@
                 min-width: 44px;
                 min-height: 44px;
             }
+        }
+        @include max-screen(503px) {
+            padding: 8px;
+            width: 100%;
         }
 
     }

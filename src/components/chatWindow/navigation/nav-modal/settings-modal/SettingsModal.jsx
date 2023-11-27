@@ -14,8 +14,7 @@ export default function SettingsModal() {
 
     return (
         <div className='settings__container modal-container no-select'>
-            <div className='settings__content'>
-
+            <div className='modal-container__content settings__content'>
                 <div className='settings__settings'>
                     <div className='settings__title'>
                         <h2 className='text-inter-18-600'>

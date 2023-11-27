@@ -1,15 +1,6 @@
 .modal-chat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     &__content {
         // .modal-chat__content
-        background-color: var(--color-white-black);
-        border-radius: 8px;
-        box-shadow: var(--boxShadow-color);
-        padding: 24px;
-        width: 480px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -71,10 +62,6 @@
 }
 
 .modal-copy {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     &__content {
         // .modal-copy__content
         background-color: var(--color-white-black);
@@ -92,19 +79,6 @@
 }
 
 .modal-delete-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &__content {
-        // .modal-delete-message__content
-        background-color: var(--color-white-black);
-        border-radius: 8px;
-        box-shadow: var(--boxShadow-color);
-        padding: 24px;
-        width: 480px;
-        color: var(--color-white-grey);
-    }
 
     &__header {
         // .modal-delete-message__header

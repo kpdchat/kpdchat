@@ -1,18 +1,8 @@
 .settings {
     position: relative;
 
-    &__container {
-        // .settings__container
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
     &__content {
         // .settings__content
-        width: 480px;
-        box-shadow: var(--boxShadow-color);
-        border-radius: 8px;
 
         .loading-settings-container {
             position: absolute;
@@ -49,6 +39,11 @@
                 border-radius: 8px;
                 text-align: center;
                 box-shadow: var(--modal-exit-boxShadow);
+
+                @include max-screen(780px) {
+                    width: 400px;
+                    padding: 20px;
+                }
 
                 .exit-info {
                     color: var(--color-white-grey);
@@ -96,9 +91,6 @@
 
     &__settings {
         // .settings__settings
-        background: var(--color-white-black);
-        padding: 24px;
-        border-radius: 8px;
 
         .nickname-error,
         .link-error {
@@ -162,6 +154,7 @@
     }
 
     &__user-photo {
+
         // .settings__user-photo
         .user-photo {
             display: flex;
@@ -247,6 +240,16 @@
 
                 .active-img {
                     border: 4px solid $color-blue;
+                }
+
+                @include max-screen(780px) {
+
+                    .dogs-img,
+                    .active-img {
+                        width: 60px;
+                        height: 60px;
+                    }
+
                 }
             }
         }

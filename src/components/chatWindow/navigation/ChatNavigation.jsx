@@ -21,6 +21,7 @@ import NavTheme from './NavTheme';
 import CopyModal from '../messages/mes-modal/CopyModal';
 import DeleteMessageModal from '../messages/mes-modal/DeleteMessageModal';
 import {clearForm, clearInputSearch, stopSearch} from '../../../store/actions/messageAction';
+import { setCloseMessage } from '../../../store/actions/uiActions';
 
 export default function ChatNavigation() {
     const { t } = useTranslation();
@@ -45,6 +46,7 @@ export default function ChatNavigation() {
         dispatch(clearForm());
         dispatch(stopSearch);
         dispatch(clearInputSearch());
+        dispatch(setCloseMessage())
     }
 
     useEffect(() => {

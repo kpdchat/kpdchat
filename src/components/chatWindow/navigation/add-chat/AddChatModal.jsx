@@ -49,7 +49,7 @@ export default function AddChatModal() {
     }
     return (
         <div className="modal-container chat-modal no-select">
-            <div className="chat-modal__content">
+            <div className="modal-container__content">
                 <div className="chat-modal__header">
                     <h3 className="text-inter-18-600">{t('addChat.createChat')}</h3>
                     <MdOutlineClose className="close-img cursor-pointer"
@@ -68,7 +68,7 @@ export default function AddChatModal() {
                                 size={24}
                                 className={link ? 'display-none' : null} />
                         </div>
-                        <div>
+                        <div className="chat-modal__data-wrapper">
                             <input
                                 {...register("title", {
                                     required: t('addChat.error'),

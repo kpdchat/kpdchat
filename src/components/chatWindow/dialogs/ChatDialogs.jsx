@@ -8,6 +8,7 @@ import { selectSortRenderList, selectUi } from "../../../store/selectors";
 import emptyChats from '../../../images/chat-window/empty-chats.png'
 import { clearForm, clearInputSearch, stopSearch } from '../../../store/actions/messageAction';
 import { setKebabClose } from "../../../store/actions/uiActions";
+import { AiOutlineMenu } from "react-icons/ai";
 
 export default function ChatDialogs() {
     const renderChatList = useSelector(selectSortRenderList)
@@ -44,8 +45,15 @@ export default function ChatDialogs() {
             <div
                 className='dialogs__logo'
                 onContextMenu={onContextClick}>
-                <Logo />
+                <AiOutlineMenu
+                    className="cursor-pointer dialogs__burger"
+                    size={24} />
+
+                <Logo className="chat-logo" />
                 <h1><span>kpd</span>Chat</h1>
+                <PiMagnifyingGlass
+                    size={20}
+                    className="cursor-pointer dialogs__search-btn" />
             </div>
             <div className='dialogs__search'>
                 <form className='search-form'>

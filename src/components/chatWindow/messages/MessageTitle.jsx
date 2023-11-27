@@ -5,6 +5,7 @@ import JoinModalCounter from './mes-modal/JoinModalCounter';
 import { PiArrowLeft } from "react-icons/pi";
 import UserTyping from './mes-modal/UserTyping';
 import { setCloseMessage } from '../../../store/actions/uiActions';
+import { setRenderChatId, setStartWindow } from '../../../store/actions/messageAction';
 
 export default function MessageTitle() {
     const { user, chat } = useSelector(selectDataForMessages);
@@ -16,6 +17,8 @@ export default function MessageTitle() {
 
     function onReturnClick() {
         dispatch(setCloseMessage())
+        dispatch(setRenderChatId(0))
+        dispatch(setStartWindow())
     }
 
     return (

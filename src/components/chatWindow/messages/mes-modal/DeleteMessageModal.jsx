@@ -49,16 +49,16 @@ export default function DeleteMessageModal() {
     }
     return (
         <div className="modal-container modal-delete-message">
-            <div className="modal-delete-message__content">
+            <div className="modal-container__content">
                 <div className="modal-delete-message__header">
                     <h3 className="text-inter-18-600">
-                    {t("global.delete-message")}</h3>
+                        {t("global.delete-message")}</h3>
                     <MdClose size={24}
                         className='close-img cursor-pointer'
                         onClick={onCloseClick} />
                 </div>
                 <p className='text-inter-18-400'>
-                {t("global.want-delete")}</p>
+                    {t("global.want-delete")}</p>
                 <div className="modal-delete-message__buttons">
                     <button
                         className='text-inter-18-600 cursor-pointer'

@@ -24,6 +24,10 @@
             grid-template-columns: 80px minmax(400px, 1fr);
         }
 
+        @include max-screen(503px) {
+            grid-template-columns: minmax(312px, 503px);
+        }
+
 
     }
 
@@ -31,6 +35,10 @@
         // .chat__navigation
         padding: clamp(20px, 156px, 14dvh) 16px clamp(20px, 80px, 7dvh)16px;
         background: var(--chat-navigation-background);
+        @include max-screen(503px) {
+            position: absolute;
+            display: none;
+        }
 
     }
 

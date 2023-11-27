@@ -1,16 +1,4 @@
 .folder-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &__content {
-        // .folder-modal__content
-        width: 480px;
-        padding: 24px;
-        background-color: var(--color-white-black);
-        box-shadow: var(--boxShadow-color);
-        border-radius: 8px;
-    }
 
     &__header {
         // .folder-modal__header
@@ -36,13 +24,22 @@
     &__icon-chose {
         // .form__icon-chose
         display: flex;
-        width: 56px !important;
+        width: 56px;
+        min-width: 56px;
         height: 56px;
+        min-height: 56px;
         justify-content: center;
         align-items: center;
         border-radius: 8px;
         background: $color-violet;
         color: $color-white;
+
+        @include max-screen(780px) {
+            width: 44px;
+            height: 44px;
+            min-height: 44px;
+            min-width: 44px;
+        }
     }
 
     &__folder-name {
@@ -73,6 +70,8 @@
         position: absolute;
         top: 0;
         left: 0;
+
+        
     }
 
     &__error {
@@ -157,8 +156,13 @@
         img {
             width: 52px;
             height: 52px;
-            border-radius: 56px;
+            border-radius: 50%;
             object-fit: cover;
+
+            @include max-screen(780px) {
+                width: 46px;
+                height: 46px;
+            }
         }
 
         .text-inter-18-600 {
@@ -213,6 +217,11 @@
     background: var(--backColor-white-grey);
     outline: 2px solid transparent;
     transition: all .5s;
+
+    @include max-screen(780px) {
+        width: 44px;
+        height: 44px;
+    }
 
     &:hover {
         outline: var(--modal-icon-outline-color);
