@@ -12,7 +12,9 @@ import {
     ACTION_SHOW_MESSAGES_LOADER,
     ACTION_HIDE_MESSAGES_LOADER,
     ACTION_OPEN_MESSAGES,
-    ACTION_CLOSE_MESSAGES
+    ACTION_CLOSE_MESSAGES,
+    ACTION_OPEN_NAVIGATION,
+    ACTION_CLOSE_NAVIGATION
 } from '../actions/uiActions'
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
     isActiveMessagesLoader: false,
     loaderId: 0,
     isOpenMessage: false,
+    isOpenNav: false,
 }
 
 export default function uiReducer(state = initialState, { type, payload }) {
@@ -125,7 +128,18 @@ export default function uiReducer(state = initialState, { type, payload }) {
                 isOpenMessage: false,
             }
         }
-        
+        case ACTION_OPEN_NAVIGATION: {
+            return {
+                ...state,
+                isOpenNav: true,
+            }
+        }
+        case ACTION_CLOSE_NAVIGATION: {
+            return {
+                ...state,
+                isOpenNav: false,
+            }
+        }
         default: return state;
     }
 }

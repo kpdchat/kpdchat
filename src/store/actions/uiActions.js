@@ -12,6 +12,8 @@ export const ACTION_SHOW_MESSAGES_LOADER = 'ACTION_SHOW_MESSAGES_LOADER';
 export const ACTION_HIDE_MESSAGES_LOADER = 'ACTION_HIDE_MESSAGES_LOADER';
 export const ACTION_OPEN_MESSAGES = 'ACTION_OPEN_MESSAGES'
 export const ACTION_CLOSE_MESSAGES = 'ACTION_CLOSE_MESSAGES'
+export const ACTION_OPEN_NAVIGATION = 'ACTION_OPEN_NAVIGATION'
+export const ACTION_CLOSE_NAVIGATION = 'ACTION_CLOSE_NAVIGATION'
 
 export function setKebabClose() {
     return {type: ACTION_CLOSE_KEBAB};
@@ -67,6 +69,14 @@ export function setOpenMessage() {
 
 export function setCloseMessage() {
     return {type: ACTION_CLOSE_MESSAGES};
+}
+
+export function setOpenNav() {
+    return {type: ACTION_OPEN_NAVIGATION};
+}
+
+export function setCloseNav() {
+    return {type: ACTION_CLOSE_NAVIGATION};
 }
 
 

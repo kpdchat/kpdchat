@@ -32,10 +32,12 @@
         align-items: center;
         padding: 10px;
         gap: 12px;
+
         svg {
             min-width: 22px;
             min-height: 22px;
         }
+
         img {
             width: 52px;
             height: 52px;
@@ -46,9 +48,9 @@
         }
 
         @include max-screen(1024px) {
-            max-width: 60%;
+            width: 60%;
             overflow: hidden;
-            padding: 5px;
+            padding: 0;
 
             img {
                 width: 44px;
@@ -68,8 +70,11 @@
             width: 70%;
         }
 
-        h3 {
+        @include max-screen(503px) {
+            width: 50%;
+        }
 
+        h3 {
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -77,6 +82,8 @@
 
         p {
             margin-top: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 
