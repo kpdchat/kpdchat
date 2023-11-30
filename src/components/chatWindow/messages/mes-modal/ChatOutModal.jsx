@@ -31,27 +31,29 @@ export default function ChatOutModal() {
     return (
         <div className="modal-container modal-chat" >
             <div className="modal-container__content modal-chat__content">
-                <div className="modal-chat__header">
+                <div className="modal-container__header">
                     <h3 className="text-inter-16-600">{t('chat-context-menu.exitChat')}</h3>
                     <MdClose
                         className="modal-chat__close close-img cursor-pointer"
                         size={24}
                         onClick={onCloseClick} />
                 </div>
-
-                <div className="flex-container">
-                    <img 
-                    src={chat.chatPictureLink} 
-                    alt="chat-logo"/>
-                    <div className="modal-chat__about">
-                        <p className="text-inter-16-600">{chat?.title}</p>
-                        <OutModalCounter outChatMembers={outChatMembers} />
+                <div className="modal-container__description">
+                    <div className="flex-container">
+                        <img
+                            src={chat.chatPictureLink}
+                            alt="chat-logo" />
+                        <div className="modal-chat__about">
+                            <p className="text-inter-16-600">{chat?.title}</p>
+                            <OutModalCounter outChatMembers={outChatMembers} />
+                        </div>
                     </div>
+
+                    <button
+                        className="text-inter-16-600 cursor-pointer modal-container__button"
+                        onClick={onLeaveClick} >{t('chat-context-menu.leave')}</button>
                 </div>
 
-                <button
-                    className="text-inter-16-600 cursor-pointer"
-                    onClick={onLeaveClick} >{t('chat-context-menu.leave')}</button>
             </div>
         </div>
     )

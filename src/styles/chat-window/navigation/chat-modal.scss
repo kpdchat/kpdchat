@@ -4,21 +4,9 @@
         line-height: 24.3px;
     }
 
-    &__header {
-        //.chat-modal__header
-        color: var(--color-white-grey);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+    .modal-container__description {
 
-    &__form {
-        //.chat-modal__form
-        margin-top: 16px;
-
-
-
-        .text-inter-18-600 {
+        button {
             margin-top: 24px;
             width: 100%;
             color: $color-light-white;
@@ -32,6 +20,12 @@
             &:hover {
                 background: var(--backColor-hover);
             }
+            @include max-screen(503px) {
+                position: absolute;
+                bottom: 24px;
+                left: 24px;
+                width: calc(100vw - 48px);
+            }
         }
     }
 
@@ -39,6 +33,10 @@
         // .chat-modal__form-container
         display: flex;
         gap: 12px;
+        @include max-screen(503px) {
+            flex-direction: column;
+            align-items: center;
+        }
 
     }
 

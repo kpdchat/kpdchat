@@ -115,9 +115,9 @@ export default function ChatNavigation() {
                         </div>
                     </div>
                 </div>
-                <div 
-                className='navigation__settings settings'
-                onClick={onCloseNavClick}>
+                <div
+                    className='navigation__settings settings'
+                    onClick={onCloseNavClick}>
                     <NavSettings />
                     <NavInfo />
                     <NavTheme />
@@ -127,11 +127,11 @@ export default function ChatNavigation() {
                         KPD<span>CHAT</span>
                     </h2>
                 </div>
-                {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
-                {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
-                {isModal && modalId === 'leave chat' && <ChatOutModal />}
-                {isModal && modalId === 'join-chat' && <JoinChatModal />}
             </section>
+            {isModal && modalId === 'delete-from-folder' && <DeleteFromFolderModal />}
+            {isModal && modalId === 'delete-folder' && <FolderDeleteModal />}
+            {isModal && modalId === 'leave chat' && <ChatOutModal />}
+            {isModal && modalId === 'join-chat' && <JoinChatModal />}
             {isModal && modalId === 'edit-folder' && <AddFolderModal />}
             {isModal && modalId === 'settings' && <SettingsModal />}
             {isModal && modalId === 'create-chat' && <AddChatModal />}

@@ -15,12 +15,13 @@
     }
 }
 
-
-@mixin min-screen($res) {
-    @media screen and (min-width: $res) {
+@mixin min-screen-height($res) {
+    @media screen and (min-height: $res) {
         @content;
     }
 }
+
+
 
 .chat {
     height: 100%;
@@ -70,7 +71,7 @@
 
     &__dialogs {
         // .chat__dialogs
-        min-height: 100dvh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         border-right: var(--border-right);
@@ -82,7 +83,7 @@
 
     &__messages {
         // .chat__messages
-        min-height: 100dvh;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         overflow-y: hidden;

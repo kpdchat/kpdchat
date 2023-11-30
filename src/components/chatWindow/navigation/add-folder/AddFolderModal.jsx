@@ -95,9 +95,9 @@ export default function AddFolderModal() {
     }, [editFolder?.id, editFolder?.iconTag])
 
     return (
-        <div className="modal-container folder-modal no-select">
+        <div className="modal-container  no-select">
             <div className="modal-container__content">
-                <div className="folder-modal__header">
+                <div className="modal-container__header">
                     <h3 className="text-inter-18-600">
                         {editFolder.id ? t('addFolder.editFolderModal') : t('addFolder.createFolder')}
                     </h3>
@@ -110,11 +110,11 @@ export default function AddFolderModal() {
                         }}
                     />
                 </div>
-                <div className="folder-modal__form form">
+                <div className="modal-container__description folder-modal">
                     <form onSubmit={handleSubmit(onFormSubmit)}>
-                        <div className="form__name-container">
+                        <div className="folder-modal__name-container">
                             <div
-                                className="form__icon-chose cursor-pointer"
+                                className="folder-modal__icon-chose cursor-pointer"
                                 onClick={() => setIconChose(true)}>
                                 {iconName}
                             </div>
@@ -135,10 +135,10 @@ export default function AddFolderModal() {
                                     }
                                 })}
                                 placeholder={t('addFolder.folderName')}
-                                className="form__folder-name text-inter-16-400"
+                                className="folder-modal__folder-name text-inter-16-400"
                             />
 
-                            <div className={iconChose ? "form__icon" : "display-none"}>
+                            <div className={iconChose ? "folder-modal__icon" : "display-none"}>
                                 {Object.keys(icons).map(el =>
                                     <label
                                         className="icon cursor-pointer"
@@ -156,20 +156,20 @@ export default function AddFolderModal() {
                             </div>
                         </div>
 
-                        <div className="form__error">
+                        <div className="folder-modal__error">
                             {errors?.title && <p className="text-inter-14-400">{errors?.title?.message || "Error"}</p>}
                         </div>
 
                         <input
-                            className="form__search-chat text-inter-16-400"
+                            className="folder-modal__search-chat text-inter-16-400"
                             placeholder={t('addFolder.chatName')}
                             value={query}
                             onChange={e => setQuery(e.target.value)} />
 
-                        <div className="form__chat-container scroll-bar">
+                        <div className="folder-modal__chat-container scroll-bar">
                             <ul>
                                 {filteredChats.map(chat =>
-                                    <li className="form__chat"
+                                    <li className="folder-modal__chat"
                                         key={chat.id} >
                                         <label className="cursor-pointer">
                                             <div className="flex-container">
@@ -186,7 +186,7 @@ export default function AddFolderModal() {
                             </ul>
                         </div>
 
-                        <div className="form__chat-count text-inter-16-500">
+                        <div className="folder-modal__chat-count text-inter-16-500">
                             {t('addFolder.selected')} <AddFolderCounter selected={selected} />
                         </div>
 

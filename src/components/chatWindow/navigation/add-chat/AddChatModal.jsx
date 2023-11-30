@@ -50,8 +50,8 @@ export default function AddChatModal() {
     return (
         <div className="modal-container chat-modal no-select">
             <div className="modal-container__content">
-                <div className="chat-modal__header">
-                    <h3 className="text-inter-18-600">{t('addChat.createChat')}</h3>
+                <div className="modal-container__header">
+                    <h2 className="text-inter-18-600">{t('addChat.createChat')}</h2>
                     <MdOutlineClose className="close-img cursor-pointer"
                         size={24}
                         onClick={() => {
@@ -60,7 +60,7 @@ export default function AddChatModal() {
                     />
                 </div>
 
-                <form className="chat-modal__form">
+                <form className="modal-container__description">
                     <div className="chat-modal__form-container" >
                         <div className="chat-modal__img">
                             {link && <img src={link} alt="default" />}

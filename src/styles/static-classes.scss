@@ -10,6 +10,11 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @include max-screen(503px) {
+        font-size: 16px;
+        font-weight: 600;
+    }
 }
 
 .text-inter-18-500 {
@@ -35,6 +40,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    @include max-screen(503px) {
+        font-size: 14px;
+    }
 }
 
 .text-inter-16-500 {
@@ -118,6 +127,11 @@
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
+
+    @include max-screen(503px) {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 .time-mes {
@@ -164,8 +178,8 @@
 
 .modal-container {
     position: fixed;
-    width: 100dvw;
-    height: 100dvh;
+    width: 100vw;
+    height: 100vh;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -176,6 +190,7 @@
     align-items: center;
     justify-content: center;
 
+
     &__content {
         //.modal-container__content
         background-color: var(--color-white-black);
@@ -184,9 +199,76 @@
         padding: 24px;
         width: 480px;
         color: var(--color-white-grey);
+
         @include max-screen(780px) {
             width: 400px;
             padding: 20px;
+        }
+
+        @include max-screen(503px) {
+            height: 100%;
+            width: 100%;
+            min-width: 320px;
+            box-shadow: none;
+            border-radius: 0;
+            padding: 0;
+        }
+
+
+    }
+
+    &__header {
+        //.modal-container__header
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-darkGrey-white);
+
+        h2 {
+            line-height: 135%;
+        }
+
+        @include max-screen(503px) {
+            background: #38328A;
+            color: #FFF;
+            padding: 20px;
+
+            svg {
+                stroke-width: 0;
+            }
+        }
+    }
+
+    &__description {
+        //.modal-container__description
+        margin-top: 24px;
+
+        @include max-screen(503px) {
+            padding: 0 24px 24px 24px;
+            height: calc(100vh - 90px);
+        }
+    }
+
+    &__button {
+        //.modal-container__button
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: $color-violet;
+        color: $color-white;
+        border: none;
+        transition: all .5s;
+        margin-top: 16px;
+
+        &:hover {
+            background-color: var(--backColor-hover);
+        }
+
+        @include max-screen(503px) {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            width: calc(100vw - 48px);
         }
     }
 }

@@ -156,8 +156,11 @@
 .window-mes {
     display: flex;
     flex-direction: column;
-    padding: 12px 25px 15px 25px;
+    padding: 12px 25px;
     gap: 12px;
+    @include max-screen(503px) {
+        padding: 4px 12px; 
+    }
 
     &__data {
         // .window-mes__data
@@ -171,12 +174,18 @@
         // .window-mes__self
         align-self: end;
         max-width: 70%;
+        @include max-screen(503px) {
+            max-width: 100%;  
+        }
     }
 
     &__another {
         // .window-mes__another
         align-self: flex-start;
         max-width: 70%;
+        @include max-screen(503px) {
+            max-width: 100%;  
+        }
     }
 
     &__new-mess {

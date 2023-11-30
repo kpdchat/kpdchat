@@ -15,7 +15,7 @@ export default function NavInfoModal() {
     return (
         <div className='modal-container info-about'>
             <div className='modal-container__content'>
-                <div className='info-about__title'>
+                <div className='modal-container__header'>
                     <h2 className='text-inter-18-600'>
                         {t('infoAbout.title')}
                     </h2>
@@ -26,7 +26,7 @@ export default function NavInfoModal() {
                     />
                 </div>
 
-                <div className='info-about__description'>
+                <div className='info-about__description modal-container__description'>
                     <p className='text-inter-14-400'>
                         {t('infoAbout.subtitle')}
                     </p>
