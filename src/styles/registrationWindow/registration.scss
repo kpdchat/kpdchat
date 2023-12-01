@@ -111,6 +111,7 @@
             from {
                 transform: translateY(-100%);
             }
+
             to {
                 transform: translateY(0);
             }
@@ -118,6 +119,7 @@
 
         &.visibleInfo {
             animation: slideDown 0.5s ease-out;
+            height: 100vh;
             height: 100svh;
             flex-direction: column;
             align-items: center;
@@ -306,6 +308,7 @@
             // .registration__block-theme
             position: absolute;
             right: 3dvw;
+            bottom: 3vh;
             bottom: 3svh;
             text-align: right;
             background: #38328A;
@@ -321,6 +324,7 @@
 
     &__container {
         // .registration__container
+        height: calc(100vh - 156px);
         height: calc(100svh - 156px);
         display: flex;
         align-items: center;
