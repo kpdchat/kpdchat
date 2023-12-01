@@ -49,8 +49,7 @@
 
     &__navigation {
         // .chat__navigation
-        padding: clamp(20px, 156px, 14svh) 16px clamp(20px, 80px, 7vh) 16px;
-        padding: clamp(20px, 156px, 14svh) 16px clamp(20px, 80px, 7svh) 16px;
+        padding: clamp(20px, 156px, 14dvh) 16px clamp(20px, 80px, 7dvh) 16px;
         background: var(--chat-navigation-background);
         z-index: 1;
 
@@ -65,7 +64,7 @@
         }
 
         @include min-screen(504px) {
-            transform: translateX(0%) !important;
+            transform: translateX(0%)!important;
         }
 
     }
@@ -73,12 +72,10 @@
     &__dialogs {
         // .chat__dialogs
         min-height: 100vh;
-        min-height: 100svh;
         display: flex;
         flex-direction: column;
         border-right: var(--border-right);
         background-color: var(--color-white-black);
-
         @include max-screen(780px) {
             border-right: none;
         }
@@ -87,7 +84,6 @@
     &__messages {
         // .chat__messages
         min-height: 100vh;
-        min-height: 100svh;
         display: flex;
         flex-direction: column;
         overflow-y: hidden;
@@ -97,7 +93,6 @@
 .chat-loader {
     width: 100vw;
     height: 100vh;
-    height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;

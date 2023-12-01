@@ -117,8 +117,7 @@
 
     &__empty-img {
         //.list__empty-img
-        height: clamp(260px, calc(100vh - 160px), 500px);
-        height: clamp(260px, calc(100svh - 160px), 500px);
+        height: clamp(260px, calc(100dvh - 160px), 500px);
         object-fit: contain;
     }
 
