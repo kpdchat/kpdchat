@@ -8,6 +8,7 @@
     background-color: $color-violet;
     width: 35.42%;
     min-height: 100%;
+    padding: 2vh 4dvw;
     padding: 2svh 4dvw;
     display: flex;
     align-items: center;
@@ -23,6 +24,7 @@
         font-family: $font-lexend;
 
         &-content {
+
             // .info__block-content
             .content {
 
@@ -50,9 +52,10 @@
                 }
 
                 &__img {
+
                     // .content__img
                     img {
-                        width: clamp( 256px, 27dvw, 700px);
+                        width: clamp(256px, 27dvw, 700px);
                     }
                 }
 
