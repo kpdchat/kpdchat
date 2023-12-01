@@ -28,7 +28,7 @@
             background: var(--folder-kebab-hover-color);
         }
     }
-    
+
     &__copy-incognito {
         // .another-kebab__copy
         background: var(--color-violet-black);
@@ -76,9 +76,15 @@
 }
 
 .title-kebab {
+    position: fixed;
     width: 182px;
-    top: -17px;
-    right: 22px;
+    top: 19px;
+    right: 45px;
+
+    @include max-screen(1024px) {
+        top: 5px;
+        right: 38px;
+    }
 
     &__out {
         // .title-kebab__out

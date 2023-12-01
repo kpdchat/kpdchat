@@ -8,11 +8,12 @@ import { getStyleKebab } from '../../../extra/config/functions/getStyleKebab';
 import { deleteStartWindow, setRenderChatId, setUnSeenCount, setLength } from '../../../store/actions/messageAction';
 import { getTimeUnix } from '../../../extra/config/functions/getTimeUnix';
 import UserTypingDialogs from './UserTypingDialogs';
+import { setCloseNav, setOpenMessage } from '../../../store/actions/uiActions';
 
 export default function DialogItem({ dialog, index }) {
     const type = 'onContextChat';
     const [style, setStyle] = useState({});
-    const { isActiveFolderKebab } = useSelector(selectUi);
+    const { isActiveFolderKebab, isOpenNav } = useSelector(selectUi);
     const list = useSelector(selectRenderChatList);
     const { id, user } = useSelector(selectDataForMessages);
     const { t } = useTranslation();
@@ -41,16 +42,27 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onContextClick(e) {
+        if(isOpenNav) {
+            dispatch(setCloseNav())
+            return
+        }
         const styleKebab = getStyleKebab(list, index, e);
         setStyle(styleKebab);
         onKebabClick();
     }
 
     function onChatClick() {
+        if(isOpenNav) {
+            dispatch(setCloseNav())
+            return
+        }
         dispatch(setUnSeenCount(dialog.unseenMessageCount))
         dispatch(setLength(0))
         dispatch(deleteStartWindow());
         dispatch(setRenderChatId(dialog.id));
+        if (window.innerWidth <= 780) {
+            dispatch(setOpenMessage())
+        }
     }
 
     function getDisplay() {

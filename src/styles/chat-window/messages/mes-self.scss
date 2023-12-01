@@ -7,6 +7,16 @@
         margin-bottom: 8px;
         color: var(--color-darkGrey-white);
         gap: 18px;
+
+        @include max-screen(503px) {
+            gap: 8px;
+            margin-bottom: 4px;
+
+            .text-inter-18-600 {
+                font-size: 14px;
+                line-height: 135%;
+            }
+        }
     }
 
     &__message {
@@ -42,7 +52,7 @@
         .text-inter-16-400 {
             color: $color-white;
             overflow-wrap: break-word;
-            
+
         }
 
         .text-inter-12-400 {

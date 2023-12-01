@@ -12,11 +12,40 @@
     }
 }
 
+@mixin min-screen($res) {
+    @media screen and (min-width: $res) {
+        @content;
+    }
+}
+
 .navigation {
     color: $color-light-white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &__back {
+        //.navigation__back
+        min-width: 24px;
+        min-height: 24px;
+    }
+
+    &__user-about {
+        //.navigation__user-about
+        align-self: center;
+
+        img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .text-inter-18-500 {
+            text-align: center;
+            margin-top: 12px;
+        }
+    }
 
     &__settings {
         // .navigation__settings
@@ -27,6 +56,46 @@
 
         @include max-screen(1024px) {
             gap: 13px;
+        }
+
+        @include max-screen(503px) {
+            width: 100%;
+            gap: 8px;
+            flex-direction: row-reverse;
+            justify-content: space-around;
+            svg {
+                height: 28px;
+                width: 28px;
+            }
+        }
+    }
+
+    &__logo {
+        //.navigation__logo
+        text-align: center;
+
+        h2 {
+            font-family: $font-lexend;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 25.2px;
+            letter-spacing: 0.9px;
+
+            span {
+                font-family: $font-inter;
+                font-weight: 600;
+                line-height: 24.3px;
+            }
+        }
+    }
+
+    @include min-screen(504px) {
+
+        .navigation__logo,
+        .navigation__user-about,
+        .navigation__back {
+            display: none;
         }
     }
 }
@@ -77,6 +146,10 @@
             gap: 13px;
             padding: 0;
         }
+
+        @include max-screen(503px) {
+            padding: 0 4px 0 4px;
+        }
     }
 
     &__folder {
@@ -94,6 +167,14 @@
 
         }
 
+        @include max-screen(503px) {
+            justify-content: space-between;
+
+            .ml-5px {
+                display: block;
+            }
+        }
+
         &_active {
             color: $color-yellow;
         }
@@ -104,6 +185,13 @@
         display: flex;
         gap: 8px;
         align-items: center;
+
+        .text-inter-16-400 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 92px;
+        }
 
         @include max-screen(1024px) {
 
@@ -117,12 +205,18 @@
             }
         }
 
-        .text-inter-16-400 {
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            width: 92px;
+        @include max-screen(503px) {
+            svg {
+                height: 24px;
+                width: 24px;
+            }
+
+            .text-inter-16-400 {
+                display: block;
+            }
         }
+
+
     }
 
     &__public-container {
@@ -154,6 +248,15 @@
             }
         }
 
+        @include max-screen(503px) {
+            justify-content: space-between;
+            padding: 12px 0;
+
+            .text-inter-16-400 {
+                display: block;
+            }
+        }
+
         &_active {
             color: $color-yellow;
         }
@@ -180,6 +283,17 @@
 
             h2 {
                 display: none;
+            }
+        }
+
+        @include max-screen(503px) {
+            svg {
+                height: 24px;
+                width: 24px;
+            }
+
+            h2 {
+                display: block;
             }
         }
 

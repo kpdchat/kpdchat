@@ -14,10 +14,9 @@ export default function SettingsModal() {
 
     return (
         <div className='settings__container modal-container no-select'>
-            <div className='settings__content'>
-
+            <div className='modal-container__content settings__content'>
                 <div className='settings__settings'>
-                    <div className='settings__title'>
+                    <div className='modal-container__header'>
                         <h2 className='text-inter-18-600'>
                             { t('settingsUser.settings') }
                         </h2>
@@ -27,8 +26,8 @@ export default function SettingsModal() {
                             onClick={ state.onCloseWindowSettings }
                         />
                     </div>
-
-                    <div className='settings__user-profile'>
+                    <div className="modal-container__description">
+                        <div className='settings__user-profile'>
                         <div className='settings__user-photo'>
                             { state.userData.profilePictureLink
                                 && <img
@@ -156,6 +155,8 @@ export default function SettingsModal() {
                     >
                         { t('settingsUser.save') }
                     </button>
+                    </div>
+                    
                     { state.isLoader && <LoadingOnSubmitSettings /> }
 
                     { state.modalExitSettings &&

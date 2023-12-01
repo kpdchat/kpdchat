@@ -7,6 +7,9 @@
         position: relative;
         gap: 16px;
         padding: 20px 24px;
+        @include max-screen(503px) {
+            padding: 12px;
+        }
 
         .text-inter-16-400 {
             width: 100%;
@@ -24,6 +27,9 @@
                 outline: var(--messages-input-focus-outline);
                 background-color: var(--backColor-white-grey);
             }
+            @include max-screen(503px) {
+                padding: 10px;
+            }
         }
     }
 
@@ -32,7 +38,6 @@
         border: none;
         margin-bottom: 3px;
         border-radius: 8px;
-        margin-right: 11px;
         min-width: 35px;
         height: 35px;
         align-self: flex-end;
@@ -47,7 +52,6 @@
     &__button-disabled {
         // .input-mes__button-disabled
         border: none;
-        margin-right: 11px;
         margin-bottom: 3px;
         border-radius: 8px;
         min-width: 35px;
@@ -124,7 +128,6 @@
 .loading-sendmess {
     display: flex;
     justify-content: center;
-    margin-right: 11px;
     margin-bottom: 3px;
 
     &__content {

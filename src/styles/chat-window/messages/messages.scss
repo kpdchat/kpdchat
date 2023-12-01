@@ -20,30 +20,92 @@
         padding: 11px 24px 11px 24px;
         border-bottom: var(--border-right);
         background-color: var(--color-white-black);
+        
+
+        @include max-screen(1024px) {
+            padding: 11px 16px 11px 16px;
+        }
+
+        @include max-screen(503px) {
+            background-color: #38328A;
+        }
     }
 
     &__dialog-name {
         // .messages__dialog-name
         display: flex;
         align-items: center;
-        padding: 12px;
+        padding: 10px;
+        gap: 12px;
+        width: 50%;
+
+        svg {
+            min-width: 22px;
+            min-height: 22px;
+            color: var(--color-darkGrey-white);
+            @include max-screen(503px) {
+                color: #FFF;
+            }
+        }
 
         img {
             width: 52px;
             height: 52px;
+            min-width: 52px;
+            min-height: 52px;
             object-fit: cover;
             border-radius: 50%;
+        }
+
+        @include max-screen(1024px) {
+            width: 50%;
+            overflow: hidden;
+            padding: 0;
+
+            img {
+                width: 44px;
+                height: 44px;
+                min-width: 44px;
+                min-height: 44px;
+            }
+        }
+
+        @include max-screen(940px) {
+            width: 40%;
+        }
+
+        @include max-screen(503px) {
+            width: 70%;
         }
     }
 
     &__dialog-info {
         // .messages__dialog-info
         white-space: nowrap;
-        margin-left: 12px;
         color: var(--color-darkGrey-white);
+        width: 70%;
+        @include max-screen(1024px) {
+            width: 70%;
+        }
+
+        @include max-screen(503px) {
+            width: 50%;
+            color: #FFF;
+            p {
+                color: #BBE;
+            }
+        }
+
+        h3 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
 
         p {
             margin-top: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 
@@ -51,6 +113,7 @@
         // .messages__search
         display: flex;
         align-items: center;
+        overflow-x: hidden;
     }
 
     &__info {
@@ -58,6 +121,13 @@
         margin-left: 12px;
         position: relative;
         color: var(--color-lightDarkGrey-white);
+        @include max-screen(940px) {
+            margin-left: 8px;
+        }
+
+        @include max-screen(503px) {
+            color: #FFF;
+        }
     }
 
     &__window-mes {
@@ -116,8 +186,11 @@
 .window-mes {
     display: flex;
     flex-direction: column;
-    padding: 12px 25px 15px 25px;
+    padding: 12px 25px;
     gap: 12px;
+    @include max-screen(503px) {
+        padding: 4px 12px; 
+    }
 
     &__data {
         // .window-mes__data
@@ -131,12 +204,18 @@
         // .window-mes__self
         align-self: end;
         max-width: 70%;
+        @include max-screen(503px) {
+            max-width: 100%;  
+        }
     }
 
     &__another {
         // .window-mes__another
         align-self: flex-start;
         max-width: 70%;
+        @include max-screen(503px) {
+            max-width: 100%;  
+        }
     }
 
     &__new-mess {

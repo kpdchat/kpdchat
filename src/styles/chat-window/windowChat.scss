@@ -8,6 +8,21 @@
     }
 }
 
+
+@mixin min-screen($res) {
+    @media screen and (min-width: $res) {
+        @content;
+    }
+}
+
+@mixin min-screen-height($res) {
+    @media screen and (min-height: $res) {
+        @content;
+    }
+}
+
+
+
 .chat {
     height: 100%;
 
@@ -20,30 +35,55 @@
             grid-template-columns: 80px 289px minmax(400px, 1fr);
         }
 
+        @include max-screen(780px) {
+            grid-template-columns: 80px minmax(400px, 1fr);
+        }
+
+        @include max-screen(503px) {
+            grid-template-columns: minmax(312px, 503px);
+            position: relative;
+        }
+
+
     }
 
     &__navigation {
         // .chat__navigation
-        padding: clamp(20px, 7dvh, 14dvh) 16px clamp(20px, 7dvh, 7dvh)16px;
+        padding: clamp(20px, 156px, 14dvh) 16px clamp(20px, 80px, 7dvh) 16px;
         background: var(--chat-navigation-background);
-        grid-column: 1 / 2;
+        z-index: 1;
+
+        @include max-screen(503px) {
+            position: absolute;
+            transform: translateX(-100%);
+            z-index: 2;
+            width: 252px;
+            padding: 20px 16px;
+            min-height: 100%;
+            transition: all .5s;
+        }
+
+        @include min-screen(504px) {
+            transform: translateX(0%)!important;
+        }
 
     }
 
     &__dialogs {
         // .chat__dialogs
-        min-height: 100dvh;
-        grid-column: 2 / 3;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         border-right: var(--border-right);
         background-color: var(--color-white-black);
+        @include max-screen(780px) {
+            border-right: none;
+        }
     }
 
     &__messages {
         // .chat__messages
-        min-height: 100dvh;
-        grid-column: 3 / 4;
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         overflow-y: hidden;
@@ -63,4 +103,8 @@
         color: var(--color-lavender-white);
         margin-top: 20px;
     }
+}
+
+.open-navigation {
+    transform: translateX(0%);
 }

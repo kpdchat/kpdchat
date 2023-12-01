@@ -128,8 +128,11 @@ export default function MessageSendForm() {
             setText('')
             dispatch(stopClearForm())
         }
+        if(!text) {
+            textareaRef.current.style.height = '42px';
+        }
         // eslint-disable-next-line
-    }, [isClearForm, isTyping, dispatch])
+    }, [isClearForm, isTyping, dispatch, text])
 
     // Show UserTyping
     useEffect(() => {

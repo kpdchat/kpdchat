@@ -30,28 +30,28 @@ export default function JoinChatModal() {
 
     return (
         <div className='modal-container modal-chat'>
-            <div className='modal-chat__content'>
-                <div className='modal-chat__header'>
-                    <h3 className='text-inter-16-600'>{ t('chat-context-menu.joinToChat') }</h3>
+            <div className='modal-container__content modal-chat__content'>
+                <div className='modal-container__header'>
+                    <h3 className='text-inter-16-600'>{t('chat-context-menu.joinToChat')}</h3>
                     <MdClose
                         className='modal-chat__close close-img cursor-pointer'
-                        size={ 24 }
-                        onClick={ onCloseClick } />
+                        size={24}
+                        onClick={onCloseClick} />
                 </div>
-
-                <div className='flex-container'>
-                    <img
-                        src={ joinChat.chatPictureLink }
-                        alt='chat-logo' />
-                    <div className='modal-chat__about'>
-                        <p className='text-inter-16-600'>{ joinChat.title }</p>
-                        <JoinModalCounter members={members}/>
+                <div className="modal-container__description modal-chat">
+                    <div className='flex-container'>
+                        <img
+                            src={joinChat.chatPictureLink}
+                            alt='chat-logo' />
+                        <div className='modal-chat__about'>
+                            <p className='text-inter-16-600'>{joinChat.title}</p>
+                            <JoinModalCounter members={members} />
+                        </div>
                     </div>
+                    <button
+                        className='text-inter-16-600 cursor-pointer modal-container__button'
+                        onClick={onJoinChatClick}>{t('chat-context-menu.joinChat')}</button>
                 </div>
-
-                <button
-                    className='text-inter-16-600 cursor-pointer'
-                    onClick={ onJoinChatClick }>{ t('chat-context-menu.joinChat') }</button>
             </div>
         </div>
     )

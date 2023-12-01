@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MessageTitleKebab from "./mes-kebab/MessageTitleKebab";
-import { MdOutlineMoreVert } from "react-icons/md";
+import { MdOutlineMoreVert, MdOutlineClose } from "react-icons/md";
 import { PiMagnifyingGlass } from "react-icons/pi";
 import { useKebabClick } from "../../../extra/hooks/useKebabClick"
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,7 @@ export default function MessageSearch() {
         textSearch: '',
         prevTextSearch: ''
     });
+    const [isSearch, setIsSearch] = useState(false)
 
     const isClearSearch = useSelector(selectClearSearch);
     const dispatch = useDispatch();
@@ -30,20 +31,25 @@ export default function MessageSearch() {
     // Change Text in InputSearch
     function onChangeTextSearch(e) {
         const value = e.target.value;
-        setText({...text, textSearch: value});
+        setText({ ...text, textSearch: value });
     }
 
     // Submit messages for Search
     function onSearchSubmit(e) {
         e.preventDefault();
-        setText({...text, prevTextSearch: text.textSearch});
+        setText({ ...text, prevTextSearch: text.textSearch });
         dispatch(fetchMessagesSearch(searchData));
+    }
+
+    function onSearchClick() {
+        setIsSearch(!isSearch)
     }
 
     useEffect(() => {
         if (isClearSearch) {
-            setText({...text, textSearch: ''});
+            setText({ ...text, textSearch: '' });
             dispatch(stopClearInputSearch());
+            setIsSearch(false)
         }
     }, [isClearSearch, dispatch, text]);
 
@@ -55,27 +61,34 @@ export default function MessageSearch() {
 
     return (
         <div className='messages__search'>
-            <div className='input-container'>
-                <form className='input-content' onSubmit={ onSearchSubmit }>
+            <div className={isSearch ? 'input-container active-search' : 'input-container'}>
+                <form className='input-content' onSubmit={onSearchSubmit}>
+                    <PiMagnifyingGlass
+                        className='input-icon'
+                        onClick={onSearchClick} />
                     <input
                         type='text'
                         name='text'
                         autoComplete='off'
-                        value={ text.textSearch }
-                        onChange={ onChangeTextSearch }
-                        onBlur={ onChangeTextSearch }
+                        value={text.textSearch}
+                        onChange={onChangeTextSearch}
+                        onBlur={onChangeTextSearch}
                         className='input text-inter-16-400'
-                        placeholder={ t('global.search') } />
-                    <PiMagnifyingGlass className='input-icon' />
+                        placeholder={t('global.search')} />
+
                 </form>
+                <MdOutlineClose
+                    className='icon-close cursor-pointer'
+                    onClick={onSearchClick} />
             </div>
 
             <div className='messages__info'>
                 <MdOutlineMoreVert
-                    size={ 20 }
+                    size={20}
                     className='cursor-pointer'
-                    onMouseDown={ onKebabClick } />
-                { isOpen && idKebab === titleId && <MessageTitleKebab /> }
+                    onMouseDown={onKebabClick}
+                    onClick={() => setIsSearch(false)} />
+                {isOpen && idKebab === titleId && <MessageTitleKebab />}
             </div>
         </div>
     )

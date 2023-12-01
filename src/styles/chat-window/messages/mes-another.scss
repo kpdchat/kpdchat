@@ -9,6 +9,16 @@
         h3 {
             color: var(--color-darkGrey-white);
         }
+
+        @include max-screen(503px) {
+            gap: 8px;
+            margin-bottom: 4px;
+
+            .text-inter-18-600 {
+                font-size: 14px;
+                line-height: 135%;
+            }
+        }
     }
 
     &__message {
