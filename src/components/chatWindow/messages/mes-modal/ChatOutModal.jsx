@@ -38,7 +38,7 @@ export default function ChatOutModal() {
                         size={24}
                         onClick={onCloseClick} />
                 </div>
-                <div className="modal-container__description">
+                <div className="modal-container__description modal-chat">
                     <div className="flex-container">
                         <img
                             src={chat.chatPictureLink}

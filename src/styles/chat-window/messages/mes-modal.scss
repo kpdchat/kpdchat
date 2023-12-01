@@ -11,6 +11,24 @@
             object-fit: cover;
             border-radius: 50%;
         }
+
+        @include max-screen(503px) {
+            flex-direction: column;
+            margin-top: -16px;
+            gap: 30px;
+
+            img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+
+    @include max-screen(503px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
     }
 
     &__about {
@@ -26,6 +44,20 @@
 
         .text-inter-16-600 {
             color: var(--color-white-grey);
+        }
+
+        @include max-screen(503px) {
+            width: 100%;
+            align-items: center;
+            gap: 10px;
+
+            .text-inter-14-400 {
+                font-size: 16px;
+            }
+
+            .text-inter-16-600 {
+                font-size: 18px;
+            }
         }
     }
 }

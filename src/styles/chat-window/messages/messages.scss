@@ -20,9 +20,14 @@
         padding: 11px 24px 11px 24px;
         border-bottom: var(--border-right);
         background-color: var(--color-white-black);
+        
 
         @include max-screen(1024px) {
             padding: 11px 16px 11px 16px;
+        }
+
+        @include max-screen(503px) {
+            background-color: #38328A;
         }
     }
 
@@ -32,10 +37,15 @@
         align-items: center;
         padding: 10px;
         gap: 12px;
+        width: 50%;
 
         svg {
             min-width: 22px;
             min-height: 22px;
+            color: var(--color-darkGrey-white);
+            @include max-screen(503px) {
+                color: #FFF;
+            }
         }
 
         img {
@@ -48,7 +58,7 @@
         }
 
         @include max-screen(1024px) {
-            width: 60%;
+            width: 50%;
             overflow: hidden;
             padding: 0;
 
@@ -59,19 +69,31 @@
                 min-height: 44px;
             }
         }
+
+        @include max-screen(940px) {
+            width: 40%;
+        }
+
+        @include max-screen(503px) {
+            width: 70%;
+        }
     }
 
     &__dialog-info {
         // .messages__dialog-info
         white-space: nowrap;
         color: var(--color-darkGrey-white);
-
+        width: 70%;
         @include max-screen(1024px) {
             width: 70%;
         }
 
         @include max-screen(503px) {
             width: 50%;
+            color: #FFF;
+            p {
+                color: #BBE;
+            }
         }
 
         h3 {
@@ -91,6 +113,7 @@
         // .messages__search
         display: flex;
         align-items: center;
+        overflow-x: hidden;
     }
 
     &__info {
@@ -98,6 +121,13 @@
         margin-left: 12px;
         position: relative;
         color: var(--color-lightDarkGrey-white);
+        @include max-screen(940px) {
+            margin-left: 8px;
+        }
+
+        @include max-screen(503px) {
+            color: #FFF;
+        }
     }
 
     &__window-mes {
