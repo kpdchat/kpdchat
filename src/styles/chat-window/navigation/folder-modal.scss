@@ -143,15 +143,15 @@
         // .folder-modal__chat-container
         overflow-y: auto;
         margin-bottom: 16px;
-        max-height: 40vh;
+        max-height: 40svh;
         min-height: 100px;
 
         @media screen and (max-height: 570px) {
-            max-height: 30vh;
+            max-height: 30svh;
         }
 
         @include max-screen(503px) {
-            max-height: calc(100vh - 350px);
+            max-height: calc(100svh - 350px);
         }
 
 

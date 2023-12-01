@@ -118,7 +118,7 @@
 
         &.visibleInfo {
             animation: slideDown 0.5s ease-out;
-            height: 100vh;
+            height: 100svh;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
@@ -306,7 +306,7 @@
             // .registration__block-theme
             position: absolute;
             right: 3dvw;
-            bottom: 3dvh;
+            bottom: 3svh;
             text-align: right;
             background: #38328A;
             border-radius: 8px;
@@ -321,7 +321,7 @@
 
     &__container {
         // .registration__container
-        height: calc(100vh - 156px);
+        height: calc(100svh - 156px);
         display: flex;
         align-items: center;
         justify-content: center;

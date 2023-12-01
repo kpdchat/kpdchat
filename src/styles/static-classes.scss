@@ -179,7 +179,7 @@
 .modal-container {
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -245,7 +245,7 @@
 
         @include max-screen(503px) {
             padding: 0 24px 24px 24px;
-            height: calc(100vh - 90px);
+            height: calc(100svh - 90px);
         }
     }
 
