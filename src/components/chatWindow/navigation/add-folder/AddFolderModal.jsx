@@ -72,7 +72,7 @@ export default function AddFolderModal() {
         } else {
             const folder = {
                 userId: user.id,
-                ...data, 
+                ...data,
                 "chatIds": data.chatIds.map(id => Number(id))
             }
             dispatch(fetchCreateFolder(folder));
@@ -187,7 +187,7 @@ export default function AddFolderModal() {
                         </div>
 
                         <div className="folder-modal__chat-count text-inter-16-500">
-                            {t('addFolder.selected')} <AddFolderCounter selected={selected} />
+                            {t('addFolder.selected')}<AddFolderCounter selected={selected} />
                         </div>
 
                         <input
