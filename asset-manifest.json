@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kpdchat/static/css/main.14e3988d.css",
-    "main.js": "/kpdchat/static/js/main.7a4053ac.js",
+    "main.js": "/kpdchat/static/js/main.ee411a8c.js",
     "static/media/background-chat-light.png": "/kpdchat/static/media/background-chat-light.8a1a49ff1a2414c5c957.png",
     "static/media/background-chat-dark.png": "/kpdchat/static/media/background-chat-dark.0132b4a314b1cc17318d.png",
     "static/media/puzzles_img.png": "/kpdchat/static/media/puzzles_img.2d11b7bef0df04d55756.png",
@@ -11,10 +11,10 @@
     "index.html": "/kpdchat/index.html",
     "static/media/search.svg": "/kpdchat/static/media/search.cc323634c24079c685aa.svg",
     "main.14e3988d.css.map": "/kpdchat/static/css/main.14e3988d.css.map",
-    "main.7a4053ac.js.map": "/kpdchat/static/js/main.7a4053ac.js.map"
+    "main.ee411a8c.js.map": "/kpdchat/static/js/main.ee411a8c.js.map"
   },
   "entrypoints": [
     "static/css/main.14e3988d.css",
-    "static/js/main.7a4053ac.js"
+    "static/js/main.ee411a8c.js"
   ]
 }
