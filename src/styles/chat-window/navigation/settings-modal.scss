@@ -247,10 +247,10 @@
         .images {
             display: flex;
             justify-content: space-between;
-            height: 0;
+            max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+            transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
 
             .img {
                 .dogs-img {
@@ -289,7 +289,7 @@
         .visibility {
             margin-top: 16px;
             opacity: 1;
-            height: auto;
+            max-height: 150px;
         }
     }
 
