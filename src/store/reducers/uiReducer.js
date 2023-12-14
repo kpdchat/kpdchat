@@ -55,7 +55,7 @@ export default function uiReducer(state = initialState, { type, payload }) {
                 isModal: false,
                 idKebab: 0,
                 modalId: 0,
-
+                isOpen: false,
             }
         }
         case ACTION_OPEN_MODAL: {
