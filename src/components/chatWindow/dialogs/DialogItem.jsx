@@ -40,7 +40,6 @@ export default function DialogItem({ dialog, index }) {
             onKebabClick();
             return
         }
-        onChatClick()
         setStartPress(null)
     }
 
@@ -75,7 +74,7 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onChatClick() {
-        if(isOpen && window.innerWidth < 503) {
+        if (isOpen && window.innerWidth < 503) {
             return
         }
         if (isOpenNav) {
