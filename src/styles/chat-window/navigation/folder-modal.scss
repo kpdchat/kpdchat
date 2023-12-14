@@ -117,7 +117,7 @@
         }
     }
 
-    input[type="submit"] {
+    button {
         width: 100%;
         padding: 12px;
         text-align: center;
@@ -130,7 +130,7 @@
         &:hover {
             background-color: var(--backColor-hover);
         }
-        
+
         @include max-screen(503px) {
             position: absolute;
             bottom: 24px;
@@ -204,6 +204,7 @@
             appearance: none;
             -moz-appearance: none;
             -webkit-appearance: none;
+            opacity: 0;
 
             &::before {
                 content: '';
@@ -220,6 +221,8 @@
             }
 
             &:checked {
+                opacity: 1;
+
                 &::before {
                     opacity: 1;
                 }
@@ -231,6 +234,7 @@
         // .folder-modal__chat-count
         color: var(--modal-form-chatCount-color);
         margin-bottom: 16px;
+
         @include max-screen(503px) {
             position: absolute;
             bottom: 65px;

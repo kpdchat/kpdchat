@@ -190,10 +190,10 @@ export default function AddFolderModal() {
                             {t('addFolder.selected')}<AddFolderCounter selected={selected} />
                         </div>
 
-                        <input
+                        <button
                             type="submit"
-                            className="text-inter-16-600 cursor-pointer"
-                            value={editFolder.id ? t('addFolder.editFolder') : t('addFolder.create')} />
+                            className="text-inter-16-600 cursor-pointer">
+                            {editFolder.id ? t('addFolder.editFolder') : t('addFolder.create')} </button>
                     </form>
                     <div className={isActiveLoader ? "loading" : "display-none"} >
                         <DotSpinner

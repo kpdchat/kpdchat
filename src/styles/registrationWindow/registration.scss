@@ -111,6 +111,7 @@
             from {
                 transform: translateY(-100%);
             }
+
             to {
                 transform: translateY(0);
             }
@@ -119,6 +120,7 @@
         &.visibleInfo {
             animation: slideDown 0.5s ease-out;
             height: 100vh;
+            height: 100dvh;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
