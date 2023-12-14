@@ -31,7 +31,6 @@ export default function NavFolderItem({ folder }) {
             setStyle({ top: ` ${e.pageY + 7}px`, })
             return
         }
-        onFolderClick()
         setStartPress(null)
     }
 
