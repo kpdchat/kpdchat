@@ -84,7 +84,7 @@ export default function MessageSearch() {
 
             <div className='messages__info'>
                 <MdOutlineMoreVert
-                    size={20}
+                    size={22}
                     className='cursor-pointer'
                     onMouseDown={onKebabClick}
                     onClick={() => setIsSearch(false)} />

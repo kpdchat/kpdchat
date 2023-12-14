@@ -28,6 +28,7 @@
 
         @include max-screen(503px) {
             background-color: #38328A;
+            min-height: 67px;
         }
     }
 
@@ -142,6 +143,10 @@
         width: 100%;
         border-top: var(--border-right);
         background-color: var(--color-white-black);
+        @include max-screen(503px) {
+            min-height: 66px;
+        }
+        
     }
 
     &__start {
@@ -190,6 +195,7 @@
     gap: 12px;
     @include max-screen(503px) {
         padding: 4px 12px; 
+        gap: 8px;
     }
 
     &__data {
@@ -204,6 +210,10 @@
         // .window-mes__self
         align-self: end;
         max-width: 70%;
+
+        @include max-screen(940px) {
+            max-width: 90%;  
+        }
         @include max-screen(503px) {
             max-width: 100%;  
         }
@@ -213,6 +223,9 @@
         // .window-mes__another
         align-self: flex-start;
         max-width: 70%;
+        @include max-screen(940px) {
+            max-width: 90%;  
+        }
         @include max-screen(503px) {
             max-width: 100%;  
         }

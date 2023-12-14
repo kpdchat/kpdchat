@@ -18,10 +18,29 @@ export default function NavFolderItem({ folder }) {
         over: false,
     })
 
+    const delay = 500;
+    const [startPress, setStartPress] = useState(null)
+
+    function onMouseDown() {
+        setStartPress(Date.now())
+    }
+    function onMouseUp(e) {
+        if (Date.now() - startPress > delay) {
+            setHover({ ...hover, over: false })
+            onKebabClick()
+            setStyle({ top: ` ${e.pageY + 7}px`, })
+            return
+        }
+        onFolderClick()
+        setStartPress(null)
+    }
+
     function onContextClick(e) {
-        setHover({ ...hover, over: false })
-        onKebabClick()
-        setStyle({ top: ` ${e.pageY + 7}px`, })
+        if (window.innerWidth > 503) {
+            setHover({ ...hover, over: false })
+            onKebabClick()
+            setStyle({ top: ` ${e.pageY + 7}px`, })
+        }
     }
 
     function onFolderClick() {
@@ -56,7 +75,9 @@ export default function NavFolderItem({ folder }) {
                 onClick={onFolderClick}
                 onContextMenu={onContextClick}
                 onMouseOver={onMouseOver}
-                onMouseLeave={() => setHover({ ...hover, over: false })}>
+                onMouseLeave={() => setHover({ ...hover, over: false })}
+                onTouchStart={onMouseDown}
+                onTouchEnd={onMouseUp}>
 
                 {icons[folder.iconTag]}
                 <h3 className='text-inter-16-400'>{folder.title}</h3>
