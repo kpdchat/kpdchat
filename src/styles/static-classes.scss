@@ -13,7 +13,6 @@
 
     @include max-screen(503px) {
         font-size: 16px;
-        font-weight: 600;
     }
 }
 
@@ -41,9 +40,6 @@
     font-weight: 400;
     line-height: normal;
 
-    @include max-screen(503px) {
-        font-size: 14px;
-    }
 }
 
 .text-inter-16-500 {
@@ -115,7 +111,9 @@
         margin-left: 12px;
         border: none;
         color: var(--color-white-grey);
-
+        @include max-screen(503px) {
+            font-size: 16px;
+        }
         &:focus-visible {
             outline: none;
         }

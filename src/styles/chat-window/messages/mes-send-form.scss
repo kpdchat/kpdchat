@@ -69,6 +69,9 @@
     height: 100%;
     z-index: 2;
     padding: 20px 24px;
+    @include max-screen(503px) {
+        padding: 12px;
+    }
 
     .text-inter-18-600 {
         border: none;
@@ -85,6 +88,8 @@
         &:hover {
             background-color: var(--backColor-hover);
         }
+        
+
     }
 }
 

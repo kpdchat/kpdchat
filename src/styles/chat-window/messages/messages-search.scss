@@ -19,9 +19,8 @@
     }
 
     @include max-screen(503px) {
-        transform: translateX(65px);
+        transform: translateX(-10px);
         background-color: #38328A;
-
     }
 }
 
@@ -42,7 +41,7 @@
     }
 
     @include max-screen(503px) {
-        width: 100px;
+        width: 22px;
     }
 }
 
@@ -100,13 +99,13 @@
         position: fixed;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
         left: 16px;
         z-index: 2;
         transform: translateX(0%);
 
         .input-content {
-            width: calc(100vw - 70px);
+            width: calc(100vw - 50px);
             height: 45px;
         }
 

@@ -23,6 +23,27 @@ export default function DialogItem({ dialog, index }) {
     const sentAt = getSentTime();
     const messagesDisplay = getDisplay();
 
+    const delay = 500;
+    const [startPress, setStartPress] = useState(null)
+
+    function onMouseDown() {
+        setStartPress(Date.now())
+    }
+    function onMouseUp(e) {
+        if (Date.now() - startPress > delay) {
+            if (isOpenNav) {
+                dispatch(setCloseNav())
+                return
+            }
+            const styleKebab = getStyleKebab(list, index, e);
+            setStyle(styleKebab);
+            onKebabClick();
+            return
+        }
+        onChatClick()
+        setStartPress(null)
+    }
+
     function getDialogStyle() {
         if (dialog.id === id) {
             return 'open-chat list__dialog cursor-pointer';
@@ -42,17 +63,19 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onContextClick(e) {
-        if(isOpenNav) {
-            dispatch(setCloseNav())
-            return
+        if (window.innerWidth > 503) {
+            if (isOpenNav) {
+                dispatch(setCloseNav())
+                return
+            }
+            const styleKebab = getStyleKebab(list, index, e);
+            setStyle(styleKebab);
+            onKebabClick();
         }
-        const styleKebab = getStyleKebab(list, index, e);
-        setStyle(styleKebab);
-        onKebabClick();
     }
 
     function onChatClick() {
-        if(isOpenNav) {
+        if (isOpenNav) {
             dispatch(setCloseNav())
             return
         }
@@ -88,7 +111,9 @@ export default function DialogItem({ dialog, index }) {
     return (
         <div className={dialogStyle}
             onContextMenu={onContextClick}
-            onClick={onChatClick}>
+            onClick={onChatClick}
+            onTouchStart={onMouseDown}
+            onTouchEnd={onMouseUp}>
             <img src={dialog.chatPictureLink}
                 alt='' />
             <div className='list__info'>

@@ -32,7 +32,10 @@
 
     &__user-about {
         //.navigation__user-about
-        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         img {
             width: 56px;
@@ -42,7 +45,6 @@
         }
 
         .text-inter-18-500 {
-            text-align: center;
             margin-top: 12px;
         }
     }

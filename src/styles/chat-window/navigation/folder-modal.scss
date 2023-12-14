@@ -153,8 +153,6 @@
         @include max-screen(503px) {
             max-height: calc(100vh - 350px);
         }
-
-
     }
 
     ul {
@@ -233,6 +231,11 @@
         // .folder-modal__chat-count
         color: var(--modal-form-chatCount-color);
         margin-bottom: 16px;
+        @include max-screen(503px) {
+            position: absolute;
+            bottom: 65px;
+            left: 33px;
+        }
     }
 }
 
