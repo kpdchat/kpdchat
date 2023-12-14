@@ -75,6 +75,9 @@ export default function DialogItem({ dialog, index }) {
     }
 
     function onChatClick() {
+        if(isOpen && window.innerWidth < 503) {
+            return
+        }
         if (isOpenNav) {
             dispatch(setCloseNav())
             return
