@@ -12,7 +12,7 @@ export const ACTION_SET_RENDER_LIST_NAME = 'ACTION_SET_RENDER_LIST_NAME'
 export function fetchChats() {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('https://kpdchat.onrender.com/api/chats/all')
+            const { data } = await axios.get('https://kpd-chat.onrender.com/api/chats/all')
             dispatch(setRenderList(data))
         } catch (e) {
             alert(e)
@@ -23,7 +23,7 @@ export function fetchChats() {
 export function fetchCreateChat(chat) {
     return async () => {
         try {
-            await axios.post('https://kpdchat.onrender.com/api/chats', chat)
+            await axios.post('https://kpd-chat.onrender.com/api/chats', chat)
         } catch (e) {
             alert(e)
         }
@@ -33,7 +33,7 @@ export function fetchCreateChat(chat) {
 export function fetchJoinChat(data) {
     return async (dispatch) => {
         try {
-            await axios.post('https://kpdchat.onrender.com/api/chats/join', data)
+            await axios.post('https://kpd-chat.onrender.com/api/chats/join', data)
             dispatch(cleanChat())
         } catch (e) {
             alert(e)
@@ -44,7 +44,7 @@ export function fetchJoinChat(data) {
 export function fetchLeaveChat(data) {
     return async (dispatch) => {
         try {
-            await axios.post('https://kpdchat.onrender.com/api/chats/leave', data)
+            await axios.post('https://kpd-chat.onrender.com/api/chats/leave', data)
             dispatch(cleanChat())
         } catch (e) {
             alert(e)
