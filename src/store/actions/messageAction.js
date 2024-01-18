@@ -24,7 +24,7 @@ export const ACTION_SET_CHAT_LENGTH = 'ACTION_SET_CHAT_LENGTH'
 export function fetchRenderChat(id) {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`https://kpdchat.onrender.com/api/chats?id=${id}`)
+            const { data } = await axios.get(`https://kpd-chat.onrender.com/api/chats?id=${id}`)
             dispatch(setRenderChat(data));
         } catch (e) {
             console.error(e);
@@ -36,7 +36,7 @@ export function fetchPostMessage(data) {
     return async (dispatch) => {
         try {
             dispatch(setLoaderMessagesShow());
-            await axios.post('https://kpdchat.onrender.com/api/messages', data)
+            await axios.post('https://kpd-chat.onrender.com/api/messages', data)
         } catch (e) {
             console.error(e);
         } finally {
@@ -54,7 +54,7 @@ export function fetchPostUserTyping(userId, chatId) {
                 'userId': userId,
                 'chatId': chatId
             }
-            await axios.post('https://kpdchat.onrender.com/api/user-typing', data)
+            await axios.post('https://kpd-chat.onrender.com/api/user-typing', data)
         } catch (e) {
             console.error(e);
         }
@@ -67,7 +67,7 @@ export function fetchDeleteUserTyping(userId) {
             const data = {
                 'userId': userId
             }
-            await axios.delete('https://kpdchat.onrender.com/api/user-typing', { data: data })
+            await axios.delete('https://kpd-chat.onrender.com/api/user-typing', { data: data })
         } catch (e) {
             console.error(e);
         }
@@ -77,7 +77,7 @@ export function fetchDeleteUserTyping(userId) {
 export function fetchUpdateLastSeenMessage(data) {
     return async () => {
         try {
-            await axios.put('https://kpdchat.onrender.com/api/messages/last-seen-message', data)
+            await axios.put('https://kpd-chat.onrender.com/api/messages/last-seen-message', data)
         } catch (e) {
             console.error(e)
         }
@@ -87,7 +87,7 @@ export function fetchUpdateLastSeenMessage(data) {
 export function fetchDeleteMessage(message) {
     return async () => {
         try {
-            await axios.delete('https://kpdchat.onrender.com/api/messages/delete', { data: message })
+            await axios.delete('https://kpd-chat.onrender.com/api/messages/delete', { data: message })
         } catch (e) {
             console.error(e);
         }
@@ -98,7 +98,7 @@ export function fetchUpdateMessage(message) {
     return async (dispatch) => {
         dispatch(setLoaderMessagesShow());
         try {
-            await axios.put('https://kpdchat.onrender.com/api/messages/update', message)
+            await axios.put('https://kpd-chat.onrender.com/api/messages/update', message)
         } catch (e) {
             console.error(e);
         }
@@ -114,7 +114,7 @@ export function fetchUpdateMessage(message) {
 export function fetchMessagesSearch(info) {
     return async (dispatch) => {
         try {
-            const {data} = await axios.get(`https://kpdchat.onrender.com/api/messages/search?chatId=${info.chatId}&text=${info.text}`)
+            const {data} = await axios.get(`https://kpd-chat.onrender.com/api/messages/search?chatId=${info.chatId}&text=${info.text}`)
             dispatch(setRenderMessages(data));
             dispatch(setSearchTrue());
         } catch (e) {

@@ -62,7 +62,7 @@ export default function useModalRegistrationLogic({setUniKey}) {
             dispatch(setLoaderShow());
             const imageIsValid = await validateImageOnServer(userValue.profilePictureLink);
             if (imageIsValid) {
-                const {data} = await axios.post('https://kpdchat.onrender.com/api/users/register', {
+                const {data} = await axios.post('https://kpd-chat.onrender.com/api/users/register', {
                     nickname: userValue.nickname,
                     profilePictureLink: userValue.profilePictureLink,
                 })

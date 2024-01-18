@@ -10,7 +10,7 @@ export const ACTION_DELETE_USER_ERROR = 'ACTION_DELETE_USER_ERROR';
 export function singleUserFetch(id) {
     return async (dispatch) => {
         try {
-            await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
+            await axios.get(`https://kpd-chat.onrender.com/api/users?userId=${id}`)
             dispatch(setFetch());
             dispatch(fetchUser(id));
         } catch (e) {
@@ -25,7 +25,7 @@ export function fetchUser(id) {
         const { user } = getState();
         try {
             if (user.isFetch) {
-                const { data } = await axios.get(`https://kpdchat.onrender.com/api/users?userId=${id}`)
+                const { data } = await axios.get(`https://kpd-chat.onrender.com/api/users?userId=${id}`)
                 dispatch(setUser(data));
                 setTimeout(() => {
                     dispatch(fetchUser(id));
@@ -47,7 +47,7 @@ export function fetchUserGettingKey(uniKey, setUniKey, userLanguage) {
     return async (dispatch) => {
         try {
             dispatch(setLoaderShow());
-            const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+            const {data} = await axios.post('https://kpd-chat.onrender.com/api/users/login', {
                 uniqueKey: uniKey
             });
             const updateUser = {
@@ -57,7 +57,7 @@ export function fetchUserGettingKey(uniKey, setUniKey, userLanguage) {
                 localization: userLanguage,
                 theme: data.theme
             }
-            await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
+            await axios.put('https://kpd-chat.onrender.com/api/users', updateUser);
             localStorage.setItem('user', JSON.stringify(data));
             dispatch(setWindowChatOpen());
         } catch (e) {
@@ -73,7 +73,7 @@ export function fetchUpdateUser(user) {
     return async (dispatch) => {
         try {
             dispatch(setLoaderShow());
-            await axios.put('https://kpdchat.onrender.com/api/users', user);
+            await axios.put('https://kpd-chat.onrender.com/api/users', user);
         } catch (e) {
             console.error(e);
         } finally {

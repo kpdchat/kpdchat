@@ -34,7 +34,7 @@ export default function useLoginAndRegistrationLogic() {
     // Validation UniqueKey On Server
     async function validateUnikeyOnServer(key) {
         try {
-            const response = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+            const response = await axios.post('https://kpd-chat.onrender.com/api/users/login', {
                 uniquekey: key,
             });
             if (response.status !== 200) {
@@ -66,7 +66,7 @@ export default function useLoginAndRegistrationLogic() {
                 dispatch(setLoaderShow());
                 const validateKey = await validateUnikeyOnServer(uniKey);
                 if (validateKey) {
-                    const {data} = await axios.post('https://kpdchat.onrender.com/api/users/login', {
+                    const {data} = await axios.post('https://kpd-chat.onrender.com/api/users/login', {
                         uniqueKey: uniKey,
                     });
                     const updateUser = {
@@ -76,7 +76,7 @@ export default function useLoginAndRegistrationLogic() {
                         localization: userLanguage,
                         theme: data.theme
                     }
-                    await axios.put('https://kpdchat.onrender.com/api/users', updateUser);
+                    await axios.put('https://kpd-chat.onrender.com/api/users', updateUser);
                     localStorage.setItem('user', JSON.stringify(data));
                     dispatch(setWindowChatOpen());
                 }
